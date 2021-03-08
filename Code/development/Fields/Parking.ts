@@ -6,9 +6,25 @@ class Parking implements Field{
     initialPrice:number = 20;
     PriceToPayMultiplier:number[] = [1,2.5];
     priceIndex:number = 0;
-
+    isMortgage:boolean = false;
     Event(player: Player): void {
-        //TDOD Player pays the price to the player  that owns this field
+        //TODO Player pays the price to the player  that owns this field
+    }
+
+    buy(player:Player):void{
+
+    }
+
+    repayMortgage():void{
+        if(this.owner == null){
+            return;
+        }
+        //TODO add the payements of the player.
+    }
+
+    CanBuy(player: Player): boolean {
+        //TODO ones player has been implemented.
+        return false;
     }
 
 }

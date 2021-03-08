@@ -7,4 +7,8 @@ class Erasmus implements Field{
         //TDOD Player is in prison
     }
 
+    CanBuy(player:Player){
+        return false;
+    }
+
 }
