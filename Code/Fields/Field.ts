@@ -1,4 +1,4 @@
-import "./Player";
+//import "./Player";
 
 interface Field{
   name:string;
