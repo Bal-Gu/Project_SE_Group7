@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Monopolie belval edition</title>
+    <title>Monopoly belval edition</title>
     <link rel="stylesheet" href="./graphic/css/index.css">
+    <link rel="stylesheet" href="./graphic/css/board.css">
     <!-- Dependency to gsap-->
     <script src="./frameworks/gsap.min.js"></script>
     <script src="./frameworks/CSSRulePlugin.min.js"></script>
@@ -25,5 +26,242 @@
     <div class="box2"></div>
     <!--Loading all the images needed for the project-->
     <img height="100px" width="100px"  id="car" src="./graphic/svg/car_topview.svg" >
+    <button type="button" id='mybutton'>Replay</button>
+
+    <div class="board">
+      <div class="lg-box">
+        <div class="lg-rot rot-135">Just Visiting  / In Erasmus</div>
+      </div>
+      <div class="sm-box rot-180 sm-box-pink">
+        <div>
+          <span class="title">Title 11</span>
+          <span class="price">Price 11</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180">
+        <div>
+          <span class="title">Title 12</span>
+          <span class="price">Price 12</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180 sm-box-pink">
+        <div>
+          <span class="title">Title 13</span>
+          <span class="price">Price 13</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180 sm-box-pink">
+        <div>
+          <span class="title">Title 14</span>
+          <span class="price">Price 14</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180">
+        <div>
+          <span class="title">Title 15</span>
+          <span class="price">Price 15</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180 sm-box-orange">
+        <div>
+          <span class="title">new 15</span>
+          <span class="price">new 15</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180">
+        <div>
+          <span class="title">new 15</span>
+          <span class="price">new 15</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180 sm-box-orange">
+        <div>
+          <span class="title">new 15</span>
+          <span class="price">new 15</span>
+        </div>
+      </div>
+      <div class="sm-box rot-180 sm-box-orange">
+        <div>
+          <span class="title">new 15</span>
+          <span class="price">new 15</span>
+        </div>
+      </div>
+      <div class="lg-box">
+        <div class="lg-rot rot-135-reverse">Free Parking</div>
+      </div>
+      <div class="sm-box sm-box-lightBlue">
+        <div class="rot-90">
+          <span class="title">new 10</span>
+          <span class="price">new 10</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-red">
+        <div class="rot-90-reverse">
+          <span class="title">new 16</span>
+          <span class="price">new 16</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-lightBlue">
+        <div class="rot-90">
+          <span class="title">new 10</span>
+          <span class="price">new 10</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90-reverse">
+          <span class="title">new 16</span>
+          <span class="price">new 16</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90">
+          <span class="title">new 10</span>
+          <span class="price">new 10</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-red">
+        <div class="rot-90-reverse">
+          <span class="title">new 16</span>
+          <span class="price">new 16</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-lightBlue">
+        <div class="rot-90">
+          <span class="title">new 10</span>
+          <span class="price">new 10</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-red">
+        <div class="rot-90-reverse">
+          <span class="title">new 16</span>
+          <span class="price">new 16</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90">
+          <span class="title">Title 10</span>
+          <span class="price">Price 10</span>
+        </div>
+      </div>
+
+      <div class="lg-box-centered">Monopoly Belval Edition</div>
+      
+      <div class="sm-box">
+        <div class="rot-90-reverse">
+          <span class="title">Title 16</span>
+          <span class="price">Price 16</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90">
+          <span class="title">Title 9</span>
+          <span class="price">Price 9</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-yellow">
+        <div class="rot-90-reverse">
+          <span class="title">Title 17</span>
+          <span class="price">Price 17</span>
+        </div>
+      </div>
+
+
+      <div class="sm-box sm-box-brown">
+        <div class="rot-90">
+          <span class="title">Title 8</span>
+          <span class="price">Price 8</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-yellow">
+        <div class="rot-90-reverse">
+          <span class="title">Title 18</span>
+          <span class="price">Price 18</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90">
+          <span class="title">Title 7</span>
+          <span class="price">Price 7</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div class="rot-90-reverse">
+          <span class="title">Title 19</span>
+          <span class="price">Price 19</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-brown">
+        <div class="rot-90">
+          <span class="title">Title 6</span>
+          <span class="price">Price 6</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-yellow">
+        <div class="rot-90-reverse">
+          <span class="title">Title 20</span>
+          <span class="price">Price 20</span>
+        </div>
+      </div>
+      <div class="lg-box">
+        <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
+      </div>
+      <div class="sm-box sm-box-blue">
+        <div>
+          <span class="title">Title 5</span>
+          <span class="price">Price 5</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div>
+          <span class="title">Title 4</span>
+          <span class="price">Price 4</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-blue">
+        <div>
+          <span class="title">Title 3</span>
+          <span class="price">Price 3</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div>
+          <span class="title">Title 2</span>
+          <span class="price">Price 2</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div>
+          <span class="title">Title 1</span>
+          <span class="price">Price 1</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-green">
+        <div>
+          <span class="title">new 1</span>
+          <span class="price">new 1</span>
+        </div>
+      </div>
+      <div class="sm-box">
+        <div>
+          <span class="title">new 1</span>
+          <span class="price">new 1</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-green">
+        <div>
+          <span class="title">new 1</span>
+          <span class="price">new 1</span>
+        </div>
+      </div>
+      <div class="sm-box sm-box-green">
+        <div>
+          <span class="title">new 1</span>
+          <span class="price">new 1</span>
+        </div>
+      </div>
+      <div class="lg-box">
+        <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
+      </div>
+    </div>
   </body>
 </html>
