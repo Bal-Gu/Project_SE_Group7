@@ -5,7 +5,12 @@ class Erasmus implements Field{
     name: string = "Erasmus";
 
     Event(player: Player): void {
-        //TDOD Player is in prison
+        if(player.TurnsInPrison >= 1){
+            //TODO Prison event
+            player.TurnsInPrison++;
+        }
+        return;
+
     }
 
     CanBuy(player:Player){

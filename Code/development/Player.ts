@@ -5,6 +5,7 @@ export class Player {
     Money : number;
     fieldsOwned:[Field];
     Bankrupt : boolean;
+    TurnsInPrison:number;
 
     
 
