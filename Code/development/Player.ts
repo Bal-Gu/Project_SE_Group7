@@ -1,9 +1,9 @@
 import { Field } from "./Fields/Field";
 
-class Player {
+export class Player {
     isBot : boolean;
     Money : number;
-    //Array[Property]
+    fieldsOwned:[Field];
     Bankrupt : boolean;
 
     
