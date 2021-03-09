@@ -16,7 +16,7 @@ function movingUpAnimation(FieldNumber,FieldsToPlay){
  if(FieldsToPlay<=0){
    return;
  }
- const delay = 0.5;
+ const delay = 0.7;
  const distance = 100;
  var tl = gsap.timeline({onComplete:nextMoveLogic,onCompleteParams: [FieldNumber,FieldsToPlay]});
 
@@ -35,5 +35,8 @@ function movingRightAnimation(){
 
 $(document).ready(function(){
   movingUpAnimation(1,2);
+  $("#mybutton").click(function(){
+    movingUpAnimation(1,2);
+  });
   //start();
 });
