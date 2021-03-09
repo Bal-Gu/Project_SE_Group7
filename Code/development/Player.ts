@@ -1,4 +1,5 @@
 import { Field } from "./Fields/Field";
+import {GlobalVariable} from "../globalVariable"
 
 export class Player {
     isBot : boolean;
@@ -6,6 +7,8 @@ export class Player {
     fieldsOwned:[Field];
     Bankrupt : boolean;
     TurnsInPrison:number;
+    hasErasmusDispense:boolean;
+    currentposition:number;
 
     
 
@@ -16,10 +19,8 @@ export class Player {
     }
     
     canBuy(cost:number):boolean{
-        if ((this.Money-cost) > 0){
-            return true;
-        }
-        return false;
+        return (this.Money - cost) > 0;
+
     }
 
     buying(field : Field): void{
@@ -34,12 +35,14 @@ export class Player {
 
     }
 
+
     move(): void{
 
     }
 
     goToErasmus(): void{
-
+        console.log(JSON.parse('{ "myString": "string", "myNumber": 4 }').);
+        this.currentposition = GlobalVariable.getErasmus();
     }
 
     startBonus(): void{
