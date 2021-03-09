@@ -1,4 +1,6 @@
 import {Field} from "./Field";
+import {Player} from "../Player";
+
 
 class Parking implements Field{
     name: string = "Parking";
