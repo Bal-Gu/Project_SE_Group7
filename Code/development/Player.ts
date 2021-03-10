@@ -1,5 +1,5 @@
 import { Field } from "./Fields/Field";
-import {GlobalVariable} from "../globalVariable"
+import {Config} from "../Config"
 
 export class Player {
     isBot : boolean;
@@ -40,8 +40,8 @@ export class Player {
     }
 
     goToErasmus(): void{
-        console.log(JSON.parse('{ "myString": "string", "myNumber": 4 }').);
-        this.currentposition = GlobalVariable.getErasmus();
+        let obj:Config= JSON.parse("../globalVariable.json");
+        this.currentposition = obj.Erasmus;
     }
 
     startBonus(): void{
