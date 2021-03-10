@@ -16,27 +16,30 @@ export class Player {
         this.isBot = isBot;
         this.Money = 1500;
         this.Bankrupt = false;
+        this.hasErasmusDispense = false;
+        this.currentposition = 0;
     }
     
     canBuy(cost:number):boolean{
         return (this.Money - cost) > 0;
     }
 
-    buying(field : Field): void{
-
+    buying(field: Field, amount:number): void{
+        
+        
     }
 
     exchange(field: Field, player : Player): void{
-
+        //check if field is owned, if yes remove from array to add to other player that asked
     }
 
     receive(field: Field): void{
-
+        this.fieldsOwned.push(field);
     }
 
 
-    move(): void{
-
+    move(move:number): void{
+        //move position
     }
 
     goToErasmus(): void{
@@ -52,9 +55,6 @@ export class Player {
         return this.Bankrupt;
     }
 
-    init(): void{
-
-    }
 
     forfeit(): void{
         this.isBot = true;
