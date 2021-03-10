@@ -1,7 +1,9 @@
+@import "controller";
+
 * {
     box-sizing: border-box;
   }
-  
+
   .board {
     display: grid;
     grid-template-columns: 120px repeat(9, 75px) 120px;
@@ -175,28 +177,4 @@
     left: initial;
     right: 12px;
   }
-  .player{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin: 10px 0 5px 5px;
-    font-size: 10px;
-    line-height: 15px;
-    text-align: center;
-  }
-  
-  #player-1{
-    background-color: red;
-  }
-  
-  #player-2{
-    background-color: blue;
-  }
-  
-  #player-3{
-    background-color: green;
-  }
-  
-  #player-4{
-    background-color: yellow;
-  }
+ 

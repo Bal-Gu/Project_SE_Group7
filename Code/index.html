@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Monopoly belval edition</title>
-  <link rel="stylesheet" href="./graphic/css/index.css">
   <link rel="stylesheet" href="./graphic/css/board.css">
   <link rel="stylesheet" href="./graphic/css/modal.css">
   <!-- Dependency to gsap-->
@@ -46,7 +45,24 @@
     
     <img height="100px" width="100px"  id="car" src="./graphic/svg/car_topview.svg" >
     <button type="button" id='mybutton'>Replay</button>-->
-
+    <div class="monopoly-info">
+      <p>Turn:
+        <span id="round-counter">0</span>/-</p>
+      <p>Current Player:
+        <span id="current-player"></span>
+      </p>
+      <p>Players Order:
+        <span id="players-order"></span>
+      </p>
+      <div class="player" id="player-1">1</div>
+        <div class="player-coins">B-Coins:<span id ="b-coins-1"> 0</span></div>
+      <div class="player" id="player-2">2</div>
+        <div class="player-coins">B-Coins:<span id ="b-coins-2"> 0</span></div>
+      <div class="player" id="player-3">3</div>
+        <div class="player-coins">B-Coins:<span id ="b-coins-3"> 0</span></div>
+      <div class="player" id="player-4">4</div>
+        <div class="player-coins">B-Coins:<span id ="b-coins-4"> 0</span></div>
+  </div>
   <div class="board">
     <div class="center">
       <div class="community-chest-deck">
@@ -294,10 +310,6 @@
     <div class="lg-box">
       <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
     </div>
-    <div class="player" id="player-1">1</div>
-    <div class="player" id="player-2">2</div>
-    <div class="player" id="player-3">3</div>
-    <div class="player" id="player-4">4</div>
   </div>
 </body>
 

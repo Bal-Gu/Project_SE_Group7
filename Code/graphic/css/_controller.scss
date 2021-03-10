@@ -1,0 +1,43 @@
+//Monopoly game informations
+
+.monopoly-info{
+    
+    width: 300px;
+    height: 5px;
+    padding: 2px 16px;
+    font-size: 14px;
+    line-height: 1.5em;
+  }
+
+  .player{
+    display: list-item;
+    width: 30px;
+    height: 30px;
+    margin: 10px 0 10px 10px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    color: white
+  }
+  
+  .player-coins{
+    width: 300px;
+    height: 20px;
+    margin: 10px 0 10px 10px;
+  }
+
+  #player-1{
+    background-color: red;
+  }
+  
+  #player-2{
+    background-color: green
+  }
+  
+  #player-3{
+    background-color: blue;
+  }
+  
+  #player-4{
+    background-color: violet
+  }
