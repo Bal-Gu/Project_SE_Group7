@@ -20,7 +20,6 @@ export class Player {
     
     canBuy(cost:number):boolean{
         return (this.Money - cost) > 0;
-
     }
 
     buying(field : Field): void{
@@ -46,7 +45,7 @@ export class Player {
     }
 
     startBonus(): void{
-
+        this.Money += 200;
     }
 
     isBankrupt(): boolean{
@@ -58,7 +57,7 @@ export class Player {
     }
 
     forfeit(): void{
-        
+        this.isBot = true;
     }
 
 }
