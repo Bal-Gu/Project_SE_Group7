@@ -50,6 +50,9 @@ export class Player {
         this.Money -= ammount;
     }
     move(moveAction:number): void{
+        if((moveAction+this.currentposition) >= 40){
+            moveAction -= (40 - this.currentposition);
+        }
         this.currentposition += moveAction;
     }
 
