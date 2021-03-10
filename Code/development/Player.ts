@@ -1,5 +1,5 @@
-import { Field } from "./Fields/Field";
-import {Config} from "../Config"
+import {Field} from "./Fields/Field";
+import globals from "../globalVariable.json"
 
 export class Player {
     isBot : boolean;
@@ -10,7 +10,6 @@ export class Player {
     hasErasmusDispense:boolean;
     currentposition:number;
 
-    
 
     constructor(isBot: boolean /*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
@@ -19,8 +18,8 @@ export class Player {
         this.hasErasmusDispense = false;
         this.currentposition = 0;
     }
-    
-    canBuy(cost:number):boolean{
+
+    canBuy(cost: number): boolean {
         return (this.Money - cost) > 0;
     }
 
@@ -43,26 +42,31 @@ export class Player {
         this.fieldsOwned.push(field);
     }
 
+    recieveMoney(ammount: number) {
+        this.Money += ammount;
+    }
 
+    payAmmount(ammount: number) {
+        this.Money -= ammount;
+    }
     move(moveAction:number): void{
         this.currentposition += moveAction;
     }
 
-    goToErasmus(): void{
-        let obj:Config= JSON.parse("../globalVariable.json");
-        this.currentposition = obj.Erasmus;
+    goToErasmus(): void {
+        this.currentposition = globals.Erasmus;
     }
 
-    startBonus(): void{
+    startBonus(): void {
         this.Money += 200;
     }
 
-    isBankrupt(): boolean{
+    isBankrupt(): boolean {
         return this.Bankrupt;
     }
 
 
-    forfeit(): void{
+    forfeit(): void {
         this.isBot = true;
     }
 

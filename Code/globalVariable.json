@@ -1,3 +1,5 @@
 {
-  "Erasmus": 10
+  "Erasmus": 10,
+  "MaxNumberField": 20,
+  "MaxRenovations": 5;
 }

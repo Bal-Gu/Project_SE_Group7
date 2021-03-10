@@ -9,5 +9,6 @@
 
 node_modules/.bin/
 
+node_modules/\@babel/code-frame/lib/
 
 node_modules/*
