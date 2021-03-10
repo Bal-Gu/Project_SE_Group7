@@ -4,7 +4,7 @@ import {Config} from "../Config"
 export class Player {
     isBot : boolean;
     Money : number;
-    fieldsOwned:[Field];
+    fieldsOwned:Field[];
     Bankrupt : boolean;
     TurnsInPrison:number;
     hasErasmusDispense:boolean;
@@ -31,6 +31,12 @@ export class Player {
 
     exchange(field: Field, player : Player): void{
         //check if field is owned, if yes remove from array to add to other player that asked
+        for(let i = 0; i < this.fieldsOwned.length; i++){
+            if(this.fieldsOwned[i].name == field.name){
+                player.fieldsOwned.push(field);
+                this.fieldsOwned = this.fieldsOwned.filter(ownedfield => this.fieldsOwned[i].name != field.name)
+            }
+        }
     }
 
     receive(field: Field): void{
@@ -38,8 +44,8 @@ export class Player {
     }
 
 
-    move(move:number): void{
-        //move position
+    move(moveAction:number): void{
+        this.currentposition += moveAction;
     }
 
     goToErasmus(): void{
