@@ -3,6 +3,7 @@ import globals from "../globalVariable.json"
 
 export class Player {
     isBot : boolean;
+    isGameOver:boolean;
     Money : number;
     fieldsOwned:Field[];
     Bankrupt : boolean;
@@ -17,6 +18,8 @@ export class Player {
         this.Bankrupt = false;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
+        this.isGameOver = false;
+        this.TurnsInPrison = 0;
     }
 
     canBuy(cost: number): boolean {
@@ -26,6 +29,10 @@ export class Player {
     buying(field: Field, amount:number): void{
         
         
+    }
+
+    gameOver(){
+        this.isGameOver = true;
     }
 
     exchange(field: Field, player : Player): void{

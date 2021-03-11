@@ -1,5 +1,9 @@
 {
   "Erasmus": 10,
+  "PrisonCost": 50,
   "MaxNumberField": 20,
-  "MaxRenovations": 5;
+  "MaxRenovations": 5,
+  "MaxTurnInErasmus": 3,
+  "DiceNumber": 6
+
 }
