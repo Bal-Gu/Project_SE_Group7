@@ -1,57 +1,56 @@
-import {Player} from "../Player";
-import globals from "../../globalVariable.json";
-import {Dice} from "./Dice";
-
-
-export class Prison {
-
-    prisonEvent(p: Player) {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Prison = void 0;
+var globalVariable_json_1 = __importDefault(require("../../globalVariable.json"));
+var Dice_1 = require("./Dice");
+var Prison = /** @class */ (function () {
+    function Prison() {
+    }
+    Prison.prototype.prisonEvent = function (p) {
         $(document).ready(function () {
             //hides or show the buttons
             $("#myModal").css("display", "block");
-            let luckyButton = $("#luckyCard");
+            var luckyButton = $("#luckyCard");
             if (p.hasErasmusDispense) {
                 luckyButton.show();
                 luckyButton.prop("disable", false);
-            } else {
+            }
+            else {
                 luckyButton.css("display", "none");
                 luckyButton.prop("disable", true);
             }
-            let pay = $("#playGame");
-            if (p.canBuy(globals.PrisonCost)) {
+            var pay = $("#playGame");
+            if (p.canBuy(globalVariable_json_1.default.PrisonCost)) {
                 pay.show();
                 pay.prop("disable", false);
-            } else {
+            }
+            else {
                 pay.css("display", "none");
                 pay.prop("disable", true);
-                if (p.TurnsInPrison == globals.MaxTurnInErasmus) {
+                if (p.TurnsInPrison == globalVariable_json_1.default.MaxTurnInErasmus) {
                     p.gameOver();
                     return;
                 }
             }
-
-
             var modal = document.getElementById("myModal");
-
             window.onclick = function (event) {
                 if (event.target == modal && modal != undefined) {
                     modal.style.display = "none";
                 }
-            }
-
+            };
             $("#myBtn").click(function () {
                 $("#myModal").css("display", "block");
             });
-
             $(".close").click(function () {
                 $("#myModal").css("display", "none");
             });
-
-
             // the tree buttons inside the modal
             pay.click(function () {
-                p.payAmmount(globals.ErasmusFees);
-                let d: Dice = new Dice();
+                p.payAmmount(globalVariable_json_1.default.ErasmusFees);
+                var d = new Dice_1.Dice();
                 d.roll();
                 p.move(d.total());
                 p.TurnsInPrison = 0;
@@ -59,9 +58,8 @@ export class Prison {
                 $("#myModal").css("display", "none");
                 return;
             });
-
             $("#roleDouble").click(function () {
-                let d: Dice = new Dice();
+                var d = new Dice_1.Dice();
                 d.roll();
                 if (d.isdouble()) {
                     p.move(d.total());
@@ -71,9 +69,8 @@ export class Prison {
                     return;
                 }
             });
-
             luckyButton.click(function () {
-                let d: Dice = new Dice();
+                var d = new Dice_1.Dice();
                 d.roll();
                 p.move(d.total());
                 p.hasErasmusDispense = false;
@@ -84,6 +81,8 @@ export class Prison {
                 return;
             });
         });
-
-    }
-}
+    };
+    return Prison;
+}());
+exports.Prison = Prison;
+//# sourceMappingURL=Prison.js.map

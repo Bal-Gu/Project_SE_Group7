@@ -2,11 +2,17 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
+    "noImplicitAny": false,
+    "strictNullChecks": true,
     "resolveJsonModule": true,
+    "removeComments": false,
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "moduleResolution": "Node"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "bower_components",
+    "dist"
   ]
 }

@@ -4,7 +4,7 @@ import {Player} from "../Player";
 
 class Parking implements Field{
     name: string = "Parking";
-    owner:Player = null;
+    owner:Player;
     initialPrice:number = 20;
     PriceToPayMultiplier:number[] = [1,2.5];
     priceIndex:number = 0;
