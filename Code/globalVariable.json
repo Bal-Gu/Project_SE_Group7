@@ -4,6 +4,7 @@
   "MaxNumberField": 20,
   "MaxRenovations": 5,
   "MaxTurnInErasmus": 3,
-  "DiceNumber": 6
+  "DiceNumber": 6,
+  "ErasmusFees": 50
 
 }

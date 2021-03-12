@@ -10,6 +10,7 @@ class GoToErasmus  implements Field{
     }
 
     Event(player: Player): void {
+        player.TurnsInPrison = 1;
         player.goToErasmus();
     }
 
