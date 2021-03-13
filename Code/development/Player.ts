@@ -57,10 +57,7 @@ export class Player {
         this.Money -= ammount;
     }
     move(moveAction:number): void{
-        if((moveAction+this.currentposition) >= 40){
-            moveAction -= (40 - this.currentposition);
-        }
-        this.currentposition += moveAction;
+        this.currentposition += (this.currentposition + moveAction) % 40;
     }
 
     goToErasmus(): void {
@@ -79,6 +76,7 @@ export class Player {
     forfeit(): void {
         this.isBot = true;
     }
+
 
 }
 
