@@ -1,43 +1,63 @@
 //Monopoly game informations
 
+//Colors
+$lg-box:  #999;
+$lightblue: lightblue;
+$pink: pink;
+$orange: orange;
+$red: red;
+$brown: brown;
+$yellow: yellow;
+$blue: blue;
+$green: green;
+$violet: violet;
+
+
+//Font
+$game-info : Verdana, Geneva, Tahoma, sans-serif;
+
 .monopoly-info{
     
-    width: 300px;
-    height: 5px;
-    padding: 2px 16px;
+    position: absolute;
+    width: 240px;
     font-size: 14px;
     line-height: 1.5em;
+    border: 2px solid black;
+    font-family: $game-info;
+
+    .player{
+      display: list-item;
+      width: 30px;
+      height: 30px;
+      margin: 10px 0 10px 10px;
+      font-size: 18px;
+      line-height: 30px;
+      text-align: center;
+      color: white
+    }
+    
+    .player-coins{
+      width: 250px;
+      height: 20px;
+      margin: 10px 0 10px 10px;
+    }
+  
+    #player-1{
+      background-color: $red;
+    }
+    
+    #player-2{
+      background-color: $green;
+    }
+    
+    #player-3{
+      background-color: $blue;
+    }
+    
+    #player-4{
+      background-color: $violet;
+    }
   }
 
-  .player{
-    display: list-item;
-    width: 30px;
-    height: 30px;
-    margin: 10px 0 10px 10px;
-    font-size: 18px;
-    line-height: 30px;
-    text-align: center;
-    color: white
-  }
-  
-  .player-coins{
-    width: 300px;
-    height: 20px;
-    margin: 10px 0 10px 10px;
-  }
 
-  #player-1{
-    background-color: red;
-  }
   
-  #player-2{
-    background-color: green
-  }
-  
-  #player-3{
-    background-color: blue;
-  }
-  
-  #player-4{
-    background-color: violet
-  }

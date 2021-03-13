@@ -1,10 +1,16 @@
 @import "controller";
 
+//Font variable
+$font-board : Georgia, 'Times New Roman', Times, serif;
+
 * {
     box-sizing: border-box;
   }
 
   .board {
+    font-family: $font-board;
+    font-size: 12px;
+    font-weight: 300;
     display: grid;
     grid-template-columns: 120px repeat(9, 75px) 120px;
     grid-template-rows: 120px repeat(9, 75px) 120px;
@@ -42,10 +48,11 @@
         grid-row: 5 / 7;
         transform: rotate(315deg);
         margin-top: 55px;
-        margin-left: 60px;
+        margin-left: 55px;
       }
       
       .label {
+        font-size: 18px;
         text-align: center;
         font-weight: 500;
         letter-spacing: 2px;
@@ -57,15 +64,20 @@
         width: 160px;
         height: 120px;
       }
-    }
-    
-    
+    } 
   }
-    
+  
+  .price{
+    font-size: 9px;
+		font-weight: 400;
+		padding-bottom: 1px
+  }
+
   .lg-box {
+    font-size: 16px;
     text-align: center;
-    background: #999;
-    border: 1px solid;
+    background: $lg-box;
+    border: 1.5px solid;
     overflow: hidden;
   }
 
@@ -73,40 +85,40 @@
     width: 100%;
     height: 100%;
     position: relative;
-    border: 1px solid;
+    border: 1.5px solid;
     overflow: hidden;
   }
 
   .sm-box-pink{
-      background-color: pink;
+      background-color: $pink;
   }
 
   .sm-box-orange{
-    background-color: orange;
+    background-color: $orange;
 }
 
 .sm-box-lightBlue{
-    background-color: lightblue;
+    background-color: $lightblue;
 }
 
 .sm-box-red{
-    background-color: red;
+    background-color: $red;
 }
 
 .sm-box-brown{
-    background-color: brown;
+    background-color: $brown;
 }
 
 .sm-box-yellow{
-    background-color: yellow;
+    background-color: $yellow;
 }
 
 .sm-box-blue{
-    background-color: blue;
+    background-color: $blue;
 }
 
 .sm-box-green{
-    background-color: green;
+    background-color: $green;
 }
   
   .sm-box div {
@@ -120,12 +132,6 @@
     position: absolute;
     bottom: 0;
     padding: 5px;
-  }
-  
-  .lg-box-centered {
-    background: #fff;
-    grid-row: 2 / span 9;
-    grid-column: 2 / span 9;
   }
   
   .rot-180 {

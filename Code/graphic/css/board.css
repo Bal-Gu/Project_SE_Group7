@@ -1,12 +1,13 @@
 .monopoly-info {
-  width: 300px;
-  height: 5px;
-  padding: 2px 16px;
+  position: absolute;
+  width: 240px;
   font-size: 14px;
   line-height: 1.5em;
+  border: 2px solid black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.player {
+.monopoly-info .player {
   display: list-item;
   width: 30px;
   height: 30px;
@@ -17,25 +18,25 @@
   color: white;
 }
 
-.player-coins {
-  width: 300px;
+.monopoly-info .player-coins {
+  width: 250px;
   height: 20px;
   margin: 10px 0 10px 10px;
 }
 
-#player-1 {
+.monopoly-info #player-1 {
   background-color: red;
 }
 
-#player-2 {
+.monopoly-info #player-2 {
   background-color: green;
 }
 
-#player-3 {
+.monopoly-info #player-3 {
   background-color: blue;
 }
 
-#player-4 {
+.monopoly-info #player-4 {
   background-color: violet;
 }
 
@@ -45,6 +46,9 @@
 }
 
 .board {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 12px;
+  font-weight: 300;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 120px (75px)[9] 120px;
@@ -112,10 +116,11 @@
   -webkit-transform: rotate(315deg);
           transform: rotate(315deg);
   margin-top: 55px;
-  margin-left: 60px;
+  margin-left: 55px;
 }
 
 .board .center .label {
+  font-size: 18px;
   text-align: center;
   font-weight: 500;
   letter-spacing: 2px;
@@ -128,10 +133,17 @@
   height: 120px;
 }
 
+.price {
+  font-size: 9px;
+  font-weight: 400;
+  padding-bottom: 1px;
+}
+
 .lg-box {
+  font-size: 16px;
   text-align: center;
   background: #999;
-  border: 1px solid;
+  border: 1.5px solid;
   overflow: hidden;
 }
 
@@ -139,7 +151,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px solid;
+  border: 1.5px solid;
   overflow: hidden;
 }
 
@@ -193,16 +205,6 @@
   position: absolute;
   bottom: 0;
   padding: 5px;
-}
-
-.lg-box-centered {
-  background: #fff;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 9;
-  grid-row: 2 / span 9;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 9;
-  grid-column: 2 / span 9;
 }
 
 .rot-180 {
