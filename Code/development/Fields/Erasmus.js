@@ -1,21 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Prison_1 = require("../Events/Prison");
-var Erasmus = /** @class */ (function () {
-    function Erasmus() {
+const Prison_1 = require("../Events/Prison");
+class Erasmus {
+    constructor() {
         this.name = "Erasmus";
     }
-    Erasmus.prototype.Event = function (player) {
+    Event(player) {
         if (player.TurnsInPrison >= 1) {
-            var erasmus = new Prison_1.Prison();
+            let erasmus = new Prison_1.Prison();
             erasmus.prisonEvent(player);
             player.TurnsInPrison++;
         }
         return;
-    };
-    Erasmus.prototype.CanBuy = function (player) {
+    }
+    CanBuy(player) {
         return false;
-    };
-    return Erasmus;
-}());
+    }
+}
 //# sourceMappingURL=Erasmus.js.map

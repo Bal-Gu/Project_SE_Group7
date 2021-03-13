@@ -1,14 +1,16 @@
 import {Player} from "../Player";
 import globals from "../../globalVariable.json";
 import {Dice} from "./Dice";
-
+import $ from 'jquery';
 
 export class Prison {
 
     prisonEvent(p: Player) {
-        $(document).ready(function () {
+
             //hides or show the buttons
+
             $("#myModal").css("display", "block");
+
             let luckyButton = $("#luckyCard");
             if (p.hasErasmusDispense) {
                 luckyButton.show();
@@ -57,7 +59,7 @@ export class Prison {
                 p.TurnsInPrison = 0;
                 console.log("Playing");
                 $("#myModal").css("display", "none");
-                return;
+
             });
 
             $("#roleDouble").click(function () {
@@ -68,7 +70,8 @@ export class Prison {
                     p.TurnsInPrison = 0;
                     console.log("Out of erasmus");
                     $("#myModal").css("display", "none");
-                    return;
+
+
                 }
             });
 
@@ -79,11 +82,11 @@ export class Prison {
                 p.hasErasmusDispense = false;
                 p.TurnsInPrison = 0;
                 console.log("Out of prison");
-                console.log("Click luckyCard");
                 $("#myModal").css("display", "none");
-                return;
-            });
-        });
 
-    }
+            });
+
+        };
+
+
 }

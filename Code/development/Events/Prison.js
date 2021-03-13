@@ -4,16 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Prison = void 0;
-var globalVariable_json_1 = __importDefault(require("../../globalVariable.json"));
-var Dice_1 = require("./Dice");
-var Prison = /** @class */ (function () {
-    function Prison() {
-    }
-    Prison.prototype.prisonEvent = function (p) {
+const globalVariable_json_1 = __importDefault(require("../../globalVariable.json"));
+const Dice_1 = require("./Dice");
+class Prison {
+    prisonEvent(p) {
         $(document).ready(function () {
             //hides or show the buttons
             $("#myModal").css("display", "block");
-            var luckyButton = $("#luckyCard");
+            let luckyButton = $("#luckyCard");
             if (p.hasErasmusDispense) {
                 luckyButton.show();
                 luckyButton.prop("disable", false);
@@ -22,7 +20,7 @@ var Prison = /** @class */ (function () {
                 luckyButton.css("display", "none");
                 luckyButton.prop("disable", true);
             }
-            var pay = $("#playGame");
+            let pay = $("#playGame");
             if (p.canBuy(globalVariable_json_1.default.PrisonCost)) {
                 pay.show();
                 pay.prop("disable", false);
@@ -50,7 +48,7 @@ var Prison = /** @class */ (function () {
             // the tree buttons inside the modal
             pay.click(function () {
                 p.payAmmount(globalVariable_json_1.default.ErasmusFees);
-                var d = new Dice_1.Dice();
+                let d = new Dice_1.Dice();
                 d.roll();
                 p.move(d.total());
                 p.TurnsInPrison = 0;
@@ -59,7 +57,7 @@ var Prison = /** @class */ (function () {
                 return;
             });
             $("#roleDouble").click(function () {
-                var d = new Dice_1.Dice();
+                let d = new Dice_1.Dice();
                 d.roll();
                 if (d.isdouble()) {
                     p.move(d.total());
@@ -70,7 +68,7 @@ var Prison = /** @class */ (function () {
                 }
             });
             luckyButton.click(function () {
-                var d = new Dice_1.Dice();
+                let d = new Dice_1.Dice();
                 d.roll();
                 p.move(d.total());
                 p.hasErasmusDispense = false;
@@ -81,8 +79,7 @@ var Prison = /** @class */ (function () {
                 return;
             });
         });
-    };
-    return Prison;
-}());
+    }
+}
 exports.Prison = Prison;
 //# sourceMappingURL=Prison.js.map

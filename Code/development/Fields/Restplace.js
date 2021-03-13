@@ -1,21 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Parking = /** @class */ (function () {
-    function Parking() {
+class Parking {
+    constructor() {
         this.name = "Restplace";
         this.pot = 0;
     }
-    Parking.prototype.Event = function (player) {
+    Event(player) {
         //TODO Player gets the pot
-    };
-    Parking.prototype.addToPot = function (amount) {
+    }
+    addToPot(amount) {
         if (amount > 0) {
             this.pot += amount;
         }
-    };
-    Parking.prototype.CanBuy = function (player) {
+    }
+    CanBuy(player) {
         return false;
-    };
-    return Parking;
-}());
+    }
+}
 //# sourceMappingURL=Restplace.js.map
