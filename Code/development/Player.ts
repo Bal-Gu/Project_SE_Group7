@@ -6,7 +6,6 @@ export class Player {
     isGameOver:boolean;
     Money : number;
     fieldsOwned:Field[];
-    Bankrupt : boolean;
     TurnsInPrison:number;
     hasErasmusDispense:boolean;
     currentposition:number;
@@ -17,7 +16,6 @@ export class Player {
     constructor(isBot: boolean /*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
         this.Money = 1500;
-        this.Bankrupt = false;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;
@@ -31,7 +29,8 @@ export class Player {
     }
 
     buying(field: Field, amount:number): void{
-        
+        this.fieldsOwned.push(field);
+        this.payAmmount(amount);
         
     }
 
@@ -61,7 +60,10 @@ export class Player {
         this.Money -= ammount;
     }
     move(moveAction:number): void{
-        this.currentposition += (this.currentposition + moveAction) % 40;
+        if(this.currentposition + moveAction >= globals.MaxNumberField){
+            this.startBonus();
+        }
+        this.currentposition += (this.currentposition + moveAction) % globals.MaxNumberField;
     }
 
     goToErasmus(): void {
@@ -69,12 +71,9 @@ export class Player {
     }
 
     startBonus(): void {
-        this.Money += 200;
+        this.Money += globals.payDay;
     }
 
-    isBankrupt(): boolean {
-        return this.Bankrupt;
-    }
 
 
     forfeit(): void {
