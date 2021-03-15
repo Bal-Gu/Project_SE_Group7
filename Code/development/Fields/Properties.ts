@@ -121,4 +121,14 @@ export class Properties implements Field{
     Event(player: Player): void {
         //TODO
     }
+
+    CanPayRent(player: Player): boolean {
+        return player.Money > this.pricetopay[this.renovatiosAmmount];
+    }
+
+    PayRent(player: Player): void {
+        if(this.CanPayRent(player)){
+            player.payAmmount(this.pricetopay[this.renovatiosAmmount]);
+        }
+    }
 }

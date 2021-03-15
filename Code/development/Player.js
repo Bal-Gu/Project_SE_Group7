@@ -14,6 +14,8 @@ class Player {
         this.currentposition = 0;
         this.isGameOver = false;
         this.TurnsInPrison = 0;
+        this.nrOfBus = 0;
+        this.nrOfParking = 0;
     }
     canBuy(cost) {
         return (this.Money - cost) > 0;
@@ -42,10 +44,7 @@ class Player {
         this.Money -= ammount;
     }
     move(moveAction) {
-        if ((moveAction + this.currentposition) >= 40) {
-            moveAction -= (40 - this.currentposition);
-        }
-        this.currentposition += moveAction;
+        this.currentposition += (this.currentposition + moveAction) % 40;
     }
     goToErasmus() {
         this.currentposition = globalVariable_json_1.default.Erasmus;

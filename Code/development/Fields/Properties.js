@@ -101,6 +101,14 @@ class Properties {
     Event(player) {
         //TODO
     }
+    CanPayRent(player) {
+        return player.Money > this.pricetopay[this.renovatiosAmmount];
+    }
+    PayRent(player) {
+        if (this.CanPayRent(player)) {
+            player.payAmmount(this.pricetopay[this.renovatiosAmmount]);
+        }
+    }
 }
 exports.Properties = Properties;
 //# sourceMappingURL=Properties.js.map

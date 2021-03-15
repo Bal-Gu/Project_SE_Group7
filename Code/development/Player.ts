@@ -10,6 +10,8 @@ export class Player {
     TurnsInPrison:number;
     hasErasmusDispense:boolean;
     currentposition:number;
+    nrOfParking : number;
+    nrOfBus : number;
 
 
     constructor(isBot: boolean /*, pawn: Pawn, Array: Property*/) {
@@ -20,6 +22,8 @@ export class Player {
         this.currentposition = 0;
         this.isGameOver = false;
         this.TurnsInPrison = 0;
+        this.nrOfBus = 0;
+        this.nrOfParking = 0;
     }
 
     canBuy(cost: number): boolean {
