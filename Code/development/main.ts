@@ -5,9 +5,10 @@ import {yeeeeeeeeet} from "./Events/TestofPrison2";
 async function launch() {
     yeeeeeeeeet();
     let p: Player = new Player(false);
+    p.hasErasmusDispense = true;
+
     let prisoneven: Prison = new Prison();
     await prisoneven.prisonEvent(p);
-
 
     yeeeeeeeeet();
 }

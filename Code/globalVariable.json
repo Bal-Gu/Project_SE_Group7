@@ -1,10 +1,10 @@
 {
   "Erasmus": 10,
-  "PrisonCost": 50,
-  "MaxNumberField": 20,
+  "MaxNumberField": 40,
   "MaxRenovations": 5,
   "MaxTurnInErasmus": 3,
   "DiceNumber": 6,
-  "ErasmusFees": 50
+  "ErasmusFees": 500,
+  "payDay": 2000
 
 }
