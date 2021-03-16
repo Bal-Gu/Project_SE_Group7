@@ -3,8 +3,10 @@
   width: 240px;
   font-size: 14px;
   line-height: 1.5em;
-  border: 2px solid black;
+  border: 1px solid black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 5px;
 }
 
 .monopoly-info .player {
@@ -185,6 +187,10 @@
 
 .sm-box-green {
   background-color: green;
+}
+
+.sm-box-white {
+  background-color: white;
 }
 
 .sm-box div {
