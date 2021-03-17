@@ -42,7 +42,7 @@
     </div>
 
   </div>
-  
+
 
   <!---<div class="box"></div>
     <div class="box2"></div>
@@ -312,83 +312,47 @@
     </div>
   </div>
 
-  <div class="game">
-    <div class="container">
-      <div hidden id='dice1' class="dice dice-one">
-        <div id="dice-one-side-one" class='side one'>
-          <div class="dot one-1"></div>
-        </div>
-        <div id="dice-one-side-two" class='side two'>
-          <div class="dot two-1"></div>
-          <div class="dot two-2"></div>
-        </div>
-        <div id="dice-one-side-three" class='side three'>
-          <div class="dot three-1"></div>
-          <div class="dot three-2"></div>
-          <div class="dot three-3"></div>
-        </div>
-        <div id="dice-one-side-four" class='side four'>
-          <div class="dot four-1"></div>
-          <div class="dot four-2"></div>
-          <div class="dot four-3"></div>
-          <div class="dot four-4"></div>
-        </div>
-        <div id="dice-one-side-five" class='side five'>
-          <div class="dot five-1"></div>
-          <div class="dot five-2"></div>
-          <div class="dot five-3"></div>
-          <div class="dot five-4"></div>
-          <div class="dot five-5"></div>
-        </div>
-        <div id="dice-one-side-six" class='side six'>
-          <div class="dot six-1"></div>
-          <div class="dot six-2"></div>
-          <div class="dot six-3"></div>
-          <div class="dot six-4"></div>
-          <div class="dot six-5"></div>
-          <div class="dot six-6"></div>
-        </div>
+
+  <section class="container">
+    <div id="cube">
+      <div class="front" id='dice1'>
+        <span class="dot dot1"></span>
       </div>
-   </div>
-    <div class="container">
-      <div hidden id='dice2' class="dice dice-two">
-        <div id="dice-two-side-one" class='side one'>
-          <div class="dot one-1"></div>
-        </div>
-        <div id="dice-two-side-two" class='side two'>
-          <div class="dot two-1"></div>
-          <div class="dot two-2"></div>
-        </div>
-        <div id="dice-two-side-three" class='side three'>
-          <div class="dot three-1"></div>
-          <div class="dot three-2"></div>
-          <div class="dot three-3"></div>
-        </div>
-        <div id="dice-two-side-four" class='side four'>
-          <div class="dot four-1"></div>
-          <div class="dot four-2"></div>
-          <div class="dot four-3"></div>
-          <div class="dot four-4"></div>
-        </div>
-        <div id="dice-two-side-five" class='side five'>
-          <div class="dot five-1"></div>
-          <div class="dot five-2"></div>
-          <div class="dot five-3"></div>
-          <div class="dot five-4"></div>
-          <div class="dot five-5"></div>
-        </div>
-        <div id="dice-two-side-six" class='side six'>
-          <div class="dot six-1"></div>
-          <div class="dot six-2"></div>
-          <div class="dot six-3"></div>
-          <div class="dot six-4"></div>
-          <div class="dot six-5"></div>
-          <div class="dot six-6"></div>
-        </div>
-      </div> 
-   </div>
-   <div id='roll' class='roll-button'><button>Roll dice</button></div>
-  </div> 
+      <div class="back" id='dice2'>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+      </div>
+      <div class="right" id='dice3'>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+      </div>
+      <div class="left" id='dice4'>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+        <span class="dot dot4"></span>
+      </div>
+      <div class="top" id='dice5'>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+        <span class="dot dot4"></span>
+        <span class="dot dot5"></span>
+      </div>
+      <div class="bottom" id='dice6'>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+        <span class="dot dot4"></span>
+        <span class="dot dot5"></span>
+        <span class="dot dot6"></span>
+      </div>
+    </div>
+  </section>
+  <div id='roll' class='roll-button'>
+    <button id='rollButton'>Roll dice</button>
+  </div>
   <script src="./graphic/animation/dice.js"></script>
 </body>
 
