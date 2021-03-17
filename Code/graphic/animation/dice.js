@@ -6,6 +6,9 @@ elComeOut.onclick   = function () {rollDice();};
 
 function rollDice() {
 
+  $("#dice1").show();
+  $("#dice2").show();
+ 
   var diceOne   = Math.floor((Math.random() * 6) + 1);
   var diceTwo   = Math.floor((Math.random() * 6) + 1);
  
@@ -24,5 +27,8 @@ function rollDice() {
       elDiceTwo.classList.add('show-' + k);
     }
   } 
-  setTimeout(rollDice(), 1000);
+  setTimeout(rollDice(), 3000);
+  
+  $("#dice1").hide();
+  $("#dice2").hide();
 }
