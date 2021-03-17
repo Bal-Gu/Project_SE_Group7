@@ -29,14 +29,14 @@ class Properties {
      */
     repaymortage() {
         if (this.canrepaymortage()) {
-            this.owner.payAmmount(this.pricetopay[0]);
+            this.owner.payAmmount((this.pricetopay[0] / 2) * 1.10);
         }
     }
     /**
      * Can the mortage be repayed by the owner
      */
     canrepaymortage() {
-        return this.owner.canBuy(this.pricetopay[0]);
+        return this.owner.canBuy((this.pricetopay[0] / 2) * 1.10);
     }
     /**
      * no options will remove 1 renovation. With option + option it will remove the ammount of renovation.

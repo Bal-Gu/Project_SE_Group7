@@ -41,7 +41,7 @@ export class Properties implements Field{
      */
     repaymortage():void{
         if(this.canrepaymortage()){
-            this.owner.payAmmount(this.pricetopay[0]);
+            this.owner.payAmmount((this.pricetopay[0]/2)*1.10);
         }
     }
 
@@ -49,7 +49,7 @@ export class Properties implements Field{
      * Can the mortage be repayed by the owner
      */
     canrepaymortage():boolean{
-        return this.owner.canBuy(this.pricetopay[0]) ;
+        return this.owner.canBuy((this.pricetopay[0]/2)*1.10) ;
     }
 
     /**

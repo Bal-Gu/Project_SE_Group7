@@ -2,11 +2,11 @@ import {Field} from "./Field";
 import {Player} from "../Player";
 
 
-class Parking implements Field{
+class Bus implements Field{
     name: string;
     owner:Player;
-    initialPrice:number = 150;
-    PriceToPayMultiplier:number[] = [4,10];
+    initialPrice:number = 200;
+    PriceToPay:number[] = [25,50,100,200];
     rentCostFinal: number = 0;
     isMortgage:boolean = false;
 
@@ -21,7 +21,7 @@ class Parking implements Field{
     buy(player:Player):void{
         if(player.canBuy(this.initialPrice)){
             this.owner = player;
-            player.nrOfParking++;
+            player.nrOfBus++;
             player.receive(this);
             player.payAmmount(this.initialPrice);
         }
@@ -29,19 +29,19 @@ class Parking implements Field{
     }
 
     setMortgage(): void{
-        this.owner.recieveMoney(75);
+        this.owner.recieveMoney(100);
         this.isMortgage = true;
     }
 
     repayMortgage():void{
         if(this.canRepayMortgage()){
-            this.owner.payAmmount(75 * 1.10);
+            this.owner.payAmmount(100 * 1.10);
             this.isMortgage = false;
         }
     }
 
     canRepayMortgage(): boolean {
-        return this.owner.canBuy(75 * 1.10);
+        return this.owner.canBuy(100 * 1.10);
     }
 
 
@@ -49,19 +49,19 @@ class Parking implements Field{
         return player.Money > this.initialPrice;
     }
 
-    UpdateRentCost(player: Player, rentDice: number): void{
-        this.rentCostFinal = rentDice * this.PriceToPayMultiplier[this.owner.nrOfParking-1];
+    UpdateRentCost(player: Player): void{
+        this.rentCostFinal = this.PriceToPay[this.owner.nrOfBus-1];
     }
 
-    CanPayRent(player:Player, rentDice:number): boolean{
-        this.UpdateRentCost(player, rentDice);
+    CanPayRent(player:Player): boolean{
+        this.UpdateRentCost(player);
         return player.Money > this.rentCostFinal;
     }
 
-    PayRent(player:Player, rentDice: number) : void{
+    PayRent(player:Player) : void{
         if(this.owner == null){
             return;
-        }else if(this.CanPayRent(player, rentDice) && this.isMortgage == false){
+        }else if(this.CanPayRent(player) && this.isMortgage == false){
             player.payAmmount(this.rentCostFinal);
         }
     }

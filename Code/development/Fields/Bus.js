@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Parking {
+class Bus {
     constructor(name) {
-        this.initialPrice = 150;
-        this.PriceToPayMultiplier = [4, 10];
+        this.initialPrice = 200;
+        this.PriceToPay = [25, 50, 100, 200];
         this.rentCostFinal = 0;
         this.isMortgage = false;
         this.name = name;
@@ -14,39 +14,39 @@ class Parking {
     buy(player) {
         if (player.canBuy(this.initialPrice)) {
             this.owner = player;
-            player.nrOfParking++;
+            player.nrOfBus++;
             player.receive(this);
             player.payAmmount(this.initialPrice);
         }
     }
     setMortgage() {
-        this.owner.recieveMoney(75);
+        this.owner.recieveMoney(100);
         this.isMortgage = true;
     }
     repayMortgage() {
         if (this.canRepayMortgage()) {
-            this.owner.payAmmount(75 * 1.10);
+            this.owner.payAmmount(100 * 1.10);
             this.isMortgage = false;
         }
     }
     canRepayMortgage() {
-        return this.owner.canBuy(75 * 1.10);
+        return this.owner.canBuy(100 * 1.10);
     }
     CanBuy(player) {
         return player.Money > this.initialPrice;
     }
-    UpdateRentCost(player, rentDice) {
-        this.rentCostFinal = rentDice * this.PriceToPayMultiplier[this.owner.nrOfParking - 1];
+    UpdateRentCost(player) {
+        this.rentCostFinal = this.PriceToPay[this.owner.nrOfBus - 1];
     }
-    CanPayRent(player, rentDice) {
-        this.UpdateRentCost(player, rentDice);
+    CanPayRent(player) {
+        this.UpdateRentCost(player);
         return player.Money > this.rentCostFinal;
     }
-    PayRent(player, rentDice) {
+    PayRent(player) {
         if (this.owner == null) {
             return;
         }
-        else if (this.CanPayRent(player, rentDice) && this.isMortgage == false) {
+        else if (this.CanPayRent(player) && this.isMortgage == false) {
             player.payAmmount(this.rentCostFinal);
         }
     }
@@ -59,4 +59,4 @@ class Parking {
         }
     }
 }
-//# sourceMappingURL=Parking.js.map
+//# sourceMappingURL=Bus.js.map
