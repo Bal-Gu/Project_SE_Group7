@@ -1,0 +1,182 @@
+.game {
+  position: right;
+  width: 300px;
+  -webkit-perspective: 900px;
+          perspective: 900px;
+  height: 50%;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+  top: 200px;
+  left: 20%;
+}
+
+.roll-button {
+  margin-left: 15px;
+}
+
+.roll-button button {
+  position: absolute;
+  left: 10%;
+  top: -460px;
+  padding: 15px 50px;
+  color: #fff;
+  background-color: #5cadbb;
+  border: none;
+  font-size: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 3px #50514F;
+          box-shadow: 1px 3px #50514F;
+  outline: none;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.roll-button button:hover, .roll-button button:active {
+  outline: none;
+  background: #193763;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  top: -550px;
+  justify-items: auto;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+.dot {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  margin: -7.5px 5px 5px -7.5px;
+  border-radius: 20px;
+  background-color: #2359ef;
+  -webkit-box-shadow: inset 1px 1px #45358d;
+          box-shadow: inset 1px 1px #45358d;
+}
+
+.dice-one {
+  left: 0px;
+}
+
+.dice-two {
+  left: 0px;
+}
+
+.side {
+  position: absolute;
+  background-color: #fcfcfc;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #e5e5e5;
+  text-align: center;
+  line-height: 1em;
+}
+
+.side:nth-child(1) {
+  -webkit-transform: translateZ(1.55em);
+          transform: translateZ(1.55em);
+}
+
+.side:nth-child(6) {
+  -webkit-transform: rotateY(90deg) translateZ(1.55em);
+          transform: rotateY(90deg) translateZ(1.55em);
+}
+
+.side:nth-child(3) {
+  -webkit-transform: rotateY(-90deg) translateZ(1.55em);
+          transform: rotateY(-90deg) translateZ(1.55em);
+}
+
+.side:nth-child(4) {
+  -webkit-transform: rotateX(90deg) translateZ(1.55em);
+          transform: rotateX(90deg) translateZ(1.55em);
+}
+
+.side:nth-child(5) {
+  -webkit-transform: rotateX(-90deg) translateZ(1.55em);
+          transform: rotateX(-90deg) translateZ(1.55em);
+}
+
+.side:nth-child(2) {
+  -webkit-transform: rotateY(-180deg) translateZ(1.55em);
+          transform: rotateY(-180deg) translateZ(1.55em);
+}
+
+.two-1, .three-1, .four-1, .five-1, .six-1 {
+  top: 20%;
+  left: 20%;
+}
+
+.four-3, .five-3, .six-4 {
+  top: 20%;
+  left: 80%;
+}
+
+.one-1, .three-2, .five-5 {
+  top: 50%;
+  left: 50%;
+}
+
+.four-2, .five-2, .six-3 {
+  top: 80%;
+  left: 20%;
+}
+
+.two-2, .three-3, .four-4, .five-4, .six-6 {
+  top: 80%;
+  left: 80%;
+}
+
+.six-2 {
+  top: 50%;
+  left: 20%;
+}
+
+.six-5 {
+  top: 50%;
+  left: 80%;
+}
+
+.show-1 {
+  -webkit-transform: rotateX(720deg) rotateZ(-720deg);
+          transform: rotateX(720deg) rotateZ(-720deg);
+}
+
+.show-6 {
+  -webkit-transform: rotateX(-900deg) rotateZ(1080deg);
+          transform: rotateX(-900deg) rotateZ(1080deg);
+}
+
+.show-3 {
+  -webkit-transform: rotateY(-450deg) rotateZ(-1440deg);
+          transform: rotateY(-450deg) rotateZ(-1440deg);
+}
+
+.show-4 {
+  -webkit-transform: rotateY(810deg) rotateZ(720deg);
+          transform: rotateY(810deg) rotateZ(720deg);
+}
+
+.show-5 {
+  -webkit-transform: rotateX(-810deg) rotateZ(-1080deg);
+          transform: rotateX(-810deg) rotateZ(-1080deg);
+}
+
+.show-2 {
+  -webkit-transform: rotateX(450deg) rotateZ(-720deg);
+          transform: rotateX(450deg) rotateZ(-720deg);
+}
+/*# sourceMappingURL=dice.css.map */

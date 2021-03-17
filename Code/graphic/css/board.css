@@ -1,9 +1,56 @@
+.monopoly-info {
+  position: absolute;
+  width: 240px;
+  font-size: 14px;
+  line-height: 1.5em;
+  border: 1px solid black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 5px;
+}
+
+.monopoly-info .player {
+  display: table;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 10px 10px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+}
+
+.monopoly-info .player-coins {
+  width: 250px;
+  height: 20px;
+  margin: 10px 0 10px 10px;
+}
+
+.monopoly-info #player-1 {
+  background-color: red;
+}
+
+.monopoly-info #player-2 {
+  background-color: green;
+}
+
+.monopoly-info #player-3 {
+  background-color: blue;
+}
+
+.monopoly-info #player-4 {
+  background-color: violet;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 .board {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 12px;
+  font-weight: 300;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 120px (75px)[9] 120px;
@@ -71,10 +118,11 @@
   -webkit-transform: rotate(315deg);
           transform: rotate(315deg);
   margin-top: 55px;
-  margin-left: 60px;
+  margin-left: 55px;
 }
 
 .board .center .label {
+  font-size: 18px;
   text-align: center;
   font-weight: 500;
   letter-spacing: 2px;
@@ -87,10 +135,17 @@
   height: 120px;
 }
 
+.price {
+  font-size: 9px;
+  font-weight: 400;
+  padding-bottom: 1px;
+}
+
 .lg-box {
+  font-size: 16px;
   text-align: center;
   background: #999;
-  border: 1px solid;
+  border: 1.5px solid;
   overflow: hidden;
 }
 
@@ -98,7 +153,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px solid;
+  border: 1.5px solid;
   overflow: hidden;
 }
 
@@ -134,6 +189,10 @@
   background-color: green;
 }
 
+.sm-box-white {
+  background-color: white;
+}
+
 .sm-box div {
   background: #fff;
   height: 85%;
@@ -152,16 +211,6 @@
   position: absolute;
   bottom: 0;
   padding: 5px;
-}
-
-.lg-box-centered {
-  background: #fff;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 9;
-  grid-row: 2 / span 9;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 9;
-  grid-column: 2 / span 9;
 }
 
 .rot-180 {
@@ -225,31 +274,5 @@
 .sm-box .rot-90-reverse {
   left: initial;
   right: 12px;
-}
-
-.player {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: 10px 0 5px 5px;
-  font-size: 10px;
-  line-height: 15px;
-  text-align: center;
-}
-
-#player-1 {
-  background-color: red;
-}
-
-#player-2 {
-  background-color: blue;
-}
-
-#player-3 {
-  background-color: green;
-}
-
-#player-4 {
-  background-color: yellow;
 }
 /*# sourceMappingURL=board.css.map */
