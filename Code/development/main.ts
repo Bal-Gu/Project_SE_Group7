@@ -1,16 +1,9 @@
-import {Player} from "./Player"
-import {Prison} from "./Events/Prison";
-import {yeeeeeeeeet} from "./Events/TestofPrison2";
+
+import {Quiz} from "./Events/quiz";
 
 async function launch() {
-    yeeeeeeeeet();
-    let p: Player = new Player(false);
-    p.hasErasmusDispense = true;
-
-    let prisoneven: Prison = new Prison();
-    await prisoneven.prisonEvent(p);
-
-    yeeeeeeeeet();
+    let quiz:Quiz = new Quiz();
+    quiz.event();
 }
 
 launch();

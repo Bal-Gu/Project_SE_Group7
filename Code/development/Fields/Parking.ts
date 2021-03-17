@@ -1,5 +1,6 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
+import {BuyEvent} from "../Events/buying";
 
 
 class Parking implements Field{
@@ -15,6 +16,13 @@ class Parking implements Field{
     }
 
     Event(player: Player): void {
+    async Event(player: Player) {
+        if (player == this.owner) {
+            return;
+        } else if (this.owner == undefined) {
+            let b: BuyEvent = new BuyEvent();
+            await b.event(player,this.initialPrice,this);
+        }
         //TODO Player pays the price to the player  that owns this field
     }
 
@@ -38,6 +46,7 @@ class Parking implements Field{
             this.owner.payAmmount(75 * 1.10);
             this.isMortgage = false;
         }
+        //TODO add the payements of the player.
     }
 
     canRepayMortgage(): boolean {

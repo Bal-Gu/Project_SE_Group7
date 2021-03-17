@@ -22,7 +22,7 @@ export class Prison {
             luckyButton.prop("disable", true);
         }
         let pay = $("#playGame");
-        if (p.canBuy(globals.PrisonCost)) {
+        if (p.canBuy(globals.ErasmusFees)) {
             pay.show();
             pay.prop("disable", false);
         } else {

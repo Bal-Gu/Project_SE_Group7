@@ -1,0 +1,107 @@
+{
+  "Quiz": [
+    {
+      "Title": "In which faculty the BINFO program takes part of ?",
+      "1": "Faculty of Science, Technology and Medicine",
+      "2": "Faculté de Droit, d’Economie et de Finance",
+      "3": "Faculty of Humanities, Education and Social Sciences",
+      "4": ""
+    },{
+      "Title": "Is mobility mandatory for Bachelor Programs at Uni Luxembourg?",
+      "1": "Yes",
+      "2": "No",
+      "3": "",
+      "4": ""
+    },{
+      "Title": "When the University of Luxembourg was founded?",
+      "1": "2003",
+      "2": "2001",
+      "3": "2005",
+      "4": ""
+    },{
+      "Title": "Approximately, how many students are there in the UNI ? ",
+      "1": "6714",
+      "2": "2657",
+      "3": "9456",
+      "4": "4572"
+    },{
+      "Title": "How many faculties are there in the UNI? ",
+      "1": "3",
+      "2": "2",
+      "3": "4",
+      "4": "1"
+    },{
+      "Title": "Who’s the program director of BINFO?",
+      "1": "Volker Müller",
+      "2": "Steffen Rothkugel",
+      "3": "Stéphane PALLAGE",
+      "4": "Nicolas Guelfi"
+    },{
+      "Title": "When the last blast furnace in Belval is shut down?",
+      "1": "1997",
+      "2": "2003",
+      "3": "1985",
+      "4": "1979"
+    },{
+      "Title": "When the “Fonds Belval” was founded?",
+      "1": "2002",
+      "2": "2006",
+      "3": "1995",
+      "4": "1998"
+    },{
+      "Title": "How many ECTS a Bachelor student needs to obtain to be graduated? ",
+      "1": "180",
+      "2": "120",
+      "3": "200",
+      "4": "160"
+    },{
+      "Title": "What is the meaning for LLC ?",
+      "1": "Luxembourg Learning Centre",
+      "2": "Luxembourg Learning Campus",
+      "3": "Luxembourg Library Center",
+      "4": ""
+    },{
+      "Title": "Which of the 3 University campuses has been founded the latest?",
+      "1": "Belval campus",
+      "2": "Limperstberg campus",
+      "3": "Kirchberg campus",
+      "4": ""
+    },{
+      "Title": "How many University cafés are there on the Belval Campus.",
+      "1": "4",
+      "2": "1",
+      "3": "5",
+      "4": "3"
+    },{
+      "Title": "How many Parking slots are there in the Parking “Maison du savoir”?",
+      "1": "560",
+      "2": "1200",
+      "3": "210",
+      "4": "450"
+    },{
+      "Title": "How many floors does la maison du savoir has?",
+      "1": "18",
+      "2": "22",
+      "3": "32",
+      "4": "11"
+    },{
+      "Title": "Is mobility mandatory for Bachelor Programs at Uni Luxembourg?",
+      "1": "Yes",
+      "2": "No",
+      "3": "",
+      "4": ""
+    },{
+      "Title": "How many floors does the “BIL” tower have ?",
+      "1": "19",
+      "2": "9",
+      "3": "27",
+      "4": "18"
+    },{
+      "Title": "When did the Pope visit Esch Belval?",
+      "1": "1985",
+      "2": "1952",
+      "3": "1971",
+      "4": "1969"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 const path = require("path");
-var webpack = require("webpack")
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports ={
     devtool: "eval-source-map",
@@ -12,6 +13,16 @@ module.exports ={
                 use: "ts-loader",
                 include: [path.resolve(__dirname,"Code")]
 
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    "handlebars-loader", // handlebars loader expects raw resource string
+                    "extract-loader",
+                    "css-loader",
+                    "sass-loader"
+                ],
+                include: [path.resolve((__dirname,"graphics/css"))]
             }
         ]
     },
@@ -30,6 +41,9 @@ module.exports ={
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname,"Code/index.html"),
         })
     ]
 }
