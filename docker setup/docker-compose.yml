@@ -1,0 +1,42 @@
+version: "2"
+
+services:
+  node1:
+    build: ../
+    links:
+         - redis
+    ports:
+         - "8080"
+    volumes:
+         - ../:/src
+         - /src/node_modules
+    networks:
+        uln:
+         ipv4_address: 10.8.0.3
+
+  redis:
+     image: redis:latest
+     ports:
+          - 6379:6379
+     networks:
+        uln:
+         ipv4_address: 10.8.0.6
+
+  nginx:
+    build: ./nginx/
+    ports:
+            - "80:80"
+    depends_on:
+            - node1
+    links:
+            - node1
+    networks:
+        uln:
+         ipv4_address: 10.8.0.2
+
+networks:
+    uln:
+     ipam:
+        config:
+         - subnet: 10.8.0.0/16
+           ip_range: 10.8.0.0/24
