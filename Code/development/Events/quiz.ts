@@ -95,9 +95,9 @@ export class Quiz {
             button.hide();
         }
         let self =this;
-        $("#QuestionModal .modal-content .modal-header h2").html("Answer was: " + self.goodanswerString + "\n" + Consquence);
+        $("#QuestionModal .modal-content .modal-header h2").html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
 
-        await new Promise(r => setTimeout(r, 7000));
+        await new Promise(r => setTimeout(r, 5000));
 
     }
     async wait() {
