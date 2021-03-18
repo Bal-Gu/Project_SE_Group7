@@ -41,4 +41,10 @@ body {
 .grid-right {
   padding: 0 0 0 45px;
 }
+#car {
+  position: absolute;
+  margin-top: -120px;
+  margin-left: 115px;
+  height: 75px;
+}
 /*# sourceMappingURL=main.css.map */
