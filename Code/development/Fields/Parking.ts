@@ -15,8 +15,8 @@ class Parking implements Field{
         this.name = name;
     }
 
-    Event(player: Player): void {
-    async Event(player: Player) {
+    async Event(player: Player): Promise<void> {
+
         if (player == this.owner) {
             return;
         } else if (this.owner == undefined) {
@@ -70,7 +70,7 @@ class Parking implements Field{
     PayRent(player:Player, rentDice: number) : void{
         if(this.owner == null){
             return;
-        }else if(this.CanPayRent(player, rentDice) && this.isMortgage == false){
+        }else if(this.CanPayRent(player, rentDice) && !this.isMortgage){
             player.payAmmount(this.rentCostFinal);
         }
     }

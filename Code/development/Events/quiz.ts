@@ -2,7 +2,9 @@ import questions from "../../Quiz.json"
 import $ from "jquery";
 
 export class Quiz {
-    goodanswer:number = 0;
+    goodanswer:number = 0
+    goodanswerString:String = "";
+    private pressed: Boolean;
 
     getIndexes(maxnum: number): number[] {
         var array: number[] = [];
@@ -26,8 +28,10 @@ export class Quiz {
 
     }
 
-    event() {
+    async event() {
+        this.pressed = false;
         let finalQuizArray = questions.Quiz[Math.floor(Math.random() * questions.Quiz.length)];
+        this.goodanswerString = finalQuizArray["1"];
         let modal = $("#QuestionModal");
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
         modal.show();
@@ -48,7 +52,7 @@ export class Quiz {
 
         var indexarray = this.getIndexes(indexes);
         for (var i = 0; i < indexes; i++) {
-            if(indexarray[i] == 1) {
+            if (indexarray[i] == 1) {
                 this.goodanswer = i;
             }
             let str: String = "#Answer" + (i + 1).toString();
@@ -57,25 +61,55 @@ export class Quiz {
             button.show();
             button.prop("disable", false);
             button.text(finalQuizArray[indexarray[i]]);
-            this.clicks(button,i);
+            this.clicks(button, i, modal);
         }
-
+        await this.wait();
 
     }
 
 
-    clicks(button:JQuery<String>,index:number){
+    clicks(button:JQuery<String>,index:number,modal:JQuery){
         let self = this;
-        button.click(function () {
+        button.click(async function () {
             if(self.goodanswer == index){
                 console.log("You got it");
+                await self.exit("Move tree cases back");
+                self.pressed = true;
+                modal.hide();
             }
             else{
-                console.log("Wrong")
+
+                console.log("Wrong");
+                await self.exit("Move to the yeet prison")
+                self.pressed = true;
+                modal.hide();
+
             }
         });
     }
-    //modal.text(finalQuizArray.Title);
 
+    async exit( Consquence: String) {
+        for (let i = 0; i < 4; i++) {
+            let str: String = "#Answer" + (i + 1).toString();
+            let button = $(str);
+            button.hide();
+        }
+        let self =this;
+        $("#QuestionModal .modal-content .modal-header h2").html("Answer was: " + self.goodanswerString + "\n" + Consquence);
+
+        await new Promise(r => setTimeout(r, 7000));
+
+    }
+    async wait() {
+
+        while (!this.pressed) {
+            await new Promise(r => setTimeout(r, 2000));
+            console.log(this.pressed);
+        }
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
 }
