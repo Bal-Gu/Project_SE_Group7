@@ -1,17 +1,27 @@
 var cube = document.getElementById('cube');
+var cube = document.getElementById('cube2');
 var rollButton = document.getElementById('rollButton');
 
-var number = 6;
+var number = 3;
+//var number2 = 2;
 
 rollButton.onclick = function () {
   var xRand = getRandom(number)[0];
   var yRand = getRandom(number)[1];
+  //var xRand2 = getRandom(number2)[0];
+  //var yRand2 = getRandom(number2)[1]; 
+  
 
   xRand = xRand + (Math.floor(Math.random() * 3) + 1) * 360;
   yRand = yRand + (Math.floor(Math.random() * 3) + 1) * 360;
+  //xRand2 = xRand2 + (Math.floor(Math.random() * 3) + 1) * 360;
+  //yRand2 = yRand2 + (Math.floor(Math.random() * 3) + 1) * 360; 
 
   cube.style = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
   cube.style.transform = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
+  //cube2.style = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)';
+  //cube2.style.transform = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)'; 
+
 
   // console.log(xRand % 360 + " " + yRand % 360);
 
