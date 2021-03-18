@@ -1,4 +1,6 @@
 body {
+  min-width: 1400px;
+  margin: 5px;
   background: linear-gradient(214deg, #1fc398, #1642cc, #18892b);
   background-size: 800% 800%;
   -webkit-animation: AnimationName 30s ease infinite;
@@ -27,5 +29,16 @@ body {
   100% {
     background-position: 0% 75%;
   }
+}
+
+.main-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 60% 20%;
+      grid-template-columns: 20% 60% 20%;
+}
+
+.grid-right {
+  padding: 0 0 0 45px;
 }
 /*# sourceMappingURL=main.css.map */

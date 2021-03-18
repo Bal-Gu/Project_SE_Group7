@@ -29,13 +29,10 @@
 }
 
 .container {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   position: relative;
-  margin: 0 auto 40px;
   display: inline-block;
-  left: 10%;
-  top: 100px;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-perspective-origin: 50% 100%;
@@ -349,5 +346,10 @@
 .bottom2 .dot6-2 {
   top: 75px;
   left: 75px;
+}
+
+#dices {
+  height: 280px;
+  display: none;
 }
 /*# sourceMappingURL=dice.css.map */
