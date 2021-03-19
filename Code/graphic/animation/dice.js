@@ -3,8 +3,8 @@ var cube2 = document.getElementById('cube2');
 var rollButton = $("#rollButton");
 
 // testing
-var number = 3;
-var number2 = 2;
+var number = 5;
+var number2 = 6;
 
 rollButton.click(function () {
 
