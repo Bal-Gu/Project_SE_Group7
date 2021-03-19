@@ -27,33 +27,6 @@
 
 <body>
 
-  <div class='main-grid'>
-    <div class='left-grid'>
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Start Game</h2>
-          </div>
-          <div class="modal-body">
-            <button id='playGame'>Play</button>
-            <button id='roleDouble'>Role a Double</button>
-            <button id='luckyCard'>Use Lucky card</button>
-          </div>
-        </div>
-      </div>
-<div id="myModal" class="modal" style="display: none">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Chose your action</h2>
-    </div>
-    <div class="modal-body">
-      <button id='playGame'>Pay</button>
-      <button id='roleDouble'>Role a Double</button>
-      <button id='luckyCard'>Use Lucky card</button>
-    </div>
-  </div>
 
 </div>
 <div id="BuyingModal" class="modal" style="display: none">
@@ -73,18 +46,19 @@
 <div id="QuestionModal" class="modal" style="display: none">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>Questions</h2>
+      <h2 style="text-align:center">Questions</h2>
     </div>
     <div class="modal-body">
-      <button id='Answer1'>Buy</button>
-      <button id='Answer2'>Auction</button>
-      <button id='Answer3'>Auction</button>
-      <button id='Answer4'>Auction</button>
+      <button class=".QuestionButton" id='Answer1' >Buy</button>
+      <button class=".QuestionButton" id='Answer2'>Auction</button>
+      <button class=".QuestionButton" id='Answer3'>Auction</button>
+      <button class=".QuestionButton" id='Answer4'>Auction</button>
+      <h1 id="TimerQuestion" style="text-align: center" >Time left: 60</h1>
+
     </div>
   </div>
 
 </div>
-
 
 
 

@@ -94,6 +94,7 @@ export class Quiz {
             let button = $(str);
             button.hide();
         }
+        $("#TimerQuestion").hide();
         let self =this;
         $("#QuestionModal .modal-content .modal-header h2").html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
 
@@ -101,10 +102,18 @@ export class Quiz {
 
     }
     async wait() {
-
-        while (!this.pressed) {
-            await new Promise(r => setTimeout(r, 2000));
-            console.log(this.pressed);
+        let i = 60;
+        while (!this.pressed && i >= 0) {
+            await new Promise(r => setTimeout(r, 1000));
+            $("#TimerQuestion").text("Time left: " + i);
+            i--;
+        }
+        if(this.pressed){
+            $("#TimerQuestion").hide();
+        }
+        if(i <= 0){
+            //case such that the player gets punished.
+            $("#QuestionModal").hide();
         }
     }
 

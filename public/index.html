@@ -26,18 +26,7 @@
 <script defer src="public/main.js"></script></head>
 
 <body>
-<div id="myModal" class="modal" style="display: none">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Chose your action</h2>
-    </div>
-    <div class="modal-body">
-      <button id='playGame'>Pay</button>
-      <button id='roleDouble'>Role a Double</button>
-      <button id='luckyCard'>Use Lucky card</button>
-    </div>
-  </div>
+
 
 </div>
 <div id="BuyingModal" class="modal" style="display: none">
@@ -57,13 +46,15 @@
 <div id="QuestionModal" class="modal" style="display: none">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>Questions</h2>
+      <h2 style="text-align:center">Questions</h2>
     </div>
     <div class="modal-body">
-      <button id='Answer1'>Buy</button>
-      <button id='Answer2'>Auction</button>
-      <button id='Answer3'>Auction</button>
-      <button id='Answer4'>Auction</button>
+      <button class=".QuestionButton" id='Answer1' >Buy</button>
+      <button class=".QuestionButton" id='Answer2'>Auction</button>
+      <button class=".QuestionButton" id='Answer3'>Auction</button>
+      <button class=".QuestionButton" id='Answer4'>Auction</button>
+      <h6 id="TimerQuestion" style="text-align: center" >Time left: 60</h6>
+
     </div>
   </div>
 
@@ -74,361 +65,367 @@
 
 
 
-
   
 
-  <!---<div class="box"></div>
+      <!---<div class="box"></div>
     <div class="box2"></div>
     
     <img height="100px" width="100px"  id="car" src="./graphic/svg/car_topview.svg" >
     <button type="button" id='mybutton'>Replay</button>-->
-  <div class="monopoly-info">
-    <button id="myBtn">Start Game</button>
-    <p>Turn:
-      <span id="round-counter">0</span>/-
-    </p>
-    <p>Current Player:
-      <span id="current-player"></span>
-    </p>
-    <p>Order:
-      <span id="players-order"></span>
-    </p>
-    <div class="player" id="player-1">1</div>
-    <div class="player-coins">B-Coins:<span id="b-coins-1"> 0</span></div>
-    <div class="player" id="player-2">2</div>
-    <div class="player-coins">B-Coins:<span id="b-coins-2"> 0</span></div>
-    <div class="player" id="player-3">3</div>
-    <div class="player-coins">B-Coins:<span id="b-coins-3"> 0</span></div>
-    <div class="player" id="player-4">4</div>
-    <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
+
+      <div class="monopoly-info">
+        <button id="myBtn">Start Game</button>
+        <p>Turn:
+          <span id="round-counter">0</span>/-
+        </p>
+        <p>Current Player:
+          <span id="current-player"></span>
+        </p>
+        <p>Order:
+          <span id="players-order"></span>
+        </p>
+        <div class="player" id="player-1">1</div>
+        <div class="player-coins">B-Coins:<span id="b-coins-1"> 0</span></div>
+        <div class="player" id="player-2">2</div>
+        <div class="player-coins">B-Coins:<span id="b-coins-2"> 0</span></div>
+        <div class="player" id="player-3">3</div>
+        <div class="player-coins">B-Coins:<span id="b-coins-3"> 0</span></div>
+        <div class="player" id="player-4">4</div>
+        <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
+      </div>
+    </div>
+
+    <div class='grid-mid'>
+      <div class="board">
+        <div class="center">
+          <div class="community-chest-deck">
+            <h2 class="label">Community Chest</h2>
+            <div class="deck"></div>
+          </div>
+          <h1 class="title">Monopoly Belval Edition</h1>
+          <div class="chance-deck">
+            <h2 class="label">Chance</h2>
+            <div class="deck"></div>
+          </div>
+        </div>
+        <div class="lg-box">
+          <div class="lg-rot rot-135">Just Visiting / In Erasmus</div>
+        </div>
+        <div class="sm-box rot-180 sm-box-pink">
+          <div id='kinepolis'>
+            <span class="title">Kinepolis</span>
+            <span class="price">140 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-white">
+          <div>
+            <span class="title">PARKING MAISON DU SAVOIR</span>
+            <span class="price">150 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-pink">
+          <div id='rockhal'>
+            <span class="title">Rockhal</span>
+            <span class="price">140 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-pink">
+          <div id='belval_plaza'>
+            <span class="title">Belval Plaza</span>
+            <span class="price">160 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-white">
+          <div>
+            <span class="title">PORTE DE FRANCE</span>
+            <span class="price">200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-orange">
+          <div id='student_lounge_belval'>
+            <span class="title">Student Lounge Belval</span>
+            <span class="price">180 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-white">
+          <div>
+            <span class="title">COMMU -NITY CHEST</span>
+            <span class="price">Follow Instructions</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-orange">
+          <div id='maison_arts_etudiants'>
+            <span class="title">Maison des Arts et des Etudiants</span>
+            <span class="price">180 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box rot-180 sm-box-orange">
+          <div id='maison_science_humaines'>
+            <span class="title">Maison des Sciences Humaines</span>
+            <span class="price">200 BCoins</span>
+          </div>
+        </div>
+        <div class="lg-box">
+          <div class="lg-rot rot-135-reverse">Free Parking</div>
+        </div>
+        <div class="sm-box sm-box-lightBlue">
+          <div class="rot-90" id='maison_du_nombre'>
+            <span class="title">Maison du Nombre</span>
+            <span class="price">120 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-red">
+          <div class="rot-90-reverse" id='cafe_savoir'>
+            <span class="title">Café du Savoir</span>
+            <span class="price">200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-lightBlue">
+          <div class="rot-90" id='luxembourg_institute_science_technology'>
+            <span class="title">L.I.S.T</span>
+            <span class="price">100 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90-reverse">
+            <span class="title">CHANCE</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90">
+            <span class="title">CHANCE</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-red">
+          <div class="rot-90-reverse" id='restaurant_uni'>
+            <span class="title">Restaurant Universitaire</span>
+            <span class="price">220 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-lightBlue">
+          <div class="rot-90" id='halles_essais_ingenieur'>
+            <span class="title">Halles d’Essais Ingénieurs</span>
+            <span class="price">100 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-red">
+          <div class="rot-90-reverse" id='gaart_belval'>
+            <span class="title">Gaart Belval</span>
+            <span class="price">220 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90">
+            <span class="title">Belval Railroad</span>
+            <span class="price">Price 200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90-reverse">
+            <span class="title">PORTE DES SCIENCES</span>
+            <span class="price">200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90">
+            <span class="title">INCOME TAX</span>
+            <span class="price">Pay 10% or 200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-yellow">
+          <div class="rot-90-reverse" id='massenoire'>
+            <span class="title">Massenoire</span>
+            <span class="price">260 BCoins</span>
+          </div>
+        </div>
+
+
+        <div class="sm-box sm-box-brown">
+          <div class="rot-90" id='residence_etudiante_Uni-ValII'>
+            <span class="title">Résidence Etudiante Uni-Val II</span>
+            <span class="price">50 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-yellow">
+          <div class="rot-90-reverse" id='lycee_belval'>
+            <span class="title">Lycée Belval</span>
+            <span class="price">260 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90">
+            <span class="title">COMMU- NITY CHEST</span>
+            <span class="price">Follow Instructions</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div class="rot-90-reverse">
+            <span class="title">SQUARE MILE BELVAL</span>
+            <span class="price">150 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-brown">
+          <div class="rot-90" id='residence_etudiante_Uni-ValI'>
+            <span class="title">Résidence Etudiante Uni-Val I</span>
+            <span class="price">50 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-yellow">
+          <div class="rot-90-reverse" id='bil_bank'>
+            <span class="title">Bil Bank</span>
+            <span class="price">280 Bcoins</span>
+          </div>
+        </div>
+        <div class="lg-box">
+          <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
+        </div>
+        <div class="sm-box sm-box-blue">
+          <div id='maison_du_savoir'>
+            <span class="title">Maison du Savoir</span>
+            <span class="price">Price 5</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div>
+            <span class="title">LUXURY TAX</span>
+            <span class="price">Pay 100 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-blue">
+          <div id='llc'>
+            <span class="title">Luxembourg Learning Center</span>
+            <span class="price">Price 3</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div>
+            <span class="title">CHANCE</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div>
+            <span class="title">MAISON DU SAVOIR</span>
+            <span class="price">200 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-green">
+          <div id='maison_biomedecineII'>
+            <span class="title">Maison Biomédecine II</span>
+            <span class="price">320 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-white">
+          <div>
+            <span class="title">COMMU- NITY CHEST</span>
+            <span class="price">Follow Instructions</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-green">
+          <div id='maison_biomedecineI'>
+            <span class="title">Maison Biomédecine I</span>
+            <span class="price">300 BCoins</span>
+          </div>
+        </div>
+        <div class="sm-box sm-box-green">
+          <div id='maison_innovation'>
+            <span class="title">Maison de l'Innovation</span>
+            <span class="price">300 BCoins</span>
+          </div>
+        </div>
+        <div class="lg-box">
+          <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
+        </div>
+      </div>
+      <img height="100px" width="100px" id="car" src="./graphic/svg/car_topview.svg">
+    </div>
+
+    <div class='grid-right'>
+      <button id='nextField'>Move figure</button>
+      <button id='rollButton'>Roll dice</button>
+      <div id='dices'>
+        <div class="container">
+          <div id="cube">
+            <div class="front" id='dice1'>
+              <span class="dot dot1"></span>
+            </div>
+            <div class="back" id='dice2'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+            </div>
+            <div class="right" id='dice3'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+            </div>
+            <div class="left" id='dice4'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+            </div>
+            <div class="top" id='dice5'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+            </div>
+            <div class="bottom" id='dice6'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+              <span class="dot dot6"></span>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div id="cube2">
+            <div class="front" id='dice1-two'>
+              <span class="dot dot1"></span>
+            </div>
+            <div class="back" id='dice2-two'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+            </div>
+            <div class="right" id='dice3-two'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+            </div>
+            <div class="left" id='dice4-two'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+            </div>
+            <div class="top" id='dice5-two'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+            </div>
+            <div class="bottom" id='dice6-two'>
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+              <span class="dot dot6"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="board">
-    <div class="center">
-      <div class="community-chest-deck">
-        <h2 class="label">Community Chest</h2>
-        <div class="deck"></div>
-      </div>
-      <h1 class="title">Monopoly Belval Edition</h1>
-      <div class="chance-deck">
-        <h2 class="label">Chance</h2>
-        <div class="deck"></div>
-      </div>
-    </div>
-
-
-    <div class="lg-box">
-      <div class="lg-rot rot-135">Just Visiting / In Erasmus</div>
-    </div>
-    <div class="sm-box rot-180 sm-box-pink">
-      <div id='kinepolis'>
-        <span class="title">Kinepolis</span>
-        <span class="price">140 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-white">
-      <div>
-        <span class="title"><strong>PARKING MAISON DU SAVOIR</strong></span>
-        <span class="price">150 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-pink">
-      <div id='rockhal'>
-        <span class="title">Rockhal</span>
-        <span class="price">140 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-pink">
-      <div id='belval_plaza'>
-        <span class="title">Belval Plaza</span>
-        <span class="price">160 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-white">
-      <div>
-        <span class="title"><strong>PORTE DE FRANCE</strong></span>
-        <span class="price">200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-orange">
-      <div id='student_lounge_belval'>
-        <span class="title">Student Lounge Belval</span>
-        <span class="price">180 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-white">
-      <div>
-        <span class="title"><strong>COMMU -NITY CHEST</strong></span>
-        <span class="price">Follow Instructions</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-orange">
-      <div id='maison_arts_etudiants'>
-        <span class="title">Maison des Arts et des Etudiants</span>
-        <span class="price">180 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box rot-180 sm-box-orange">
-      <div id='maison_science_humaines'>
-        <span class="title">Maison des Sciences Humaines</span>
-        <span class="price">200 BCoins</span>
-      </div>
-    </div>
-    <div class="lg-box">
-      <div class="lg-rot rot-135-reverse">Free Parking</div>
-    </div>
-    <div class="sm-box sm-box-lightBlue">
-      <div class="rot-90" id='maison_du_nombre'>
-        <span class="title">Maison du Nombre</span>
-        <span class="price">120 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-red">
-      <div class="rot-90-reverse" id='cafe_savoir'>
-        <span class="title">Café du Savoir</span>
-        <span class="price">200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-lightBlue">
-      <div class="rot-90" id='luxembourg_institute_science_technology'>
-        <span class="title">L.I.S.T</span>
-        <span class="price">100 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90-reverse">
-        <span class="title"><strong>CHANCE</strong></span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90">
-        <span class="title"><strong>CHANCE</strong></span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-red">
-      <div class="rot-90-reverse" id='restaurant_uni'>
-        <span class="title">Restaurant Universitaire</span>
-        <span class="price">220 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-lightBlue">
-      <div class="rot-90" id='halles_essais_ingenieur'>
-        <span class="title">Halles d’Essais Ingénieurs</span>
-        <span class="price">100 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-red">
-      <div class="rot-90-reverse" id='gaart_belval'>
-        <span class="title">Gaart Belval</span>
-        <span class="price">220 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90">
-        <span class="title">Belval Railroad</span>
-        <span class="price">Price 200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90-reverse">
-        <span class="title"><strong>PORTE DES SCIENCES</strong></span>
-        <span class="price">200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90">
-        <span class="title"><strong>INCOME TAX</strong></span>
-        <span class="price">Pay 10% or 200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-yellow">
-      <div class="rot-90-reverse" id='massenoire'>
-        <span class="title">Massenoire</span>
-        <span class="price">260 BCoins</span>
-      </div>
-    </div>
-
-
-    <div class="sm-box sm-box-brown">
-      <div class="rot-90" id='residence_etudiante_Uni-ValII'>
-        <span class="title">Résidence Etudiante Uni-Val II</span>
-        <span class="price">50 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-yellow">
-      <div class="rot-90-reverse" id='lycee_belval'>
-        <span class="title">Lycée Belval</span>
-        <span class="price">260 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90">
-        <span class="title"><strong>COMMU- NITY CHEST</strong></span>
-        <span class="price">Follow Instructions</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div class="rot-90-reverse">
-        <span class="title"><strong>SQUARE MILE BELVAL</strong></span>
-        <span class="price">150 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-brown">
-      <div class="rot-90" id='residence_etudiante_Uni-ValI'>
-        <span class="title">Résidence Etudiante Uni-Val I</span>
-        <span class="price">50 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-yellow">
-      <div class="rot-90-reverse" id='bil_bank'>
-        <span class="title">Bil Bank</span>
-        <span class="price">280 Bcoins</span>
-      </div>
-    </div>
-    <div class="lg-box">
-      <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
-    </div>
-    <div class="sm-box sm-box-blue">
-      <div id='maison_du_savoir'>
-        <span class="title">Maison du Savoir</span>
-        <span class="price">Price 5</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div>
-        <span class="title"><strong>LUXURY TAX</strong></span>
-        <span class="price">Pay 100 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-blue">
-      <div id='llc'>
-        <span class="title">Luxembourg Learning Center</span>
-        <span class="price">Price 3</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div>
-        <span class="title"><strong>CHANCE</strong></span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div>
-        <span class="title"><strong>MAISON DU SAVOIR</strong></span>
-        <span class="price">200 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-green">
-      <div id='maison_biomedecineII'>
-        <span class="title">Maison Biomédecine II</span>
-        <span class="price">320 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-white">
-      <div>
-        <span class="title"><strong>COMMU- NITY CHEST</strong></span>
-        <span class="price">Follow Instructions</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-green">
-      <div id='maison_biomedecineI'>
-        <span class="title">Maison Biomédecine I</span>
-        <span class="price">300 BCoins</span>
-      </div>
-    </div>
-    <div class="sm-box sm-box-green">
-      <div id='maison_innovation'>
-        <span class="title">Maison de l'Innovation</span>
-        <span class="price">300 BCoins</span>
-      </div>
-    </div>
-    <div class="lg-box">
-      <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
-    </div>
-  </div>
-
-  <div class="game">
-    <div class="container">
-      <div hidden id='dice1' class="dice dice-one">
-        <div id="dice-one-side-one" class='side one'>
-          <div class="dot one-1"></div>
-        </div>
-        <div id="dice-one-side-two" class='side two'>
-          <div class="dot two-1"></div>
-          <div class="dot two-2"></div>
-        </div>
-        <div id="dice-one-side-three" class='side three'>
-          <div class="dot three-1"></div>
-          <div class="dot three-2"></div>
-          <div class="dot three-3"></div>
-        </div>
-        <div id="dice-one-side-four" class='side four'>
-          <div class="dot four-1"></div>
-          <div class="dot four-2"></div>
-          <div class="dot four-3"></div>
-          <div class="dot four-4"></div>
-        </div>
-        <div id="dice-one-side-five" class='side five'>
-          <div class="dot five-1"></div>
-          <div class="dot five-2"></div>
-          <div class="dot five-3"></div>
-          <div class="dot five-4"></div>
-          <div class="dot five-5"></div>
-        </div>
-        <div id="dice-one-side-six" class='side six'>
-          <div class="dot six-1"></div>
-          <div class="dot six-2"></div>
-          <div class="dot six-3"></div>
-          <div class="dot six-4"></div>
-          <div class="dot six-5"></div>
-          <div class="dot six-6"></div>
-        </div>
-      </div>
-   </div>
-    <div class="container">
-      <div hidden id='dice2' class="dice dice-two">
-        <div id="dice-two-side-one" class='side one'>
-          <div class="dot one-1"></div>
-        </div>
-        <div id="dice-two-side-two" class='side two'>
-          <div class="dot two-1"></div>
-          <div class="dot two-2"></div>
-        </div>
-        <div id="dice-two-side-three" class='side three'>
-          <div class="dot three-1"></div>
-          <div class="dot three-2"></div>
-          <div class="dot three-3"></div>
-        </div>
-        <div id="dice-two-side-four" class='side four'>
-          <div class="dot four-1"></div>
-          <div class="dot four-2"></div>
-          <div class="dot four-3"></div>
-          <div class="dot four-4"></div>
-        </div>
-        <div id="dice-two-side-five" class='side five'>
-          <div class="dot five-1"></div>
-          <div class="dot five-2"></div>
-          <div class="dot five-3"></div>
-          <div class="dot five-4"></div>
-          <div class="dot five-5"></div>
-        </div>
-        <div id="dice-two-side-six" class='side six'>
-          <div class="dot six-1"></div>
-          <div class="dot six-2"></div>
-          <div class="dot six-3"></div>
-          <div class="dot six-4"></div>
-          <div class="dot six-5"></div>
-          <div class="dot six-6"></div>
-        </div>
-      </div> 
-   </div>
-   <div id='roll' class='roll-button'><button>Roll dice</button></div>
-  </div> 
-
-<!-- JavaScript -->
+  <script src="./graphic/animation/dice.js"></script>
 <script src="../public/main.js"></script>
 <script src="./graphic/animation/dice.js"></script>
 <script src="./graphic/animation/exampleOfMovement.js"></script>
 <script src="./development/modal.js"></script>
-
 </body>
 
 </html>
