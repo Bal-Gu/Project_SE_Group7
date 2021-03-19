@@ -4,6 +4,7 @@
 .idea/modules.xml
 .idea/Project_SE_Group7.iml
 .idea/workspace.xml
+node_modules/*
 
 .idea/compiler.xml
 

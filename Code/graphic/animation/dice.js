@@ -1,34 +1,55 @@
-var elDiceOne       = document.getElementById('dice1');
-var elDiceTwo       = document.getElementById('dice2');
-var elComeOut       = document.getElementById('roll');
+var cube = document.getElementById('cube');
+var cube2 = document.getElementById('cube2');
+var rollButton = $("#rollButton");
 
-elComeOut.onclick   = function () {rollDice();};
+// testing
+var number = 5;
+var number2 = 6;
 
-function rollDice() {
+rollButton.click(function () {
 
-  $("#dice1").show();
-  $("#dice2").show();
- 
-  var diceOne   = Math.floor((Math.random() * 6) + 1);
-  var diceTwo   = Math.floor((Math.random() * 6) + 1);
- 
-  console.log(diceOne + ' ' + diceTwo);
+  rollButton.prop("disabled", true);
+  $("#dices").show();
+  rollButton
+  var xRand = getRandom(number)[0];
+  var yRand = getRandom(number)[1];
+  var xRand2 = getRandom(number2)[0];
+  var yRand2 = getRandom(number2)[1];
 
-  for (var i = 1; i <= 6; i++) {
-    elDiceOne.classList.remove('show-' + i);
-    if (diceOne === i) {
-      elDiceOne.classList.add('show-' + i);
-    }
+  xRand = xRand + (Math.floor(Math.random() * 3) + 1) * 360;
+  yRand = yRand + (Math.floor(Math.random() * 3) + 1) * 360;
+  xRand2 = xRand2 + (Math.floor(Math.random() * 3) + 1) * 360;
+  yRand2 = yRand2 + (Math.floor(Math.random() * 3) + 1) * 360;
+
+  setTimeout(function () {
+    cube.style = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
+    cube.style.transform = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
+    cube2.style = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)';
+    cube2.style.transform = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)';
+  }, 2000);
+
+  setTimeout(function () {
+    $("#dices").hide();
+    rollButton.prop("disabled", false);
+  }, 10000);
+  // console.log(xRand % 360 + " " + yRand % 360);
+
+});
+
+function getRandom(max) {
+  if (max == 6) {
+    return [90, 90];
+  } else if (max == 5) {
+    return [270, 180];
+  } else if (max == 4) {
+    return [0, 90];
+  } else if (max == 3) {
+    return [0, 270]
+  } else if (max == 2) {
+    return [0, 180]
+  } else if (max == 1) {
+    return [0, 0]
+  } else {
+    return [0, 0]
   }
-
-  for (var k = 1; k <= 6; k++) {
-    elDiceTwo.classList.remove('show-' + k);
-    if (diceTwo === k) {
-      elDiceTwo.classList.add('show-' + k);
-    }
-  } 
-  setTimeout(rollDice(), 3000);
-  
-  $("#dice1").hide();
-  $("#dice2").hide();
 }
