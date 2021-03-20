@@ -31,7 +31,13 @@ class Tax implements Field{
         return false;
     }
 
-    Event(player: Player): void {
+    async Event(player: Player): Promise<void> {
+        if (this.CanPayTax(player)) {
+            this.PayTax(player);
+        } else {
+            let mortage = new Mortage();
+            await mortage.event();
+        }
     }
 
 }
