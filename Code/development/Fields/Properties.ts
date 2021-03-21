@@ -2,6 +2,8 @@ import {Colors} from "./colors";
 import {Player} from "../Player";
 import {Field} from "./Field";
 import globals from "../../globalVariable.json"
+import {BuyEvent} from "../Events/buying";
+import {PaymentEvent} from "../Events/PaymentEvent";
 
 export class Properties implements Field{
     color:Colors;
@@ -118,17 +120,28 @@ export class Properties implements Field{
         return true;
     }
 
-    Event(player: Player): void {
-        //TODO
+    async Event(player: Player): Promise<void> {
+        //checks for an owner
+        if (this.owner == undefined) {
+            let buyevent = new BuyEvent;
+            await buyevent.event(player, this.pricetopay[0], this);
+        } else {
+            //mortage and own owner will be ignored
+            if (player === this.owner || this.mortage) {
+                return;
+            } else {
+                //The player has to pay fees to the owner
+                let payevent = new PaymentEvent();
+                await payevent.event(this.owner, player,this.cost());
+            }
+        }
     }
 
     CanPayRent(player: Player): boolean {
         return player.Money > this.pricetopay[this.renovatiosAmmount];
     }
 
-    PayRent(player: Player): void {
-        if(this.CanPayRent(player)){
-            player.payAmmount(this.pricetopay[this.renovatiosAmmount]);
-        }
+    cost():number {
+        return this.pricetopay[this.renovatiosAmmount];
     }
 }

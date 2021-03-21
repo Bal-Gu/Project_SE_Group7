@@ -16,6 +16,8 @@ class Bus implements Field{
 
     Event(player: Player): void {
         //TODO Player pays the price to the player  that owns this field
+        //TODO if there is no owner pay buy event
+        //TODO if player can't pay enter mortage event
     }
 
     buy(player:Player):void{
