@@ -1,13 +1,14 @@
 import {Field} from "./Field";
 import {Player} from "../Player"
 
-class Parking implements Field{
+export class Restplace implements Field{
     name: string = "Restplace";
     pot:number = 0;
 
 
     Event(player: Player): void {
-        //TODO Player gets the pot
+        player.recieveMoney(this.pot);
+        this.pot = 0;
     }
 
     addToPot(amount:number):void{
