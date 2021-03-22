@@ -11,6 +11,7 @@ export class Player {
     currentposition:number;
     nrOfParking : number;
     nrOfBus : number;
+    lastAmmountOfMoves: number;
 
 
     constructor(isBot: boolean /*, pawn: Pawn, Array: Property*/) {

@@ -1,6 +1,7 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
 import {BuyEvent} from "../Events/buying";
+import {PaymentEvent} from "../Events/PaymentEvent";
 
 
 class Parking implements Field{
@@ -17,13 +18,20 @@ class Parking implements Field{
 
     async Event(player: Player): Promise<void> {
 
-        if (player == this.owner) {
-            return;
-        } else if (this.owner == undefined) {
-            let b: BuyEvent = new BuyEvent();
-            await b.event(player,this.initialPrice,this);
+        //checks for an owner
+        if (this.owner == undefined) {
+            let buyevent = new BuyEvent;
+            await buyevent.event(player, this.initialPrice, this);
+        } else {
+            //mortage and own owner will be ignored
+            if (player === this.owner || this.isMortgage) {
+                return;
+            } else {
+                //The player has to pay fees to the owner
+                let payevent = new PaymentEvent();
+                await payevent.event(this.owner, player,player.lastAmmountOfMoves*this.PriceToPayMultiplier[this.owner.nrOfParking]);
+            }
         }
-        //TODO Player pays the price to the player  that owns this field
     }
 
     buy(player:Player):void{

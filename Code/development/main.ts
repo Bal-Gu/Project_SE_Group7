@@ -1,9 +1,10 @@
 
 import {Quiz} from "./Events/quiz";
+import {Auction} from "./Events/Auction";
 
 async function launch() {
-    let quiz:Quiz = new Quiz();
-    quiz.event();
+    let aution:Auction = new Auction();
+    aution.AuctionEvent();
 }
 
 launch();

@@ -2,9 +2,14 @@ import {Field} from "./Field";
 import {Player} from "../Player"
 
 export class Restplace implements Field{
-    name: string = "Restplace";
-    pot:number = 0;
+    name: string;
+    pot:number;
+    owner:Player;
 
+    constructor() {
+        this.name = "Restplace";
+        this.pot = 0;
+    }
 
     Event(player: Player): void {
         player.recieveMoney(this.pot);

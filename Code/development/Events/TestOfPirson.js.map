@@ -1,1 +1,1 @@
-{"version":3,"file":"TestOfPirson.js","sourceRoot":"","sources":["TestOfPirson.ts"],"names":[],"mappings":";;AAAA,sCAAgC;AAChC,qCAAgC;AAChC,mDAA4C;AAE5C,SAAS,MAAM;IACX,2BAAW,EAAE,CAAC;IACd,IAAI,CAAC,GAAU,IAAI,eAAM,CAAC,KAAK,CAAC,CAAC;IACjC,IAAI,UAAU,GAAU,IAAI,eAAM,EAAE,CAAC;IACrC,UAAU,CAAC,WAAW,CAAC,CAAC,CAAC,CAAC;IAC1B,2BAAW,EAAE,CAAC;AAClB,CAAC;AAED,MAAM,EAAE,CAAC"}
+{"version":3,"file":"TestOfPirson.js","sourceRoot":"","sources":["TestOfPirson.ts"],"names":[],"mappings":";;AAIA,SAAS,MAAM;AAEf,CAAC;AAED,MAAM,EAAE,CAAC"}

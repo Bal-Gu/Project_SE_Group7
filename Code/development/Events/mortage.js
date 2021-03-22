@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auction_1 = require("./Events/Auction");
-function launch() {
-    return __awaiter(this, void 0, void 0, function* () {
-        let aution = new Auction_1.Auction();
-        aution.AuctionEvent();
-    });
+exports.Mortage = void 0;
+class Mortage {
+    event() {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
 }
-launch();
-//# sourceMappingURL=main.js.map
+exports.Mortage = Mortage;
+//# sourceMappingURL=mortage.js.map

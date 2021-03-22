@@ -4,6 +4,7 @@ import {Prison} from "../Events/Prison"
 
 class Erasmus implements Field{
     name: string = "Erasmus";
+    owner:Player;
 
     Event(player: Player): void {
         if(player.TurnsInPrison >= 1){

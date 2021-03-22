@@ -9,43 +9,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mortage_1 = require("../Events/mortage");
-class Tax {
-    constructor(name) {
-        this.amountToPay = [100, 200];
-        this.name = name;
-    }
-    CanPayTax(player) {
-        if (player.currentposition == 4) {
-            return player.Money > this.amountToPay[1];
-        }
-        else {
-            return player.Money > this.amountToPay[0];
-        }
-    }
-    PayTax(player) {
-        if (this.CanPayTax(player)) {
-            if (player.currentposition == 4) {
-                player.payAmmount(this.amountToPay[1]);
-            }
-            else {
-                player.payAmmount(this.amountToPay[0]);
-            }
-        }
-    }
-    CanBuy(player) {
-        return false;
-    }
-    Event(player) {
+exports.PaymentEvent = void 0;
+const mortage_1 = require("./mortage");
+class PaymentEvent {
+    /**
+     * PAYS THE OWNER OTHERWISE IT ENTERS THE MORTGAGE EVENT
+     * NOTE THE CALLER CLASS HAS TO MAKE SURE THAT THE FIELD ISN'T IN MORTGAGE POSITION
+     * @param owner the player who owns the field
+     * @param payer the player that needs to pay the owner
+     * @param price the price that payer has to pay.
+     */
+    event(owner, payer, price) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.CanPayTax(player)) {
-                this.PayTax(player);
+            if (owner === payer) {
+                return;
+            }
+            if (price <= 0) {
+                return;
+            }
+            if (payer.canBuy(price)) {
+                payer.payAmmount(price);
             }
             else {
+                //otherwise pay but mortage has to get even otherwise it's game over for the player.
                 let mortage = new mortage_1.Mortage();
+                payer.payAmmount(price);
                 yield mortage.event();
             }
         });
     }
 }
-//# sourceMappingURL=Tax.js.map
+exports.PaymentEvent = PaymentEvent;
+//# sourceMappingURL=PaymentEvent.js.map

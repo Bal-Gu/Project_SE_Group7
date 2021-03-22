@@ -4,6 +4,7 @@ import {Player} from "../Player";
 
 class GoToErasmus  implements Field{
     name: string = "Go To Erasmus";
+    owner:Player;
 
     CanBuy(player: Player): boolean {
         return false;

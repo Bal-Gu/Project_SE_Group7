@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Parking {
+exports.Restplace = void 0;
+class Restplace {
     constructor() {
         this.name = "Restplace";
         this.pot = 0;
     }
     Event(player) {
-        //TODO Player gets the pot
+        player.recieveMoney(this.pot);
+        this.pot = 0;
     }
     addToPot(amount) {
         if (amount > 0) {
@@ -17,4 +19,5 @@ class Parking {
         return false;
     }
 }
+exports.Restplace = Restplace;
 //# sourceMappingURL=Restplace.js.map

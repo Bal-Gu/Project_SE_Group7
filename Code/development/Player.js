@@ -9,7 +9,6 @@ class Player {
     constructor(isBot /*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
         this.Money = 1500;
-        this.Bankrupt = false;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;
@@ -21,6 +20,8 @@ class Player {
         return (this.Money - cost) > 0;
     }
     buying(field, amount) {
+        this.fieldsOwned.push(field);
+        this.payAmmount(amount);
     }
     gameOver() {
         this.isGameOver = true;
@@ -44,16 +45,16 @@ class Player {
         this.Money -= ammount;
     }
     move(moveAction) {
-        this.currentposition += (this.currentposition + moveAction) % 40;
+        if (this.currentposition + moveAction >= globalVariable_json_1.default.MaxNumberField) {
+            this.startBonus();
+        }
+        this.currentposition += (this.currentposition + moveAction) % globalVariable_json_1.default.MaxNumberField;
     }
     goToErasmus() {
         this.currentposition = globalVariable_json_1.default.Erasmus;
     }
     startBonus() {
-        this.Money += 200;
-    }
-    isBankrupt() {
-        return this.Bankrupt;
+        this.Money += globalVariable_json_1.default.payDay;
     }
     forfeit() {
         this.isBot = true;

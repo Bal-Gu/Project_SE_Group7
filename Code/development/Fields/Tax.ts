@@ -1,7 +1,9 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
+import {Mortage} from "../Events/mortage"
 
 class Tax implements Field{
+    owner:Player;
     name: string;
     amountToPay: number[] = [100,200];
 
