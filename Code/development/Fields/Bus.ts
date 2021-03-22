@@ -1,8 +1,9 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
+import {BuyEvent} from "../Events/buying";
+import {PaymentEvent} from "../Events/PaymentEvent";
 
-
-class Bus implements Field{
+export class Bus implements Field{
     name: string;
     owner:Player;
     initialPrice:number = 200;
@@ -14,10 +15,22 @@ class Bus implements Field{
         this.name = name;
     }
 
-    Event(player: Player): void {
+    async Event(player: Player): Promise<void> {
         //TODO Player pays the price to the player  that owns this field
         //TODO if there is no owner pay buy event
         //TODO if player can't pay enter mortage event
+        if (player == this.owner) {
+            return;
+        } else if (this.owner == undefined) {
+            let b: BuyEvent = new BuyEvent();
+            await b.event(player,this.initialPrice,this);
+            player.nrOfBus += 1;
+            this.UpdateRentCost(player);
+        } else {
+            let payment: PaymentEvent = new PaymentEvent();
+            await payment.event(this.owner, player, this.rentCostFinal);
+        }
+
     }
 
     buy(player:Player):void{

@@ -36,7 +36,10 @@ export class BuyEvent {
         // the tree buttons inside the modal
 
         buybutton.click(function () {
-            p.buying(field,price);
+            if (p.canBuy(price)){
+                p.buying(field,price);
+                field.owner = p;
+            }
             $("#BuyingModal").css("display", "none");
             self.pressed = true;
         });
