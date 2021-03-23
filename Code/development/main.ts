@@ -11,7 +11,7 @@ class main {
     }
 
     InitializeGameLength(n: number):void{
-
+        this.WinCondition = (n == 1) ? 3000 : (n == 2) ? 4000 : 5000;
     }
 
     InitializePlayerArray(n: number):void{
@@ -30,7 +30,6 @@ class main {
 
     }
 }
-
 
 
 
