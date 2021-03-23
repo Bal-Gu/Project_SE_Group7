@@ -28,6 +28,7 @@ function movingUpAnimation(FieldNumber, FieldsToPlay) {
 
 
 function movingRightAnimation(FieldNumber, FieldsToPlay) {
+  console.log("RIGHT");
 
   if (FieldsToPlay <= 0) {
     return;
@@ -37,8 +38,8 @@ function movingRightAnimation(FieldNumber, FieldsToPlay) {
   var tl = gsap.timeline({ onComplete: nextMoveLogic, onCompleteParams: [FieldNumber, FieldsToPlay] });
 
   //TODO: fix animation
-  tl.fromTo("#car", { x: -1 * (FieldNumber % 360) * distance }, { duration: delay, x: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
-    .fromTo("#car", { x: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, x: -1 * ((FieldNumber % 360 + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
+  tl.fromTo("#car", { x: 1 * (FieldNumber % 10) * distance }, { duration: delay, x: 1 * (FieldNumber % 10) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
+    .fromTo("#car", { x: 1 * (FieldNumber % 10) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, x: 1 * ((FieldNumber % 10 + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
   tl.play();
 }
 
