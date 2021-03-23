@@ -38,6 +38,7 @@ body {
 
 .grid-right{
     padding: 0 0 0 45px;
+    direction: rtl;
 }
 /*# sourceMappingURL=main.css.map */
 
@@ -50,7 +51,7 @@ body {
     height: 75px;
     margin-top: -120px;
     z-index: 100;
-
+    margin-left: 40px;
 }
 
 .figure-start{
