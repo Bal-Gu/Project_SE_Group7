@@ -15,6 +15,9 @@ $font-board : Georgia, 'Times New Roman', Times, serif;
     grid-template-columns: 120px repeat(9, 75px) 120px;
     grid-template-rows: 120px repeat(9, 75px) 120px;
     justify-content: center;
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0 auto;
 
     .center {
       grid-column: 2 / 11;

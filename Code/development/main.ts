@@ -6,4 +6,7 @@ async function launch() {
     quiz.event();
 }
 
-launch();
+
+$("#quizButton").click(function (){
+    launch();
+});

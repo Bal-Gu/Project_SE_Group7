@@ -4,7 +4,7 @@ function nextMoveLogic(FieldNumber, FieldsToPlay) {
   }
   else {
     if (FieldNumber === 10) {
-      movingRightAnimation();
+      movingRightAnimation(FieldNumber, FieldsToPlay);
     }
     else {
       movingUpAnimation(FieldNumber + 1, FieldsToPlay - 1);
@@ -20,8 +20,8 @@ function movingUpAnimation(FieldNumber, FieldsToPlay) {
   const distance = 75;
   var tl = gsap.timeline({ onComplete: nextMoveLogic, onCompleteParams: [FieldNumber, FieldsToPlay] });
 
-  tl.fromTo("#car", { y: -1 * (FieldNumber) * distance }, { duration: delay, y: -1 * (FieldNumber) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
-    .fromTo("#car", { y: -1 * (FieldNumber) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, y: -1 * ((FieldNumber + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
+  tl.fromTo("#car", { y: -1 * (FieldNumber % 360) * distance }, { duration: delay, y: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
+    .fromTo("#car", { y: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, y: -1 * ((FieldNumber % 360 + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
   tl.play();
 }
 
@@ -37,8 +37,8 @@ function movingRightAnimation(FieldNumber, FieldsToPlay) {
   var tl = gsap.timeline({ onComplete: nextMoveLogic, onCompleteParams: [FieldNumber, FieldsToPlay] });
 
   //TODO: fix animation
-  tl.fromTo("#car", { y: -1 * (FieldNumber) * distance }, { duration: delay, y: -1 * (FieldNumber) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
-    .fromTo("#car", { y: -1 * (FieldNumber) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, y: -1 * ((FieldNumber + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
+  tl.fromTo("#car", { x: -1 * (FieldNumber % 360) * distance }, { duration: delay, x: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2, ease: "expoScale(1,2,power1.out)" })
+    .fromTo("#car", { x: -1 * (FieldNumber % 360) * distance + (distance / 2), scaleX: 2, scaleY: 2 }, { duration: delay, x: -1 * ((FieldNumber % 360 + 1)) * distance, scaleX: 1, scaleY: 1, ease: "expoScale(2,1,power4.out)" }, "<");
   tl.play();
 }
 
