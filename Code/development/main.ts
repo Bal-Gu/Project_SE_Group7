@@ -1,10 +1,37 @@
+import { Player } from "./Player";
 
-import {Quiz} from "./Events/quiz";
-import {Auction} from "./Events/Auction";
+class main {
+    PlayerArray: Player[];
+    WinCondition: number;
+    RoundNumber: number;
+    PlayerTurn: Player;
 
-async function launch() {
-    let aution:Auction = new Auction();
-    aution.AuctionEvent();
+    main() {
+
+    }
+
+    InitializeGameLength(n: number):void{
+
+    }
+
+    InitializePlayerArray(n: number):void{
+
+    }
+
+    SaveRoundAndPlayerTurn(n: number, p: Player):void{
+
+    }
+
+    CheckWinCondition():boolean{
+        return false
+    }
+
+    Surrender():void{
+
+    }
 }
 
-launch();
+
+
+
+
