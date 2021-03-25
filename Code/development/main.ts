@@ -15,10 +15,13 @@ class main {
     }
 
     InitializePlayerArray(n: number):void{
-
+        for (let i = 0; i < n; i++) {
+            let p = new Player(false);
+            this.PlayerArray.push(p);
+        }
     }
 
-    SaveRoundAndPlayerTurn(n: number, p: Player):void{
+    SaveGameState(n: number, p: Player):void{
 
     }
 
@@ -26,8 +29,13 @@ class main {
         return false
     }
 
-    Surrender():void{
+    Surrender(p: Player):void{
+        let index = this.PlayerArray.indexOf(p);
+        this.PlayerArray.splice(index, 1);
 
+        for(let i = 0; i < p.fieldsOwned.length; i++){
+            p.fieldsOwned[i].owner = undefined;
+        }
     }
 }
 
