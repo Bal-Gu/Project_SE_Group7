@@ -101,7 +101,7 @@ $font-board : Georgia, 'Times New Roman', Times, serif;
 
       /* Style the front side (fallback if image is missing) */
       .flip-card-front {
-        background-image: url("./../images/small/chance_card.png");
+        background-image: url("./../images/small/chance_card.png"); /* 100x80 */
         background-color: rgb(207, 204, 204);
         background-repeat: no-repeat;
         background-position: 20px 20px;
@@ -123,7 +123,7 @@ $font-board : Georgia, 'Times New Roman', Times, serif;
       }
       
       .flip-card-front2 {
-        background-image: url("./../images/small/community_card2.png");
+        background-image: url("./../images/small/community_card2.png"); /* 110x90 */
         background-color: rgb(207, 204, 204);
         background-repeat: no-repeat;
         background-position: 2px 15px;
@@ -150,7 +150,7 @@ $font-board : Georgia, 'Times New Roman', Times, serif;
         font-weight: 200px;
         color: rgb(0, 0, 0);
         padding-top: 20px;
-        padding-left: 100px;
+        padding-left: 90px;
       }
       }
     } 

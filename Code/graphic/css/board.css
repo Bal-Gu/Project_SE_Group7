@@ -184,6 +184,7 @@
 
 .board .center .deck .flip-card-front {
   background-image: url("./../images/small/chance_card.png");
+  /* 100x80 */
   background-color: #cfcccc;
   background-repeat: no-repeat;
   background-position: 20px 20px;
@@ -207,6 +208,7 @@
 
 .board .center .deck .flip-card-front2 {
   background-image: url("./../images/small/community_card2.png");
+  /* 110x90 */
   background-color: #cfcccc;
   background-repeat: no-repeat;
   background-position: 2px 15px;
@@ -236,7 +238,7 @@
   font-weight: 200px;
   color: black;
   padding-top: 20px;
-  padding-left: 100px;
+  padding-left: 90px;
 }
 
 .price {
