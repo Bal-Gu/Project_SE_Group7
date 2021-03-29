@@ -1,0 +1,51 @@
+header{
+  font-size: 2vw;
+  line-height:1vh;
+  border: 0.5vh solid black;
+  background: lightblue;
+  display:flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.grid-container{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2vh;
+  height:60vh;
+}
+
+
+.PlayerSelectionbutton{
+  font-size: 4vh;
+  background: rgb(206, 60, 60);
+  cursor:pointer;
+  border: 0.5vh solid black;
+}
+
+.PlayerStatus{
+  font-size: 4vh;
+  background: greenyellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5vh solid black;
+}
+
+.ButtonContainer{
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}
+
+.StartBoxButton{
+  margin-top: 10vh;
+  font-size:4vh;
+  height: 10vh;
+  width: 20vw;
+  background: rgb(167, 164, 164);
+  border: 0.5vh solid black;
+  cursor: pointer;
+  
+  
+}

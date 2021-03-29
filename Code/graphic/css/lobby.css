@@ -1,0 +1,67 @@
+header {
+  font-size: 2vw;
+  line-height: 1vh;
+  border: 0.5vh solid black;
+  background: lightblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  gap: 2vh;
+  height: 60vh;
+}
+
+.PlayerSelectionbutton {
+  font-size: 4vh;
+  background: #ce3c3c;
+  cursor: pointer;
+  border: 0.5vh solid black;
+}
+
+.PlayerStatus {
+  font-size: 4vh;
+  background: greenyellow;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 0.5vh solid black;
+}
+
+.ButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.StartBoxButton {
+  margin-top: 10vh;
+  font-size: 4vh;
+  height: 10vh;
+  width: 20vw;
+  background: #a7a4a4;
+  border: 0.5vh solid black;
+  cursor: pointer;
+}
+/*# sourceMappingURL=lobby.css.map */
