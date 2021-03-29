@@ -3,7 +3,7 @@ import { Restplace } from '../development/Fields/Restplace';
 
 
 test('PlayerLandingOnRestfield', () => {
-    let P1:Player = new Player(false);
+    let P1:Player = new Player(false,"Boby");
     let R:Restplace = new Restplace();
     R.addToPot(500);
     expect(R.pot).toBe(500);
@@ -24,12 +24,12 @@ test('Restplace with negatives', () => {
 
 test('Canbut', () => {
     let R2:Restplace = new Restplace();
-    expect(R2.CanBuy(new Player(false))).toBe(false);
+    expect(R2.CanBuy(new Player(false,""))).toBe(false);
 
 });
 
 test("PlayerLandingOnRestfield2",() =>{
-    let P1:Player = new Player(false);
+    let P1:Player = new Player(false,"");
     P1.Money = 0;
     let R:Restplace = new Restplace();
     R.addToPot(-500);

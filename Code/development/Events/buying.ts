@@ -46,7 +46,8 @@ export class BuyEvent {
 
         Autionbutton.click(async function () {
             let auction =  new Auction();
-            await auction.AuctionEvent();
+            //TODO FIX THIS
+            await auction.AuctionEvent(p,[p],field);
             $("#BuyingModal").css("display", "none");
             self.pressed = true;
         });

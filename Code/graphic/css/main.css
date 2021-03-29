@@ -44,10 +44,15 @@ body {
 .modal-body-special{
   height: 400px;
   display: grid;
-  grid-template-columns: auto 1px auto;
+  grid-template-columns: auto 3px auto;
   grid-template-rows: 50px 150px 150px;
   column-gap: 5px;
   row-gap: 15px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
 #car {

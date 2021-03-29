@@ -5,16 +5,18 @@ export class Player {
     isBot : boolean;
     isGameOver:boolean;
     Money : number;
-    fieldsOwned:Field[];
+    fieldsOwned:Field[] = [];
     TurnsInPrison:number;
     hasErasmusDispense:boolean;
     currentposition:number;
     nrOfParking : number;
     nrOfBus : number;
-    lastAmmountOfMoves: number;
+    lastAmmountOfMoves: number
+    canAuction:boolean = true;
+    name:string;
 
 
-    constructor(isBot: boolean /*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot: boolean ,name:string/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
         this.Money = 1500;
         this.hasErasmusDispense = false;
@@ -23,7 +25,12 @@ export class Player {
         this.TurnsInPrison = 0;
         this.nrOfBus = 0;
         this.nrOfParking = 0;
+        this.name = name;
     }
+
+   getName():string{
+        return this.name;
+   }
 
     canBuy(cost: number): boolean {
         return (this.Money - cost) > 0;
@@ -46,6 +53,13 @@ export class Player {
                 player.fieldsOwned.push(field);
                 this.fieldsOwned = this.fieldsOwned.filter(ownedfield => this.fieldsOwned[i].name != field.name)
             }
+        }
+    }
+
+    totalWorth(){
+        let total = this.Money;
+        for(let i = 0; i < this.fieldsOwned.length; i++){
+            
         }
     }
 
