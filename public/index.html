@@ -28,6 +28,23 @@
 <body>
 
 
+
+<div class='main-grid'>
+    <div class='left-grid'>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Start Game</h2>
+                </div>
+                <div class="modal-body">
+                    <button id='playGame'>Play</button>
+                    <button id='roleDouble'>Role a Double</button>
+                    <button id='luckyCard'>Use Lucky card</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="BuyingModal" class="modal" style="display: none">
     <div class="modal-content">
@@ -96,7 +113,7 @@
         </div>
     </div>
 
-</div>
+        </div>
 
 <div id="QuestionModal" class="modal" style="display: none">
     <div class="modal-content">
@@ -114,6 +131,18 @@
     </div>
 
 </div>
+
+
+        <div id="MorageModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 style="text-align: center">Mortage</h1>
+                </div>
+                <div class="modal-body">
+                    <table id="mortageTable" border="1" style="width: 100%; border-collapse: collapse; text-align: center;"></table>
+                </div>
+            </div>
+        </div>
 
 
 <!---<div class="box"></div>
@@ -142,7 +171,7 @@
     <div class="player" id="player-4">4</div>
     <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
 </div>
-</div>
+
 
 <div class='grid-mid'>
     <div class="board">

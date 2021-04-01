@@ -1,10 +1,11 @@
 export enum Colors {
-    Green="0x3cB043",
-    Yellow="0xFDE64B",
-    Red="0xFF0000",
-    Brown="0x472001",
-    Light_Blue="Ox82EEFD",
-    Purplem="0xefafd",
-    Orange="0xE56717",
-    Blue="0x0000FF",
+    Green="#3cB043",
+    Yellow="#FDE64B",
+    Red="#FF0000",
+    Brown="#472001",
+    Light_Blue="#82EEFD",
+    Purplem="#800080",
+    Orange="#E56717",
+    Blue="#0000FF",
+    default="#000000"
 }
