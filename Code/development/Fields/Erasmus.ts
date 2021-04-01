@@ -5,6 +5,7 @@ import {Prison} from "../Events/Prison"
 class Erasmus implements Field{
     name: string = "Erasmus";
     owner:Player;
+    initialPrice: number = 0;
 
     Event(player: Player): void {
         if(player.TurnsInPrison >= 1){
@@ -19,5 +20,7 @@ class Erasmus implements Field{
     CanBuy(player:Player){
         return false;
     }
+
+
 
 }

@@ -6,6 +6,7 @@ class Tax implements Field{
     owner:Player;
     name: string;
     amountToPay: number[] = [100,200];
+    initialPrice: number = 0;
 
     constructor(name:string){
         this.name = name;
@@ -38,8 +39,10 @@ class Tax implements Field{
             this.PayTax(player);
         } else {
             let mortage = new Mortage();
-            await mortage.event();
+            player.payAmmount(player.currentposition == 4?this.amountToPay[1]:this.amountToPay[0]);
+            await mortage.event(player);
         }
     }
+
 
 }

@@ -56,11 +56,27 @@ export class Player {
         }
     }
 
-    totalWorth(){
+    totalWorth():number{
         let total = this.Money;
         for(let i = 0; i < this.fieldsOwned.length; i++){
-            
+            if(this.fieldsOwned[i].isMortgage){
+                continue;
+            }
+            if(!this.fieldsOwned[i].renovatiosAmmount == undefined){
+                //suppressed the warning because undefined is checked just above
+
+                // @ts-ignore
+                for(let j=1;this.fieldsOwned[i].renovatiosAmmount<=j;j++){
+                    // @ts-ignore
+                    total += this.fieldsOwned[i].renovationscosts;
+                }
+
+            }
+            //mortage price
+            total += this.fieldsOwned[i].initialPrice;
+
         }
+        return total;
     }
 
     receive(field: Field): void{

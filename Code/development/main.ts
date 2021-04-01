@@ -1,9 +1,11 @@
-import { Player } from "./Player";
-import {Quiz} from "./Events/quiz";
+import {Player} from "./Player";
 import {Auction} from "./Events/Auction";
 import { PlayerSelection} from "./PlayerSelection";
 
 import {Restplace} from "./Fields/Restplace";
+import {Mortage} from "./Events/mortage";
+import {Properties} from "./Fields/Properties";
+import {Colors} from "./Fields/colors";
 
 class main {
     PlayerArray: Player[] = [];
@@ -49,6 +51,11 @@ class main {
 
     //USED TO TEST STUFF
     async launch() {
+        await this.MortageTest();
+
+    }
+
+    AuctionTest() {
         let aution: Auction = new Auction();
         let player1 = new Player(false, "YEEEEEEEEEEET");
         let player2 = new Player(false, "Guillaume");
@@ -59,35 +66,28 @@ class main {
         aution.AuctionEvent(player2, playerlist, new Restplace());
     }
 
+    async MortageTest() {
+        let p: Player = new Player(false, "f");
+        p.Money = -10;
+        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
+        prop.renovatiosAmmount = 3;
+        prop.isMortgage = false;
+        p.fieldsOwned.push(prop);
+        let prop2:Properties = new Properties(Colors.Purplem, [1,2,3,4],20,"Not today",200);
+        prop2.renovatiosAmmount = 3;
+        prop2.isMortgage = false;
+        p.fieldsOwned.push(prop2);
+
+        await new Mortage().event(p);
+
+        for(let i=0;i<p.fieldsOwned.length;i++){
+            console.log(p.fieldsOwned[i].renovatiosAmmount);
+        }
+
+    }
+
 }
 
 new main().launch();
-
-
-$("#mortageModal").click(function () {
-    $("#MorageModal").css("display", "block");
-    var output;
-    for (var i = 0; i < 4; i++){
-        output += "<tr>";
-        output += "<td style='background-color: #ADD8E6'>LLC</td>"
-        output += "<td>";
-        // random amount of stars
-        var stars = Math.floor(Math.random() * 6);
-        for (var j = 0; j < stars; j++) {
-            output += "&#9734;"
-        }
-        output += "</td>";
-        output += "<td><button><span style='height: 25px;width: 25px;background-color: green; border-radius: 50%; display: inline-block'></span></button</td>";
-        output += "<td><button><span style='height: 25px;width: 25px;background-color: red; border-radius: 50%; display: inline-block'></span></button></td>";
-        output += "<td>400</td>";
-        output += "</tr>";
-    }
-
-    output += "<tr><td colspan='5' style='text-align: right'>-400 <button>Accept</button></td></tr>"
-
-    $("#mortageTable").html(output);
-
-});
-
 
 

@@ -5,6 +5,7 @@ import {Player} from "../Player";
 class GoToErasmus  implements Field{
     name: string = "Go To Erasmus";
     owner:Player;
+    initialPrice:number=0;
 
     CanBuy(player: Player): boolean {
         return false;

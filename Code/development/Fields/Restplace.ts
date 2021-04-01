@@ -5,6 +5,7 @@ export class Restplace implements Field{
     name: string;
     pot:number;
     owner:Player;
+    initialPrice:number = 0;
 
     constructor() {
         this.name = "Restplace";
