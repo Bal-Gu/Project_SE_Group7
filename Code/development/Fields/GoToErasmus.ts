@@ -11,7 +11,7 @@ class GoToErasmus  implements Field{
         return false;
     }
 
-    Event(player: Player): void {
+    Event(player: Player,playerList:Player[]): void {
         player.TurnsInPrison = 1;
         player.goToErasmus();
     }

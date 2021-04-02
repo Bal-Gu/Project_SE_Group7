@@ -7,7 +7,7 @@ class Erasmus implements Field{
     owner:Player;
     initialPrice: number = 0;
 
-    Event(player: Player): void {
+    Event(player: Player,playerList:Player[]): void {
         if(player.TurnsInPrison >= 1){
             let erasmus:Prison =  new Prison();
             erasmus.prisonEvent(player);

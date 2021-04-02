@@ -12,7 +12,7 @@ export class Restplace implements Field{
         this.pot = 0;
     }
 
-    Event(player: Player): void {
+    Event(player: Player,playerList:Player[]): void {
         player.recieveMoney(this.pot);
         this.pot = 0;
     }

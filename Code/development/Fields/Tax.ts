@@ -34,7 +34,7 @@ class Tax implements Field{
         return false;
     }
 
-    async Event(player: Player): Promise<void> {
+    async Event(player: Player,playerList:Player[]): Promise<void> {
         if (this.CanPayTax(player)) {
             this.PayTax(player);
         } else {
