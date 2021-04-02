@@ -7,7 +7,7 @@ test('PlayerLandingOnRestfield', () => {
     let R:Restplace = new Restplace();
     R.addToPot(500);
     expect(R.pot).toBe(500);
-    R.Event(P1);
+    R.Event(P1,[]);
     expect(P1.Money).toBe(2000);
     expect(R.pot).toBe(0);
 });
@@ -34,7 +34,7 @@ test("PlayerLandingOnRestfield2",() =>{
     let R:Restplace = new Restplace();
     R.addToPot(-500);
     expect(R.pot).toBe(0);
-    R.Event(P1);
+    R.Event(P1,[]);
     expect(P1.Money).toBe(0);
     expect(R.pot).toBe(0);
 });

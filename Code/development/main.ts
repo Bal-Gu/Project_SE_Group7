@@ -52,7 +52,7 @@ class main {
 
     //USED TO TEST STUFF
     async launch() {
-        await this.BuyTest();
+        await this.MortageTest();
 
     }
 
@@ -74,10 +74,15 @@ class main {
         prop.renovatiosAmmount = 3;
         prop.isMortgage = false;
         p.fieldsOwned.push(prop);
-        let prop2:Properties = new Properties(Colors.Purplem, [1,2,3,4],20,"Not today",200);
+
+        for(let i=0;i<30;i++){
+            var rand = Math.floor(Math.random() * Object.keys(Colors).length);
+            var randColorValue:Colors = Colors[Object.keys(Colors)[rand]];
+        let prop2:Properties = new Properties(randColorValue, [1,2,3,4],20,"Not today",200);
         prop2.renovatiosAmmount = 3;
         prop2.isMortgage = false;
         p.fieldsOwned.push(prop2);
+        }
 
         await new Mortage().event(p);
 
@@ -97,6 +102,7 @@ class main {
         let buyevent = new BuyEvent();
         await buyevent.event(p,700,prop,[p,p2]);
     }
+
 }
 
 new main().launch();
