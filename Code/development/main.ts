@@ -6,6 +6,7 @@ import {Restplace} from "./Fields/Restplace";
 import {Mortage} from "./Events/mortage";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
+import {BuyEvent} from "./Events/buying";
 
 class main {
     PlayerArray: Player[] = [];
@@ -51,7 +52,7 @@ class main {
 
     //USED TO TEST STUFF
     async launch() {
-        await this.MortageTest();
+        await this.BuyTest();
 
     }
 
@@ -86,6 +87,16 @@ class main {
 
     }
 
+    async BuyTest(){
+        let p: Player = new Player(false, "f");
+        let p2: Player = new Player(false,"yieks")
+        p.Money = 1000;
+        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
+        prop.renovatiosAmmount = 3;
+        prop.isMortgage = false;
+        let buyevent = new BuyEvent();
+        await buyevent.event(p,700,prop,[p,p2]);
+    }
 }
 
 new main().launch();

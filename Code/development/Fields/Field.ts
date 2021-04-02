@@ -11,6 +11,6 @@ export interface Field{
   renovationscosts?:number;
   color?:Colors;
   isMortgage?:Boolean;
-  Event(player:Player):void;
+  Event(player:Player,playerList:Player[]):void;
   CanBuy(player:Player):boolean;
 }

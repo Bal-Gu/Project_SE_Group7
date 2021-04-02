@@ -122,11 +122,11 @@ export class Properties implements Field{
         return true;
     }
 
-    async Event(player: Player): Promise<void> {
+    async Event(player: Player,playerList:Player[]): Promise<void> {
         //checks for an owner
         if (this.owner == undefined) {
             let buyevent = new BuyEvent;
-            await buyevent.event(player, this.initialPrice, this);
+            await buyevent.event(player, this.initialPrice, this,playerList);
         } else {
             //mortage and own owner will be ignored
             if (player === this.owner || this.isMortgage) {

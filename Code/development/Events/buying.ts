@@ -5,7 +5,7 @@ import {Auction} from "./Auction";
 
 export class BuyEvent {
     private pressed: Boolean = false;
-    async event(p:Player,price:number,field:Field){
+    async event(p:Player,price:number,field:Field,playerList:Player[]){
 
         let modal = document.getElementById("BuyingModal");
         let buybutton = $("#Buy");
@@ -19,9 +19,10 @@ export class BuyEvent {
             buybutton.prop("disable", true);
         }
         else {
-            buybutton.hide();
-            buybutton.prop("disable", true);
+            buybutton.show();
+            buybutton.prop("disable", false);
         }
+        //
         window.onclick = function (event) {
             if (event.target == modal && modal != undefined) {
                 modal.style.display = "none";
@@ -46,9 +47,8 @@ export class BuyEvent {
 
         Autionbutton.click(async function () {
             let auction =  new Auction();
-            //TODO FIX THIS
-            await auction.AuctionEvent(p,[p],field);
             $("#BuyingModal").css("display", "none");
+            await auction.AuctionEvent(p,playerList,field);
             self.pressed = true;
         });
 

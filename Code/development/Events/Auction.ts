@@ -97,17 +97,23 @@ export class Auction {
             //next player will play
             currentindex = (currentindex + 1) % maxplayers;
         }
+        let winnermodal = $("#WinnerModal");
         //checks if a winner was selected
         if (!(winner == undefined)) {
             //winner gets the card
             console.log("winner has been chosen");
             winner!.buying(field,currentprice);
-
+            winnermodal.show();
+            let string = winner!.name+ " has won";
+            $("#WinnerModal .modal-content .modal-header h1").html(string);
         }
         //closes the modal
-        await this.sleep(4000);
-
         modal.hide();
+        await this.sleep(4000);
+        winnermodal.hide();
+
+
+
 
     }
 
