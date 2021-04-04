@@ -28,18 +28,11 @@ header {
   border: 0.5vh solid black;
 }
 
-.PlayerStatus {
+input {
   font-size: 4vh;
-  background: greenyellow;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  background: wheat;
+  text-align: justify;
+  text-align-last: center;
   border: 0.5vh solid black;
 }
 

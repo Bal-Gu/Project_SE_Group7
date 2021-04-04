@@ -13,6 +13,7 @@ class main {
     WinCondition: number;
     RoundNumber: number;
     PlayerTurn: Player;
+    GameEnded: boolean;
 
     main() {
         this.InitializePlayers().then(r => console.log("finished"));
@@ -105,6 +106,6 @@ class main {
 
 }
 
-new main().launch();
+new main().main();
 
 

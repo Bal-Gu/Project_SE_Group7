@@ -3,13 +3,14 @@ import { Player } from "./Player";
 export class PlayerSelection{
     StartTheGamePressed: Boolean = false;
     PlayerArray: Player[] = [];
-    PlayerIsBot: boolean[] = [false, false, false, false];
+    PlayerIsBot: boolean[] = [true, true, true, true];
+    PlayerName: string[] = ["","","",""];
     getPlayers():Player[]{
         return this.PlayerArray;
     }
     initializePlayers(){
         for(let i = 0; i < this.PlayerIsBot.length; i++){
-            let p:Player = new Player(this.PlayerIsBot[i],"");
+            let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i]);
             this.PlayerArray.push(p);
         }
     }
@@ -25,12 +26,16 @@ export class PlayerSelection{
                 self.PlayerIsBot[0] = true;
                 button1.css("background-color", "rgb(206, 60, 60)");
                 // @ts-ignore
-                document.getElementById("PlayerStatus1").textContent = "isBot";
+                document.getElementById("PlayerStatus1").value="Bot Player 1";
+                // @ts-ignore
+                document.getElementById("PlayerStatus1").disabled=true;
             }else{
                 self.PlayerIsBot[0] = false;
                 button1.css("background-color", "greenyellow");
                 // @ts-ignore
-                document.getElementById("PlayerStatus1").textContent = "isHuman";
+                document.getElementById("PlayerStatus1").value="";
+                // @ts-ignore
+                document.getElementById("PlayerStatus1").disabled=false;
             }
         });
         button2.click(function(){
@@ -38,12 +43,16 @@ export class PlayerSelection{
                 self.PlayerIsBot[1] = true;
                 button2.css("background-color", "rgb(206, 60, 60)");
                 // @ts-ignore
-                document.getElementById("PlayerStatus2").textContent = "isBot";
+                document.getElementById("PlayerStatus2").value="Bot Player 2";
+                // @ts-ignore
+                document.getElementById("PlayerStatus2").disabled=true;
             }else{
                 self.PlayerIsBot[1] = false;
                 button2.css("background-color", "greenyellow");
                 // @ts-ignore
-                document.getElementById("PlayerStatus2").textContent = "isHuman";
+                document.getElementById("PlayerStatus2").value="";
+                // @ts-ignore
+                document.getElementById("PlayerStatus2").disabled=false;
             }
         });
         button3.click(function(){
@@ -51,12 +60,16 @@ export class PlayerSelection{
                 self.PlayerIsBot[2] = true;
                 button3.css("background-color", "rgb(206, 60, 60)");
                 // @ts-ignore
-                document.getElementById("PlayerStatus3").textContent = "isBot";
+                document.getElementById("PlayerStatus3").value="Bot Player 3";
+                // @ts-ignore
+                document.getElementById("PlayerStatus3").disabled=true;
             }else{
                 self.PlayerIsBot[2] = false;
                 button3.css("background-color", "greenyellow");
                 // @ts-ignore
-                document.getElementById("PlayerStatus3").textContent = "isHuman";
+                document.getElementById("PlayerStatus3").value="";
+                // @ts-ignore
+                document.getElementById("PlayerStatus3").disabled=false;
             }
         });
         button4.click(function(){
@@ -64,15 +77,27 @@ export class PlayerSelection{
                 self.PlayerIsBot[3] = true;
                 button4.css("background-color", "rgb(206, 60, 60)");
                 // @ts-ignore
-                document.getElementById("PlayerStatus4").textContent = "isBot";
+                document.getElementById("PlayerStatus4").value="Bot Player 4";
+                // @ts-ignore
+                document.getElementById("PlayerStatus4").disabled=true;
             }else{
                 self.PlayerIsBot[3] = false;
                 button4.css("background-color", "greenyellow");
                 // @ts-ignore
-                document.getElementById("PlayerStatus4").textContent = "isHuman";
+                document.getElementById("PlayerStatus4").value="";
+                // @ts-ignore
+                document.getElementById("PlayerStatus4").disabled=false;
             }
         });
         StartButton.click(function(){
+            // @ts-ignore
+            self.PlayerName[0] = document.getElementById("PlayerStatus1").value;
+            // @ts-ignore
+            self.PlayerName[1] = document.getElementById("PlayerStatus2").value;
+            // @ts-ignore
+            self.PlayerName[2] = document.getElementById("PlayerStatus3").value;
+            // @ts-ignore
+            self.PlayerName[3] = document.getElementById("PlayerStatus4").value;
             self.StartTheGamePressed = true;
         });
         this.wait();
