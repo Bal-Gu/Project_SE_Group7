@@ -7,6 +7,11 @@ import {Mortage} from "./Events/mortage";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
 import {BuyEvent} from "./Events/buying";
+import {Bus} from "./Fields/Bus";
+import {Parking} from "./Fields/Parking"
+import {Field} from "./Fields/Field";
+import {Dice} from "./Events/Dice";
+import {Erasmus} from "./Fields/Erasmus";
 
 class main {
     PlayerArray: Player[] = [];
@@ -14,6 +19,8 @@ class main {
     RoundNumber: number;
     PlayerTurn: Player;
     GameEnded: boolean;
+    FieldArray: Field[];
+    ConseqDoubles: number;
 
     main() {
         this.InitializePlayers().then(r => console.log("finished"));
@@ -55,7 +62,7 @@ class main {
             }
             else {
                 let prop = propertiesFile.properties[c];
-                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name);
+                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialPrice);
                 this.FieldArray.push(p);
                 c++;
             }
@@ -76,7 +83,7 @@ class main {
 
 
         if (p.TurnsInPrison > 0){
-            await erasmus.Event(p);
+            await erasmus.Event(p, this.PlayerArray);
         }
         else {
             await p.move(n);
