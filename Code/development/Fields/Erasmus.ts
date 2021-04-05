@@ -2,7 +2,7 @@ import {Field} from "./Field";
 import {Player} from "../Player";
 import {Prison} from "../Events/Prison"
 
-class Erasmus implements Field{
+export class Erasmus implements Field{
     name: string = "Erasmus";
     owner:Player;
 
