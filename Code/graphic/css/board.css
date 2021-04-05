@@ -60,6 +60,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: -webkit-fit-content;
+  width: fit-content;
+  width: -moz-fit-content;
+  margin: 0 auto;
 }
 
 .board .center {
@@ -131,8 +135,110 @@
 
 .board .center .deck {
   border: 2px dashed;
+  width: 165px;
+  height: 125px;
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+  /* This container is needed to position the front and back side */
+  /* Do an vertical flip when you move the mouse over the flip box container */
+  /* Position the front and back side */
+  /* Style the front side (fallback if image is missing) */
+  /* Style the back side */
+  /* Style the back side */
+}
+
+.board .center .deck .flip-card {
+  background-color: transparent;
   width: 160px;
   height: 120px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */
+  text-align: center;
+}
+
+.board .center .deck .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.board .center .deck .flip-card:hover .flip-card-inner {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.board .center .deck .flip-card-front, .board .center .deck .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+.board .center .deck .flip-card-front {
+  background-image: url("./../images/small/chance_card.png");
+  /* 100x80 */
+  background-color: #cfcccc;
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+}
+
+.board .center .deck .flip-card-back {
+  background-color: #ff6767;
+  color: white;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.board .center .deck .flip-card-front2, .board .center .deck .flip-card-back2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+.board .center .deck .flip-card-front2 {
+  background-image: url("./../images/small/community_card2.png");
+  /* 110x90 */
+  background-color: #cfcccc;
+  background-repeat: no-repeat;
+  background-position: 2px 15px;
+}
+
+.board .center .deck .flip-card-back2 {
+  background-color: #a8d3fd;
+  color: white;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.board .center .deck .title1 {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  font-weight: 200px;
+  color: black;
+  padding-top: 20px;
+  padding-left: 110px;
+}
+
+.board .center .deck .title2 {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  font-weight: 200px;
+  color: black;
+  padding-top: 20px;
+  padding-left: 90px;
 }
 
 .price {

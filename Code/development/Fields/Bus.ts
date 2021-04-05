@@ -15,7 +15,7 @@ export class Bus implements Field{
         this.name = name;
     }
 
-    async Event(player: Player): Promise<void> {
+    async Event(player: Player,playerList:Player[]): Promise<void> {
         //TODO Player pays the price to the player  that owns this field
         //TODO if there is no owner pay buy event
         //TODO if player can't pay enter mortage event
@@ -23,7 +23,7 @@ export class Bus implements Field{
             return;
         } else if (this.owner == undefined) {
             let b: BuyEvent = new BuyEvent();
-            await b.event(player,this.initialPrice,this);
+            await b.event(player,this.initialPrice,this,playerList);
             player.nrOfBus += 1;
             this.UpdateRentCost(player);
         } else {

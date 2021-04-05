@@ -38,6 +38,7 @@ body {
 
 .grid-right{
     padding: 0 0 0 45px;
+    direction: rtl;
 }
 /*# sourceMappingURL=main.css.map */
 
@@ -52,7 +53,7 @@ body {
 .modal-body-special{
     height: 400px;
     display: grid;
-    grid-template-columns: auto 1px auto;
+    grid-template-columns: auto 3px auto;
     grid-template-rows: 50px 150px 150px;
     column-gap: 5px;
     row-gap: 15px;
@@ -62,7 +63,13 @@ body {
 
 #car{
     position: absolute;
-    margin-top: -120px;
-    margin-left: 115px;
     height: 75px;
+    margin-top: -120px;
+    z-index: 100;
+    margin-left: 40px;
+}
+
+.figure-start{
+    width: 915px;
+    margin: 0 auto;
 }

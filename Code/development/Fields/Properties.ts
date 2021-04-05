@@ -9,21 +9,23 @@ export class Properties implements Field{
     color:Colors;
     owner:Player;
     ownAllPairs:boolean;
+    initialPrice:number;
     //range of prices to pay depending on the ammount of renovations
     pricetopay:number[];
     //How many renovations there are on the property
     renovatiosAmmount:number;
-    mortage:boolean;
+    isMortgage:boolean;
     name: string;
-    renovationscosts:number[];
+    renovationscosts:number;
 
 
-    constructor(color:Colors,pricetopay:number[],renovationscosts:number[],name:string) {
+    constructor(color:Colors,pricetopay:number[],renovationscosts:number,name:string,initialprice:number) {
+        this.initialPrice = initialprice;
         this.color = color;
         this.pricetopay = pricetopay;
         this.ownAllPairs = false;
         this.renovatiosAmmount = 0;
-        this.mortage = false;
+        this.isMortgage = false;
         this.name = name;
         this.renovationscosts = renovationscosts;
     }
@@ -80,14 +82,14 @@ export class Properties implements Field{
         }
 
         if(times == undefined){
-            if(this.owner.canBuy(this.renovationscosts[this.renovatiosAmmount+1]))
+            if(this.owner.canBuy(this.renovationscosts))
                 this.renovatiosAmmount++;
                 this.owner.payAmmount(this.pricetopay[this.renovatiosAmmount]);
         }
         else{
             let min = times < globals.MaxRenovations - this.renovatiosAmmount ? times : globals.MaxRenovations-1;
             for(let i = 0 ; i < min;i++ ){
-                if(this.owner.canBuy(this.renovationscosts[this.renovatiosAmmount+1])){
+                if(this.owner.canBuy(this.renovationscosts)){
                     this.renovatiosAmmount++;
                     this.owner.payAmmount(this.pricetopay[this.renovatiosAmmount]);
                 }
@@ -120,14 +122,14 @@ export class Properties implements Field{
         return true;
     }
 
-    async Event(player: Player): Promise<void> {
+    async Event(player: Player,playerList:Player[]): Promise<void> {
         //checks for an owner
         if (this.owner == undefined) {
             let buyevent = new BuyEvent;
-            await buyevent.event(player, this.pricetopay[0], this);
+            await buyevent.event(player, this.initialPrice, this,playerList);
         } else {
             //mortage and own owner will be ignored
-            if (player === this.owner || this.mortage) {
+            if (player === this.owner || this.isMortgage) {
                 return;
             } else {
                 //The player has to pay fees to the owner

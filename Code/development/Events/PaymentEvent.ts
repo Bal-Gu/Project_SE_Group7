@@ -23,7 +23,7 @@ export class PaymentEvent {
             //otherwise pay but mortage has to get even otherwise it's game over for the player.
             let mortage = new Mortage();
             payer.payAmmount(price);
-            await mortage.event();
+            await mortage.event(payer);
         }
     }
 }
