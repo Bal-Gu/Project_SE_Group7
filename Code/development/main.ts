@@ -7,15 +7,22 @@ import {Mortage} from "./Events/mortage";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
 import {BuyEvent} from "./Events/buying";
+import {Bus} from "./Fields/Bus";
+import {Parking} from "./Fields/Parking"
+import {Field} from "./Fields/Field";
+import {Dice} from "./Events/Dice";
+import {Erasmus} from "./Fields/Erasmus";
 import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
 
-class main {
+export class main {
     PlayerArray: Player[] = [];
     WinCondition: number;
     RoundNumber: number;
     PlayerTurn: Player;
     GameEnded: boolean;
+    FieldArray: Field[];
+    ConseqDoubles: number = 0;
 
     main() {
         this.InitializePlayers().then(r => console.log("finished"));
@@ -35,11 +42,70 @@ class main {
         this.PlayerArray = ps.getPlayers();
     }
 
-    SaveGameState(n: number, p: Player): void {
+    InitializeFieldArray(): void{
+        this.FieldArray = [];
+        let propertiesFile = require('../properties.json');
+        let a, b, c;
+        a = b = c =0;
+
+        for(let i = 0; i < 28; i++){
+            if(i == 2 || i == 10 || i == 17 || i == 25){
+                let station = propertiesFile.stations[a];
+                let b:Bus = new Bus(station.name);
+                this.FieldArray.push(b);
+                a++;
+            }
+            else if(i == 7 || i == 20){
+                let parking =  propertiesFile.parkings[b];
+                let pa:Parking = new Parking(parking.name);
+                this.FieldArray.push(pa);
+                b++;
+            }
+            else {
+                let prop = propertiesFile.properties[c];
+                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialPrice);
+                this.FieldArray.push(p);
+                c++;
+            }
+        }
 
     }
 
-    CheckWinCondition(): boolean {
+    SaveGameState(n: number, p: Player):void{
+
+    }
+
+    async MakePlayerTurn(p: Player): Promise<void>{
+        let erasmus = new Erasmus()
+        let d: Dice = new Dice();
+        await d.roll()
+        let double = d.isdouble();
+        let n = d.total();
+
+
+        if (p.TurnsInPrison > 0){
+            await erasmus.Event(p, this.PlayerArray);
+        }
+        else {
+            await p.move(n);
+        }
+        await this.FieldArray[p.currentposition].Event;
+
+        if(double){
+            if(this.ConseqDoubles >= 2){
+                p.TurnsInPrison = 3;
+                this.ConseqDoubles = 0;
+            }
+            else{
+                this.ConseqDoubles += 1;
+                await this.MakePlayerTurn(p);
+            }
+        }else{
+            this.ConseqDoubles = 0;
+        }
+    }
+
+    CheckWinCondition():boolean{
         return false
     }
 
