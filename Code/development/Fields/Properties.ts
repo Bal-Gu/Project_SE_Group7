@@ -30,15 +30,6 @@ export class Properties implements Field{
         this.renovationscosts = renovationscosts;
     }
 
-    /**
-     * The player decides to mortage this property
-     */
-    setmortage():void{
-        if(this.renovatiosAmmount >= 1){
-            return;
-        }
-        this.owner.recieveMoney(this.pricetopay[0]/2);
-    }
 
     /**
      * The owner will pay for the mortage
@@ -117,15 +108,26 @@ export class Properties implements Field{
             }
     }
 
-
-    CanBuy(player: Player): boolean {
+    /**
+     *
+     * Can Buy this propertie
+     * Returns true since the player can buy this field
+     */
+    CanBuy(): boolean {
         return true;
     }
 
+    /**
+     *
+     * @param player The player landing on the Event field
+     * @param playerList The list of players that are in the game
+     * @constructor returns a promise to assure the synchronisity and still using JQuerrys that are asynchronus by default
+     */
     async Event(player: Player,playerList:Player[]): Promise<void> {
         //checks for an owner
         if (this.owner == undefined) {
             let buyevent = new BuyEvent;
+            //create a new buy event
             await buyevent.event(player, this.initialPrice, this,playerList);
         } else {
             //mortage and own owner will be ignored
@@ -139,11 +141,13 @@ export class Properties implements Field{
         }
     }
 
-    CanPayRent(player: Player): boolean {
-        return player.Money > this.pricetopay[this.renovatiosAmmount];
-    }
-
+    /**
+     * Calculates the ammount a player has to pay when landing on this field.
+     */
     cost():number {
+        if(this.ownAllPairs && this.renovatiosAmmount == 0){
+            return this.pricetopay[0] *2;
+        }
         return this.pricetopay[this.renovatiosAmmount];
     }
 }
