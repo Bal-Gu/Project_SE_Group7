@@ -7,6 +7,8 @@ import {Mortage} from "./Events/mortage";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
 import {BuyEvent} from "./Events/buying";
+import {RepayMortgage} from "./Events/RepayMortgage";
+import {setMortgage} from "./Events/SetMortgage";
 
 class main {
     PlayerArray: Player[] = [];
@@ -53,8 +55,24 @@ class main {
 
     //USED TO TEST STUFF
     async launch() {
-        await this.MortageTest();
+        console.log("a");
+        await this.SetMortgageTest();
+        console.log("c");
+    }
 
+    async SetMortgageTest(){
+        let p: Player = new Player(false, "f");
+        this.playerInit(p);
+        let repay = new setMortgage();
+       await repay.event(p);
+    }
+
+
+    async RepayMortgageTest(){
+        let p: Player = new Player(false, "f");
+        this.playerInit(p);
+        let repay = new RepayMortgage();
+        await repay.event(p);
     }
 
     AuctionTest() {
@@ -70,12 +88,7 @@ class main {
 
     async MortageTest() {
         let p: Player = new Player(false, "f");
-        p.Money = -10;
-        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
-        prop.renovatiosAmmount = 3;
-        prop.isMortgage = false;
-        p.fieldsOwned.push(prop);
-
+        this.playerInit(p);
         for(let i=0;i<30;i++){
             var rand = Math.floor(Math.random() * Object.keys(Colors).length);
             var randColorValue:Colors = Colors[Object.keys(Colors)[rand]];
@@ -104,8 +117,21 @@ class main {
         await buyevent.event(p,700,prop,[p,p2]);
     }
 
+    playerInit(p:Player){
+
+        p.Money = 1000;
+        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
+        prop.renovatiosAmmount = 3;
+        prop.isMortgage = false;
+        p.fieldsOwned.push(prop);
+        let prop2:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",10000);
+        prop2.renovatiosAmmount = 3;
+        prop2.isMortgage = false;
+        p.fieldsOwned.push(prop2);
+    }
+
 }
 
-new main().main();
+new main().launch();
 
 
