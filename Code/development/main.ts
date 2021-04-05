@@ -13,14 +13,14 @@ import {Field} from "./Fields/Field";
 import {Dice} from "./Events/Dice";
 import {Erasmus} from "./Fields/Erasmus";
 
-class main {
+export class main {
     PlayerArray: Player[] = [];
     WinCondition: number;
     RoundNumber: number;
     PlayerTurn: Player;
     GameEnded: boolean;
     FieldArray: Field[];
-    ConseqDoubles: number;
+    ConseqDoubles: number = 0;
 
     main() {
         this.InitializePlayers().then(r => console.log("finished"));
@@ -48,7 +48,6 @@ class main {
 
         for(let i = 0; i < 28; i++){
             if(i == 2 || i == 10 || i == 17 || i == 25){
-                console.log(a)
                 let station = propertiesFile.stations[a];
                 let b:Bus = new Bus(station.name);
                 this.FieldArray.push(b);
