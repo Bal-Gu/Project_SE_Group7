@@ -46,12 +46,36 @@ body {
 
 // car figure
 
-#car{
+#position1 {
     position: absolute;
-    height: 75px;
+    height: 50px;
     margin-top: -120px;
     z-index: 100;
-    margin-left: 40px;
+    margin-left: 62px;
+}
+
+#position2 { 
+    position: absolute;
+    height: 50px;
+    margin-top: -120px;
+    z-index: 100;
+    margin-left: 35px;
+}
+
+#position3 {
+    position: absolute;
+    height: 50px;
+    margin-top: -120px;
+    z-index: 100;
+    margin-left: 60px;
+}
+
+#position4 {
+    position: absolute;
+    height: 35px;
+    margin-top: -120px;
+    z-index: 100;
+    margin-left: 0px;
 }
 
 .figure-start{
