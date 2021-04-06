@@ -98,27 +98,27 @@
       <img height="100px" width="100px"  id="car" src="./graphic/svg/car_topview.svg" >
       <button type="button" id='mybutton'>Replay</button>-->
 
-        <div class="monopoly-info">
-            <button id="myBtn">Start Game</button>
-            <p>Turn:
-                <span id="round-counter">0</span>/-
-            </p>
-            <p>Current Player:
-                <span id="current-player"></span>
-            </p>
-            <p>Order:
-                <span id="players-order"></span>
-            </p>
-            <div class="player" id="player-1">CARLOS</div>
-            <div class="player-coins">B-Coins:<span id="b-coins-1"> 0</span></div>
-            <div class="player" id="player-2">YANICK</div>
-            <div class="player-coins">B-Coins:<span id="b-coins-2"> 0</span></div>
-            <div class="player" id="player-3">3</div>
-            <div class="player-coins">B-Coins:<span id="b-coins-3"> 0</span></div>
-            <div class="player" id="player-4">4</div>
-            <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
+            <div class="monopoly-info">
+                <button id="myBtn">Start Game</button>
+                <p>Turn:
+                    <span id="round-counter">0</span>/-
+                </p>
+                <p>Current Player:
+                    <span id="current-player"></span>
+                </p>
+                <p>Order:
+                    <span id="players-order"></span>
+                </p>
+                <div class="player" id="player-1">CARLOS</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-1"> 0</span></div>
+                <div class="player" id="player-2">YANICK</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-2"> 0</span></div>
+                <div class="player" id="player-3">3</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-3"> 0</span></div>
+                <div class="player" id="player-4">4</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
+            </div>
         </div>
-
         <div class='grid-mid'>
             <div class="board">
                 <div class="center">
@@ -388,64 +388,60 @@
                     <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
                 </div>
             </div>
-            <div class='figure-start'>
-                <img id="car" src="./graphic/svg/car_topview.svg">
+            <div class='figure-start' id="positions">
+                <img class="figures" id="position1" src="./graphic/svg/Bus-school.svg ">
+                <img class="figures" id="position3" src="./graphic/svg/car_black.svg">
+                <img class="figures" id="position2" src="./graphic/svg/car_topview.svg">
+                <img class="figures" id="position4" src="./graphic/svg/diamond.svg">
             </div>
         </div>
-        <div class='figure-start' id="positions">
-            <img class="figures" id="position1" src="./graphic/svg/Bus-school.svg ">
-            <img class="figures" id="position3" src="./graphic/svg/car_black.svg">
-            <img class="figures" id="position2" src="./graphic/svg/car_topview.svg">
-            <img class="figures" id="position4" src="./graphic/svg/diamond.svg">
-         </div>  
-        </div>
-    </div>
-
-    <div class='grid-right'>
-        <h2>Testing Buttons</h2>
-        <button id='mortageModal'>Mortage</button>
-        <button id='nextFieldP1'>Move p1</button>
-        <button id='nextFieldP2'>Move p2</button>
-        <button id='nextFieldP3'>Move p3</button>
-        <button id='nextFieldP4'>Move p4</button>
-        <button id='moveMoreFields'>Move 50 fields</button>
-        <button id='quizButton'>Quiz</button>
-        <button id='rollButton'>Roll dice</button>
-        <div id='dices'>
-            <div class="container">
-                <div id="cube">
-                    <div class="front" id='dice1'>
-                        <span class="dot dot1"></span>
-                    </div>
-                    <div class="back" id='dice2'>
-                        <span class="dot dot1"></span>
-                        <span class="dot dot2"></span>
-                    </div>
-                    <div class="right" id='dice3'>
-                        <span class="dot dot1"></span>
-                        <span class="dot dot2"></span>
-                        <span class="dot dot3"></span>
-                    </div>
-                    <div class="left" id='dice4'>
-                        <span class="dot dot1"></span>
-                        <span class="dot dot2"></span>
-                        <span class="dot dot3"></span>
-                        <span class="dot dot4"></span>
-                    </div>
-                    <div class="top" id='dice5'>
-                        <span class="dot dot1"></span>
-                        <span class="dot dot2"></span>
-                        <span class="dot dot3"></span>
-                        <span class="dot dot4"></span>
-                        <span class="dot dot5"></span>
-                    </div>
-                    <div class="bottom" id='dice6'>
-                        <span class="dot dot1"></span>
-                        <span class="dot dot2"></span>
-                        <span class="dot dot3"></span>
-                        <span class="dot dot4"></span>
-                        <span class="dot dot5"></span>
-                        <span class="dot dot6"></span>
+        <div class='grid-right'>
+            <h2>Testing Buttons</h2>
+            <button id='mortageModal'>Mortage</button>
+            <button id='nextFieldP1'>Move p1</button>
+            <button id='nextFieldP2'>Move p2</button>
+            <button id='nextFieldP3'>Move p3</button>
+            <button id='nextFieldP4'>Move p4</button>
+            <button id='moveMoreFields'>Move 50 fields</button>
+            <button id='quizButton'>Quiz</button>
+            <button id='rollButton'>Roll dice</button>
+            <button id='startMenuButton'>Start Menu</button>
+            <div id='dices'>
+                <div class="container">
+                    <div id="cube">
+                        <div class="front" id='dice1'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice3'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice4'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice5'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="container">
