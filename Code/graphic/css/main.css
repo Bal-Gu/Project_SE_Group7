@@ -65,9 +65,6 @@ body {
   -webkit-transform: translate(-50%, -70%);
           transform: translate(-50%, -70%);
 }
-<<<<<<< HEAD
-#position1 {
-=======
 
 .menuButtons {
   width: 230px;
@@ -132,8 +129,7 @@ body {
   z-index: 1001;
 }
 
-#car {
->>>>>>> 24d98d4df8b343227cda072cea20abfc34f840d8
+#position1 {
   position: absolute;
   height: 50px;
   margin-top: -120px;
