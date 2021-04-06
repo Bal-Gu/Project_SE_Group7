@@ -29,4 +29,12 @@ $(document).ready(function () {
     $("#luckyCard").click(function () {
         console.log("Click luckyCard");
     });
+
+    $("#startMenuButton").click(function () {
+        $("#startMenu").show();
+    });
+
+    $("#menuPlayButton").click(function () {
+        $("#startMenu").hide();
+    });
 });
