@@ -17,12 +17,69 @@ const mortage_1 = require("./Events/mortage");
 const Properties_1 = require("./Fields/Properties");
 const colors_1 = require("./Fields/colors");
 const buying_1 = require("./Events/buying");
+const Dice_1 = require("./Events/Dice");
 class main {
     constructor() {
         this.PlayerArray = [];
+        this.dice = new Dice_1.Dice();
+        this.GameEnded = false;
+        this.TurnEnded = false;
     }
     main() {
-        this.InitializePlayers().then(r => console.log("finished"));
+        return __awaiter(this, void 0, void 0, function* () {
+            this.dice.event();
+            this.InitializePlayers();
+            while (!this.GameEnded) {
+                yield this.wait();
+                this.PlayerArray.forEach(function (item) {
+                    if (item.Money >= this.WinCondition) {
+                        this.GameEnded = true;
+                    }
+                });
+            }
+        });
+    }
+    EndTurnButton() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let EndButton = $("#endTurn");
+            let self = this;
+            EndButton.click(function () {
+                self.TurnEnded = true;
+            });
+        });
+    }
+    //Will wait for a player to play its turn
+    wait() {
+        return __awaiter(this, void 0, void 0, function* () {
+            while (!this.TurnEnded) {
+                yield new Promise(r => setTimeout(r, 500));
+            }
+        });
+    }
+    InitializeQueue() {
+        for (let i = 0; i < this.PlayerArray.length; i++) {
+            this.dice.roll();
+            this.PlayerArray[i].queue = this.dice.total();
+        }
+        let n = this.PlayerArray.length;
+        //Bubble Sort, if the queue number between two players is the same, it won't change on purpose
+        for (let i = 0; i < n - 1; i++) {
+            for (let y = 0; y < n - i - 1; y++) {
+                if (this.PlayerArray[y].queue > this.PlayerArray[y + 1].queue) {
+                    let temp = this.PlayerArray[y];
+                    this.PlayerArray[y] = this.PlayerArray[y + 1];
+                    this.PlayerArray[y + 1] = temp;
+                }
+            }
+        }
+    }
+    NextTurn() {
+        let temp = this.PlayerArray[0];
+        for (let i = 0; i < this.PlayerArray.length - 1; i++) {
+            this.PlayerArray[i] = this.PlayerArray[i + 1];
+        }
+        this.PlayerArray[3] = temp;
+        this.TurnEnded = false;
     }
     InitializeGameLength(n) {
         this.WinCondition = (n == 1) ? 3000 : (n == 2) ? 4000 : 5000;

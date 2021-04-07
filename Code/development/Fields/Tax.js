@@ -8,11 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mortage_1 = require("../Events/mortage");
+const globalVariable_json_1 = __importDefault(require("../../globalVariable.json"));
 class Tax {
     constructor(name) {
-        this.amountToPay = [100, 200];
+        this.amountToPay = globalVariable_json_1.default.amountToPayBuyTax;
+        this.initialPrice = 0;
         this.name = name;
     }
     CanPayTax(player) {
@@ -36,14 +41,15 @@ class Tax {
     CanBuy(player) {
         return false;
     }
-    Event(player) {
+    Event(player, playerList) {
         return __awaiter(this, void 0, void 0, function* () {
             if (this.CanPayTax(player)) {
                 this.PayTax(player);
             }
             else {
                 let mortage = new mortage_1.Mortage();
-                yield mortage.event();
+                player.payAmmount(player.currentposition == 4 ? this.amountToPay[1] : this.amountToPay[0]);
+                yield mortage.event(player);
             }
         });
     }
