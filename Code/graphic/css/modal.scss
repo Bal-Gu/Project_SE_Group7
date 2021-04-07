@@ -61,4 +61,86 @@
   }
   
   .modal-body {padding: 2px 16px;}
+
+  /* START TRADING MODAL */
+
+  $collumHeight: 350px;
+
+  .grid-container-trading {
+    display: grid;
+  }
   
+  .grid-item-trading {
+    outline:1px darkgrey solid;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .item1-trading {
+    text-align: left;
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  
+  .item2-trading {
+    text-align: right;
+    grid-column: 4 / span 2;
+    grid-row: 1;
+  }
+  
+  .item3-trading {
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column: 1 / span 1;
+  }
+  
+  .item4-trading {
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  .item5-trading{
+    position: relative;
+    grid-row: 2;
+    grid-column:  3/ span 1;
+  }
+  .item6-trading{
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column:  4/ span 1;
+  }
+  
+  .item7-trading{
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column:  5/ span 1;
+  }
+  
+  .item8-trading{
+    grid-row: 4;
+    grid-column:  2/ span 1;
+  }
+  
+  .item9-trading{
+    grid-row: 4;
+    grid-column:  4/ span 1;
+  }
+  
+  .tradingButtons, .tableTradingsButtons{
+    width: 100%;
+  }
+
+#approveButtonTrading{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  
+  /* ENDING TRADING MODAL */

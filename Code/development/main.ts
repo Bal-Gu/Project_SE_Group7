@@ -122,7 +122,7 @@ export class main {
     //USED TO TEST STUFF
     async launch() {
         console.log("a");
-        await this.SetMortgageTest();
+        //await this.SetMortgageTest();
         console.log("c");
     }
 
