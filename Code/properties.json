@@ -1,0 +1,186 @@
+{
+  "properties": [
+    {
+      "name": "Residence etudiante Uni-Val 1",
+      "color": "Brown",
+      "initialprice": 60,
+      "pricetopay": [4, 20, 60, 180, 320, 450],
+      "renovationscost": 50
+    },
+    {
+      "name": "Residence etudiante Uni-Val 2",
+      "color": "Brown",
+      "initialprice": 60,
+      "pricetopay": [4, 20, 60, 180, 320, 450],
+      "renovationscost": 50
+    },
+    {
+      "name": "Halles d’Essais Ingénieurs",
+      "color": "Light Blue",
+      "initialprice": 100,
+      "pricetopay": [6, 30, 90, 270, 400, 550],
+      "renovationscost": 50
+    },
+    {
+      "name": "Luxembourg Institute of Science and Technology",
+      "color": "Light Blue",
+      "initialprice": 100,
+      "pricetopay": [6, 30, 90, 270, 400, 550],
+      "renovationscost": 50
+    },
+    {
+      "name": "Maison du Nombre",
+      "color": "Light Blue",
+      "initialprice": 120,
+      "pricetopay": [8, 40, 100, 300, 450, 600],
+      "renovationscost": 50
+    },
+    {
+      "name": "Kinepolis",
+      "color": "Pink",
+      "initialprice": 140,
+      "pricetopay": [10, 50, 150, 450, 625, 750],
+      "renovationscost": 100
+    },
+    {
+      "name": "Rockhal",
+      "color": "Pink",
+      "initialprice": 140,
+      "pricetopay": [10, 50, 150, 450, 625, 750],
+      "renovationscost": 100
+    },
+    {
+      "name": "Belval Plaza",
+      "color": "Pink",
+      "initialprice": 160,
+      "pricetopay": [12, 60, 180, 500, 700, 900],
+      "renovationscost": 100
+    },
+    {
+      "name": "Student Lounge Belval",
+      "color": "Orange",
+      "initialprice": 180,
+      "pricetopay": [14, 70, 200, 550, 750, 950],
+      "renovationscost": 100
+    },
+    {
+      "name": "Maison des Arts et des Étudiants",
+      "color": "Orange",
+      "initialprice": 180,
+      "pricetopay": [14, 70, 200, 550, 750, 950],
+      "renovationscost": 100
+    },
+    {
+      "name": "Maison des Sciences Humaines",
+      "color": "Orange",
+      "initialprice": 200,
+      "pricetopay": [16, 80, 220, 600, 800, 1000],
+      "renovationscost": 100
+    },
+    {
+      "name": "Cafe du savoir",
+      "color": "Red",
+      "initialprice": 220,
+      "pricetopay": [18, 90, 250, 700, 875, 1050],
+      "renovationscost": 150
+    },
+    {
+      "name": "Restaurant Universitaire",
+      "color": "Red",
+      "initialprice": 220,
+      "pricetopay": [18, 90, 250, 700, 875, 1050],
+      "renovationscost": 150
+    },
+    {
+      "name": "Gaart Belval",
+      "color": "Red",
+      "initialprice": 240,
+      "pricetopay": [20, 100, 300, 750, 925, 1100],
+      "renovationscost": 150
+    },
+    {
+      "name": "Massenoire",
+      "color": "Yellow",
+      "initialprice": 260,
+      "pricetopay": [22, 110, 330, 800, 975, 1150],
+      "renovationscost": 150
+    },
+    {
+      "name": "Lycee Belval",
+      "color": "Yellow",
+      "initialprice": 260,
+      "pricetopay": [22, 110, 330, 800, 975, 1150],
+      "renovationscost": 150
+    },
+    {
+      "name": "Bil Bank",
+      "color": "Yellow",
+      "initialprice": 280,
+      "pricetopay": [22, 120, 360, 850, 1025, 1200],
+      "renovationscost": 150
+    },
+    {
+      "name": "Maison de L'Innovation",
+      "color": "Green",
+      "initialprice": 300,
+      "pricetopay": [26, 130, 390, 900, 1100, 1275],
+      "renovationscost": 200
+    },
+    {
+      "name": "Maison de la Biomedecine 1",
+      "color": "Green",
+      "initialprice": 300,
+      "pricetopay": [26, 130, 390, 900, 1100, 1275],
+      "renovationscost": 200
+    },
+    {
+      "name": "Maison de la Biomedecine 2",
+      "color": "Green",
+      "initialprice": 320,
+      "pricetopay": [28, 150, 450, 1000, 1200, 1400],
+      "renovationscost": 200
+    },
+    {
+      "name": "Luxembourg Learning Center",
+      "color": "Dark Blue",
+      "initialprice": 350,
+      "pricetopay": [35, 175, 500, 1100, 1300, 1500],
+      "renovationscost": 200
+    },
+    {
+      "name": "Maison du savoir",
+      "color": "Dark Blue",
+      "initialprice": 400,
+      "pricetopay": [50, 200, 600, 1400, 1700, 2000],
+      "renovationscost": 200
+    }
+  ],
+
+  "stations": [
+    {
+      "name": "Belval Railroad"
+    },
+    {
+      "name": "Porte de France"
+    },
+    {
+      "name": "Porte des Sciences"
+    },
+    {
+      "name": "Maison du Savoir"
+    }
+  ],
+
+  "parkings": [
+    {
+      "name": "Parking Maison du Savoir"
+    },
+    {
+      "name": "Square Mile Belval"
+    }
+  ]
+
+}
+
+
+

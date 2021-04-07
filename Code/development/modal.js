@@ -16,6 +16,10 @@ $(document).ready(function () {
         $("#myModal").css("display", "none");
     });
 
+    $(".close").click(function () {
+        $("#TradingModal").css("display", "none");
+    });
+
 
     // the tree buttons inside the modal
     $("#playGame").click(function () {
@@ -29,4 +33,30 @@ $(document).ready(function () {
     $("#luckyCard").click(function () {
         console.log("Click luckyCard");
     });
+
+    tradingModalTesting();
+
+    function tradingModalTesting() {
+        $("#TradingModal").show();
+        for (var i = 0; i < 25; i++) {
+            $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons'>TESTING" + i + "</button></td></tr>");
+            //$("#tradingButtonCollum2").append("<tr><td><button class='tradingButtons'>TESTING"+i+"</button></td></tr>");
+            //$("#tradingButtonCollum3").append("<tr><td><button class='tradingButtons'>TESTING"+i+"</button></td></tr>");
+            $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons'>TESTING" + i + "</button></td></tr>");
+        }
+
+        $(".tradingButtons").click(function () {
+            var htmlToBeMoved = this.parentElement.parentElement;
+
+            if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
+                $("#tradingButtonCollum2").append(htmlToBeMoved);
+            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum2") {
+                $("#tradingButtonCollum1").append(htmlToBeMoved);
+            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum3") {
+                $("#tradingButtonCollum4").append(htmlToBeMoved);
+            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum4") {
+                $("#tradingButtonCollum3").append(htmlToBeMoved);
+            }
+        });
+    }
 });

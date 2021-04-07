@@ -4,7 +4,7 @@ import {BuyEvent} from "../Events/buying";
 import {PaymentEvent} from "../Events/PaymentEvent";
 
 
-class Parking implements Field{
+export class Parking implements Field{
     name: string;
     owner:Player;
     initialPrice:number = 150;
