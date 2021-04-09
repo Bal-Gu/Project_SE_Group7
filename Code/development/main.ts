@@ -39,11 +39,13 @@ export class main {
         while (!this.GameEnded) {
             await this.EndOfATurn();
             this.NextTurn();
+            this.MakePlayerTurn(this.ReferencePlayer);
             /*this.PlayerArray.forEach(function (item) {
                 if (item.Money >= this.WinCondition) {
                     this.GameEnded = true;
                 }
             })*/
+
         }
     }
 
@@ -173,10 +175,9 @@ export class main {
 
     async MakePlayerTurn(p: Player): Promise<void>{
         let erasmus = new Erasmus()
-        let d: Dice = new Dice();
-        await d.roll()
-        let double = d.isdouble();
-        let n = d.total();
+        await this.dice.roll()
+        let double = this.dice.isdouble();
+        let n = this.dice.total();
 
 
         if (p.TurnsInPrison > 0){
