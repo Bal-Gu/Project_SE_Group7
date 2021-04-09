@@ -64,10 +64,31 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Trading Event</h2>
+                <h2 style="text-align: center">Trading Event</h2>
             </div>
             <div class="modal-body">
-
+                <div class="grid-container-trading">
+                    <div id="trader1" class="grid-item-trading item1-trading">Name 1</div>
+                    <div id="trader2" class="grid-item-trading item2-trading">Name 3</div>
+                    <div class="grid-item-trading item3-trading">
+                        <table class='tableTradingsButtons' id="tradingButtonCollum1" style="box-align:center;"></table>
+                    </div>
+                    <div class="grid-item-trading item4-trading">
+                        <table class='tableTradingsButtons' id="tradingButtonCollum2"></table>
+                    </div>
+                    <div class="grid-item-trading item5-trading"><button class='tradingButtons'
+                            id='approveButtonTrading'>Approve</button></div>
+                    <div class="grid-item-trading item6-trading">
+                        <table class='tableTradingsButtons' id="tradingButtonCollum3"></table>
+                    </div>
+                    <div class="grid-item-trading item7-trading">
+                        <table class='tableTradingsButtons' id="tradingButtonCollum4"></table>
+                    </div>
+                    <div  class="grid-item-trading item8-trading"><input id="traderinput1" class='tradingButtons'><h2 id="inputLable1">0</h2>
+                    </div>
+                    <div  class="grid-item-trading item9-trading"><input id="traderinput2" class='tradingButtons'><h2 id="inputLable2">0</h2>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -531,7 +552,7 @@
     <script src="../public/main.js"></script>
     <script src="./graphic/animation/dice.js"></script>
     <script src="./graphic/animation/exampleOfMovement.js"></script>
-    <script src="./development/modal.js"></script>
+
 </body>
 
 </html>
