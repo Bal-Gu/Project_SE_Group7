@@ -134,7 +134,7 @@ body {
   height: 50px;
   margin-top: -120px;
   z-index: 100;
-  margin-left: 62px;
+  margin-left: 99px;
 }
 
 #position2 {
@@ -142,7 +142,7 @@ body {
   height: 50px;
   margin-top: -120px;
   z-index: 100;
-  margin-left: 35px;
+  margin-left: 60px;
 }
 
 #position3 {
@@ -150,12 +150,12 @@ body {
   height: 50px;
   margin-top: -120px;
   z-index: 100;
-  margin-left: 60px;
+  margin-left: 35px;
 }
 
 #position4 {
   position: absolute;
-  height: 35px;
+  height: 50px;
   margin-top: -120px;
   z-index: 100;
   margin-left: 0px;

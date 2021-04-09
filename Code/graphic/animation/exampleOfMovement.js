@@ -16,22 +16,22 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
     } else if (FieldNumber >= 10 && FieldNumber < 20) {
       if (FieldNumber === 10) {
         if (position === '#position1') {
-          figureRotation("90_cw", "30px 25px", position);
+          figureRotation("90_cw", "35px -12px", position);
         }
         if (position === '#position2') {
-          figureRotation("90_cw", "43px 37px", position);
+          figureRotation("90_cw", "45px 17px", position);
         }
         if (position === '#position3') {
-          figureRotation("90_cw", "50px 40px", position);
+          figureRotation("90_cw", "35px 50px", position);
         }
         if (position === '#position4') {
-          figureRotation("90_cw", "60px 60px", position);
+          figureRotation("90_cw", "35px 85px", position);
         }
         if (position === '.figures') {
-          figureRotation("90_cw", "30px 25px", '#position1');
-          figureRotation("90_cw", "43px 37px", '#position2');
-          figureRotation("90_cw", "50px 40px", '#position3');
-          figureRotation("90_cw", "60px 60px", '#position4');
+          figureRotation("90_cw", "35px -12px", '#position1');
+          figureRotation("90_cw", "45px 17px", '#position2');
+          figureRotation("90_cw", "35px 50px", '#position3');
+          figureRotation("90_cw", "35px 85px", '#position4');
         }
         setTimeout(function () {
           movingRightAnimation(FieldNumber, FieldsToPlay, 75, position);
@@ -41,7 +41,24 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
       }
     } else if (FieldNumber >= 20 && FieldNumber < 30) {
       if (FieldNumber === 20) {
-        figureRotation("180_cw");
+        if (position === '#position1') {
+          figureRotation("180_cw", "35px 38px", position);
+        }
+        if (position === '#position2') {
+          figureRotation("180_cw", "39px 38px", position);
+        }
+        if (position === '#position3') {
+          figureRotation("180_cw", "32px 38px", position);
+        }
+        if (position === '#position4') {
+          figureRotation("180_cw", "35px 38px", position);
+        }
+        if (position === '.figures') {
+          figureRotation("180_cw", "35px 38px", '#position1');
+          figureRotation("180_cw", "39px 38px", '#position2');
+          figureRotation("180_cw", "32px 38px", '#position3');
+          figureRotation("180_cw", "35px 38px", '#position4');
+        }
         setTimeout(function () {
           movingDownAnimation(FieldNumber, FieldsToPlay, 75, position);
         }, 2000);
@@ -50,7 +67,24 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
       }
     } else if (FieldNumber >= 30 && FieldNumber < 40) {
       if (FieldNumber === 30) {
-        figureRotation("270_cw");
+        if (position === '#position1') {
+          figureRotation("270_cw", "-15px 38px", position);
+        }
+        if (position === '#position2') {
+          figureRotation("270_cw", "20px 38px", position);
+        }
+        if (position === '#position3') {
+          figureRotation("270_cw", "50px 38px", position);
+        }
+        if (position === '#position4') {
+          figureRotation("270_cw", "81px 38px", position);
+        }
+        if (position === '.figures') {
+          figureRotation("270_cw", "-15px 37px", '#position1');
+          figureRotation("270_cw", "20px 36px", '#position2');
+          figureRotation("270_cw", "50px 38px", '#position3');
+          figureRotation("270_cw", "80px 37px", '#position4');
+        }
         setTimeout(function () {
           movingLeftAnimation(FieldNumber, FieldsToPlay, 75, position);
         }, 2000);
