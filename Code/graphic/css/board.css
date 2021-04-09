@@ -3,10 +3,13 @@
   width: 240px;
   font-size: 14px;
   line-height: 1.5em;
-  border: 1px solid black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  -webkit-box-shadow: 0px 0px 5px 5px whitesmoke;
+          box-shadow: 0px 0px 5px 5px whitesmoke;
 }
 
 .monopoly-info .player {
@@ -42,12 +45,60 @@
   background-color: violet;
 }
 
+#buttonList h2 {
+  color: #414141;
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#buttonList {
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  -webkit-box-shadow: 0px 0px 5px 5px whitesmoke;
+          box-shadow: 0px 0px 5px 5px whitesmoke;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.buttonListDesign {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 3px solid red;
+  color: #424242;
+  -webkit-box-shadow: 2px 2px 5px grey;
+          box-shadow: 2px 2px 5px grey;
+  padding: 5px;
+  margin: 5px;
+}
+
+.buttonListDesign:hover {
+  background-color: red;
+  color: white;
+  border-color: #ff3737;
+}
+
+.buttonListDesign:active {
+  background-color: #cf0000;
+  color: white;
+  border-color: white;
+  -webkit-box-shadow: 0px 0px 15px white;
+          box-shadow: 0px 0px 15px white;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 .board {
+  color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 12px;
   font-weight: 300;
@@ -84,6 +135,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #79ad8c;
 }
 
 .board .center .title {
@@ -95,8 +147,10 @@
   font-size: 35px;
   font-weight: 150;
   letter-spacing: 7px;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 8px;
+  background-color: #fd4141;
+  border: 3px solid whitesmoke;
+  color: #f7f7f7;
 }
 
 .board .center .community-chest-deck {
@@ -250,7 +304,7 @@
 .lg-box {
   font-size: 16px;
   text-align: center;
-  background: #999;
+  background: #6a7e5e;
   border: 1.5px solid;
   overflow: hidden;
 }
@@ -296,11 +350,11 @@
 }
 
 .sm-box-white {
-  background-color: white;
+  background-color: #79ad8c;
 }
 
 .sm-box div {
-  background: #fff;
+  background-color: #79ad8c;
   height: 85%;
   width: 100%;
   display: -webkit-box;
@@ -380,5 +434,13 @@
 .sm-box .rot-90-reverse {
   left: initial;
   right: 12px;
+}
+
+.sm-box div .title, .sm-box div .price {
+  padding: 1px;
+  background-color: rgba(49, 49, 49, 0.308);
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.555);
+          box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.555);
 }
 /*# sourceMappingURL=board.css.map */
