@@ -68,4 +68,12 @@ $(document).ready(function () {
             }
         });
     }
+
+    $("#startMenuButton").click(function () {
+        $("#startMenu").show();
+    });
+
+    $("#menuPlayButton").click(function () {
+        $("#startMenu").hide();
+    });
 });

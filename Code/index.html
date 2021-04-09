@@ -27,7 +27,29 @@
 </head>
 
 <body>
-
+    <div id="startMenu" style='display: none;'>
+        <div id='startMenuContent'>
+            <h1 id='menuTitle'>MONOPOLY<br>Belval Edition</h1><br><br>
+            <button class='menuButtons' id='menuPlayButton'>Play</button><br><br>
+            <button class='menuButtons' id='menuLoadButton'>Load game</button><br><br>
+            <button class='menuButtons' id='menuCreditsButton'>Credits</button><br><br>
+            <button class='menuButtons' id='dropCoins'>Drop coins</button><br><br>
+        </div>
+    </div>
+    <div class='main-grid'>
+        <div class='grid-left'>
+            <div id="myModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Chose your action</h2>
+                    </div>
+                    <div class="modal-body">
+                        <button id='playGame'>Pay</button>
+                        <button id='roleDouble'>Role a Double</button>
+                        <button id='luckyCard'>Use Lucky card</button>
+                    </div>
+                </div>
 
     <div class='main-grid'>
         <div class='left-grid'>
@@ -88,7 +110,18 @@
 
             </div>
 
+<div id="QuestionModal" class="modal" style="display: none">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Questions</h2>
     </div>
+    <div class="modal-body">
+      <button id='Answer1'>Buy</button>
+      <button id='Answer2'>Auction</button>
+      <button id='Answer3'>Auction</button>
+      <button id='Answer4'>Auction</button>
+    </div>
+  </div>
 
     <div id="TradingModal" class="modal" style="display: none">
         <div class="modal-content">
@@ -150,6 +183,8 @@
 
             </div>
 
+            <!---<div class="box"></div>
+      <div class="box2"></div>
 
             <div id="AuctionModal" class="modal" style="display: none">
                 <div class="modal-content">
@@ -258,7 +293,6 @@
                 </div>
             </div>
 
-
             <div class="monopoly-info">
                 <button id="myBtn">Start Game</button>
                 <p>Turn:
@@ -279,19 +313,46 @@
                 <div class="player" id="player-4">4</div>
                 <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
             </div>
-
         </div>
         <div class='grid-mid'>
             <div class="board">
                 <div class="center">
                     <div class="community-chest-deck">
-                        <h2 class="label">Community Chest</h2>
-                        <div class="deck"></div>
+                        <h2 class="label">Event</h2>
+                        <div class="deck">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front2">
+                                        <div>
+                                            <span class="title2">
+                                                <h2>EVENT</h2>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <h1 class="title">Monopoly Belval Edition</h1>
                     <div class="chance-deck">
-                        <h2 class="label">Chance</h2>
-                        <div class="deck"></div>
+                        <h2 class="label">Quiz</h2>
+                        <div class="deck">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <div>
+                                            <span class="title1">
+                                                <h2>QUIZ</h2>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="lg-box">
@@ -335,7 +396,7 @@
                 </div>
                 <div class="sm-box rot-180 sm-box-white">
                     <div>
-                        <span class="title">COMMU -NITY CHEST</span>
+                        <span class="title">EVENT</span>
                         <span class="price">Follow Instructions</span>
                     </div>
                 </div>
@@ -374,12 +435,12 @@
                 </div>
                 <div class="sm-box sm-box-white">
                     <div class="rot-90-reverse">
-                        <span class="title">CHANCE</span>
+                        <span class="title">QUIZ</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
                     <div class="rot-90">
-                        <span class="title">CHANCE</span>
+                        <span class="title">QUIZ</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-red">
@@ -425,6 +486,26 @@
                     </div>
                 </div>
 
+            <div class="monopoly-info">
+                <button id="myBtn">Start Game</button>
+                <p>Turn:
+                    <span id="round-counter">0</span>/-
+                </p>
+                <p>Current Player:
+                    <span id="current-player"></span>
+                </p>
+                <p>Order:
+                    <span id="players-order"></span>
+                </p>
+                <div class="player" id="player-1">1</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-1"> 0</span></div>
+                <div class="player" id="player-2">2</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-2"> 0</span></div>
+                <div class="player" id="player-3">3</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-3"> 0</span></div>
+                <div class="player" id="player-4">4</div>
+                <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
+            </div>
 
                 <div class="sm-box sm-box-brown">
                     <div class="rot-90" id='residence_etudiante_Uni-ValII'>
@@ -440,7 +521,7 @@
                 </div>
                 <div class="sm-box sm-box-white">
                     <div class="rot-90">
-                        <span class="title">COMMU- NITY CHEST</span>
+                        <span class="title">EVENT</span>
                         <span class="price">Follow Instructions</span>
                     </div>
                 </div>
@@ -485,7 +566,7 @@
                 </div>
                 <div class="sm-box sm-box-white">
                     <div>
-                        <span class="title">CHANCE</span>
+                        <span class="title">QUIZ</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
@@ -502,7 +583,7 @@
                 </div>
                 <div class="sm-box sm-box-white">
                     <div>
-                        <span class="title">COMMU- NITY CHEST</span>
+                        <span class="title">EVENT</span>
                         <span class="price">Follow Instructions</span>
                     </div>
                 </div>
@@ -522,14 +603,33 @@
                     <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
                 </div>
             </div>
-            <img height="100px" width="100px" id="car" src="./graphic/svg/car_topview.svg">
+            <div class='figure-start' id="positions">
+                <img class="figures" id="position1" src="./graphic/svg/car_orange.svg ">
+                <img class="figures" id="position3" src="./graphic/svg/car_topview.svg ">
+                <img class="figures" id="position2" src="./graphic/svg/car_black.svg">
+                <img class="figures" id="position4" src="./graphic/svg/car_red.svg">
+            </div>
         </div>
-
         <div class='grid-right'>
-            <button id='lobbyButton'>Lobby</button>
-            <button id='endTurn'>End Turn</button>
-            <button id='nextField'>Move figure</button>
-            <button id='rollButton'>Roll dice</button>
+            <h2>Testing Buttons</h2>
+            <button id='nextFieldP1'>Move p1</button>
+            <button id='nextFieldP2'>Move p2</button>
+            <button id='nextFieldP3'>Move p3</button>
+            <button id='nextFieldP4'>Move p4</button>
+            <button id='moveMoreFields'>Move 50 fields</button>
+            <button id='quizButton'>Quiz</button>
+            <div id='buttonList'>
+                <h2>:Button List</h2>
+                <button id='sellRenovationsButton' class="buttonListDesign">Sell Renovations</button><br>
+                <button id='sellMortageProButton' class="buttonListDesign">Set Mortgage properties</button><br>
+                <button id='buyRenovationButton' class="buttonListDesign">Buy renovations</button><br>
+                <button id='endTurnButton' class="buttonListDesign">End Turn</button><br>
+                <button id='mortageModal' class="buttonListDesign">Mortage</button><br>
+                <button id='tradeButton' class="buttonListDesign">Trade</button><br>
+                <button id='repayMortgageButton' class="buttonListDesign">Repay mortgage</button><br>
+                <button id='rollButton' class="buttonListDesign">Roll dice</button><br>
+                <button id='startMenuButton' class="buttonListDesign">Start Menu</button><br>
+            </div>
             <div id='dices'>
                 <div class="container">
                     <div id="cube">
@@ -606,13 +706,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <script src="./graphic/animation/dice.js"></script>
     <script src="../public/main.js"></script>
     <script src="./graphic/animation/dice.js"></script>
     <script src="./graphic/animation/exampleOfMovement.js"></script>
-
+    <script src="./development/modal.js"></script>
+    <script src="./graphic/animation/fallingcoins.js"></script>
 </body>
 
 </html>

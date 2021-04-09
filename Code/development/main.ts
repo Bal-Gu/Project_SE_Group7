@@ -21,6 +21,7 @@ import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 
+    quiz.event();
 export class main {
     PlayerArray: Player[] = [];
     dice:Dice = new Dice();
