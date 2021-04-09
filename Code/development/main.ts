@@ -12,6 +12,11 @@ import {Parking} from "./Fields/Parking"
 import {Field} from "./Fields/Field";
 import {Dice} from "./Events/Dice";
 import {Erasmus} from "./Fields/Erasmus";
+import {Tax} from "./Fields/Tax"
+import {EventField} from "./Fields/EventField";
+import {QuizField} from "./Fields/QuizField";
+import {Idle} from "./Fields/Idle";
+import {GoToErasmus} from "./Fields/GoToErasmus";
 
 export class main {
     PlayerArray: Player[] = [];
@@ -24,6 +29,10 @@ export class main {
 
     main() {
         this.InitializePlayers().then(r => console.log("finished"));
+        this.InitializeFieldArray();
+        this.InitializeGameLength(1);
+
+        
     }
 
     InitializeGameLength(n: number): void {
@@ -43,21 +52,53 @@ export class main {
     InitializeFieldArray(): void{
         this.FieldArray = [];
         let propertiesFile = require('../properties.json');
-        let a, b, c;
-        a = b = c =0;
+        let a, b, c, d;
+        a = b = c = 0;
 
-        for(let i = 0; i < 28; i++){
-            if(i == 2 || i == 10 || i == 17 || i == 25){
+        for(let i = 0; i < 40; i++){
+            if(i == 0 || i == 10){
+                let idle:Idle = new Idle();
+                this.FieldArray.push(idle);
+            }
+            else if(i == 20){
+                let restplace:Restplace = new Restplace();
+                this.FieldArray.push(restplace);
+            }
+            else if(i == 30){
+                let gotoerasmus:GoToErasmus = new GoToErasmus();
+                this.FieldArray.push(gotoerasmus);
+            }
+            else if(i == 5 || i == 15 || i == 25 || i == 35){
                 let station = propertiesFile.stations[a];
                 let b:Bus = new Bus(station.name);
                 this.FieldArray.push(b);
                 a++;
             }
-            else if(i == 7 || i == 20){
+            else if(i == 12 || i == 28){
                 let parking =  propertiesFile.parkings[b];
                 let pa:Parking = new Parking(parking.name);
                 this.FieldArray.push(pa);
                 b++;
+            }
+            else if(i == 4 || i == 38) {
+                switch(i){
+                    case 4:
+                        let luxtax: Tax = new Tax("Luxury Tax");
+                        this.FieldArray.push(luxtax);
+                        break;
+                    case 38:
+                        let inctax: Tax = new Tax("Income Tax");
+                        this.FieldArray.push(inctax);
+                        break;
+                }
+            }
+            else if(i == 2 || i == 17 || i == 33){
+                let eventfield:EventField = new EventField();
+                this.FieldArray.push(eventfield);
+            }
+            else if(i == 7 || i == 22 || i == 36){
+                let quizfield:QuizField = new QuizField();
+                this.FieldArray.push(quizfield);
             }
             else {
                 let prop = propertiesFile.properties[c];
