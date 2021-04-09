@@ -37,6 +37,8 @@
           perspective: 1000px;
   -webkit-perspective-origin: 50% 100%;
           perspective-origin: 50% 100%;
+  margin: 10px;
+  padding: 50px;
 }
 
 #cube {

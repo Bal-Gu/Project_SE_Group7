@@ -57,15 +57,23 @@ $(document).ready(function () {
         $(".tradingButtons").click(function () {
             var htmlToBeMoved = this.parentElement.parentElement;
 
-            if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
+            if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum1") {
                 $("#tradingButtonCollum2").append(htmlToBeMoved);
-            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum2") {
+            } else if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum2") {
                 $("#tradingButtonCollum1").append(htmlToBeMoved);
-            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum3") {
+            } else if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum3") {
                 $("#tradingButtonCollum4").append(htmlToBeMoved);
-            } else if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum4") {
+            } else if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum4") {
                 $("#tradingButtonCollum3").append(htmlToBeMoved);
             }
         });
     }
+
+    $("#startMenuButton").click(function () {
+        $("#startMenu").show();
+    });
+
+    $("#menuPlayButton").click(function () {
+        $("#startMenu").hide();
+    });
 });

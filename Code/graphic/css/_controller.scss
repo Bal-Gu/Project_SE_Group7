@@ -1,7 +1,7 @@
 //Monopoly game informations
 
 //Colors
-$lg-box:  #999;
+$lg-box:  rgb(106, 126, 94);
 $lightblue: lightblue;
 $pink: pink;
 $orange: orange;
@@ -22,10 +22,13 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
     width: 240px;
     font-size: 14px;
     line-height: 1.5em;
-    border: 1px solid black;
     font-family: $game-info;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0px 0px 5px 5px whitesmoke;
+
 
     .player{
       display: table;
@@ -61,5 +64,46 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
     }
   }
 
+#buttonList h2{
+  color: rgb(65, 65, 65);
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#buttonList{
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  box-shadow: 0px 0px 5px 5px whitesmoke;
+  align-items: center;
+  padding: 15px;
+}
+
+.buttonListDesign{
+  width: 100%;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 3px solid red;
+  color: rgb(66, 66, 66);
+  box-shadow: 2px 2px 5px grey;
+  padding: 5px;
+  margin: 5px;
+}
+
+.buttonListDesign:hover{
+    background-color: red;
+    color: white;
+    border-color: rgb(255, 55, 55);
+}
+
+.buttonListDesign:active{
+    background-color: rgb(207, 0, 0);
+    color: white;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px white;
+}
 
   

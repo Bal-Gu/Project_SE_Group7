@@ -19,6 +19,7 @@ import {Idle} from "./Fields/Idle";
 import {GoToErasmus} from "./Fields/GoToErasmus";
 import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
+import {Trade} from "./Events/Trade";
 
 export class main {
     PlayerArray: Player[] = [];
@@ -219,7 +220,7 @@ export class main {
     //USED TO TEST STUFF
     async launch() {
         console.log("a");
-        //await this.SetMortgageTest();
+        await this.TradeTest();
         console.log("c");
     }
 
@@ -269,6 +270,14 @@ export class main {
 
     }
 
+    async TradeTest(){
+        let p1:Player = new Player(false,"ad");
+        let p2:Player = new Player(false,"bc");
+        this.playerInit(p1);
+        this.playerInit(p2);
+        await new Trade().event(p1,p2);
+    }
+
     async BuyTest(){
         let p: Player = new Player(false, "f");
         let p2: Player = new Player(false,"yieks")
@@ -294,7 +303,7 @@ export class main {
     }
 
 }
-new main().main();
+new main().launch();
 //new main().launch();
 
 
