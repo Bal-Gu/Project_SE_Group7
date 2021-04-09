@@ -1,10 +1,11 @@
 body {
   min-width: 1400px;
   margin: 0;
-  background: linear-gradient(214deg, #1fc398, #1642cc, #18892b);
-  background-size: 800% 800%;
-  -webkit-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
+  /*background: linear-gradient(214deg, #fd8069, #fd8069, #fd8069);
+    background-size: 800% 800%;
+    -webkit-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;*/
+  background-image: url("./../images/background.jpg");
 }
 
 @-webkit-keyframes AnimationName {
