@@ -17,8 +17,17 @@ $(document).ready(function () {
     });
 
     $(".close").click(function () {
+        $(".modal").css("display", "none");
+    });
+
+    $(".close").click(function () {
         $("#TradingModal").css("display", "none");
     });
+
+    $("#lobbyButton").click(function () {
+        $("#lobbyModal").css("display", "block");
+    });
+
 
 
     // the tree buttons inside the modal
