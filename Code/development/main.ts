@@ -18,15 +18,74 @@ import {Trade} from "./Events/Trade";
 
 export class main {
     PlayerArray: Player[] = [];
+    dice:Dice = new Dice();
     WinCondition: number;
     RoundNumber: number;
-    PlayerTurn: Player;
-    GameEnded: boolean;
+    ReferencePlayer: Player;
     FieldArray: Field[];
     ConseqDoubles: number = 0;
+    GameEnded: boolean = false;
+    TurnEnded: boolean = false;
 
-    main() {
-        this.InitializePlayers().then(r => console.log("finished"));
+    async main() {
+        this.dice.event();
+        this.EndTurnButton();
+        this.InitializePlayers();
+        this.InitializeQueue();
+        while (!this.GameEnded) {
+            await this.EndOfATurn();
+            this.NextTurn();
+            /*this.PlayerArray.forEach(function (item) {
+                if (item.Money >= this.WinCondition) {
+                    this.GameEnded = true;
+                }
+            })*/
+        }
+    }
+
+    async EndTurnButton(){
+        let EndButton = $("#endTurn");
+        let self = this;
+        EndButton.click(function(){
+            console.log("turn ended");
+            self.TurnEnded = true;
+        });
+    }
+
+    //Will wait for a player to play its turn
+    async EndOfATurn(){
+        while (!this.TurnEnded) {
+            await new Promise(r => setTimeout(r, 500));
+            console.log("waiting");
+        }
+    }
+
+    InitializeQueue(): void{
+        for(let i = 0; i < this.PlayerArray.length; i++){
+            this.dice.roll();
+            this.PlayerArray[i].queue = this.dice.total();
+        }
+        let n = this.PlayerArray.length;
+        //Bubble Sort, if the queue number between two players is the same, it won't change on purpose
+        for(let i = 0; i < n-1; i++){
+            for(let y = 0; y < n-i-1; y++){
+                if(this.PlayerArray[y].queue > this.PlayerArray[y+1].queue){
+                    let temp = this.PlayerArray[y];
+                    this.PlayerArray[y] = this.PlayerArray[y+1];
+                    this.PlayerArray[y+1] = temp;
+                }
+            }
+        }
+    }
+
+    NextTurn(): void{
+        let temp = this.PlayerArray[0];
+        for(let i = 0; i < this.PlayerArray.length-1; i++){
+            this.PlayerArray[i] = this.PlayerArray[i+1];
+        }
+        this.PlayerArray[3] = temp;
+        this.ReferencePlayer = this.PlayerArray[0];
+        this.TurnEnded = false;
     }
 
     InitializeGameLength(n: number): void {
@@ -206,7 +265,7 @@ export class main {
     }
 
 }
-
-new main().launch();
+new main().main();
+//new main().launch();
 
 

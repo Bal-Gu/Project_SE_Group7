@@ -14,6 +14,7 @@ export class Player {
     lastAmmountOfMoves: number
     canAuction:boolean = true;
     name:string;
+    queue: number;
 
 
     constructor(isBot: boolean ,name:string/*, pawn: Pawn, Array: Property*/) {

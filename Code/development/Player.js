@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Player = void 0;
 const globalVariable_json_1 = __importDefault(require("../globalVariable.json"));
 class Player {
-    constructor(isBot /*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot, name /*, pawn: Pawn, Array: Property*/) {
+        this.fieldsOwned = [];
+        this.canAuction = true;
         this.isBot = isBot;
         this.Money = 1500;
         this.hasErasmusDispense = false;
@@ -15,6 +17,10 @@ class Player {
         this.TurnsInPrison = 0;
         this.nrOfBus = 0;
         this.nrOfParking = 0;
+        this.name = name;
+    }
+    getName() {
+        return this.name;
     }
     canBuy(cost) {
         return (this.Money - cost) > 0;
@@ -34,6 +40,25 @@ class Player {
                 this.fieldsOwned = this.fieldsOwned.filter(ownedfield => this.fieldsOwned[i].name != field.name);
             }
         }
+    }
+    totalWorth() {
+        let total = this.Money;
+        for (let i = 0; i < this.fieldsOwned.length; i++) {
+            if (this.fieldsOwned[i].isMortgage) {
+                continue;
+            }
+            if (!this.fieldsOwned[i].renovatiosAmmount == undefined) {
+                //suppressed the warning because undefined is checked just above
+                // @ts-ignore
+                for (let j = 1; this.fieldsOwned[i].renovatiosAmmount <= j; j++) {
+                    // @ts-ignore
+                    total += this.fieldsOwned[i].renovationscosts;
+                }
+            }
+            //mortage price
+            total += this.fieldsOwned[i].initialPrice;
+        }
+        return total;
     }
     receive(field) {
         this.fieldsOwned.push(field);

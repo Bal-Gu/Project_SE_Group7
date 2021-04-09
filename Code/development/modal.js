@@ -16,6 +16,19 @@ $(document).ready(function () {
         $("#myModal").css("display", "none");
     });
 
+    $(".close").click(function () {
+        $(".modal").css("display", "none");
+    });
+
+    $(".close").click(function () {
+        $("#TradingModal").css("display", "none");
+    });
+
+    $("#lobbyButton").click(function () {
+        $("#lobbyModal").css("display", "block");
+    });
+
+
 
     // the tree buttons inside the modal
     $("#playGame").click(function () {
