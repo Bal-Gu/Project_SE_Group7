@@ -3,7 +3,7 @@ import {Player} from "../Player";
 import {Mortage} from "../Events/mortage"
 import globals from "../../globalVariable.json";
 
-class Tax implements Field{
+export class Tax implements Field{
     owner:Player;
     name: string;
     amountToPay = globals.amountToPayBuyTax;
