@@ -20,6 +20,9 @@ import {GoToErasmus} from "./Fields/GoToErasmus";
 import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
+import $ from "jquery";
+
+declare var fallingCoins;
 
 export class main {
     PlayerArray: Player[] = [];
@@ -33,6 +36,7 @@ export class main {
     TurnEnded: boolean = false;
 
     async main() {
+        this.buttonEvent();
         this.dice.event();
         this.EndTurnButton();
         this.InitializePlayers();
@@ -302,8 +306,33 @@ export class main {
         p.fieldsOwned.push(prop2);
     }
 
+    async buttonEvent(){
+        // show the start game modal
+        $("#startGame").click(function() {
+            $("#startGameModal").show();
+        });
+        // close any modal that has a close X
+        $(".close").click(function () {
+            $(".modal").hide();
+        });
+        // show the lobby
+        $("#lobbyButton").click(function () {
+            $("#lobbyModal").show();
+        });
+        // hide the start menu if the play button inside the
+        $("#menuPlayButton").click(function () {
+            $("#startMenu").hide();
+            fallingCoins('body');
+        });
+        // show the start menu
+        $("#startMenuButton").click(function () {
+            $("#startMenu").show();
+            fallingCoins('body');
+        });
+    }
 }
-new main().launch();
+
+new main().main();
 //new main().launch();
 
 
