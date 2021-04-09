@@ -1,11 +1,12 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
 import {Mortage} from "../Events/mortage"
+import globals from "../../globalVariable.json";
 
 export class Tax implements Field{
     owner:Player;
     name: string;
-    amountToPay: number[] = [100,200];
+    amountToPay = globals.amountToPayBuyTax;
     initialPrice: number = 0;
 
     constructor(name:string){

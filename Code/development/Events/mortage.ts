@@ -1,5 +1,4 @@
 import {Player} from "../Player";
-import globals from "../../globalVariable.json";
 
 export class Mortage {
     i: number;
@@ -38,13 +37,13 @@ export class Mortage {
                 output += "⭐";
             }
             output += "</td>";
-            output += "<td><button style='background-color: white' id = 'Addbutton" + this.i + "'><span style='height: 25px;width: 25px;background-color: green; border-radius: 50%; display: block'>▲</span></button></td>";
-            output += "<td><button style='background-color: white' id = 'Removebutton" + this.i + "'><span style='height: 25px;width: 25px;background-color: red; border-radius: 50%; display: block'>▼</span></button></td>";
+            output += "<td><button style='background-color: white' id = 'Addbutton" + this.i + "'><span style='height: 25px;width: 25px;padding-top: 2px;background-color: green; border-radius: 50%; display: block'>▲</span></button></td>";
+            output += "<td><button style='background-color: white' id = 'Removebutton" + this.i + "'><span style=' text-align:center; padding-top: 4px;  height: 25px;width: 25px;background-color: red; border-radius: 50%; display: block'>▼</span></button></td>";
             output += "<td id = 'Price" + this.i + "' style='color: #18892b'>0</td>";
             output += "</tr>";
         }
 
-        output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage'>Accept</button></td></tr>"
+        output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
 
 
         $("#mortageTable").html(output);

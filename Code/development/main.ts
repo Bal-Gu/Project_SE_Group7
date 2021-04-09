@@ -17,22 +17,79 @@ import {EventField} from "./Fields/EventField";
 import {QuizField} from "./Fields/QuizField";
 import {Idle} from "./Fields/Idle";
 import {GoToErasmus} from "./Fields/GoToErasmus";
+import {RepayMortgage} from "./Events/RepayMortgage";
+import {setMortgage} from "./Events/SetMortgage";
 
 export class main {
     PlayerArray: Player[] = [];
+    dice:Dice = new Dice();
     WinCondition: number;
     RoundNumber: number;
-    PlayerTurn: Player;
-    GameEnded: boolean;
+    ReferencePlayer: Player;
     FieldArray: Field[];
     ConseqDoubles: number = 0;
+    GameEnded: boolean = false;
+    TurnEnded: boolean = false;
 
-    main() {
-        this.InitializePlayers().then(r => console.log("finished"));
-        this.InitializeFieldArray();
-        this.InitializeGameLength(1);
+    async main() {
+        this.dice.event();
+        this.EndTurnButton();
+        this.InitializePlayers();
+        this.InitializeQueue();
+        while (!this.GameEnded) {
+            await this.EndOfATurn();
+            this.NextTurn();
+            /*this.PlayerArray.forEach(function (item) {
+                if (item.Money >= this.WinCondition) {
+                    this.GameEnded = true;
+                }
+            })*/
+        }
+    }
 
-        
+    async EndTurnButton(){
+        let EndButton = $("#endTurn");
+        let self = this;
+        EndButton.click(function(){
+            console.log("turn ended");
+            self.TurnEnded = true;
+        });
+    }
+
+    //Will wait for a player to play its turn
+    async EndOfATurn(){
+        while (!this.TurnEnded) {
+            await new Promise(r => setTimeout(r, 500));
+            console.log("waiting");
+        }
+    }
+
+    InitializeQueue(): void{
+        for(let i = 0; i < this.PlayerArray.length; i++){
+            this.dice.roll();
+            this.PlayerArray[i].queue = this.dice.total();
+        }
+        let n = this.PlayerArray.length;
+        //Bubble Sort, if the queue number between two players is the same, it won't change on purpose
+        for(let i = 0; i < n-1; i++){
+            for(let y = 0; y < n-i-1; y++){
+                if(this.PlayerArray[y].queue > this.PlayerArray[y+1].queue){
+                    let temp = this.PlayerArray[y];
+                    this.PlayerArray[y] = this.PlayerArray[y+1];
+                    this.PlayerArray[y+1] = temp;
+                }
+            }
+        }
+    }
+
+    NextTurn(): void{
+        let temp = this.PlayerArray[0];
+        for(let i = 0; i < this.PlayerArray.length-1; i++){
+            this.PlayerArray[i] = this.PlayerArray[i+1];
+        }
+        this.PlayerArray[3] = temp;
+        this.ReferencePlayer = this.PlayerArray[0];
+        this.TurnEnded = false;
     }
 
     InitializeGameLength(n: number): void {
@@ -160,8 +217,24 @@ export class main {
 
     //USED TO TEST STUFF
     async launch() {
-        await this.MortageTest();
+        console.log("a");
+        //await this.SetMortgageTest();
+        console.log("c");
+    }
 
+    async SetMortgageTest(){
+        let p: Player = new Player(false, "f");
+        this.playerInit(p);
+        let repay = new setMortgage();
+       await repay.event(p);
+    }
+
+
+    async RepayMortgageTest(){
+        let p: Player = new Player(false, "f");
+        this.playerInit(p);
+        let repay = new RepayMortgage();
+        await repay.event(p);
     }
 
     AuctionTest() {
@@ -177,12 +250,7 @@ export class main {
 
     async MortageTest() {
         let p: Player = new Player(false, "f");
-        p.Money = -10;
-        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
-        prop.renovatiosAmmount = 3;
-        prop.isMortgage = false;
-        p.fieldsOwned.push(prop);
-
+        this.playerInit(p);
         for(let i=0;i<30;i++){
             var rand = Math.floor(Math.random() * Object.keys(Colors).length);
             var randColorValue:Colors = Colors[Object.keys(Colors)[rand]];
@@ -211,8 +279,21 @@ export class main {
         await buyevent.event(p,700,prop,[p,p2]);
     }
 
-}
+    playerInit(p:Player){
 
+        p.Money = 1000;
+        let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
+        prop.renovatiosAmmount = 3;
+        prop.isMortgage = false;
+        p.fieldsOwned.push(prop);
+        let prop2:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",10000);
+        prop2.renovatiosAmmount = 3;
+        prop2.isMortgage = false;
+        p.fieldsOwned.push(prop2);
+    }
+
+}
 new main().main();
+//new main().launch();
 
 
