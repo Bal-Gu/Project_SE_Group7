@@ -20,7 +20,7 @@ export class main {
     dice:Dice = new Dice();
     WinCondition: number;
     RoundNumber: number;
-    PlayerTurn: Player;
+    ReferencePlayer: Player;
     FieldArray: Field[];
     ConseqDoubles: number = 0;
     GameEnded: boolean = false;
@@ -28,14 +28,17 @@ export class main {
 
     async main() {
         this.dice.event();
+        this.EndTurnButton();
         this.InitializePlayers();
+        this.InitializeQueue();
         while (!this.GameEnded) {
-            await this.wait();
-            this.PlayerArray.forEach(function (item) {
+            await this.EndOfATurn();
+            this.NextTurn();
+            /*this.PlayerArray.forEach(function (item) {
                 if (item.Money >= this.WinCondition) {
                     this.GameEnded = true;
                 }
-            })
+            })*/
         }
     }
 
@@ -43,14 +46,16 @@ export class main {
         let EndButton = $("#endTurn");
         let self = this;
         EndButton.click(function(){
+            console.log("turn ended");
             self.TurnEnded = true;
         });
     }
 
     //Will wait for a player to play its turn
-    async wait(){
+    async EndOfATurn(){
         while (!this.TurnEnded) {
             await new Promise(r => setTimeout(r, 500));
+            console.log("waiting");
         }
     }
 
@@ -78,6 +83,7 @@ export class main {
             this.PlayerArray[i] = this.PlayerArray[i+1];
         }
         this.PlayerArray[3] = temp;
+        this.ReferencePlayer = this.PlayerArray[0];
         this.TurnEnded = false;
     }
 
@@ -250,7 +256,7 @@ export class main {
     }
 
 }
-
-new main().launch();
+new main().main();
+//new main().launch();
 
 
