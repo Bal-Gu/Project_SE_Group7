@@ -15,7 +15,7 @@ export class Player {
     canAuction:boolean = true;
     name:string;
     queue: number;
-
+    //idea for number of move possible(maybe)
 
     constructor(isBot: boolean ,name:string/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;

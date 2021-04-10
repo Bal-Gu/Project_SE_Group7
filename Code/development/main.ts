@@ -37,11 +37,11 @@ export class main {
 
     async main() {
         this.buttonEvent();
-        this.dice.event();
         this.EndTurnButton();
         this.InitializePlayers();
         this.InitializeQueue();
         while (!this.GameEnded) {
+            this.dice.roll();
             await this.EndOfATurn();
             this.NextTurn();
             this.MakePlayerTurn(this.ReferencePlayer);
@@ -50,12 +50,15 @@ export class main {
                     this.GameEnded = true;
                 }
             })*/
-
+            //check gameover for player and change value
+            //checking makeplayerturn
+            //puting surrender button and mechanics
+            //check if the turn handling works fine
         }
     }
 
     async EndTurnButton(){
-        let EndButton = $("#endTurn");
+        let EndButton = $("#endTurnButton");
         let self = this;
         EndButton.click(function(){
             console.log("turn ended");
