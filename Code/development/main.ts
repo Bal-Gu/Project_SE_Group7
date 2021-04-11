@@ -26,6 +26,7 @@ declare var fallingCoins;
 
 export class main {
     PlayerArray: Player[] = [];
+    StaticPlayerArray: Player[] = [];
     dice:Dice = new Dice();
     WinCondition: number;
     RoundNumber: number;
@@ -43,14 +44,6 @@ export class main {
         while (!this.GameEnded) {
             await this.EndOfATurn();
             this.NextTurn();
-
-
-            this.PlayerArray.forEach(
-                this.CheckWinCondition
-            )
-            this.PlayerArray.forEach(
-                this.CheckLooseCondition
-            )
 
             //this.MakePlayerTurn(this.ReferencePlayer);
             /*this.PlayerArray.forEach(function (item) {
@@ -72,6 +65,15 @@ export class main {
             console.log("turn ended");
             self.TurnEnded = true;
         });
+    }
+
+    ShowPlayerMoney(){
+        this.StaticPlayerArray = this.PlayerArray;
+
+        $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
+        $("#b-coins-2").text(this.StaticPlayerArray[1].Money);
+        $("#b-coins-3").text(this.StaticPlayerArray[2].Money);
+        $("#b-coins-4").text(this.StaticPlayerArray[3].Money);
     }
 
     //Will wait for a player to play its turn
@@ -98,6 +100,7 @@ export class main {
                 }
             }
         }
+        this.ShowPlayerMoney();
         this.ReferencePlayer = this.PlayerArray[0];
     }
 
@@ -179,7 +182,7 @@ export class main {
             }
             else {
                 let prop = propertiesFile.properties[c];
-                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialPrice);
+                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialprice);
                 this.FieldArray.push(p);
                 c++;
             }
@@ -196,7 +199,7 @@ export class main {
         let double = this.dice.isdouble();
 
         if (this.ReferencePlayer.TurnsInPrison > 0){
-            await erasmus.Event(this.ReferencePlayer, this.PlayerArray);
+            await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
         }
         if(double){
             if(this.ConseqDoubles >= 2){
@@ -209,7 +212,7 @@ export class main {
         }else{
             this.ConseqDoubles = 0;
         }
-        await this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.PlayerArray);
+        await this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
 
     }
 
@@ -352,7 +355,7 @@ export class main {
     }
 }
 //new main().main();
-new main().launch();
+//new main().launch();
 
 /*$("#quizButton").click(()=>{
     $("#QuestionModal").show();

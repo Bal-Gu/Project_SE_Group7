@@ -1,5 +1,6 @@
 import {Field} from "./Fields/Field";
 import globals from "../globalVariable.json"
+import $ from "jquery";
 declare var nextMoveLogic;
 export class Player {
     isBot : boolean;
@@ -16,6 +17,7 @@ export class Player {
     name:string;
     queue: number;
     ReferenceNumber: number;
+    PlayerArray: Player[];
     //idea for number of move possible(maybe)
 
     constructor(isBot: boolean ,name:string, ReferenceNumber:number/*, pawn: Pawn, Array: Property*/) {
@@ -35,14 +37,30 @@ export class Player {
         return this.name;
    }
 
+    ShowPlayerMoney(){
+        $("#b-coins-1").text(this.PlayerArray[0].Money);
+        console.log(this.PlayerArray[0].name)
+        console.log(this.PlayerArray[0].Money)
+        $("#b-coins-2").text(this.PlayerArray[1].Money);
+        console.log(this.PlayerArray[1].name)
+        console.log(this.PlayerArray[1].Money)
+        $("#b-coins-3").text(this.PlayerArray[2].Money);
+        console.log(this.PlayerArray[2].name)
+        console.log(this.PlayerArray[2].Money)
+        $("#b-coins-4").text(this.PlayerArray[3].Money);
+        console.log(this.PlayerArray[3].name)
+        console.log(this.PlayerArray[3].Money)
+    }
+
     canBuy(cost: number): boolean {
         return (this.Money - cost) > 0;
     }
 
-    buying(field: Field, amount:number): void{
+    buying(field: Field, amount:number, playerlist: Player[]): void{
         this.fieldsOwned.push(field);
         this.payAmmount(amount);
-        
+        this.PlayerArray = playerlist;
+        this.ShowPlayerMoney();
     }
 
     gameOver(){
