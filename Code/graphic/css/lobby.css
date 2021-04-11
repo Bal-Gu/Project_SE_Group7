@@ -1,39 +1,31 @@
-header {
-  font-size: 2vw;
-  line-height: 1vh;
-  border: 0.5vh solid black;
-  background: lightblue;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 5vh;
-}
-
-.grid-container {
+.grid-container-lobby {
+  padding-top: 10px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 2fr 1fr;
       grid-template-columns: 2fr 1fr;
   gap: 2vh;
-  height: 60vh;
+  height: 250px;
 }
 
 .PlayerSelectionbutton {
-  font-size: 4vh;
+  font-size: 20px;
   background: #ce3c3c;
   cursor: pointer;
-  border: 0.5vh solid black;
+  border: 2px solid grey;
+  color: #202020;
 }
 
-input {
-  font-size: 4vh;
+.inputLobby {
+  font-size: 20px;
   background: wheat;
   text-align: justify;
   text-align-last: center;
-  border: 0.5vh solid black;
+  border: 1px solid grey;
+}
+
+.inputLobby:enabled:focus {
+  outline: 1px solid #505050;
 }
 
 .ButtonContainer {
@@ -49,12 +41,21 @@ input {
 }
 
 .StartBoxButton {
-  margin-top: 10vh;
-  font-size: 4vh;
-  height: 10vh;
-  width: 20vw;
+  color: #333333;
+  margin-top: 10px;
+  font-size: 20px;
+  width: 15vw;
+  padding: 15px;
   background: #a7a4a4;
-  border: 0.5vh solid black;
+  border: 1px solid grey;
   cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.StartBoxButton:active {
+  color: #fff8ec;
+  background: #646464;
+  -webkit-box-shadow: 0px 0px 15px gray;
+          box-shadow: 0px 0px 15px gray;
 }
 /*# sourceMappingURL=lobby.css.map */

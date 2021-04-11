@@ -83,6 +83,7 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .buttonListDesign{
+  display: block;
   width: 100%;
   font-size: 18px;
   border-radius: 5px;
@@ -104,6 +105,18 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     border-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 15px white;
+}
+
+.buttonListDesign:active:disabled {
+  background-color: rgb(65, 65, 65);
+  color: rgb(44, 44, 44);
+  border-color: #2e1515;
+}
+
+.buttonListDesign:disabled {
+  background-color: rgb(65, 65, 65);
+  color: rgb(92, 92, 92);
+  border-color: #362323;
 }
 
   
