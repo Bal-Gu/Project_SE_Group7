@@ -41,8 +41,18 @@ export class main {
         this.InitializeFieldArray();
         await this.InitializePlayers();
         while (!this.GameEnded) {
-            await this.EndOfATurn();
+            //await this.EndOfATurn();
             this.NextTurn();
+
+            this.MakePlayerTurn(this.ReferencePlayer);
+
+            this.PlayerArray.forEach(
+                this.CheckWinCondition
+            )
+            this.PlayerArray.forEach(
+                this.CheckLooseCondition
+            )
+
             //this.MakePlayerTurn(this.ReferencePlayer);
             /*this.PlayerArray.forEach(function (item) {
                 if (item.Money >= this.WinCondition) {
@@ -204,8 +214,16 @@ export class main {
 
     }
 
-    CheckWinCondition():boolean{
-        return false
+    CheckWinCondition(player:Player):void{
+        if (player.Money >= this.WinCondition){
+            this.GameEnded = true;
+        }
+        this.GameEnded = true;
+    }
+    CheckLooseCondition(player:Player):void{
+        if (player.isGameOver){
+            this.Surrender(player);
+        }
     }
 
     Surrender(p: Player): void {
@@ -334,7 +352,14 @@ export class main {
         });
     }
 }
+//new main().main();
+new main().launch();
 
+$("#quizButton").click(()=>{
+    $("#QuestionModal").show();
+});
+
+$("#lobbyModal").show();
 new main().main();
 //new main().launch();
 
