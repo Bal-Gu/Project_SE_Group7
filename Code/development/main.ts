@@ -74,7 +74,9 @@ export class main {
     }
 
     ShowPlayerMoney(){
-        this.StaticPlayerArray = this.PlayerArray;
+        console.log("ShowPlayerMoney is called");
+        this.StaticPlayerArray = this.PlayerArray.slice();
+
 
         $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
         $("#b-coins-2").text(this.StaticPlayerArray[1].Money);
@@ -108,6 +110,7 @@ export class main {
         }
         this.ShowPlayerMoney();
         this.ReferencePlayer = this.PlayerArray[0];
+        $("#current-player").text(this.ReferencePlayer.name);
     }
 
     NextTurn(): void{
@@ -117,6 +120,7 @@ export class main {
         }
         this.PlayerArray[3] = temp;
         this.ReferencePlayer = this.PlayerArray[0];
+        $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
     }
 
@@ -218,8 +222,8 @@ export class main {
         }else{
             this.ConseqDoubles = 0;
         }
-        await this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
-
+        this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
+        this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
     }
 
     CheckWinCondition(player:Player):void{
@@ -356,10 +360,13 @@ export class main {
             //handle the doubles
             self.dice.roll();
             self.ReferencePlayer.move(self.dice.total());
-            self.MakePlayerTurn();
+            setTimeout(function(){
+                self.MakePlayerTurn();
+            },self.dice.total()*500);
         });
     }
 }
+
 //new main().main();
 //new main().launch();
 

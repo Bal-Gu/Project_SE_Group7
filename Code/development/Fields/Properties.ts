@@ -28,6 +28,7 @@ export class Properties implements Field{
         this.isMortgage = false;
         this.name = name;
         this.renovationscosts = renovationscosts;
+        let buyevent = new BuyEvent;
     }
 
 

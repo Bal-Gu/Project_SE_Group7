@@ -39,17 +39,10 @@ export class Player {
 
     ShowPlayerMoney(){
         $("#b-coins-1").text(this.PlayerArray[0].Money);
-        console.log(this.PlayerArray[0].name)
-        console.log(this.PlayerArray[0].Money)
         $("#b-coins-2").text(this.PlayerArray[1].Money);
-        console.log(this.PlayerArray[1].name)
-        console.log(this.PlayerArray[1].Money)
         $("#b-coins-3").text(this.PlayerArray[2].Money);
-        console.log(this.PlayerArray[2].name)
-        console.log(this.PlayerArray[2].Money)
         $("#b-coins-4").text(this.PlayerArray[3].Money);
-        console.log(this.PlayerArray[3].name)
-        console.log(this.PlayerArray[3].Money)
+
     }
 
     canBuy(cost: number): boolean {
