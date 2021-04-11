@@ -10,7 +10,7 @@ export class PlayerSelection{
     }
     initializePlayers(){
         for(let i = 0; i < this.PlayerIsBot.length; i++){
-            let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i]);
+            let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i], i);
             this.PlayerArray.push(p);
         }
     }
