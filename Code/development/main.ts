@@ -39,12 +39,18 @@ export class main {
     async main() {
         this.buttonEvent();
         this.EndTurnButton();
+        this.InitializeGameLength(1);
         this.InitializeFieldArray();
         await this.InitializePlayers();
         while (!this.GameEnded) {
             await this.EndOfATurn();
             this.NextTurn();
-
+            this.PlayerArray.forEach(
+                player => this.CheckWinCondition(player)
+            )
+            this.PlayerArray.forEach(
+                player => this.CheckLooseCondition(player)
+            )
             //this.MakePlayerTurn(this.ReferencePlayer);
             /*this.PlayerArray.forEach(function (item) {
                 if (item.Money >= this.WinCondition) {
@@ -220,7 +226,6 @@ export class main {
         if (player.Money >= this.WinCondition){
             this.GameEnded = true;
         }
-        this.GameEnded = true;
     }
     CheckLooseCondition(player:Player):void{
         if (player.isGameOver){
@@ -348,6 +353,7 @@ export class main {
             fallingCoins('body');
         });
         $("#rollButton").click(function(){
+            //handle the doubles
             self.dice.roll();
             self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
