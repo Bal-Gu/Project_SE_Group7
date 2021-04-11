@@ -1,5 +1,6 @@
 function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
   console.log(FieldsToPlay);
+  console.log(FieldNumber);
   if (FieldsToPlay === 0) {
     return;
   }

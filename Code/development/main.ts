@@ -38,6 +38,7 @@ export class main {
     async main() {
         this.buttonEvent();
         this.EndTurnButton();
+        this.InitializeFieldArray();
         await this.InitializePlayers();
         while (!this.GameEnded) {
             await this.EndOfATurn();
@@ -181,33 +182,26 @@ export class main {
 
     }
 
-    async MakePlayerTurn(p: Player): Promise<void>{
+    async MakePlayerTurn(): Promise<void>{
         let erasmus = new Erasmus()
-        await this.dice.roll()
         let double = this.dice.isdouble();
-        let n = this.dice.total();
 
-
-        if (p.TurnsInPrison > 0){
-            await erasmus.Event(p, this.PlayerArray);
+        if (this.ReferencePlayer.TurnsInPrison > 0){
+            await erasmus.Event(this.ReferencePlayer, this.PlayerArray);
         }
-        else {
-            await p.move(n);
-        }
-        await this.FieldArray[p.currentposition].Event;
-
         if(double){
             if(this.ConseqDoubles >= 2){
-                p.TurnsInPrison = 3;
+                this.ReferencePlayer.TurnsInPrison = 3;
                 this.ConseqDoubles = 0;
             }
             else{
                 this.ConseqDoubles += 1;
-                await this.MakePlayerTurn(p);
             }
         }else{
             this.ConseqDoubles = 0;
         }
+        await this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.PlayerArray);
+
     }
 
     CheckWinCondition():boolean{
@@ -336,6 +330,7 @@ export class main {
         $("#rollButton").click(function(){
             self.dice.roll();
             self.ReferencePlayer.move(self.dice.total());
+            self.MakePlayerTurn();
         });
     }
 }
