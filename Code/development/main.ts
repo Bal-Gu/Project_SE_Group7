@@ -43,8 +43,7 @@ export class main {
         while (!this.GameEnded) {
             //await this.EndOfATurn();
             this.NextTurn();
-
-            this.MakePlayerTurn(this.ReferencePlayer);
+            
 
             this.PlayerArray.forEach(
                 this.CheckWinCondition
