@@ -340,6 +340,11 @@ export class main {
     }
 }
 
+$("#quizButton").click(()=>{
+    $("#QuestionModal").show();
+});
+
+$("#lobbyModal").show();
 new main().main();
 //new main().launch();
 
