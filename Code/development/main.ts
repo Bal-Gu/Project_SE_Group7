@@ -38,13 +38,11 @@ export class main {
     async main() {
         this.buttonEvent();
         this.EndTurnButton();
-        this.InitializePlayers();
-        this.InitializeQueue();
+        await this.InitializePlayers();
         while (!this.GameEnded) {
-            this.dice.roll();
             await this.EndOfATurn();
             this.NextTurn();
-            this.MakePlayerTurn(this.ReferencePlayer);
+            //this.MakePlayerTurn(this.ReferencePlayer);
             /*this.PlayerArray.forEach(function (item) {
                 if (item.Money >= this.WinCondition) {
                     this.GameEnded = true;
@@ -90,6 +88,7 @@ export class main {
                 }
             }
         }
+        this.ReferencePlayer = this.PlayerArray[0];
     }
 
     NextTurn(): void{
@@ -114,6 +113,7 @@ export class main {
         }
         ps.initializePlayers();
         this.PlayerArray = ps.getPlayers();
+        this.InitializeQueue();
     }
 
     InitializeFieldArray(): void{
@@ -232,7 +232,7 @@ export class main {
     }
 
     async SetMortgageTest(){
-        let p: Player = new Player(false, "f");
+        let p: Player = new Player(false, "f", 0);
         this.playerInit(p);
         let repay = new setMortgage();
        await repay.event(p);
@@ -240,7 +240,7 @@ export class main {
 
 
     async RepayMortgageTest(){
-        let p: Player = new Player(false, "f");
+        let p: Player = new Player(false, "f", 0);
         this.playerInit(p);
         let repay = new RepayMortgage();
         await repay.event(p);
@@ -248,17 +248,17 @@ export class main {
 
     AuctionTest() {
         let aution: Auction = new Auction();
-        let player1 = new Player(false, "YEEEEEEEEEEET");
-        let player2 = new Player(false, "Guillaume");
-        let player3 = new Player(false, "Tina");
-        let player4 = new Player(false, "Bob");
+        let player1 = new Player(false, "YEEEEEEEEEEET", 0);
+        let player2 = new Player(false, "Guillaume", 1);
+        let player3 = new Player(false, "Tina", 2);
+        let player4 = new Player(false, "Bob", 3);
         let playerlist: Player[];
         playerlist = [player1, player2, player3, player4];
         aution.AuctionEvent(player2, playerlist, new Restplace());
     }
 
     async MortageTest() {
-        let p: Player = new Player(false, "f");
+        let p: Player = new Player(false, "f", 0);
         this.playerInit(p);
         for(let i=0;i<30;i++){
             var rand = Math.floor(Math.random() * Object.keys(Colors).length);
@@ -278,16 +278,16 @@ export class main {
     }
 
     async TradeTest(){
-        let p1:Player = new Player(false,"ad");
-        let p2:Player = new Player(false,"bc");
+        let p1:Player = new Player(false,"ad", 0);
+        let p2:Player = new Player(false,"bc", 1);
         this.playerInit(p1);
         this.playerInit(p2);
         await new Trade().event(p1,p2);
     }
 
     async BuyTest(){
-        let p: Player = new Player(false, "f");
-        let p2: Player = new Player(false,"yieks")
+        let p: Player = new Player(false, "f", 0);
+        let p2: Player = new Player(false,"yieks", 1)
         p.Money = 1000;
         let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
         prop.renovatiosAmmount = 3;
@@ -310,6 +310,7 @@ export class main {
     }
 
     async buttonEvent(){
+        let self = this;
         // show the start game modal
         $("#startGame").click(function() {
             $("#startGameModal").show();
@@ -331,6 +332,10 @@ export class main {
         $("#startMenuButton").click(function () {
             $("#startMenu").show();
             fallingCoins('body');
+        });
+        $("#rollButton").click(function(){
+            self.dice.roll();
+            self.ReferencePlayer.move(self.dice.total());
         });
     }
 }

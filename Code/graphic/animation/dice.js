@@ -2,15 +2,6 @@ var cube = document.getElementById('cube');
 var cube2 = document.getElementById('cube2');
 var rollButton = $("#rollButton");
 
-rollButton.click(function () {
-
-  // number1 and number2 are fixed numbers to test
-  var number1 = 5;
-  var number2 = 6;
-  rolldices(number1, number2)
-
-});
-
 function rolldices(numberDice1, numberDice2) {
   rollButton.prop("disabled", true);
   $("#dices").show();
