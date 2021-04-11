@@ -99,6 +99,7 @@ export class PlayerSelection{
             // @ts-ignore
             self.PlayerName[3] = document.getElementById("PlayerStatus4").value;
             self.StartTheGamePressed = true;
+            $("#lobbyModal").css("display", "none");
         });
         this.wait();
     }
