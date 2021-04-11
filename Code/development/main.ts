@@ -351,15 +351,14 @@ export class main {
         });
     }
 }
-new main().main();
-//new main().launch();
+//new main().main();
+new main().launch();
 
 /*$("#quizButton").click(()=>{
     $("#QuestionModal").show();
 });*/
 
-//$("#lobbyModal").show();
-//new main().main();
+new main().main();
 //new main().launch();
 
 
