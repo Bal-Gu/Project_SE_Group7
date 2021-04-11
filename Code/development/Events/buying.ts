@@ -38,7 +38,7 @@ export class BuyEvent {
 
         buybutton.click(function () {
             if (p.canBuy(price)){
-                p.buying(field,price,playerList);
+                p.buying(field,price);
                 field.owner = p;
             }
             $("#BuyingModal").css("display", "none");

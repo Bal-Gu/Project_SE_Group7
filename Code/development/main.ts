@@ -77,7 +77,7 @@ export class main {
     ShowPlayerMoney(){
         console.log("ShowPlayerMoney is called");
         this.StaticPlayerArray = this.PlayerArray.slice();
-
+        this.PlayerArray.forEach(player => player.PlayerArray = this.StaticPlayerArray);
 
         $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
         $("#b-coins-2").text(this.StaticPlayerArray[1].Money);

@@ -49,10 +49,9 @@ export class Player {
         return (this.Money - cost) > 0;
     }
 
-    buying(field: Field, amount:number, playerlist: Player[]): void{
+    buying(field: Field, amount:number): void{
         this.fieldsOwned.push(field);
         this.payAmmount(amount);
-        this.PlayerArray = playerlist;
         this.ShowPlayerMoney();
     }
 
@@ -99,10 +98,12 @@ export class Player {
 
     recieveMoney(ammount: number) {
         this.Money += ammount;
+        this.ShowPlayerMoney();
     }
 
     payAmmount(ammount: number) {
         this.Money -= ammount;
+        this.ShowPlayerMoney();
     }
     move(moveAction:number): void{
         if(this.currentposition + moveAction >= globals.MaxNumberField){
@@ -118,6 +119,7 @@ export class Player {
 
     startBonus(): void {
         this.Money += globals.payDay;
+        this.ShowPlayerMoney();
     }
 
 
