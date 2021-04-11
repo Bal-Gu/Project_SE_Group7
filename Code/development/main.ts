@@ -21,6 +21,7 @@ import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
+import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
 
@@ -352,20 +353,21 @@ export class main {
             $("#startMenu").show();
             fallingCoins('body');
         });
+        // to roll the dices
         $("#rollButton").click(function(){
             //handle the doubles
             self.dice.roll();
             self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
         });
+        // to test the quiz modal
+        $("#quizButton").click(async ()=>{
+            await new Quiz().event();
+        });
     }
 }
-//new main().main();
-//new main().launch();
 
-/*$("#quizButton").click(()=>{
-    $("#QuestionModal").show();
-});*/
+$("#lobbyModal").show();
 
 new main().main();
 //new main().launch();
