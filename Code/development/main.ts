@@ -41,9 +41,9 @@ export class main {
         this.InitializeFieldArray();
         await this.InitializePlayers();
         while (!this.GameEnded) {
-            //await this.EndOfATurn();
+            await this.EndOfATurn();
             this.NextTurn();
-            
+
 
             this.PlayerArray.forEach(
                 this.CheckWinCondition
@@ -351,15 +351,15 @@ export class main {
         });
     }
 }
-//new main().main();
-new main().launch();
-
-$("#quizButton").click(()=>{
-    $("#QuestionModal").show();
-});
-
-$("#lobbyModal").show();
 new main().main();
+//new main().launch();
+
+/*$("#quizButton").click(()=>{
+    $("#QuestionModal").show();
+});*/
+
+//$("#lobbyModal").show();
+//new main().main();
 //new main().launch();
 
 
