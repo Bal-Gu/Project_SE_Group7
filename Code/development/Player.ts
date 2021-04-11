@@ -1,6 +1,6 @@
 import {Field} from "./Fields/Field";
 import globals from "../globalVariable.json"
-
+declare var nextMoveLogic;
 export class Player {
     isBot : boolean;
     isGameOver:boolean;
@@ -15,9 +15,10 @@ export class Player {
     canAuction:boolean = true;
     name:string;
     queue: number;
+    ReferenceNumber: number;
+    //idea for number of move possible(maybe)
 
-
-    constructor(isBot: boolean ,name:string/*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot: boolean ,name:string, ReferenceNumber:number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
         this.Money = 1500;
         this.hasErasmusDispense = false;
@@ -27,6 +28,7 @@ export class Player {
         this.nrOfBus = 0;
         this.nrOfParking = 0;
         this.name = name;
+        this.ReferenceNumber = ReferenceNumber;
     }
 
    getName():string{
@@ -95,6 +97,7 @@ export class Player {
         if(this.currentposition + moveAction >= globals.MaxNumberField){
             this.startBonus();
         }
+        this.ReferenceNumber == 3 ? nextMoveLogic(this.currentposition, moveAction, "#position4"):this.ReferenceNumber == 2 ?  nextMoveLogic(this.currentposition, moveAction, "#position3") : this.ReferenceNumber == 1 ? nextMoveLogic(this.currentposition, moveAction, "#position2") : nextMoveLogic(this.currentposition, moveAction, "#position1");
         this.currentposition += (this.currentposition + moveAction) % globals.MaxNumberField;
     }
 
