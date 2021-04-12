@@ -65,7 +65,7 @@ export class Bus implements Field{
     }
 
     UpdateRentCost(player: Player): void{
-        this.rentCostFinal = this.PriceToPay[this.owner.nrOfBus-1];
+        this.rentCostFinal = this.PriceToPay[player.nrOfBus-1];
     }
 
     CanPayRent(player:Player): boolean{
