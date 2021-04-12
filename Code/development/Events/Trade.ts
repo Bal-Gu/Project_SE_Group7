@@ -112,8 +112,8 @@ export class Trade {
                 }
             }
         });
-        let trader1 = $("#traderinput1");
-        let trader2 = $("#traderinput2");
+        let trader1 = $("#inputLable1");
+        let trader2 = $("#inputLable2");
         //Exit button
         $(".close").click(() => {
             this.pressed = true;
@@ -137,18 +137,22 @@ export class Trade {
 
 
             modal.hide();
-            let valueForInit: number = Number(trader1.val());
-            let valueForTransfer: number = Number(trader1.val());
+            let valueForInit: number = Number(trader1.text());
+            let valueForTransfer: number = Number(trader2.text());
+            console.log(valueForInit);
+            console.log(valueForTransfer);
             init.recieveMoney(valueForTransfer);
             init.payAmmount(valueForInit);
             target.recieveMoney(valueForInit);
             target.payAmmount(valueForTransfer);
+            console.log(init.Money);
+            console.log(target.Money);
             //erasmus dispens
             if (this.ErasmusDispenseGiven1) {
                 target.tradeDispense(init);
             }
             if (this.ErasmusDispenseGiven2) {
-                init.tradeDispense(target)
+                init.tradeDispense(target);
             }
             //TODO iterate through such that people get their traded carts
             this.traderingRow2.forEach((value) => {
@@ -161,12 +165,14 @@ export class Trade {
             this.pressed = true;
 
         });
+        let trader1input = $("#traderinput1");
+        let trader2input = $("#traderinput2");
         //verifiy the 2 input fields no negativ and replace x by max if to much
-        trader1.change(() => {
-            this.tradingValidation(trader1, init, true);
+        trader1input.change(() => {
+            this.tradingValidation(trader1input, init, true);
         });
-        trader2.change(() => {
-            this.tradingValidation(trader2, target, false);
+        trader2input.change(() => {
+            this.tradingValidation(trader2input, target, false);
         });
 
         await this.wait();
