@@ -64,9 +64,18 @@ export class Player {
         for(let i = 0; i < this.fieldsOwned.length; i++){
             if(this.fieldsOwned[i].name == field.name){
                 player.fieldsOwned.push(field);
-                this.fieldsOwned = this.fieldsOwned.filter(ownedfield => this.fieldsOwned[i].name != field.name)
+                this.fieldsOwned = this.fieldsOwned.filter(() => this.fieldsOwned[i].name != field.name)
             }
         }
+    }
+
+    recieveDispense(){
+        this.hasErasmusDispense = true;
+    }
+
+    tradeDispense(player:Player){
+        this.hasErasmusDispense = false;
+        player.recieveDispense();
     }
 
     totalWorth():number{

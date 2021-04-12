@@ -1,31 +1,68 @@
 import {Player} from "../Player";
+import {Field} from "../Fields/Field";
+import {text} from "express";
+import {tsxRegex} from "ts-loader/dist/constants";
 
 export class Trade {
     private pressed: Boolean = false;
+    private traderingRow1: Field[] = [];
+    private traderingRow2: Field[] = [];
+    private traderingRow3: Field[] = [];
+    private traderingRow4: Field[] = [];
+
+    private ErasmusDispenseGiven1:boolean = false;
+    private ErasmusDispenseGiven2:boolean = false;
+
+
 
     async event(init: Player, target: Player) {
-
         let modal = $("#TradingModal");
         modal.show();
+
+
+
         $("#trader1").html(init.name);
         $("#trader2").html(target.name);
         //TODO only allow mortgage or unrenovated cards
 
         for (let i = 0; i < init.fieldsOwned.length; i++) {
-            if(init.fieldsOwned[i].renovatiosAmmount != undefined){
+            if (init.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
-                if(init.fieldsOwned[i].renovatiosAmmount > 0 ){
-                          continue;
+                if (init.fieldsOwned[i].renovatiosAmmount > 0) {
+                    continue;
                 }
             }
-            $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons'>" + init.fieldsOwned[i].name + "</button></td></tr>");
+
+            if (init.fieldsOwned[i].isMortgage) {
+                $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
+            } else {
+                $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + "</button></td></tr>");
+            }
         }
         for (let i = 0; i < target.fieldsOwned.length; i++) {
-            $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons'>"+ init.fieldsOwned[i].name + "</button></td></tr>");
+            if (init.fieldsOwned[i].renovatiosAmmount != undefined) {
+                // @ts-ignore
+                if (target.fieldsOwned[i].renovatiosAmmount > 0) {
+                    continue;
+                }
+            }
+            this.traderingRow1.push(target.fieldsOwned[i]);
+            if (target.fieldsOwned[i].isMortgage) {
+                $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
+            } else {
+                $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + "</button></td></tr>");
+            }
         }
 
-        //TODO replace knapi by the actual value the owner wants to give
-        //TODO color the buttons
+        if (target.hasErasmusDispense) {
+            $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+        }
+        if (init.hasErasmusDispense) {
+            $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+        }
+
+
+        let self = this;
         $(".tradingButtons").click(function () {
             // @ts-ignore
             const htmlToBeMoved = this.parentElement.parentElement;
@@ -34,41 +71,126 @@ export class Trade {
             if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
                 // @ts-ignore
                 $("#tradingButtonCollum2").append(htmlToBeMoved);
+                // @ts-ignore
+                if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                   self.ErasmusDispenseGiven1 = true;
+                }
+                // @ts-ignore
+                self.swap(htmlToBeMoved.textContent, self.traderingRow1, self.traderingRow2);
             } else { // @ts-ignore
                 if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum2") {
                     // @ts-ignore
+                    if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                        self.ErasmusDispenseGiven1 = false;
+                    }
+                    // @ts-ignore
                     $("#tradingButtonCollum1").append(htmlToBeMoved);
+                    // @ts-ignore
+                    self.swap(htmlToBeMoved.textContent, self.traderingRow2, self.traderingRow1);
                 } else { // @ts-ignore
                     if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum3") {
                         // @ts-ignore
                         $("#tradingButtonCollum4").append(htmlToBeMoved);
+                        // @ts-ignore
+                        if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                            self.ErasmusDispenseGiven2 = true;
+                        }
+                        // @ts-ignore
+                        self.swap(htmlToBeMoved.textContent, self.traderingRow4, self.traderingRow3);
+
                     } else { // @ts-ignore
                         if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum4") {
                             // @ts-ignore
                             $("#tradingButtonCollum3").append(htmlToBeMoved);
+                            // @ts-ignore
+                            if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                                self.ErasmusDispenseGiven2 = false;
+                            }
+                            // @ts-ignore
+                            self.swap(htmlToBeMoved.textContent, self.traderingRow3, self.traderingRow4);
                         }
                     }
                 }
             }
         });
+        let trader1 = $("#traderinput1");
+        let trader2 = $("#traderinput2");
         //Exit button
-        $(".close").click(()=>{
+        $(".close").click(() => {
             this.pressed = true;
             modal.hide();
+
+
         });
-        //TODO Approve button also remove boolean of ownable or set them. CHange owner and remove them
+
+        $("#approveButtonTrading").click(() => {
+
+            console.log("row2");
+            console.log("P1 has erasmus =>"+init.hasErasmusDispense);
+            this.traderingRow2.forEach((value) => {
+                console.log(value.name);
+            });
+            console.log("row3");
+            console.log("P2 has erasmus =>"+target.hasErasmusDispense);
+            this.traderingRow3.forEach((value) => {
+                console.log(value.name);
+            });
+
+
+            modal.hide();
+            let valueForInit: number = Number(trader1.val());
+            let valueForTransfer: number = Number(trader1.val());
+            init.recieveMoney(valueForTransfer);
+            init.payAmmount(valueForInit);
+            target.recieveMoney(valueForInit);
+            target.payAmmount(valueForTransfer);
+            //erasmus dispens
+            if(this.ErasmusDispenseGiven1){
+                target.tradeDispense(init);
+            }
+            if(this.ErasmusDispenseGiven2){
+                init.tradeDispense(target)
+            }
+            //TODO iterate through such that people get their traded carts
+            this.traderingRow2.forEach((value) => {
+               init.exchange(value,target);
+            });
+            this.traderingRow3.forEach((value) => {
+                target.exchange(value,init);
+            });
+
+            this.pressed = true
+
+        });
         //verifiy the 2 input fields no negativ and replace x by max if to much
-        let trader1 = $("#traderinput1");
-        trader1.change(()=>{
-            Trade.tradingValidation(trader1,init,true);
+        trader1.change(() => {
+            this.tradingValidation(trader1, init, true);
         });
-        let trader2 = $("#traderinput2");
-        trader2.change(()=>{
-            Trade.tradingValidation(trader2,target,false);
+        trader2.change(() => {
+            this.tradingValidation(trader2, target, false);
         });
 
         await this.wait();
     }
+
+    swap(textContent: string | null, traderingRow1: Field[], traderingRow2: Field[]) {
+        console.log(textContent);
+        if (textContent == undefined || textContent == "Erasmus Dispense") {
+            return;
+        }
+        let textTrimmed: string = textContent.split(" 💸")[0];
+        let f:Field | undefined = traderingRow1.find(element => element.name == textTrimmed);
+        if(f==undefined){
+            return;
+        }
+        traderingRow2.push(f);
+        traderingRow1.forEach( (item, index) => {
+            if(item === f) traderingRow1.splice(index,1);
+        });
+
+
+    }
+
     async wait() {
 
         while (!this.pressed) {
@@ -81,23 +203,19 @@ export class Trade {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    private static tradingValidation(trader1: JQuery<HTMLElement>, p:Player,first:boolean) {
+    tradingValidation(trader1: JQuery<HTMLElement>, p: Player, first: boolean) {
         let ammount = Number(trader1.val());
         trader1.val("");
-        let lable = first?$("#inputLable1"):$("#inputLable2");
-        if(isNaN(ammount)){
+        let lable = first ? $("#inputLable1") : $("#inputLable2");
+        if (isNaN(ammount)) {
             return;
-        }
-        else{
-            if(ammount>p.Money){
-                lable.html(p.Money+"");
-            }
-            else if(ammount<=0){
-                lable.html(0+"");
-            }
-            else{
-                let string = "<input class='tradingButtons'>"+ammount;
-                lable.html(ammount+"");
+        } else {
+            if (ammount > p.Money) {
+                lable.html(p.Money + "");
+            } else if (ammount <= 0) {
+                lable.html(0 + "");
+            } else {
+                lable.html(ammount + "");
             }
         }
     }

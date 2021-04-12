@@ -306,7 +306,19 @@ export class main {
         let p2:Player = new Player(false,"bc", 1);
         this.playerInit(p1);
         this.playerInit(p2);
-        await new Trade().event(p1,p2);
+        p1.hasErasmusDispense = true;
+        await new Trade().event(p1,p2)
+        console.log("P1");
+        console.log("P1 has erasmus =>"+p1.hasErasmusDispense);
+        p1.fieldsOwned.forEach((value) => {
+           console.log(value.name);
+        });
+        console.log("P2");
+        console.log("P2 has erasmus =>"+p2.hasErasmusDispense);
+        p2.fieldsOwned.forEach((value) => {
+           console.log(value.name);
+        });
+
     }
 
     async BuyTest(){
@@ -324,12 +336,12 @@ export class main {
 
         p.Money = 1000;
         let prop:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",100);
-        prop.renovatiosAmmount = 3;
+        prop.renovatiosAmmount = 0;
         prop.isMortgage = false;
         p.fieldsOwned.push(prop);
         let prop2:Properties = new Properties(Colors.Light_Blue, [1,2,3,4],10,"lel",10000);
-        prop2.renovatiosAmmount = 3;
-        prop2.isMortgage = false;
+        prop2.renovatiosAmmount = 0;
+        prop2.isMortgage = true;
         p.fieldsOwned.push(prop2);
     }
 
@@ -371,13 +383,16 @@ export class main {
             await new Quiz().event();
         });
     }
+    updateButtons(){
+
+    }
 }
 
-//new main().main();
-//new main().launch();
+$("#quizButton").click(()=>{
+    $("#QuestionModal").show();
+});
 
 $("#lobbyModal").show();
-
 new main().main();
 //new main().launch();
 
