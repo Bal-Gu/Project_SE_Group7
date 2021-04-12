@@ -241,5 +241,12 @@
       "3": "",
       "4": ""
     }
-  ]
+  ],
+  "Consequence":[
+  {
+    "Money": 199,
+    "Cards": "Test",
+    "Movement": 20
+  }
+]
 }
