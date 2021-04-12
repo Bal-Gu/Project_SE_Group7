@@ -36,7 +36,7 @@ export class main {
     ConseqDoubles: number = 0;
     GameEnded: boolean = false;
     TurnEnded: boolean = false;
-    played: number = 0;
+
 
     async main() {
         this.buttonEvent();
@@ -89,7 +89,6 @@ export class main {
 
     //Will wait for a player to play its turn
     async EndOfATurn() {
-        this.played = 0;
         while (!this.TurnEnded) {
             await new Promise(r => setTimeout(r, 500));
             console.log("waiting");
@@ -209,12 +208,13 @@ export class main {
         }
         if (double) {
             if (this.ConseqDoubles >= 2) {
-                this.ReferencePlayer.TurnsInPrison = 3;
+                this.ReferencePlayer.goToErasmus()
                 this.ConseqDoubles = 0;
             } else {
                 this.ConseqDoubles += 1;
             }
         } else {
+            $("#rollButton").hide()
             this.ConseqDoubles = 0;
         }
         this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
@@ -372,11 +372,7 @@ export class main {
             setTimeout(function () {
                 self.MakePlayerTurn();
             }, self.dice.total() * 500);
-            this.hidden = !self.dice.isdouble();
-            self.played += 1;
-            if(self.played == 3 && self.dice.isdouble()){
-                self.ReferencePlayer.goToErasmus();
-            }
+
 
         });
         // to test the quiz modal
