@@ -70,40 +70,42 @@ export class Trade {
             if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
                 // @ts-ignore
                 $("#tradingButtonCollum2").append(htmlToBeMoved);
+
                 // @ts-ignore
-                if (htmlToBeMoved.textContent == "Erasmus Dispense") {
+                if (htmlToBeMoved.textContent.indexOf("Erasmus Dispense") > -1) {
                     self.ErasmusDispenseGiven1 = true;
                 }
                 // @ts-ignore
                 self.swap(htmlToBeMoved.textContent, self.traderingRow1, self.traderingRow2);
             } else { // @ts-ignore
-                if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum2") {
+                if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum2") {
                     // @ts-ignore
-                    if (htmlToBeMoved.textContent == "Erasmus Dispense") {
+                    if (htmlToBeMoved.textContent.indexOf("Erasmus Dispense") > -1) {
                         self.ErasmusDispenseGiven1 = false;
+
                     }
                     // @ts-ignore
                     $("#tradingButtonCollum1").append(htmlToBeMoved);
                     // @ts-ignore
                     self.swap(htmlToBeMoved.textContent, self.traderingRow2, self.traderingRow1);
                 } else { // @ts-ignore
-                    if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum3") {
+                    if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum3") {
                         // @ts-ignore
                         $("#tradingButtonCollum4").append(htmlToBeMoved);
                         // @ts-ignore
-                        if (htmlToBeMoved.textContent == "Erasmus Dispense") {
-                            self.ErasmusDispenseGiven2 = true;
+                        if (htmlToBeMoved.textContent.indexOf("Erasmus Dispense") > -1) {
+                            self.ErasmusDispenseGiven2 = false;
                         }
                         // @ts-ignore
                         self.swap(htmlToBeMoved.textContent, self.traderingRow4, self.traderingRow3);
 
                     } else { // @ts-ignore
-                        if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum4") {
+                        if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum4") {
                             // @ts-ignore
                             $("#tradingButtonCollum3").append(htmlToBeMoved);
                             // @ts-ignore
-                            if (htmlToBeMoved.textContent == "Erasmus Dispense") {
-                                self.ErasmusDispenseGiven2 = false;
+                            if (htmlToBeMoved.textContent.indexOf("Erasmus Dispense") > -1) {
+                                self.ErasmusDispenseGiven2 = true;
                             }
                             // @ts-ignore
                             self.swap(htmlToBeMoved.textContent, self.traderingRow3, self.traderingRow4);
@@ -124,35 +126,19 @@ export class Trade {
 
         $("#approveButtonTrading").click(() => {
 
-            console.log("row2");
-            console.log("P1 has erasmus =>" + init.hasErasmusDispense);
-            this.traderingRow2.forEach((value) => {
-                console.log(value.name);
-            });
-            console.log("row3");
-            console.log("P2 has erasmus =>" + target.hasErasmusDispense);
-            this.traderingRow3.forEach((value) => {
-                console.log(value.name);
-            });
-
-
             modal.hide();
             let valueForInit: number = Number(trader1.text());
             let valueForTransfer: number = Number(trader2.text());
-            console.log(valueForInit);
-            console.log(valueForTransfer);
             init.recieveMoney(valueForTransfer);
             init.payAmmount(valueForInit);
             target.recieveMoney(valueForInit);
             target.payAmmount(valueForTransfer);
-            console.log(init.Money);
-            console.log(target.Money);
             //erasmus dispens
             if (this.ErasmusDispenseGiven1) {
-                target.tradeDispense(init);
+                init.tradeDispense(target);
             }
             if (this.ErasmusDispenseGiven2) {
-                init.tradeDispense(target);
+                target.tradeDispense(init);
             }
             //TODO iterate through such that people get their traded carts
             this.traderingRow2.forEach((value) => {
@@ -248,7 +234,7 @@ export class Trade {
 
                 let targetButton = $(targetButtonstring);
                 targetButton.click(() => {
-                    console.log("YEEEEEEEEEEEEEET");
+
                     this.targetPlayer = PlayerArray[i];
                     this.pressed = true;
                 });
