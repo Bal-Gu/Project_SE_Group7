@@ -1,14 +1,10 @@
-.grid-container-lobby {
-  padding-top: 10px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 2fr 1fr;
-      grid-template-columns: 2fr 1fr;
-  gap: 2vh;
-  height: 250px;
+#lobbyMenuTable {
+  width: 100%;
 }
 
 .PlayerSelectionbutton {
+  width: 100%;
+  height: 45px;
   font-size: 20px;
   background: #ce3c3c;
   cursor: pointer;
@@ -17,6 +13,8 @@
 }
 
 .inputLobby {
+  width: 100%;
+  height: 45px;
   font-size: 20px;
   background: wheat;
   text-align: justify;
@@ -45,7 +43,7 @@
   margin-top: 10px;
   font-size: 20px;
   width: 15vw;
-  padding: 15px;
+  padding: 13px;
   background: #a7a4a4;
   border: 1px solid grey;
   cursor: pointer;
