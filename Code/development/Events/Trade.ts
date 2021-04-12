@@ -1,7 +1,6 @@
 import {Player} from "../Player";
 import {Field} from "../Fields/Field";
-import {text} from "express";
-import {tsxRegex} from "ts-loader/dist/constants";
+
 
 export class Trade {
     private pressed: Boolean = false;
@@ -10,15 +9,15 @@ export class Trade {
     private traderingRow3: Field[] = [];
     private traderingRow4: Field[] = [];
 
-    private ErasmusDispenseGiven1:boolean = false;
-    private ErasmusDispenseGiven2:boolean = false;
+    private targetPlayer: Player;
 
+    private ErasmusDispenseGiven1: boolean = false;
+    private ErasmusDispenseGiven2: boolean = false;
 
 
     async event(init: Player, target: Player) {
         let modal = $("#TradingModal");
         modal.show();
-
 
 
         $("#trader1").html(init.name);
@@ -72,15 +71,15 @@ export class Trade {
                 // @ts-ignore
                 $("#tradingButtonCollum2").append(htmlToBeMoved);
                 // @ts-ignore
-                if(htmlToBeMoved.textContent == "Erasmus Dispense"){
-                   self.ErasmusDispenseGiven1 = true;
+                if (htmlToBeMoved.textContent == "Erasmus Dispense") {
+                    self.ErasmusDispenseGiven1 = true;
                 }
                 // @ts-ignore
                 self.swap(htmlToBeMoved.textContent, self.traderingRow1, self.traderingRow2);
             } else { // @ts-ignore
                 if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum2") {
                     // @ts-ignore
-                    if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                    if (htmlToBeMoved.textContent == "Erasmus Dispense") {
                         self.ErasmusDispenseGiven1 = false;
                     }
                     // @ts-ignore
@@ -92,7 +91,7 @@ export class Trade {
                         // @ts-ignore
                         $("#tradingButtonCollum4").append(htmlToBeMoved);
                         // @ts-ignore
-                        if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                        if (htmlToBeMoved.textContent == "Erasmus Dispense") {
                             self.ErasmusDispenseGiven2 = true;
                         }
                         // @ts-ignore
@@ -103,7 +102,7 @@ export class Trade {
                             // @ts-ignore
                             $("#tradingButtonCollum3").append(htmlToBeMoved);
                             // @ts-ignore
-                            if(htmlToBeMoved.textContent == "Erasmus Dispense"){
+                            if (htmlToBeMoved.textContent == "Erasmus Dispense") {
                                 self.ErasmusDispenseGiven2 = false;
                             }
                             // @ts-ignore
@@ -126,12 +125,12 @@ export class Trade {
         $("#approveButtonTrading").click(() => {
 
             console.log("row2");
-            console.log("P1 has erasmus =>"+init.hasErasmusDispense);
+            console.log("P1 has erasmus =>" + init.hasErasmusDispense);
             this.traderingRow2.forEach((value) => {
                 console.log(value.name);
             });
             console.log("row3");
-            console.log("P2 has erasmus =>"+target.hasErasmusDispense);
+            console.log("P2 has erasmus =>" + target.hasErasmusDispense);
             this.traderingRow3.forEach((value) => {
                 console.log(value.name);
             });
@@ -145,21 +144,21 @@ export class Trade {
             target.recieveMoney(valueForInit);
             target.payAmmount(valueForTransfer);
             //erasmus dispens
-            if(this.ErasmusDispenseGiven1){
+            if (this.ErasmusDispenseGiven1) {
                 target.tradeDispense(init);
             }
-            if(this.ErasmusDispenseGiven2){
+            if (this.ErasmusDispenseGiven2) {
                 init.tradeDispense(target)
             }
             //TODO iterate through such that people get their traded carts
             this.traderingRow2.forEach((value) => {
-               init.exchange(value,target);
+                init.exchange(value, target);
             });
             this.traderingRow3.forEach((value) => {
-                target.exchange(value,init);
+                target.exchange(value, init);
             });
 
-            this.pressed = true
+            this.pressed = true;
 
         });
         //verifiy the 2 input fields no negativ and replace x by max if to much
@@ -179,13 +178,13 @@ export class Trade {
             return;
         }
         let textTrimmed: string = textContent.split(" 💸")[0];
-        let f:Field | undefined = traderingRow1.find(element => element.name == textTrimmed);
-        if(f==undefined){
+        let f: Field | undefined = traderingRow1.find(element => element.name == textTrimmed);
+        if (f == undefined) {
             return;
         }
         traderingRow2.push(f);
-        traderingRow1.forEach( (item, index) => {
-            if(item === f) traderingRow1.splice(index,1);
+        traderingRow1.forEach((item, index) => {
+            if (item === f) traderingRow1.splice(index, 1);
         });
 
 
@@ -218,5 +217,43 @@ export class Trade {
                 lable.html(ammount + "");
             }
         }
+    }
+
+    async decidePlayer(ReferencePlayer: Player, PlayerArray: Player[]) {
+        let target = $("#TargetSelection");
+        let targetRow = $("#TargetEntry");
+        target.show();
+        let out = "<tr>";
+        for (let i = 0; i < PlayerArray.length; i++) {
+            if (PlayerArray[i] == ReferencePlayer) {
+
+            } else {
+                out += "<th><button class='buttonListDesign' id='targetButton" + i + "'>" + PlayerArray[i].name + "</button></th>";
+            }
+
+        }
+        out += "</tr>";
+        targetRow.html(out);
+        for (let i = 0; i < PlayerArray.length; i++) {
+            if (PlayerArray[i] == ReferencePlayer) {
+
+            } else {
+                let targetButtonstring = "#targetButton" + i;
+
+                let targetButton = $(targetButtonstring);
+                targetButton.click(() => {
+                    console.log("YEEEEEEEEEEEEEET");
+                    this.targetPlayer = PlayerArray[i];
+                    this.pressed = true;
+                });
+            }
+        }
+        await this.wait();
+        target.hide();
+    }
+
+    getTarger(): Player {
+        this.pressed = false;
+        return this.targetPlayer;
     }
 }
