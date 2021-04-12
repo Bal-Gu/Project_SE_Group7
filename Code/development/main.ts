@@ -370,6 +370,12 @@ export class main {
         $("#quizButton").click(async ()=>{
             await new Quiz().event();
         });
+        $("#sellMortageProButton").click(async function(){
+            await new setMortgage().event(self.ReferencePlayer);
+        });
+        $("#repayMortgageButton").click(function(){
+            new RepayMortgage().event(self.ReferencePlayer);
+        });
     }
 }
 
