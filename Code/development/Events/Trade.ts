@@ -62,10 +62,10 @@ export class Trade {
         }
 
         if (target.hasErasmusDispense) {
-            $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+            tradingButtonCollum4.append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
         }
         if (init.hasErasmusDispense) {
-            $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+            tradingButtonCollum1.append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
         }
 
 
@@ -93,7 +93,7 @@ export class Trade {
 
                     }
                     // @ts-ignore
-                    $("#tradingButtonCollum1").append(htmlToBeMoved);
+                    tradingButtonCollum1.append(htmlToBeMoved);
                     // @ts-ignore
                     self.swap(htmlToBeMoved.textContent.replace("[^\x20-\x7E]", ''), 2, 1);
                 } else { // @ts-ignore
