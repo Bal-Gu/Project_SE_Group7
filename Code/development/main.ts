@@ -373,7 +373,7 @@ export class main {
         });
         // to test the quiz modal
         $("#quizButton").click(async () => {
-            await new Quiz().event();
+            await new Quiz().event(this.ReferencePlayer);
         });
 
         $("#tradeButton").click(async () => {
