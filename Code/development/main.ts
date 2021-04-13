@@ -24,6 +24,7 @@ import $ from "jquery";
 import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
+declare var showHideStars;
 
 export class main {
     PlayerArray: Player[] = [];
@@ -363,6 +364,8 @@ export class main {
         $("#menuPlayButton").click(function () {
             $("#startMenu").hide();
             fallingCoins('body');
+            showHideStars(39,4,1);
+            //showHideStars(FieldNumber, howManyStars0-5, PlayerReference0-3)
         });
         // show the start menu
         $("#startMenuButton").click(function () {
@@ -377,7 +380,6 @@ export class main {
             setTimeout(function () {
                 self.MakePlayerTurn();
             }, self.dice.total() * 500);
-
 
         });
         // to test the quiz modal
@@ -432,7 +434,6 @@ export class main {
                 if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
                     cansell = true;
                 }
-
             }
         }
         if (cansell) {
