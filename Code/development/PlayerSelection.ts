@@ -13,6 +13,11 @@ export class PlayerSelection{
             let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i], i);
             this.PlayerArray.push(p);
         }
+        this.PlayerArray[0].Color = "orange";
+        this.PlayerArray[1].Color = "rgb(22, 22, 22)";
+        this.PlayerArray[2].Color = "#cccc4c";
+        this.PlayerArray[3].Color = "red";
+
     }
     async event(){
         let self = this;

@@ -77,13 +77,21 @@ export class main {
     }
 
     ShowPlayerMoney() {
+
         this.StaticPlayerArray = this.PlayerArray.slice();
         this.PlayerArray.forEach(player => player.PlayerArray = this.StaticPlayerArray);
-
+        $("#player-1").text(this.StaticPlayerArray[0].name);
         $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
+        $("#player-1").css("background-color", this.StaticPlayerArray[0].Color);
+        $("#player-2").text(this.StaticPlayerArray[1].name);
         $("#b-coins-2").text(this.StaticPlayerArray[1].Money);
+        $("#player-2").css("background-color", this.StaticPlayerArray[1].Color);
+        $("#player-3").text(this.StaticPlayerArray[2].name);
         $("#b-coins-3").text(this.StaticPlayerArray[2].Money);
+        $("#player-3").css("background-color", this.StaticPlayerArray[2].Color);
+        $("#player-4").text(this.StaticPlayerArray[3].name);
         $("#b-coins-4").text(this.StaticPlayerArray[3].Money);
+        $("#player-4").css("background-color", this.StaticPlayerArray[3].Color);
     }
 
     //Will wait for a player to play its turn
@@ -216,7 +224,8 @@ export class main {
             $("#rollButton").hide()
             this.ConseqDoubles = 0;
         }
-        this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
+        //this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
+        console.log(this.StaticPlayerArray[0].name + " " + this.StaticPlayerArray[1].name + " " + this.StaticPlayerArray[2].name + " " + this.StaticPlayerArray[3].name + " ");
         this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
     }
 
@@ -389,6 +398,26 @@ export class main {
         $("#repayMortgageButton").click(function () {
             new RepayMortgage().event(self.ReferencePlayer);
             self.updateButtons(self.ReferencePlayer);
+        });
+
+        $("#RemoveMoneyButton").click( function(){
+            self.ReferencePlayer.Money = 0;
+            self.ReferencePlayer.recieveMoney(0);
+        });
+        $("#Add500Money").click( function(){
+            self.ReferencePlayer.recieveMoney(500);
+        });
+        $("#Removefield").click( function(){
+            self.ReferencePlayer.fieldsOwned.pop();
+        });
+        $("#Addfield").click( function(){
+            self.ReferencePlayer.receive(self.FieldArray[3]);
+        });
+        $("#MoveToTax").click( function(){
+            self.ReferencePlayer.move(4);
+            setTimeout(function () {
+                self.MakePlayerTurn();
+            }, 2000);
         });
     }
 

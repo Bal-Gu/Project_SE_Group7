@@ -18,6 +18,7 @@ export class Player {
     queue: number;
     ReferenceNumber: number;
     PlayerArray: Player[];
+    Color: string;
     //idea for number of move possible(maybe)
 
     constructor(isBot: boolean ,name:string, ReferenceNumber:number/*, pawn: Pawn, Array: Property*/) {
