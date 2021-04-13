@@ -206,6 +206,7 @@ $backgroundColor : #79ad8c;
 
 .sm-box-yellow{
     background-color: $yellow;
+    
 }
 
 .sm-box-blue{
@@ -289,4 +290,41 @@ $backgroundColor : #79ad8c;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.555);
 }
- 
+
+.sm-box-blue .star, .sm-box-green .star, .sm-box-orange .star, .sm-box-pink .star {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-top: 3px;
+  visibility: hidden; /* Delete this to see stars */
+}
+
+.sm-box-pink .star, .sm-box-orange .star {
+  transform: rotate(-40deg);
+}
+
+.sm-box-lightBlue .star, .sm-box-brown .star {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-left: 103px;
+  margin-bottom: 3px;
+  transform: rotate(80deg);
+  visibility: hidden; /* Delete this to see stars */
+}
+
+.sm-box-red .star, .sm-box-yellow .star {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 2.5px;
+  margin-left: 2px;
+  transform: rotate(-80deg);
+  visibility: hidden; /* Delete this to see stars */
+}
+
+
+
+
+
+
