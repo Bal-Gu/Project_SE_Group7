@@ -300,19 +300,16 @@ export class main {
         let p2: Player = new Player(false, "bc", 1);
         this.playerInit(p1);
         this.playerInit(p2);
-        p1.hasErasmusDispense = true;
+        p1.fieldsOwned[0].name = "aaaa";
+        p1.fieldsOwned[1].name = "bbbb";
+        p2.fieldsOwned[0].name = "cccc";
+        p2.fieldsOwned[1].name = "dddd";
+        p2.hasErasmusDispense = true;
         await new Trade().event(p1, p2)
         console.log("P1");
-        console.log("P1 has erasmus =>" + p1.hasErasmusDispense);
-        p1.fieldsOwned.forEach((value) => {
-            console.log(value.name);
-        });
+        console.log("P1 has erasmus =>" + p1.fieldsOwned);
         console.log("P2");
-        console.log("P2 has erasmus =>" + p2.hasErasmusDispense);
-        p2.fieldsOwned.forEach((value) => {
-            console.log(value.name);
-        });
-
+        console.log("P2 has erasmus =>" + p2.fieldsOwned);
     }
 
     async BuyTest() {

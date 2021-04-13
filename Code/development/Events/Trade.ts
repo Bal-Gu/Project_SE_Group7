@@ -31,7 +31,7 @@ export class Trade {
                     continue;
                 }
             }
-
+            this.traderingRow1.push(init.fieldsOwned[i]);
             if (init.fieldsOwned[i].isMortgage) {
                 $("#tradingButtonCollum1").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
             } else {
@@ -45,7 +45,7 @@ export class Trade {
                     continue;
                 }
             }
-            this.traderingRow1.push(target.fieldsOwned[i]);
+            this.traderingRow4.push(target.fieldsOwned[i]);
             if (target.fieldsOwned[i].isMortgage) {
                 $("#tradingButtonCollum4").append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
             } else {
@@ -76,7 +76,7 @@ export class Trade {
                     self.ErasmusDispenseGiven1 = true;
                 }
                 // @ts-ignore
-                self.swap(htmlToBeMoved.textContent, self.traderingRow1, self.traderingRow2);
+                self.swap(htmlToBeMoved.textContent.replace("[^\x20-\x7E]", ''), 1, 2);
             } else { // @ts-ignore
                 if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum2") {
                     // @ts-ignore
@@ -87,7 +87,7 @@ export class Trade {
                     // @ts-ignore
                     $("#tradingButtonCollum1").append(htmlToBeMoved);
                     // @ts-ignore
-                    self.swap(htmlToBeMoved.textContent, self.traderingRow2, self.traderingRow1);
+                    self.swap(htmlToBeMoved.textContent.replace("[^\x20-\x7E]", ''), 2, 1);
                 } else { // @ts-ignore
                     if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum3") {
                         // @ts-ignore
@@ -97,7 +97,7 @@ export class Trade {
                             self.ErasmusDispenseGiven2 = false;
                         }
                         // @ts-ignore
-                        self.swap(htmlToBeMoved.textContent, self.traderingRow4, self.traderingRow3);
+                        self.swap(htmlToBeMoved.textContent.replace("[^\x20-\x7E]", ''), 3, 4);
 
                     } else { // @ts-ignore
                         if (this.parentElement.parentElement.parentElement.id === "tradingButtonCollum4") {
@@ -108,7 +108,7 @@ export class Trade {
                                 self.ErasmusDispenseGiven2 = true;
                             }
                             // @ts-ignore
-                            self.swap(htmlToBeMoved.textContent, self.traderingRow3, self.traderingRow4);
+                            self.swap(htmlToBeMoved.textContent.replace("[^\x20-\x7E]", ''), 4, 3);
                         }
                     }
                 }
@@ -164,22 +164,61 @@ export class Trade {
         await this.wait();
     }
 
-    swap(textContent: string | null, traderingRow1: Field[], traderingRow2: Field[]) {
+    swap(textContent: string | null, r1: number, r2: number) {
         console.log(textContent);
+        let Row1:Field[];
+        switch (r1) {
+            case 1:
+                Row1 = this.traderingRow1;
+                break;
+            case 2:
+                Row1 = this.traderingRow2;
+                break;
+            case 3:
+                Row1 = this.traderingRow3;
+                break;
+            default:
+                Row1 = this.traderingRow4;
+                break;
+        }
+
+        let Row2:Field[];
+        switch (r2) {
+            case 1:
+                Row2 = this.traderingRow1;
+                break;
+            case 2:
+                Row2 = this.traderingRow2;
+                break;
+            case 3:
+                Row2 = this.traderingRow3;
+                break;
+            default:
+                Row2 = this.traderingRow4;
+                break;
+        }
+
+
+
         if (textContent == undefined || textContent == "Erasmus Dispense") {
             return;
         }
-        let textTrimmed: string = textContent.split(" 💸")[0];
-        let f: Field | undefined = traderingRow1.find(element => element.name == textTrimmed);
+        let textTrimmed: string = textContent.replace(" 💸","");
+        console.log(textTrimmed);
+        console.log(Row1);
+        let f: Field | undefined = Row1.find(element => textTrimmed.includes(element.name));
         if (f == undefined) {
+            console.log("No f");
             return;
         }
-        traderingRow2.push(f);
-        traderingRow1.forEach((item, index) => {
-            if (item === f) traderingRow1.splice(index, 1);
+        Row2.push(f);
+        Row1.forEach((item, index) => {
+            if (item === f) Row1.splice(index, 1);
         });
-
-
+        console.log(this.traderingRow1);
+        console.log(this.traderingRow2);
+        console.log(this.traderingRow3);
+        console.log(this.traderingRow4);
     }
 
     async wait() {
