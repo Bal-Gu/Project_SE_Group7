@@ -10,7 +10,8 @@ export interface Field{
   renovatiosAmmount?:number;
   renovationscosts?:number;
   color?:Colors;
-  isMortgage?:Boolean;
+  isMortgage?:boolean;
+  hasAll?:boolean;
   Event(player:Player,playerList:Player[]):void;
   CanBuy(player:Player):boolean;
 }
