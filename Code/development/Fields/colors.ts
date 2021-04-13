@@ -4,7 +4,7 @@ export enum Colors {
     Red="#FF0000",
     Brown="#472001",
     Light_Blue="#82EEFD",
-    Purplem="#800080",
+    Purple="#800080",
     Orange="#E56717",
     Blue="#0000FF",
     default="#000000"

@@ -16,42 +16,42 @@
     },
     {
       "name": "Halles d’Essais Ingénieurs",
-      "color": "Light Blue",
+      "color": "Light_Blue",
       "initialprice": 100,
       "pricetopay": [6, 30, 90, 270, 400, 550],
       "renovationscost": 50
     },
     {
       "name": "Luxembourg Institute of Science and Technology",
-      "color": "Light Blue",
+      "color": "Light_Blue",
       "initialprice": 100,
       "pricetopay": [6, 30, 90, 270, 400, 550],
       "renovationscost": 50
     },
     {
       "name": "Maison du Nombre",
-      "color": "Light Blue",
+      "color": "Light_Blue",
       "initialprice": 120,
       "pricetopay": [8, 40, 100, 300, 450, 600],
       "renovationscost": 50
     },
     {
       "name": "Kinepolis",
-      "color": "Pink",
+      "color": "Purple",
       "initialprice": 140,
       "pricetopay": [10, 50, 150, 450, 625, 750],
       "renovationscost": 100
     },
     {
       "name": "Rockhal",
-      "color": "Pink",
+      "color": "Purple",
       "initialprice": 140,
       "pricetopay": [10, 50, 150, 450, 625, 750],
       "renovationscost": 100
     },
     {
       "name": "Belval Plaza",
-      "color": "Pink",
+      "color": "Purple",
       "initialprice": 160,
       "pricetopay": [12, 60, 180, 500, 700, 900],
       "renovationscost": 100
@@ -142,14 +142,14 @@
     },
     {
       "name": "Luxembourg Learning Center",
-      "color": "Dark Blue",
+      "color": "Blue",
       "initialprice": 350,
       "pricetopay": [35, 175, 500, 1100, 1300, 1500],
       "renovationscost": 200
     },
     {
       "name": "Maison du savoir",
-      "color": "Dark Blue",
+      "color": "Blue",
       "initialprice": 400,
       "pricetopay": [50, 200, 600, 1400, 1700, 2000],
       "renovationscost": 200
