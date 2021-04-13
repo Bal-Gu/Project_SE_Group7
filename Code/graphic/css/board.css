@@ -30,19 +30,19 @@
 }
 
 .monopoly-info #player-1 {
-  background-color: red;
+  background-color: orange;
 }
 
 .monopoly-info #player-2 {
-  background-color: green;
+  background-color: #161616;
 }
 
 .monopoly-info #player-3 {
-  background-color: blue;
+  background-color: #cccc4c;
 }
 
 .monopoly-info #player-4 {
-  background-color: violet;
+  background-color: red;
 }
 
 #buttonList h2 {
@@ -128,6 +128,8 @@
   width: fit-content;
   width: -moz-fit-content;
   margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 8px 5px #e1dfdf;
+          box-shadow: 0px 0px 8px 5px #e1dfdf;
 }
 
 .board .center {
@@ -351,7 +353,7 @@
 }
 
 .sm-box-yellow {
-  background-color: yellow;
+  background-color: #cccc4c;
 }
 
 .sm-box-blue {

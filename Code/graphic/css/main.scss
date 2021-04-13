@@ -8,6 +8,41 @@ body {
     background-image: url("./../images/background.jpg");
 }
 
+.buttonDesign{
+    font-size: 18px;
+    border: 3px solid red;
+    color: rgb(66, 66, 66);
+    box-shadow: 2px 2px 5px grey;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.buttonDesign:hover{
+    background-color: red;
+    color: white;
+    border-color: rgb(255, 55, 55);
+}
+
+.buttonDesign:active{
+    background-color: rgb(207, 0, 0);
+    color: white;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px white;
+}
+
+.buttonDesign:active:disabled {
+    background-color: rgb(65, 65, 65);
+    color: rgb(44, 44, 44);
+    border-color: #2e1515;
+}
+
+.buttonDesign:disabled {
+    background-color: rgb(65, 65, 65);
+    color: rgb(92, 92, 92);
+    border-color: #362323;
+}
+
 @-webkit-keyframes AnimationName {
 0% {
     background-position: 0% 75%;
