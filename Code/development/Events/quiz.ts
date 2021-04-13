@@ -1,5 +1,6 @@
 import questions from "../../Quiz.json"
 import $ from "jquery";
+import {Player} from "../Player";
 
 export class Quiz {
     goodanswer:number = 0
@@ -28,7 +29,7 @@ export class Quiz {
 
     }
 
-    async event() {
+    async event(p: Player) {
         this.pressed = false;
         let finalQuizArray = questions.Quiz[Math.floor(Math.random() * questions.Quiz.length)];
         this.goodanswerString = finalQuizArray["1"];
@@ -61,30 +62,51 @@ export class Quiz {
             button.show();
             button.prop("disable", false);
             button.text(finalQuizArray[indexarray[i]]);
-            this.clicks(button, i, modal);
+            this.clicks(button, i, modal, p);
         }
         await this.wait();
 
     }
 
 
-    clicks(button:JQuery<String>,index:number,modal:JQuery){
+    clicks(button:JQuery<String>,index:number,modal:JQuery, p: Player){
+        console.log("This event is being called by: " + p.name);
         let self = this;
         button.click(async function () {
             if(self.goodanswer == index){
-                console.log("You got it");
-                await self.exit("Move tree cases back");
+                console.log("Hello this is player " + p.name)
+                let goodconsequence = questions.Consequences[Math.floor(Math.random() * questions.Consequences.length)];
+
+                if(goodconsequence.Type == "Money"){
+                    let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
+                    p.recieveMoney(reward);
+                    await self.exit("You were right, you receive: " + reward + " B-Coins");
+                }
+                else if(goodconsequence.Type == "Movement"){
+                    let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
+                    p.move(reward);
+                    await self.exit("You were right, you can move: " + reward + " Cases");
+                }
+
                 self.pressed = true;
                 modal.hide();
             }
             else{
+                let badconsequence = questions.Consequences[Math.floor(Math.random() * questions.Consequences.length)];
 
-                console.log("Wrong");
-                await self.exit("Move to the yeet prison")
+                if(badconsequence.Type == "Money"){
+                    let penalty = badconsequence[Math.floor(Math.random() * 4).toString()]
+                    p.payAmmount(penalty);
+                    await self.exit("You were wrong you loose: " + penalty + " B-Coins");
+                }
+                else if(badconsequence.Type == "Movement"){
+                    await self.exit("You were wrong but moving backwards is not yet implemented so you're lucky this time");
+                }
+
                 self.pressed = true;
                 modal.hide();
-
             }
+            $(this).off("click");
         });
     }
 

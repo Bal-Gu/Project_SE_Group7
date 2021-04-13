@@ -11,9 +11,11 @@ export class Parking implements Field{
     PriceToPayMultiplier:number[] = [4,10];
     rentCostFinal: number = 0;
     isMortgage:boolean = false;
+    hasAll:boolean;
 
     constructor(name: string){
         this.name = name;
+        this.hasAll = false;
     }
 
     async Event(player: Player,playerList:Player[]): Promise<void> {
@@ -61,6 +63,9 @@ export class Parking implements Field{
         return this.owner.canBuy(75 * 1.10);
     }
 
+    UpdateFields(){
+
+    }
 
     CanBuy(player: Player): boolean {
         return player.Money > this.initialPrice;

@@ -382,7 +382,7 @@ export class main {
         });
         // to test the quiz modal
         $("#quizButton").click(async () => {
-            await new Quiz().event();
+            await new Quiz().event(this.ReferencePlayer);
         });
 
         $("#tradeButton").click(async () => {
@@ -395,8 +395,8 @@ export class main {
             await new setMortgage().event(self.ReferencePlayer);
             self.updateButtons(self.ReferencePlayer);
         });
-        $("#repayMortgageButton").click(function () {
-            new RepayMortgage().event(self.ReferencePlayer);
+        $("#repayMortgageButton").click(async function () {
+            await new RepayMortgage().event(self.ReferencePlayer);
             self.updateButtons(self.ReferencePlayer);
         });
 
@@ -465,7 +465,7 @@ export class main {
         for (let i = 0; i < p.fieldsOwned.length; i++) {
             if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
-                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations) {
+                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations && p.fieldsOwned[i].hasAll) {
                     cansell = true;
                 }
 

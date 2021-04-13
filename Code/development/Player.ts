@@ -1,6 +1,11 @@
 import {Field} from "./Fields/Field";
 import globals from "../globalVariable.json"
 import $ from "jquery";
+import {Bus} from "./Fields/Bus";
+import {Parking} from "./Fields/Parking";
+import {Properties} from "./Fields/Properties";
+import {Colors} from "./Fields/colors";
+
 declare var nextMoveLogic;
 export class Player {
     isBot : boolean;
@@ -46,6 +51,46 @@ export class Player {
 
     }
 
+
+    updateFields(){
+        this.nrOfBus = 0;
+        this.nrOfParking = 0;
+        let map = new Map<Colors, number>();
+        for(let i=0;i<Object.keys(Colors).length;i++){
+            map.set(<Colors>Object.keys(Colors)[i],0);
+        }
+        for(let i = 0;i<this.fieldsOwned.length;i++){
+            if(this.fieldsOwned[i] instanceof Bus){
+                this.nrOfBus++;
+            }
+            else if (this.fieldsOwned[i] instanceof  Parking){
+                this.nrOfParking++;
+            }
+            else if(this.fieldsOwned[i] instanceof Properties) {
+                let color = this.fieldsOwned[i].color!;
+                map.set(color,map.get(color)!+1);
+            }
+
+        }
+        for(let i= 0;i<this.fieldsOwned.length;i++){
+            let color:Colors = this.fieldsOwned[i].color!;
+
+            let index:number = 0;
+            for(let j=0;j<Object.keys(Colors).length;j++){
+                if(<Colors>Object.keys(Colors)[j] == color){
+                    index = j;
+                    break;
+                }
+            }
+            this.updateOwnAll(globals.colors[index] == map.get(color),this.fieldsOwned[i]);
+        }
+
+
+    }
+    updateOwnAll(owns:boolean,field:Field){
+        field.hasAll = owns;
+    }
+
     canBuy(cost: number): boolean {
         return (this.Money - cost) > 0;
     }
@@ -53,6 +98,7 @@ export class Player {
     buying(field: Field, amount:number): void{
         this.fieldsOwned.push(field);
         this.payAmmount(amount);
+        this.updateFields();
         this.ShowPlayerMoney();
     }
 
@@ -69,6 +115,7 @@ export class Player {
                 break;
             }
         }
+        this.updateFields();
     }
 
     recieveDispense(){
