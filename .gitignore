@@ -15,3 +15,5 @@ node_modules/\@babel/code-frame/lib/
 node_modules/*
 
 .idea/watcherTasks.xml
+
+public/*

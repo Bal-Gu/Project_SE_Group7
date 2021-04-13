@@ -19,6 +19,7 @@ export class Properties implements Field{
     renovationscosts:number;
 
 
+
     constructor(color:Colors,pricetopay:number[],renovationscosts:number,name:string,initialprice:number) {
         this.initialPrice = initialprice;
         this.color = color;
@@ -28,6 +29,7 @@ export class Properties implements Field{
         this.isMortgage = false;
         this.name = name;
         this.renovationscosts = renovationscosts;
+        let buyevent = new BuyEvent;
     }
 
 

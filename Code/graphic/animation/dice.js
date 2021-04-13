@@ -2,40 +2,31 @@ var cube = document.getElementById('cube');
 var cube2 = document.getElementById('cube2');
 var rollButton = $("#rollButton");
 
-rollButton.click(function () {
-
-  // number1 and number2 are fixed numbers to test
-  var number1 = 5;
-  var number2 = 6;
-  rolldices(number1, number2)
-
-});
-
 function rolldices(numberDice1, numberDice2) {
   rollButton.prop("disabled", true);
   $("#dices").show();
-  rollButton
+
   var xRand = getRandom(numberDice1)[0];
   var yRand = getRandom(numberDice1)[1];
   var xRand2 = getRandom(numberDice2)[0];
   var yRand2 = getRandom(numberDice2)[1];
 
-  xRand = xRand + (Math.floor(Math.random() * 3) + 1) * 360;
-  yRand = yRand + (Math.floor(Math.random() * 3) + 1) * 360;
-  xRand2 = xRand2 + (Math.floor(Math.random() * 3) + 1) * 360;
-  yRand2 = yRand2 + (Math.floor(Math.random() * 3) + 1) * 360;
+  xRand = xRand + (Math.floor(Math.random() * 3) + 2) * 360;
+  yRand = yRand + (Math.floor(Math.random() * 3) + 2) * 360;
+  xRand2 = xRand2 + (Math.floor(Math.random() * 3) + 2) * 360;
+  yRand2 = yRand2 + (Math.floor(Math.random() * 3) + 2) * 360;
 
   setTimeout(function () {
     cube.style = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
     cube.style.transform = 'rotateX(' + xRand + 'deg) rotateY(' + yRand + 'deg)';
     cube2.style = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)';
     cube2.style.transform = 'rotateX(' + xRand2 + 'deg) rotateY(' + yRand2 + 'deg)';
-  }, 2000);
+  }, 20);
 
   setTimeout(function () {
     $("#dices").hide();
     rollButton.prop("disabled", false);
-  }, 10000);
+  }, 7000);
 }
 
 function getRandom(max) {

@@ -1,12 +1,12 @@
-function gimmick(el) {
-    var exists = document.getElementById("gimmick")
+function fallingCoins(el) {
+    const exists = document.getElementById("gimmick");
     if (exists) {
         exists.parentNode.removeChild(exists);
         return false;
     }
 
-    var element = document.querySelector(el);
-    var canvas = document.createElement('canvas'),
+    const element = document.querySelector(el);
+    let canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         focused = false;
 
@@ -14,7 +14,7 @@ function gimmick(el) {
     canvas.height = window.innerHeight;
     canvas.id = 'gimmick'
 
-    var coin = new Image();
+    const coin = new Image();
     coin.src = './graphic/images/coin.png'
     // 440 wide, 40 high, 10 states
     coin.onload = function () {
@@ -22,7 +22,7 @@ function gimmick(el) {
         focused = true;
         drawloop();
     }
-    var coins = []
+    const coins = [];
 
     function drawloop() {
         if (focused) {
@@ -40,12 +40,12 @@ function gimmick(el) {
                 state: Math.random() * 10 | 0
             })
         }
-        var i = coins.length
+        let i = coins.length;
         while (i--) {
-            var x = coins[i].x
-            var y = coins[i].y
-            var s = coins[i].s
-            var state = coins[i].state
+            const x = coins[i].x;
+            const y = coins[i].y;
+            const s = coins[i].s;
+            const state = coins[i].state;
             coins[i].state = (state > 9) ? 0 : state + 0.1
             coins[i].dy += 0.3
             coins[i].y += coins[i].dy
@@ -57,9 +57,4 @@ function gimmick(el) {
             }
         }
     }
-
 }
-
-$("#dropCoins").click(function () {
-    gimmick('body');
-});

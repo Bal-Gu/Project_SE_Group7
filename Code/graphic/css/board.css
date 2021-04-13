@@ -67,6 +67,7 @@
 }
 
 .buttonListDesign {
+  display: block;
   width: 100%;
   font-size: 18px;
   border-radius: 5px;
@@ -90,6 +91,18 @@
   border-color: white;
   -webkit-box-shadow: 0px 0px 15px white;
           box-shadow: 0px 0px 15px white;
+}
+
+.buttonListDesign:active:disabled {
+  background-color: #414141;
+  color: #2c2c2c;
+  border-color: #2e1515;
+}
+
+.buttonListDesign:disabled {
+  background-color: #414141;
+  color: #5c5c5c;
+  border-color: #362323;
 }
 
 * {

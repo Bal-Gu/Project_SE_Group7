@@ -6,7 +6,6 @@ import {Auction} from "./Auction";
 export class BuyEvent {
     private pressed: Boolean = false;
     async event(p:Player,price:number,field:Field,playerList:Player[]){
-
         let modal = document.getElementById("BuyingModal");
         let buybutton = $("#Buy");
         let Autionbutton = $("#Auction")
@@ -36,13 +35,15 @@ export class BuyEvent {
 
         // the tree buttons inside the modal
 
-        buybutton.click(function () {
+        buybutton.on("click", function(){
+            console.log("nb")
             if (p.canBuy(price)){
                 p.buying(field,price);
                 field.owner = p;
             }
             $("#BuyingModal").css("display", "none");
             self.pressed = true;
+            $(this).off("click");
         });
 
         Autionbutton.click(async function () {

@@ -45,7 +45,7 @@
 <div class='main-grid'>
     <div class='left-grid'>
         <div class="monopoly-info">
-            <button id="myBtn">Start Game</button>
+            <button id="startGame">Start Game</button>
             <p>Turn:
                 <span id="round-counter">0</span>/-
             </p>
@@ -64,7 +64,7 @@
             <div class="player" id="player-4">4</div>
             <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
         </div>
-        <div id="myModal" class="modal" style="display: none">
+        <div id="startGameModal" class="modal" style="display: none">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
@@ -81,34 +81,54 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
-                    <h2>Lobby</h2>
+                    <h2>Monopoly Belval Edition</h2>
                 </div>
                 <div class="modal-body">
-                    <header>
-                        <h1>Monopoly Belval Edition</h1>
-                    </header>
-                    <div class="grid-container">
-                        <Button class="PlayerSelectionbutton" id="PlayerButton1">Player 1(Click on me)
-                        </Button>
-                        <input type="text" id="PlayerStatus1" placeholder="Your nickname.."
-                               value="Bot Player 1"
-                               disabled>
-                        <Button class="PlayerSelectionbutton" id="PlayerButton2">Player 2(Click on me)
-                        </Button>
-                        <input type="text" id="PlayerStatus2" placeholder="Your nickname.."
-                               value="Bot Player 2"
-                               disabled>
-                        <Button class="PlayerSelectionbutton" id="PlayerButton3">Player 3(Click on me)
-                        </Button>
-                        <input type="text" id="PlayerStatus3" placeholder="Your nickname.."
-                               value="Bot Player 3"
-                               disabled>
-                        <Button class="PlayerSelectionbutton" id="PlayerButton4">Player 4(Click on me)
-                        </Button>
-                        <input type="text" id="PlayerStatus4" placeholder="Your nickname.."
-                               value="Bot Player 4"
-                               disabled>
-                    </div>
+                    <table id="lobbyMenuTable">
+                        <tr>
+                            <td>
+                                <Button class="PlayerSelectionbutton" id="PlayerButton1">Player 1(Click on me)
+                                </Button>
+                            </td>
+                            <td>
+                                <input class='inputLobby' type="text" id="PlayerStatus1" placeholder="Your nickname.."
+                                       value="Bot Player 1" disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Button class="PlayerSelectionbutton" id="PlayerButton2">Player 2(Click on me)
+                                </Button>
+                            </td>
+                            <td>
+                                <input class='inputLobby' type="text" id="PlayerStatus2"
+                                       placeholder="Your nickname.."
+                                       value="Bot Player 2" disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Button class="PlayerSelectionbutton" id="PlayerButton3">Player 3(Click on me)
+                                </Button>
+                            </td>
+                            <td>
+                                <input class='inputLobby' type="text" id="PlayerStatus3"
+                                       placeholder="Your nickname.."
+                                       value="Bot Player 3" disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Button class="PlayerSelectionbutton" id="PlayerButton4">Player 4(Click on me)
+                                </Button>
+                            </td>
+                            <td>
+                                <input class='inputLobby' type="text" id="PlayerStatus4"
+                                       placeholder="Your nickname.."
+                                       value="Bot Player 4" disabled>
+                            </td>
+                        </tr>
+                    </table>
                     <div class="ButtonContainer">
                         <Button class="StartBoxButton" id="StartButton">Start Game</Button>
                     </div>
@@ -143,6 +163,14 @@
                 </div>
             </div>
         </div>
+        <div id="TargetSelection" class="modal" style="display: none">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <table id="TargetEntry"></table>
+                </div>
+            </div>
+
+        </div>
         <div id="TradingModal" class="modal" style="display: none">
             <div class="modal-content">
                 <div class="modal-header">
@@ -154,15 +182,14 @@
                         <div id="trader1" class="grid-item-trading item1-trading">Name 1</div>
                         <div id="trader2" class="grid-item-trading item2-trading">Name 3</div>
                         <div class="grid-item-trading item3-trading">
-                            <table class='tableTradingsButtons' id="tradingButtonCollum1"
-                                   style="box-align:center;"></table>
+                            <table class='tableTradingsButtons' id="tradingButtonCollum1" style="box-align:center;">
+                            </table>
                         </div>
                         <div class="grid-item-trading item4-trading">
                             <table class='tableTradingsButtons' id="tradingButtonCollum2"></table>
                         </div>
                         <div class="grid-item-trading item5-trading">
-                            <button class='tradingButtons'
-                                    id='approveButtonTrading'>Approve
+                            <button class='tradingButtons' id='approveButtonTrading'>Approve
                             </button>
                         </div>
                         <div class="grid-item-trading item6-trading">
@@ -660,6 +687,7 @@
 
     <div class='grid-right'>
         <h2>Testing Buttons</h2>
+        <button id='lobbyButton'>Lobby</button>
         <button id='nextFieldP1'>Move p1</button>
         <button id='nextFieldP2'>Move p2</button>
         <button id='nextFieldP3'>Move p3</button>
@@ -669,23 +697,14 @@
         <div id='buttonList'>
             <h2>:Button List</h2>
             <button id='sellRenovationsButton' class="buttonListDesign">Sell Renovations</button>
-            <br>
             <button id='sellMortageProButton' class="buttonListDesign">Set Mortgage properties</button>
-            <br>
             <button id='buyRenovationButton' class="buttonListDesign">Buy renovations</button>
-            <br>
-            <button id='endTurnButton' class="buttonListDesign">End Turn</button>
-            <br>
-            <button id='mortageModal' class="buttonListDesign">Mortage</button>
-            <br>
             <button id='tradeButton' class="buttonListDesign">Trade</button>
-            <br>
             <button id='repayMortgageButton' class="buttonListDesign">Repay mortgage</button>
-            <br>
             <button id='rollButton' class="buttonListDesign">Roll dice</button>
-            <br>
+            <button id='endTurnButton' class="buttonListDesign">End Turn</button>
+            <hr>
             <button id='startMenuButton' class="buttonListDesign">Start Menu</button>
-            <br>
         </div>
         <div id='dices'>
             <div class="container">
@@ -768,10 +787,9 @@
 </div>
 
 <script src="./graphic/animation/dice.js"></script>
-<script src="../public/main.js"></script>
+<script src="./../public/main.js"></script>
 <script src="./graphic/animation/dice.js"></script>
-<script src="./graphic/animation/exampleOfMovement.js"></script>
-<script src="./development/modal.js"></script>
+<script src="./graphic/animation/car.js"></script>
 <script src="./graphic/animation/fallingcoins.js"></script>
 </body>
 
