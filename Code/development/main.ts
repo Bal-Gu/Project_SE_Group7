@@ -300,19 +300,16 @@ export class main {
         let p2: Player = new Player(false, "bc", 1);
         this.playerInit(p1);
         this.playerInit(p2);
-        p1.hasErasmusDispense = true;
+        p1.fieldsOwned[0].name = "aaaa";
+        p1.fieldsOwned[1].name = "bbbb";
+        p2.fieldsOwned[0].name = "cccc";
+        p2.fieldsOwned[1].name = "dddd";
+        p2.hasErasmusDispense = true;
         await new Trade().event(p1, p2)
         console.log("P1");
-        console.log("P1 has erasmus =>" + p1.hasErasmusDispense);
-        p1.fieldsOwned.forEach((value) => {
-            console.log(value.name);
-        });
+        console.log("P1 has erasmus =>" + p1.fieldsOwned);
         console.log("P2");
-        console.log("P2 has erasmus =>" + p2.hasErasmusDispense);
-        p2.fieldsOwned.forEach((value) => {
-            console.log(value.name);
-        });
-
+        console.log("P2 has erasmus =>" + p2.fieldsOwned);
     }
 
     async BuyTest() {
@@ -378,11 +375,20 @@ export class main {
         $("#quizButton").click(async () => {
             await new Quiz().event();
         });
-        $("#sellMortageProButton").click(async function(){
-            await new setMortgage().event(self.ReferencePlayer);
+
+        $("#tradeButton").click(async () => {
+            let trade = new Trade();
+            await trade.decidePlayer(self.ReferencePlayer, self.PlayerArray);
+            await trade.event(self.ReferencePlayer, trade.getTarger())
         });
-        $("#repayMortgageButton").click(function(){
+
+        $("#sellMortageProButton").click(async function () {
+            await new setMortgage().event(self.ReferencePlayer);
+            self.updateButtons(self.ReferencePlayer);
+        });
+        $("#repayMortgageButton").click(function () {
             new RepayMortgage().event(self.ReferencePlayer);
+            self.updateButtons(self.ReferencePlayer);
         });
     }
 
@@ -390,10 +396,14 @@ export class main {
         //SELL RENOVATIONS
         let renovationSell = $("#sellRenovationsButton");
         let cansell: boolean = false;
-        for (let i = 0; p.fieldsOwned.length; i++) {
-            // @ts-ignore
-            if (p.fieldsOwned[i].isMortgage != undefined && !p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount != undefined && p.fieldsOwned[i].renovatiosAmmount > 0) {
-                cansell = true;
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
+
+            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+                // @ts-ignore
+                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
+                    cansell = true;
+                }
+
             }
         }
         if (cansell) {
@@ -404,10 +414,14 @@ export class main {
         //Set Mortgage properties
         let SellMortage = $("#sellMortageProButton");
         cansell = false;
-        for (let i = 0; p.fieldsOwned.length; i++) {
-            // @ts-ignore
-            if (p.fieldsOwned[i].isMortgage != undefined && !p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount != undefined && p.fieldsOwned[i].renovatiosAmmount == 0) {
-                cansell = true;
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
+
+            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+                // @ts-ignore
+                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount == 0) {
+                    cansell = true;
+                }
+
             }
         }
         if (cansell) {
@@ -418,11 +432,16 @@ export class main {
         //Buy renovations
         let Buyrenovation = $("#buyRenovationButton");
         cansell = false;
-        for (let i = 0; p.fieldsOwned.length; i++) {
-            // @ts-ignore
-            if (p.fieldsOwned[i].isMortgage != undefined && !p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount != undefined && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations) {
-                cansell = true;
+
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
+            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+                // @ts-ignore
+                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations) {
+                    cansell = true;
+                }
+
             }
+
         }
         if (cansell) {
             Buyrenovation.show();
@@ -438,7 +457,7 @@ export class main {
         //Repay mortgage
         let repaymortgage = $("#repayMortgageButton");
         let minimumPrice: number = 20000000000;
-        for (let i = 0; p.fieldsOwned.length; i++) {
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
             if (p.fieldsOwned[i].isMortgage) {
                 minimumPrice = minimumPrice < p.fieldsOwned[i].initialPrice ? minimumPrice : p.fieldsOwned[i].initialPrice;
             }

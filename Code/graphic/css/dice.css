@@ -49,19 +49,19 @@
   position: absolute;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 6s;
-  transition: -webkit-transform 6s;
-  transition: transform 6s;
-  transition: transform 6s, -webkit-transform 6s;
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
 }
 
 #cube div {
-  background: #1f5c8f;
+  background: white;
   display: block;
   position: absolute;
   width: 50px;
   height: 25px;
-  border: 2px solid #417699;
+  border: 2px solid #969292;
   border-radius: 3px;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
@@ -77,7 +77,7 @@
   position: absolute;
   width: 9px;
   height: 9px;
-  background: #fff;
+  background: black;
   border-radius: 7px;
 }
 
@@ -223,19 +223,19 @@
   position: absolute;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 6s;
-  transition: -webkit-transform 6s;
-  transition: transform 6s;
-  transition: transform 6s, -webkit-transform 6s;
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
 }
 
 #cube2 div {
-  background: #1f5c8f;
+  background: white;
   display: block;
   position: absolute;
   width: 50px;
   height: 25px;
-  border: 2px solid #417699;
+  border: 2px solid #969292;
   border-radius: 3px;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
