@@ -14,7 +14,7 @@ export class QuizField implements Field{
     }
 
     Event(player: Player, playerList: Player[]): void {
-        this.quiz.event();
+        this.quiz.event(player);
     }
 
 }
