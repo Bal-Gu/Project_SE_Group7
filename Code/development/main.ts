@@ -55,12 +55,7 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckLooseCondition(player)
             )
-            //this.MakePlayerTurn(this.ReferencePlayer);
-            /*this.PlayerArray.forEach(function (item) {
-                if (item.Money >= this.WinCondition) {
-                    this.GameEnded = true;
-                }
-            })*/
+
             //check gameover for player and change value
             //checking makeplayerturn
             //puting surrender button and mechanics
@@ -99,7 +94,7 @@ export class main {
     async EndOfATurn() {
         while (!this.TurnEnded) {
             await new Promise(r => setTimeout(r, 500));
-            console.log("waiting");
+            //console.log("waiting");
         }
     }
 
@@ -226,8 +221,10 @@ export class main {
             this.ConseqDoubles = 0;
         }
         //this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
-        console.log(this.StaticPlayerArray[0].name + " " + this.StaticPlayerArray[1].name + " " + this.StaticPlayerArray[2].name + " " + this.StaticPlayerArray[3].name + " ");
+        console.log(this.ReferencePlayer.Money);
+        console.log(this.ReferencePlayer.currentposition);
         this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
+
     }
 
     CheckWinCondition(player: Player): void {
@@ -413,7 +410,7 @@ export class main {
             self.ReferencePlayer.fieldsOwned.pop();
         });
         $("#Addfield").click( function(){
-            self.ReferencePlayer.receive(self.FieldArray[3]);
+            self.ReferencePlayer.receive(self.FieldArray[31]);
         });
         $("#MoveToTax").click( function(){
             self.ReferencePlayer.move(4);
