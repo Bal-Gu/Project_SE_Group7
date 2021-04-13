@@ -7,10 +7,11 @@ $pink: pink;
 $orange: orange;
 $red: red;
 $brown: brown;
-$yellow: yellow;
+$yellow: #cccc4c;
 $blue: blue;
 $green: green;
 $violet: violet;
+$black: rgb(22, 22, 22);
 
 
 //Font
@@ -48,19 +49,19 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
     }
   
     #player-1{
-      background-color: $red;
+      background-color: $orange;
     }
     
     #player-2{
-      background-color: $green;
+      background-color: $black;
     }
     
     #player-3{
-      background-color: $blue;
+      background-color: $yellow;
     }
     
     #player-4{
-      background-color: $violet;
+      background-color: $red;
     }
   }
 

@@ -54,16 +54,16 @@
   
   transform-style: preserve-3d;
   
-  transition: transform 6s;
+  transition: transform 2s;
 }
 
 #cube div {
-  background: rgb(31, 92, 143);
+  background: rgb(255, 255, 255);
   display: block;
   position: absolute;
   width: 50px;
   height: 25px;
-  border: 2px solid #417699;
+  border: 2px solid #969292;
   border-radius: 3px;
   
   margin: 0 auto;  
@@ -80,7 +80,7 @@
   position: absolute;
   width: 9px;
   height: 9px;
-  background: #fff;
+  background: rgb(0, 0, 0);
   border-radius: 7px;  
 }
 
@@ -149,16 +149,16 @@
   
   transform-style: preserve-3d;
   
-  transition: transform 6s;
+  transition: transform 2s;
 }
 
 #cube2 div {
-  background: rgb(31, 92, 143);
+  background: rgb(255, 255, 255);
   display: block;
   position: absolute;
   width: 50px;
   height: 25px;
-  border: 2px solid #417699;
+  border: 2px solid #969292;
   border-radius: 3px;
   
   margin: 0 auto;  
