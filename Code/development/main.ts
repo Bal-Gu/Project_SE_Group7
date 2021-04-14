@@ -360,8 +360,9 @@ export class main {
         // hide the start menu if the play button inside the
         $("#menuPlayButton").click(function () {
             $("#startMenu").hide();
+            $("#lobbyModal").show();
             fallingCoins('body');
-            showHideStars(39,4,1);
+            //showHideStars(39,4,1);
             //showHideStars(FieldNumber, howManyStars0-5, PlayerReference0-3)
         });
         // show the start menu
@@ -503,7 +504,10 @@ $("#quizButton").click(() => {
     $("#QuestionModal").show();
 });
 
-$("#lobbyModal").show();
+$("#startMenu").show(function(){
+    fallingCoins('body');
+});
+
 new main().main();
 //new main().launch();
 
