@@ -23,7 +23,7 @@ export class Properties implements Field{
 
     constructor(color:Colors,pricetopay:number[],renovationscosts:number,name:string,initialprice:number) {
         this.initialPrice = initialprice;
-        this.color = color;
+        this.color =  <Colors> Object.keys(Colors)[Object.keys(Colors).indexOf(color)];
         this.pricetopay = pricetopay;
         this.ownAllPairs = false;
         this.renovatiosAmmount = 0;

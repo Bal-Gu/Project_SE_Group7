@@ -16,6 +16,10 @@ export class PaymentEvent {
         if(price <= 0){
             return;
         }
+        if(payer.hasFreeRent){
+            payer.hasFreeRent = false;
+            return;
+        }
         if(payer.canBuy(price)){
             payer.payAmmount(price)
         }

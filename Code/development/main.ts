@@ -138,7 +138,11 @@ export class main {
         }
         ps.initializePlayers();
         this.PlayerArray = ps.getPlayers();
+        this.PlayerArray.forEach((player) => {
+            player.setMap(this.FieldArray);
+        });
         this.InitializeQueue();
+
     }
 
     InitializeFieldArray(): void {
@@ -204,6 +208,7 @@ export class main {
 
         if (this.ReferencePlayer.TurnsInPrison > 0) {
             await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
+            return;
         }
         if (double) {
             if (this.ConseqDoubles >= 2) {
@@ -217,7 +222,7 @@ export class main {
             this.ConseqDoubles = 0;
         }
         this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
-        this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
+        this.ReferencePlayer.move(this.dice.total());
     }
 
     CheckWinCondition(player: Player): void {
@@ -364,10 +369,8 @@ export class main {
         $("#rollButton").click(function () {
             //handle the doubles
             self.dice.roll();
-            self.ReferencePlayer.move(self.dice.total());
-            setTimeout(function () {
-                self.MakePlayerTurn();
-            }, self.dice.total() * 500);
+
+            self.MakePlayerTurn();
 
 
         });

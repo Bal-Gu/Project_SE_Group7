@@ -24,6 +24,8 @@ export class Player {
     ReferenceNumber: number;
     PlayerArray: Player[];
     //idea for number of move possible(maybe)
+    hasFreeRent: boolean;
+    private map: Field[];
 
     constructor(isBot: boolean ,name:string, ReferenceNumber:number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
@@ -36,6 +38,7 @@ export class Player {
         this.nrOfParking = 0;
         this.name = name;
         this.ReferenceNumber = ReferenceNumber;
+        this.hasFreeRent = false;
     }
 
    getName():string{
@@ -168,6 +171,11 @@ export class Player {
         }
         this.ReferenceNumber == 3 ? nextMoveLogic(this.currentposition, moveAction, "#position4"):this.ReferenceNumber == 2 ?  nextMoveLogic(this.currentposition, moveAction, "#position3") : this.ReferenceNumber == 1 ? nextMoveLogic(this.currentposition, moveAction, "#position2") : nextMoveLogic(this.currentposition, moveAction, "#position1");
         this.currentposition = (this.currentposition + moveAction) % globals.MaxNumberField;
+        let self =  this;
+        setTimeout(function () {
+            self.map[self.currentposition].Event(self, self.PlayerArray);
+        }, moveAction * 500);
+
     }
 
     goToErasmus(): void {
@@ -179,6 +187,9 @@ export class Player {
         this.ShowPlayerMoney();
     }
 
+    setMap(fields:Field[]){
+        this.map = fields;
+    }
 
 
     forfeit(): void {
