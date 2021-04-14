@@ -26,7 +26,7 @@ function rolldices(numberDice1, numberDice2) {
   setTimeout(function () {
     $("#dices").hide();
     rollButton.prop("disabled", false);
-  }, 7000);
+  }, 3000);
 }
 
 function getRandom(max) {

@@ -23,6 +23,7 @@ export class Player {
     queue: number;
     ReferenceNumber: number;
     PlayerArray: Player[];
+    Color: string;
     //idea for number of move possible(maybe)
     hasFreeRent: boolean;
     private map: Field[];

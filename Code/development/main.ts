@@ -24,6 +24,7 @@ import $ from "jquery";
 import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
+declare var showHideStars;
 
 export class main {
     PlayerArray: Player[] = [];
@@ -54,12 +55,7 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckLooseCondition(player)
             )
-            //this.MakePlayerTurn(this.ReferencePlayer);
-            /*this.PlayerArray.forEach(function (item) {
-                if (item.Money >= this.WinCondition) {
-                    this.GameEnded = true;
-                }
-            })*/
+
             //check gameover for player and change value
             //checking makeplayerturn
             //puting surrender button and mechanics
@@ -77,20 +73,28 @@ export class main {
     }
 
     ShowPlayerMoney() {
+
         this.StaticPlayerArray = this.PlayerArray.slice();
         this.PlayerArray.forEach(player => player.PlayerArray = this.StaticPlayerArray);
-
+        $("#player-1").text(this.StaticPlayerArray[0].name);
         $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
+        $("#player-1").css("background-color", this.StaticPlayerArray[0].Color);
+        $("#player-2").text(this.StaticPlayerArray[1].name);
         $("#b-coins-2").text(this.StaticPlayerArray[1].Money);
+        $("#player-2").css("background-color", this.StaticPlayerArray[1].Color);
+        $("#player-3").text(this.StaticPlayerArray[2].name);
         $("#b-coins-3").text(this.StaticPlayerArray[2].Money);
+        $("#player-3").css("background-color", this.StaticPlayerArray[2].Color);
+        $("#player-4").text(this.StaticPlayerArray[3].name);
         $("#b-coins-4").text(this.StaticPlayerArray[3].Money);
+        $("#player-4").css("background-color", this.StaticPlayerArray[3].Color);
     }
 
     //Will wait for a player to play its turn
     async EndOfATurn() {
         while (!this.TurnEnded) {
             await new Promise(r => setTimeout(r, 500));
-            console.log("waiting");
+            //console.log("waiting");
         }
     }
 
@@ -358,7 +362,10 @@ export class main {
         // hide the start menu if the play button inside the
         $("#menuPlayButton").click(function () {
             $("#startMenu").hide();
+            $("#lobbyModal").show();
             fallingCoins('body');
+            //showHideStars(39,4,1);
+            //showHideStars(FieldNumber, howManyStars0-5, PlayerReference0-3)
         });
         // show the start menu
         $("#startMenuButton").click(function () {
@@ -393,6 +400,26 @@ export class main {
             await new RepayMortgage().event(self.ReferencePlayer);
             self.updateButtons(self.ReferencePlayer);
         });
+
+        $("#RemoveMoneyButton").click( function(){
+            self.ReferencePlayer.Money = 0;
+            self.ReferencePlayer.recieveMoney(0);
+        });
+        $("#Add500Money").click( function(){
+            self.ReferencePlayer.recieveMoney(500);
+        });
+        $("#Removefield").click( function(){
+            self.ReferencePlayer.fieldsOwned.pop();
+        });
+        $("#Addfield").click( function(){
+            self.ReferencePlayer.receive(self.FieldArray[31]);
+        });
+        $("#MoveToTax").click( function(){
+            self.ReferencePlayer.move(4);
+            setTimeout(function () {
+                self.MakePlayerTurn();
+            }, 2000);
+        });
     }
 
     updateButtons(p: Player) {
@@ -406,7 +433,6 @@ export class main {
                 if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
                     cansell = true;
                 }
-
             }
         }
         if (cansell) {
@@ -479,7 +505,10 @@ $("#quizButton").click(() => {
     $("#QuestionModal").show();
 });
 
-$("#lobbyModal").show();
+$("#startMenu").show(function(){
+    fallingCoins('body');
+});
+
 new main().main();
 //new main().launch();
 

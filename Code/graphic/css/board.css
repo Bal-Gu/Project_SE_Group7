@@ -14,7 +14,7 @@
 
 .monopoly-info .player {
   display: table;
-  width: 30px;
+  width: 200px;
   height: 30px;
   margin: 10px 0 10px 10px;
   font-size: 18px;
@@ -38,7 +38,7 @@
 }
 
 .monopoly-info #player-3 {
-  background-color: #cccc4c;
+  background-color: #cfcf4e;
 }
 
 .monopoly-info #player-4 {
@@ -103,6 +103,34 @@
   background-color: #414141;
   color: #5c5c5c;
   border-color: #362323;
+}
+
+.star-player1 {
+  background-color: orange;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px orange;
+          box-shadow: 0 0 6px 1px orange;
+}
+
+.star-player2 {
+  background-color: #161616;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px #161616;
+          box-shadow: 0 0 6px 1px #161616;
+}
+
+.star-player3 {
+  background-color: #cfcf4e;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px #cfcf4e;
+          box-shadow: 0 0 6px 1px #cfcf4e;
+}
+
+.star-player4 {
+  background-color: red;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px red;
+          box-shadow: 0 0 6px 1px red;
 }
 
 * {
@@ -353,7 +381,7 @@
 }
 
 .sm-box-yellow {
-  background-color: #cccc4c;
+  background-color: #cfcf4e;
 }
 
 .sm-box-blue {
@@ -495,5 +523,19 @@
           transform: rotate(-80deg);
   visibility: hidden;
   /* Delete this to see stars */
+}
+
+#quiz-card, #quiz-card2, #quiz-card3 {
+  background-image: url("../images/small/chance_card2.png");
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  background-position: 6px 30px;
+}
+
+#event-card, #event-card2, #event-card3 {
+  background-image: url("../images/small/community_card3.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: 15px 25px;
 }
 /*# sourceMappingURL=board.css.map */

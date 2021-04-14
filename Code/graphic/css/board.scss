@@ -323,6 +323,20 @@ $backgroundColor : #79ad8c;
   visibility: hidden; /* Delete this to see stars */
 }
 
+#quiz-card, #quiz-card2, #quiz-card3{
+  background-image: url("../images/small/chance_card2.png");
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  background-position: 6px 30px;
+}
+
+#event-card, #event-card2, #event-card3{
+  background-image: url("../images/small/community_card3.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: 15px 25px;
+}
+
 
 
 

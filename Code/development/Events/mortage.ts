@@ -176,7 +176,7 @@ export class Mortage {
                     }
                     
                 }
-                this.p.Money = value;
+                this.p.recieveMoney(ammount);
                 this.pressed = true;
                 $("#MorageModal").hide();
             });
