@@ -1,6 +1,7 @@
 import {Player} from "../Player";
 import Event from "../../Event.json";
 import $ from "jquery";
+import globals from "../../globalVariable.json";
 
 export class EventEvent {
     private pressed: boolean;
@@ -23,6 +24,26 @@ export class EventEvent {
                 break;
             default:
                 break;
+        }
+        switch (finalQuizArray.GoTo){
+            case 0:
+                p.move(globals.MaxNumberField - p.currentposition);
+                break;
+            case -1:
+                break;
+            case -2:
+                p.moveToNextBus();
+                break;
+            case -3:
+                p.goToErasmus()
+                break;
+            case -4:
+                p.goToRockhal()
+                break;
+            default:
+                break;
+
+
         }
         modal.show();
     }

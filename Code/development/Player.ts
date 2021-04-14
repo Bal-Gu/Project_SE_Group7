@@ -198,5 +198,24 @@ export class Player {
     }
 
 
+    moveToNextBus() {
+        let index = this.currentposition;
+        while(!(this.map[index] instanceof Bus)){
+            index+= index%globals.MaxNumberField;
+        }
+        if(this.currentposition >  index ){
+            this.move(globals.MaxNumberField-this.currentposition+index);
+        }else {
+            this.move(index-this.currentposition);
+        }
+    }
+
+    goToRockhal() {
+        let index = this.currentposition;
+        while(!(this.map[index].name != "Rockhal")){
+            index+= index%globals.MaxNumberField;
+        }
+        
+    }
 }
 
