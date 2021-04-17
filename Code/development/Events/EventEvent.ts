@@ -46,5 +46,11 @@ export class EventEvent {
 
         }
         modal.show();
+        await this.sleep(5000);
+        modal.hide();
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
