@@ -416,8 +416,8 @@ export class main {
             await trade.event(self.ReferencePlayer, trade.getTarger())
         });
 
-        $("#sellMortageProButton").click(async function () {
-            await new setMortgage().event(self.ReferencePlayer);
+        $("#RenovationsButton").click(async function () {
+            await new Renovation().event(self.ReferencePlayer);
             self.updateButtons(self.ReferencePlayer);
         });
         $("#repayMortgageButton").click(async function () {
@@ -465,13 +465,13 @@ export class main {
             renovationSell.hide();
         }
         //Set Mortgage properties
-        let SellMortage = $("#sellMortageProButton");
+        let SellMortage = $("#RenovationsButton");
         cansell = false;
         for (let i = 0; i < p.fieldsOwned.length; i++) {
 
             if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
-                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount == 0) {
+                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].hasAll) {
                     cansell = true;
                 }
 
