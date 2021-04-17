@@ -135,17 +135,44 @@ export class main {
         let self = this;
         let erasmus = new Erasmus()
         if (this.ReferencePlayer.isBot) {
-            while($("#rollButton").is(":visible")){
-                this.dice.roll();
-                let double = this.dice.isdouble();
-                this.ReferencePlayer.move(this.dice.total());
-                await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+            while($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot){
+                let double:boolean = false;
+                if(!this.ReferencePlayer.stillMovingBot){
+                    this.dice.roll();
+                    double = this.dice.isdouble();
+                    this.ReferencePlayer.move(this.dice.total());
+                    await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                }else{
+                    this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
+                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
+                    this.ReferencePlayer.nrOfMove = 0;
+                    this.ReferencePlayer.stillMovingBot = false;
+                }
                 if ($("#BuyingModal").is(":visible")) {
                     $("#Buy").click();
-                }/*else if($("#QuestionModal").is(":visible")){
-                    let randChoice = self.dice.getRandomInt(4);
-                    (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1");
-                }*/
+                    await new Promise(r => setTimeout(r, 2000));
+                }else if($("#QuestionModal").is(":visible")){
+                    let sizeAnswerPool = 0;
+                    for(let i = 0; i < 4; i++){
+                        let str: string = "#Answer" + (i + 1).toString();
+                        if($(str).text() != ""){
+                            sizeAnswerPool += 1;
+                        }
+                    }
+                    console.log(sizeAnswerPool);
+                    if(sizeAnswerPool == 2){
+                        let randChoice = self.dice.getRandomInt(2);
+                        (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }else if(sizeAnswerPool == 3){
+                        let randChoice = self.dice.getRandomInt(3);
+                        (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }else{
+                        let randChoice = self.dice.getRandomInt(4);
+                        (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }
+                    await new Promise(r => setTimeout(r, 5000));
+
+                }
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
                     await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                     return;

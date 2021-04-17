@@ -37,7 +37,6 @@ export class Quiz {
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
         modal.show();
 
-
         let indexes = 4;
         for (let i = 1; i < 4; i++) {
             let str: String = "#Answer" + (i + 1).toString();
@@ -73,6 +72,9 @@ export class Quiz {
         console.log("This event is being called by: " + p.name);
         let self = this;
         button.click(async function () {
+            button.css("background-color", "orange");
+            await new Promise(r => setTimeout(r, 1000));
+            button.css("background-color", "white");
             if(self.goodanswer == index){
                 console.log("Hello this is player " + p.name)
                 let goodconsequence = questions.Consequences[Math.floor(Math.random() * questions.Consequences.length)];
@@ -84,7 +86,12 @@ export class Quiz {
                 }
                 else if(goodconsequence.Type == "Movement"){
                     let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
-                    p.move(reward);
+                    if(p.isBot){
+                        p.stillMovingBot = true;
+                        p.nrOfMove = reward;
+                    }else{
+                        p.move(reward);
+                    }
                     await self.exit("You were right, you can move: " + reward + " Cases");
                 }
 
@@ -114,13 +121,14 @@ export class Quiz {
         for (let i = 0; i < 4; i++) {
             let str: String = "#Answer" + (i + 1).toString();
             let button = $(str);
+            button.text("");
             button.hide();
         }
         $("#TimerQuestion").hide();
         let self =this;
         $("#QuestionModal .modal-content .modal-header h2").html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
 
-        await new Promise(r => setTimeout(r, 5000));
+        await new Promise(r => setTimeout(r, 2000));
 
     }
     async wait() {

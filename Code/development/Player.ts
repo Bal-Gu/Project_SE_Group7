@@ -28,6 +28,8 @@ export class Player {
     //idea for number of move possible(maybe)
     hasFreeRent: boolean;
     map: Field[];
+    stillMovingBot: boolean = false;
+    nrOfMove: number = 0;
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
