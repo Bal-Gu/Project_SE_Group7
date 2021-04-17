@@ -478,6 +478,23 @@ export class main {
                 self.MakePlayerTurn();
             }, 2000);
         });
+
+        let counter = 1;
+        $("#menuLanguageButton").click(function (){
+            if (counter === 1){
+                $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
+                counter++;
+            }else if(counter === 2) {
+                $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
+                counter++;
+            }else if(counter === 3){
+                $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
+                counter++;
+            }else {
+                $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
+                counter = 1;
+            }
+        });
     }
 
     updateButtons(p: Player) {
