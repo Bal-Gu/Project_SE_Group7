@@ -15,9 +15,9 @@ export class Tax implements Field{
 
     CanPayTax(player: Player): boolean{
         if(player.currentposition == 4){
-            return player.Money > this.amountToPay[1];
+            return player.Money >= this.amountToPay[1];
         }else{
-            return player.Money > this.amountToPay[0];
+            return player.Money >= this.amountToPay[0];
         }
     }
 
