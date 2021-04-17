@@ -49,15 +49,15 @@ export class main {
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
+            this.BotAction();
             await this.EndOfATurn();
-            this.NextTurn();
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
             )
             this.PlayerArray.forEach(
                 player => this.CheckLooseCondition(player)
             )
-
+            this.NextTurn();
             //check gameover for player and change value
             //checking makeplayerturn
             //puting surrender button and mechanics
@@ -130,6 +130,40 @@ export class main {
         this.ReferencePlayer = this.PlayerArray[0];
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
+    }
+    async BotAction(){
+        let self = this;
+        let erasmus = new Erasmus()
+        if (this.ReferencePlayer.isBot) {
+            while($("#rollButton").is(":visible")){
+                this.dice.roll();
+                let double = this.dice.isdouble();
+                this.ReferencePlayer.move(this.dice.total());
+                await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                if ($("#BuyingModal").is(":visible")) {
+                    $("#Buy").click();
+                }/*else if($("#QuestionModal").is(":visible")){
+                    let randChoice = self.dice.getRandomInt(4);
+                    (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1");
+                }*/
+                if (this.ReferencePlayer.TurnsInPrison > 0) {
+                    await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
+                    return;
+                }
+                if (double) {
+                    if (this.ConseqDoubles >= 2) {
+                        this.ReferencePlayer.goToErasmus()
+                        this.ConseqDoubles = 0;
+                    } else {
+                        this.ConseqDoubles += 1;
+                    }
+                } else {
+                    $("#rollButton").hide()
+                    this.ConseqDoubles = 0;
+                }
+            }
+            this.TurnEnded = true;
+        }
     }
 
     InitializeGameLength(n: number): void {
