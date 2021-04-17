@@ -22,11 +22,13 @@ import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
 import {Quiz} from "./Events/quiz";
+import {Renovation} from "./Events/Renovation";
 
 declare var fallingCoins;
 declare var showHideStars;
 
 export class main {
+    first:boolean = true;
     PlayerArray: Player[] = [];
     StaticPlayerArray: Player[] = [];
     dice: Dice = new Dice();
@@ -254,7 +256,7 @@ export class main {
     //USED TO TEST STUFF
     async launch() {
         console.log("a");
-        await this.TradeTest();
+
         console.log("c");
     }
 
@@ -334,15 +336,34 @@ export class main {
 
     playerInit(p: Player) {
 
-        p.Money = 1000;
-        let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
+        p.Money = 10000;
+        let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel1", 100);
         prop.renovatiosAmmount = 0;
         prop.isMortgage = false;
+        prop.hasAll = true;
         p.fieldsOwned.push(prop);
-        let prop2: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 10000);
+        let prop2: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel2", 10000);
         prop2.renovatiosAmmount = 0;
-        prop2.isMortgage = true;
+        prop2.isMortgage = false;
+        prop2.hasAll = true;
         p.fieldsOwned.push(prop2);
+        let prop3: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel3", 10000);
+        prop3.renovatiosAmmount = 0;
+        prop3.isMortgage = false;
+        prop3.hasAll = true;
+        p.fieldsOwned.push(prop3);
+        let prop4: Bus = new Bus("FUUUU");
+        p.map = [];
+        p.map.push(prop4);
+        p.map.push(prop4);
+        p.map.push(prop4);
+        p.map.push(prop4);
+        p.map.push(prop4);
+        p.map.push(prop4);
+        p.map.push(prop);
+        p.map.push(prop4);
+        p.map.push(prop2);
+        p.map.push(prop3);
     }
 
     async buttonEvent() {
@@ -381,9 +402,12 @@ export class main {
 
 
         });
-        // to test the quiz modal
+        // to test the renovation modal
+
         $("#quizButton").click(async () => {
-            await new Quiz().event(this.ReferencePlayer);
+
+            await this.RenovationTest();
+
         });
 
         $("#tradeButton").click(async () => {
@@ -401,20 +425,20 @@ export class main {
             self.updateButtons(self.ReferencePlayer);
         });
 
-        $("#RemoveMoneyButton").click( function(){
+        $("#RemoveMoneyButton").click(function () {
             self.ReferencePlayer.Money = 0;
             self.ReferencePlayer.recieveMoney(0);
         });
-        $("#Add500Money").click( function(){
+        $("#Add500Money").click(function () {
             self.ReferencePlayer.recieveMoney(500);
         });
-        $("#Removefield").click( function(){
+        $("#Removefield").click(function () {
             self.ReferencePlayer.fieldsOwned.pop();
         });
-        $("#Addfield").click( function(){
+        $("#Addfield").click(function () {
             self.ReferencePlayer.receive(self.FieldArray[31]);
         });
-        $("#MoveToTax").click( function(){
+        $("#MoveToTax").click(function () {
             self.ReferencePlayer.move(4);
             setTimeout(function () {
                 self.MakePlayerTurn();
@@ -499,17 +523,34 @@ export class main {
         //Roll dice
         $("#rollButton").show();
     }
+    async  RenovationTest():Promise<void> {
+
+        if(this.first) {
+            let p1: Player = new Player(false, "test1", 0);
+            this.playerInit(p1);
+            this.ReferencePlayer = p1;
+            p1.PlayerArray = [p1];
+            this.first = false;
+        }
+        let renov: Renovation = new Renovation();
+        await renov.event(this.ReferencePlayer);
+    }
+
+
 }
 
-$("#quizButton").click(() => {
-    $("#QuestionModal").show();
-});
 
-$("#startMenu").show(function(){
+
+
+
+
+
+$("#startMenu").show(function () {
     fallingCoins('body');
 });
 
+
 new main().main();
-//new main().launch();
+
 
 

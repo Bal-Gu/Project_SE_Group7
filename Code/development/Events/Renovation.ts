@@ -1,7 +1,9 @@
 import {Player} from "../Player";
-import {starshower} from "../../graphic/animation/starshower";
+import globals from "../../globalVariable.json"
+import {starshower} from "../../graphic/animation/starshower"
+export class Renovation {
 
-export class Mortage {
+
     i: number;
     private pressed: boolean;
     p: Player
@@ -9,23 +11,23 @@ export class Mortage {
     async event(p: Player) {
         this.pressed = false;
         this.p = p;
-        if (p.Money >= 0) {
-            return;
-        }
-        let modal = $("#MortageModal");
+        console.log("Test");
+        let modal = $("#MorageModal");
         if (p.totalWorth() < 0) {
             p.gameOver();
             return;
         }
-
-        $("#MorageModal .modal-content h1").html("Mortage");
-        $("#MorageModal").css("display", "block");
-        var output;
+        $("#MorageModal .modal-content h1").html("Renovation");
+        modal.css("display", "block");
+        let output = "";
         let total = 0;
 
         for (this.i = 0; this.i < p.fieldsOwned.length; this.i++) {
+            if(!p.fieldsOwned[this.i].hasAll){
+                continue;
+            }
             output += "<tr>";
-            let color = p.fieldsOwned[this.i].color;
+            let color = p.fieldsOwned[this.i].color!;
             output += "<td style='-webkit-text-stroke: 1px black;color:ghostwhite;font-size: 40px;background-color:" + color + "'" + ">" + p.fieldsOwned[this.i].name + "</td>"
             output += "<td id='stars" + this.i + "'>";
             // random amount of stars
@@ -34,6 +36,7 @@ export class Mortage {
 
                 output += "💸💸💸💸";
             }
+            console.log(stars);
             // @ts-ignore
             for (var j = 0; j < stars; j++) {
                 output += "⭐";
@@ -89,12 +92,39 @@ export class Mortage {
             return;
         }
 
-        if (star.text().length == p.fieldsOwned[k].renovatiosAmmount) {
+
+        if (globals.MaxRenovations == star.text().length) {
             return;
         }
 
+        let max = star.text().length;
+        let allsame = true;
+        let hasmortgage = false;
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
+            let starstrings = "#stars" + i;
+            let stari = $(starstrings);
+            if (stari.text().length >= max && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
+                allsame = allsame && true;
+                max = stari.text().length;
+                if (p.fieldsOwned[i].isMortgage) {
+                    hasmortgage = true;
+                }
+            } else if (stari.text().length < max && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
+                allsame = false;
+            }
+        }
+
+        if (hasmortgage) {
+            return;
+        }
+
+        if (!allsame && star.text().length == max) {
+            return
+        }
+
+
         // @ts-ignore
-        for (let j = 0; j < (star.text().length >= p.fieldsOwned[k].renovatiosAmmount ? p.fieldsOwned[k].renovatiosAmmount : star.text().length + 1); j++) {
+        for (let j = 0; j < (star.text().length >= globals.MaxRenovations ? globals.MaxRenovations : star.text().length + 1); j++) {
             starstring += "⭐";
         }
         // @ts-ignore
@@ -132,6 +162,27 @@ export class Mortage {
             this.RowValue(p.fieldsOwned[k].initialPrice, k, true);
             return;
         }
+        let min = star.text().length;
+        let allsame = true;
+        for (let i = 0; i < p.fieldsOwned.length; i++) {
+            let starstrings = "#stars" + i;
+            let stari = $(starstrings);
+            if (stari.text().length <= min && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
+                if(stari.text().length < min){
+                    min = stari.text().length;
+                    allsame = false;
+                }else{
+                    allsame = allsame && true;
+                }
+            } else if (stari.text().length > min && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
+                allsame = false;
+            }
+        }
+
+        if (!allsame && star.text().length == min) {
+            return;
+        }
+
 
         // @ts-ignore
         for (let j = 0; j < (star.text().length - 1 >= 0 ? star.text().length - 1 : 0); j++) {
@@ -152,9 +203,9 @@ export class Mortage {
         let value = parseInt(row.text());
         value += (addition ? ammount : ammount * -1);
         if (value >= 0) {
-            row.text("+" + value);
+            row.text(value);
         } else {
-            row.text("-" + value);
+            row.text(value);
         }
 
     }
@@ -179,7 +230,7 @@ export class Mortage {
                         this.p.fieldsOwned[m].renovatiosAmmount = starr.text().length;
                         s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]),starr.text().length,this.p.ReferenceNumber);
                     }
-                    
+
                 }
                 this.p.recieveMoney(ammount);
                 this.pressed = true;
@@ -204,3 +255,5 @@ export class Mortage {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
+
+
