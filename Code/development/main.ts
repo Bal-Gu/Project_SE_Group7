@@ -202,6 +202,28 @@ export class main {
                         (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
                     }
                     await new Promise(r => setTimeout(r, 5000));
+                }
+                if($("#MorageModal").is(":visible")){
+                    let MorgagePool = 0;
+                    let MoneyPool = 0;
+                    for(let i = 0; i < 28; i++){
+                        let str: string = "#Addbutton" + (i).toString();
+                        if($(str).text() != ""){
+                            MorgagePool += 1;
+                        }else{
+                            break;
+                        }
+                    }
+                    let i = 0;
+                    while((this.ReferencePlayer.Money + MoneyPool) < 0){
+                        if(!this.ReferencePlayer.fieldsOwned[i].isMortgage){
+                            MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                            let str: string = "#Removebutton" + (i).toString();
+                            $(str).click();
+                        }
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
+                    $("#ApproveButtonMortgage").click();
 
                 }
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
