@@ -148,8 +148,40 @@ export class main {
                     this.ReferencePlayer.nrOfMove = 0;
                     this.ReferencePlayer.stillMovingBot = false;
                 }
+                //Buy and Auction handeling, basic chance for a bot to buy for some money conditions, some conditions could be added
                 if ($("#BuyingModal").is(":visible")) {
-                    $("#Buy").click();
+                    let fieldprice = this.FieldArray[this.ReferencePlayer.currentposition].initialPrice;
+                    let rand = this.dice.getRandomInt(10);
+                    if((this.ReferencePlayer.Money/2)>fieldprice){
+                        if((fieldprice * 4) < this.ReferencePlayer.Money){
+                            if(rand > 1){
+                                $("#Buy").click();
+                            }else{
+                                $("#Auction").click();
+                                this.ReferencePlayer.inAuctionBot = true;
+                                while (this.ReferencePlayer.inAuctionBot) {
+                                    await new Promise(r => setTimeout(r, 500));
+                                }
+                            }
+                        }else if((fieldprice * 2) < this.ReferencePlayer.Money){
+                            if(rand > 3){
+                                $("#Buy").click();
+                            }else{
+                                $("#Auction").click();
+                                this.ReferencePlayer.inAuctionBot = true;
+                                while (this.ReferencePlayer.inAuctionBot) {
+                                    await new Promise(r => setTimeout(r, 500));
+                                }
+                            }
+                        }
+                    }else{
+                        $("#Auction").click();
+                        this.ReferencePlayer.inAuctionBot = true;
+                        while (this.ReferencePlayer.inAuctionBot) {
+                           await new Promise(r => setTimeout(r, 500));
+                        }
+                    }
+
                     await new Promise(r => setTimeout(r, 2000));
                 }else if($("#QuestionModal").is(":visible")){
                     let sizeAnswerPool = 0;
@@ -159,7 +191,6 @@ export class main {
                             sizeAnswerPool += 1;
                         }
                     }
-                    console.log(sizeAnswerPool);
                     if(sizeAnswerPool == 2){
                         let randChoice = self.dice.getRandomInt(2);
                         (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();

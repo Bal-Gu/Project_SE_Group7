@@ -30,6 +30,7 @@ export class Player {
     map: Field[];
     stillMovingBot: boolean = false;
     nrOfMove: number = 0;
+    inAuctionBot: boolean = false;
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;

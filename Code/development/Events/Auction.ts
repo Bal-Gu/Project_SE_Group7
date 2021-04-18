@@ -90,6 +90,16 @@ export class Auction {
             //update the player who is playing
             xPlaying.text(PlayerList[currentindex].getName() + " is playing");
 
+            //Bot handeling of Auction
+            if(PlayerList[currentindex].isBot){
+                if(((currentprice+10) < field.initialPrice) && ((currentprice*2) < PlayerList[currentindex].Money)){
+                    bidbutton.click();
+                }else{
+                    leavebutton.click();
+                }
+                await new Promise(r => setTimeout(r, 2000));
+            }
+
             //waits until a button has been pressed
             await this.wait();
             //resets the button waiter
@@ -110,6 +120,7 @@ export class Auction {
         //closes the modal
         modal.hide();
         await this.sleep(4000);
+        PlayerList.forEach(player => player.inAuctionBot = false);
         winnermodal.hide();
 
 
