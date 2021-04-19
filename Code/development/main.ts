@@ -49,7 +49,7 @@ export class main {
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
-            this.BotAction();
+            this.BotActionTest();
             await this.EndOfATurn();
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
@@ -130,6 +130,36 @@ export class main {
         this.ReferencePlayer = this.PlayerArray[0];
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
+    }
+    async BotActionTest(){
+        let self = this;
+        let erasmus = new Erasmus()
+        if (this.ReferencePlayer.isBot) {
+            let double:boolean = false;
+            while($("#rollButton").is(":visible")){
+                this.dice.roll();
+                double = this.dice.isdouble();
+                this.ReferencePlayer.move(this.dice.total());
+                await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                if ($("#BuyingModal").is(":visible")) {
+                    $("#Buy").click();
+                    await new Promise(r => setTimeout(r, 2000));
+                }
+                if (double) {
+                    if (this.ConseqDoubles >= 2) {
+                        this.ReferencePlayer.goToErasmus()
+                        this.ConseqDoubles = 0;
+                    } else {
+                        this.ConseqDoubles += 1;
+                    }
+                } else {
+                    $("#rollButton").hide()
+                    this.ConseqDoubles = 0;
+                }
+
+            }
+            this.TurnEnded = true;
+        }
     }
     async BotAction(){
         let self = this;
