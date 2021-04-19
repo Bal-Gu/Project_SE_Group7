@@ -49,7 +49,7 @@ export class main {
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
-            this.BotAction();
+            this.BotActionTest();
             await this.EndOfATurn();
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
@@ -131,21 +131,131 @@ export class main {
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
     }
-    async BotAction(){
+    async BotActionTest(){
         let self = this;
         let erasmus = new Erasmus()
         if (this.ReferencePlayer.isBot) {
+            let double:boolean = false;
             while($("#rollButton").is(":visible")){
                 this.dice.roll();
-                let double = this.dice.isdouble();
+                double = this.dice.isdouble();
                 this.ReferencePlayer.move(this.dice.total());
                 await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
                 if ($("#BuyingModal").is(":visible")) {
                     $("#Buy").click();
-                }/*else if($("#QuestionModal").is(":visible")){
-                    let randChoice = self.dice.getRandomInt(4);
-                    (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1");
-                }*/
+                    await new Promise(r => setTimeout(r, 2000));
+                }
+                if (double) {
+                    if (this.ConseqDoubles >= 2) {
+                        this.ReferencePlayer.goToErasmus()
+                        this.ConseqDoubles = 0;
+                    } else {
+                        this.ConseqDoubles += 1;
+                    }
+                } else {
+                    $("#rollButton").hide()
+                    this.ConseqDoubles = 0;
+                }
+
+            }
+            this.TurnEnded = true;
+        }
+    }
+    async BotAction(){
+        let self = this;
+        let erasmus = new Erasmus()
+        if (this.ReferencePlayer.isBot) {
+            while($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot){
+                let double:boolean = false;
+                if(!this.ReferencePlayer.stillMovingBot){
+                    this.dice.roll();
+                    double = this.dice.isdouble();
+                    this.ReferencePlayer.move(this.dice.total());
+                    await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                }else{
+                    this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
+                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
+                    this.ReferencePlayer.nrOfMove = 0;
+                    this.ReferencePlayer.stillMovingBot = false;
+                }
+                //Buy and Auction handeling, basic chance for a bot to buy for some money conditions, some conditions could be added
+                if ($("#BuyingModal").is(":visible")) {
+                    let fieldprice = this.FieldArray[this.ReferencePlayer.currentposition].initialPrice;
+                    let rand = this.dice.getRandomInt(10);
+                    if((this.ReferencePlayer.Money/2)>fieldprice){
+                        if((fieldprice * 4) < this.ReferencePlayer.Money){
+                            if(rand > 1){
+                                $("#Buy").click();
+                            }else{
+                                $("#Auction").click();
+                                this.ReferencePlayer.inAuctionBot = true;
+                                while (this.ReferencePlayer.inAuctionBot) {
+                                    await new Promise(r => setTimeout(r, 500));
+                                }
+                            }
+                        }else if((fieldprice * 2) < this.ReferencePlayer.Money){
+                            if(rand > 3){
+                                $("#Buy").click();
+                            }else{
+                                $("#Auction").click();
+                                this.ReferencePlayer.inAuctionBot = true;
+                                while (this.ReferencePlayer.inAuctionBot) {
+                                    await new Promise(r => setTimeout(r, 500));
+                                }
+                            }
+                        }
+                    }else{
+                        $("#Auction").click();
+                        this.ReferencePlayer.inAuctionBot = true;
+                        while (this.ReferencePlayer.inAuctionBot) {
+                           await new Promise(r => setTimeout(r, 500));
+                        }
+                    }
+
+                    await new Promise(r => setTimeout(r, 2000));
+                }else if($("#QuestionModal").is(":visible")){
+                    let sizeAnswerPool = 0;
+                    for(let i = 0; i < 4; i++){
+                        let str: string = "#Answer" + (i + 1).toString();
+                        if($(str).text() != ""){
+                            sizeAnswerPool += 1;
+                        }
+                    }
+                    if(sizeAnswerPool == 2){
+                        let randChoice = self.dice.getRandomInt(2);
+                        (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }else if(sizeAnswerPool == 3){
+                        let randChoice = self.dice.getRandomInt(3);
+                        (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }else{
+                        let randChoice = self.dice.getRandomInt(4);
+                        (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                    }
+                    await new Promise(r => setTimeout(r, 5000));
+                }
+                if($("#MorageModal").is(":visible")){
+                    let MorgagePool = 0;
+                    let MoneyPool = 0;
+                    for(let i = 0; i < 28; i++){
+                        let str: string = "#Addbutton" + (i).toString();
+                        if($(str).text() != ""){
+                            MorgagePool += 1;
+                        }else{
+                            break;
+                        }
+                    }
+                    let i = 0;
+                    while((this.ReferencePlayer.Money + MoneyPool) < 0){
+                        if(!this.ReferencePlayer.fieldsOwned[i].isMortgage){
+                            MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                            let str: string = "#Removebutton" + (i).toString();
+                            $(str).click();
+                        }
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
+                    $("#ApproveButtonMortgage").click();
+
+                }
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
                     await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                     return;
@@ -477,6 +587,23 @@ export class main {
             setTimeout(function () {
                 self.MakePlayerTurn();
             }, 2000);
+        });
+
+        let counter = 1;
+        $("#menuLanguageButton").click(function (){
+            if (counter === 1){
+                $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
+                counter++;
+            }else if(counter === 2) {
+                $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
+                counter++;
+            }else if(counter === 3){
+                $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
+                counter++;
+            }else {
+                $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
+                counter = 1;
+            }
         });
     }
 
