@@ -29,14 +29,22 @@ export class Auction {
 
         //init leavebutton
         let self = this;
-        leavebutton.click(function () {if(isNaN(Number(textfield.val()!.toString())))
+        leavebutton.off().on("click", () => {
+            console.log("Entered  currentindex  is at "+ currentindex);
+            if(isNaN(Number(textfield.val()))){
+                self.pressed = true;
+                console.log("error");
+                return;
+            }
+
+            console.log("Entered 2 currentindex  is at "+ currentindex);
             console.log("leave");
             PlayerList[currentindex].canAuction = false;
             ammountOfPlayer--;
             self.pressed = true;
         });
 
-        bidbutton.click(function (){
+        bidbutton.off().on("click",  ()=>{
             currentprice += increment;
             xAmmount.text("Current price " + currentprice +  "B-coins");
             winner = PlayerList[currentindex];
@@ -61,9 +69,12 @@ export class Auction {
             }
         });
 
-        while (ammountOfPlayer != 1) {
+        while (ammountOfPlayer > 1) {
+            console.log(ammountOfPlayer);
             //skips players that are out
             if(!PlayerList[currentindex].canAuction){
+                ammountOfPlayer = PlayerList.filter(x=>x.canAuction).length;
+                console.log("Ammount of player:"+ammountOfPlayer);
                 currentindex = (currentindex + 1) % maxplayers;
                 continue;
             }
@@ -75,15 +86,15 @@ export class Auction {
                 continue;
             }
             else if(increment < 10){
-                PlayerList[currentindex].canAuction = false;
-                currentindex = (currentindex + 1) % maxplayers;
-                ammountOfPlayer--;
+                increment = Math.max((PlayerList[currentindex].Money - increment),10);
+                textfield.val(increment);
                 continue;
             }
             else{
                 if(!PlayerList[currentindex].canBuy(currentprice+10)){
-                    increment = Math.max((PlayerList[currentindex].Money - increment),10);
-                    textfield.val(increment);
+                    PlayerList[currentindex].canAuction = false;
+                    currentindex = (currentindex + 1) % maxplayers;
+                    ammountOfPlayer--;
                     continue;
                 }
             }
@@ -120,6 +131,7 @@ export class Auction {
         //closes the modal
         modal.hide();
         await this.sleep(4000);
+        PlayerList.forEach(player => player.canAuction = true);
         PlayerList.forEach(player => player.inAuctionBot = false);
         winnermodal.hide();
 
