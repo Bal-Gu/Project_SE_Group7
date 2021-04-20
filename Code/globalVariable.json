@@ -7,5 +7,7 @@
   "ErasmusFees": 500,
   "payDay": 200,
   "amountToPayBuyTax": [100,200],
+  "ParkingNumber": 20,
   "colors": [3,3,3,2,3,3,3,2,0]
+
 }

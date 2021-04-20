@@ -2,9 +2,12 @@ import {Player} from "../Player";
 import Event from "../../Event.json";
 import $ from "jquery";
 import globals from "../../globalVariable.json";
+import {Restplace} from "../Fields/Restplace";
 
 export class EventEvent {
     private pressed: boolean;
+
+
 
     async event(p: Player) {
         console.log(p.name+" entered Event");
@@ -13,6 +16,10 @@ export class EventEvent {
         let modal = $("#EventModal");
         $("#EventText").html(finalQuizArray.Title);
         p.recieveMoney(finalQuizArray.Money);
+        if(finalQuizArray.Money<0){
+            let restplace:Restplace  = <Restplace>p.map[globals.ParkingNumber]
+            restplace.addToPot(finalQuizArray.Money * -1);
+        }
         if(finalQuizArray.Move != 0){
             p.move(finalQuizArray.Move);
         }

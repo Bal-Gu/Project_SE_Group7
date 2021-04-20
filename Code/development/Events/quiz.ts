@@ -1,6 +1,8 @@
 import questions from "../../Quiz.json"
 import $ from "jquery";
 import {Player} from "../Player";
+import {Restplace} from "../Fields/Restplace";
+import globals from "../../globalVariable.json";
 
 export class Quiz {
     goodanswer:number = 0
@@ -105,6 +107,9 @@ export class Quiz {
                 if(badconsequence.Type == "Money"){
                     let penalty = badconsequence[Math.floor(Math.random() * 4).toString()]
                     p.payAmmount(penalty);
+                    let restplace:Restplace  = <Restplace>p.map[globals.ParkingNumber]
+                    restplace.addToPot(penalty);
+
                     await self.exit("You were wrong you loose: " + penalty + " B-Coins");
                 }
                 else if(badconsequence.Type == "Movement"){
