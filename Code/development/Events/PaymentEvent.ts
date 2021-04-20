@@ -10,7 +10,8 @@ export class PaymentEvent {
      * @param price the price that payer has to pay.
      */
     async event(owner:Player,payer:Player,price:number){
-        console.log(owner.name+" entered Auction");
+        let value = owner.Money+price;
+        console.log(owner.name+" entered Payement "+owner.name +" has "+owner.Money + "and should be at"+ value + " Victim "+payer.name + "with "+payer.Money);
         if(isNaN(price)){
             throw new Error().stack;
         }
@@ -25,7 +26,8 @@ export class PaymentEvent {
             return;
         }
         if(payer.canBuy(price)){
-            payer.payAmmount(price)
+            payer.payAmmount(price);
+            owner.recieveMoney(price);
         }
         else{
             //otherwise pay but mortage has to get even otherwise it's game over for the player.
