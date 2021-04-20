@@ -11,9 +11,9 @@ export class Prison {
 
 
         //hides or show the buttons
-
-        $("#myModal").css("display", "block");
-
+        let modal = $("#startGameModal");
+        modal.css("display", "block");
+        $("#startGameModal .modal-content .modal-header h2").html(p.name + "has "+(3-p.TurnsInPrison) + " in prison left");
         let luckyButton = $("#luckyCard");
         if (p.hasErasmusDispense) {
             luckyButton.show();
@@ -36,17 +36,7 @@ export class Prison {
         }
 
 
-        let modal = document.getElementById("myModal");
 
-        window.onclick = function (event) {
-            if (event.target == modal && modal != undefined) {
-                modal.style.display = "none";
-            }
-        }
-
-        $("#myBtn").click(function () {
-            $("#myModal").css("display", "block");
-        });
 
         $(".close").click(function () {
             //Choses one action automaticaly
@@ -75,14 +65,16 @@ export class Prison {
 
 
         $("#roleDouble").click(function () {
-            self.outRollDouble(p);
+            self.outRollDouble(p)
+            self.pressed =  true;
         });
 
         luckyButton.click(function () {
             self.outOfPrison(p);
-
-        })
+            self.pressed =  true;
+        });
         await this.wait();
+        modal.hide();
     };
 
     async wait() {
@@ -109,6 +101,7 @@ export class Prison {
     outRollDouble(p:Player){
         let d: Dice = new Dice();
         d.roll();
+        p.TurnsInPrison++;
 
         if (d.isdouble()) {
             p.move(d.total());
