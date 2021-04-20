@@ -192,6 +192,7 @@ export class Player {
         }
         this.ReferenceNumber == 3 ? nextMoveLogic(this.currentposition, moveAction, "#position4") : this.ReferenceNumber == 2 ? nextMoveLogic(this.currentposition, moveAction, "#position3") : this.ReferenceNumber == 1 ? nextMoveLogic(this.currentposition, moveAction, "#position2") : nextMoveLogic(this.currentposition, moveAction, "#position1");
         this.currentposition = (this.currentposition + moveAction) % globals.MaxNumberField;
+        this.lastAmmountOfMoves = moveAction;
         let self = this;
         setTimeout(function () {
             self.map[self.currentposition].Event(self, self.PlayerArray);
