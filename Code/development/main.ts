@@ -373,6 +373,8 @@ export class main {
         }
         this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
         this.ReferencePlayer.move(this.dice.total());
+
+
     }
 
     CheckWinCondition(player: Player): void {
@@ -608,6 +610,10 @@ export class main {
     }
 
     updateButtons(p: Player) {
+        if(p.TurnsInPrison >=  1){
+           this.MakePlayerTurn();
+           return;
+        }
         //SELL RENOVATIONS
         let renovationSell = $("#sellRenovationsButton");
         let cansell: boolean = false;
