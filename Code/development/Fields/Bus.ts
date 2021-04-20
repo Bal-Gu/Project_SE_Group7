@@ -25,7 +25,7 @@ export class Bus implements Field{
             let b: BuyEvent = new BuyEvent();
             await b.event(player,this.initialPrice,this,playerList);
 
-            this.UpdateRentCost(player);
+            this.UpdateRentCost();
         } else {
             let payment: PaymentEvent = new PaymentEvent();
             await payment.event(this.owner, player, this.rentCostFinal);
@@ -39,12 +39,16 @@ export class Bus implements Field{
         return player.Money > this.initialPrice;
     }
 
-    UpdateRentCost(player: Player): void{
-        this.rentCostFinal = this.PriceToPay[player.nrOfBus-1];
+    UpdateRentCost(): void{
+        if(this.owner == undefined){
+            this.rentCostFinal = 0;
+            return;
+        }
+        this.rentCostFinal = this.PriceToPay[this.owner.nrOfBus-1];
     }
 
     CanPayRent(player:Player): boolean{
-        this.UpdateRentCost(player);
+        this.UpdateRentCost();
         return player.Money > this.rentCostFinal;
     }
 
