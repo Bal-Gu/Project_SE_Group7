@@ -169,11 +169,20 @@ export class Player {
 
     recieveMoney(ammount: number) {
         this.Money += ammount;
+        if(isNaN(this.Money)){
+
+            throw new Error().stack;
+        }
         this.ShowPlayerMoney();
     }
 
     payAmmount(ammount: number) {
+
         this.Money -= ammount;
+        if(isNaN(this.Money)){
+
+            throw new Error().stack;
+        }
         this.ShowPlayerMoney();
     }
 
@@ -211,10 +220,10 @@ export class Player {
         this.isBot = true;
     }
 
-
+    //TODO while loop is buggy
     moveToNextBus() {
         let index = this.currentposition;
-        while (!(this.map[index] instanceof Bus)) {
+        while(this.currentposition-1 != index && !(this.map[index] instanceof Bus)) {
             index += index % globals.MaxNumberField;
         }
         if (this.currentposition > index) {

@@ -6,6 +6,7 @@ import {Auction} from "./Auction";
 export class BuyEvent {
     private pressed: Boolean = false;
     async event(p:Player,price:number,field:Field,playerList:Player[]){
+        console.log(p.name+" entered Buying");
         let modal = document.getElementById("BuyingModal");
         let buybutton = $("#Buy");
         let Autionbutton = $("#Auction")

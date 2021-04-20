@@ -7,6 +7,7 @@ export class EventEvent {
     private pressed: boolean;
 
     async event(p: Player) {
+        console.log(p.name+" entered Event");
         this.pressed = false;
         let finalQuizArray = Event.Events[Math.floor(Math.random() * Event.Events.length)];
         let modal = $("#EventModal");

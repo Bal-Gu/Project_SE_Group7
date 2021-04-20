@@ -30,6 +30,7 @@ export class Quiz {
     }
 
     async event(p: Player) {
+        console.log(p.name+" entered Quiz");
         this.pressed = false;
         let finalQuizArray = questions.Quiz[Math.floor(Math.random() * questions.Quiz.length)];
         this.goodanswerString = finalQuizArray["1"];

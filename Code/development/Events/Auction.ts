@@ -6,6 +6,7 @@ export class Auction {
 
 
     async AuctionEvent(p: Player, PlayerList: Player[], field) {
+        console.log(p.name+" entered Auction");
         let modal = $("#AuctionModal");
         modal.show();
         let textfield = $("#IncText");

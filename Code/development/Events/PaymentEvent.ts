@@ -10,6 +10,10 @@ export class PaymentEvent {
      * @param price the price that payer has to pay.
      */
     async event(owner:Player,payer:Player,price:number){
+        console.log(owner.name+" entered Auction");
+        if(isNaN(price)){
+            throw new Error().stack;
+        }
         if(owner === payer){
             return;
         }

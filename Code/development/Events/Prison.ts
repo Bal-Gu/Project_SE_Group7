@@ -7,6 +7,7 @@ export class Prison {
     pressed: boolean = false;
 
     async prisonEvent(p: Player) {
+        console.log(p.name+" entered Prison");
 
 
         //hides or show the buttons
