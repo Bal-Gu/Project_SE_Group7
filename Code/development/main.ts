@@ -280,6 +280,22 @@ export class main {
                         }
                     })
                 })
+                if($("#repayMortgageButton").is(":visible")) {
+                    let refMoney = this.ReferencePlayer.Money;
+                    let i = 0;
+                    if (this.ReferencePlayer.Money >= 500) {
+                        $("#repayMortgageButton").click();
+                        await new Promise(r => setTimeout(r, 2000));
+                        while ((refMoney >= 500) && (i < this.ReferencePlayer.fieldsOwned.length)) {
+                            let str = "#paybuttonRepayMortgage" + i;
+                            $(str).click();
+                            await new Promise(r => setTimeout(r, 2000));
+                            $("#ApproveButtonMortgage").click();
+                            i++;
+                        }
+                    }
+
+                }
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
                     await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                     return;
