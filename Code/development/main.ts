@@ -49,7 +49,7 @@ export class main {
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
-            this.BotActionTest();
+            this.BotAction();
             await this.EndOfATurn();
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
@@ -256,6 +256,30 @@ export class main {
                     $("#ApproveButtonMortgage").click();
 
                 }
+                //Trade handeling, will buy if a player has a building the same color as one of his
+                this.ReferencePlayer.fieldsOwned.forEach(field =>{
+                    let playercounter = 0;
+                    this.PlayerArray.forEach(async player=>{
+                        playercounter++;
+                        for(let i = 0; i < player.fieldsOwned.length; i++){
+                            let fieldtarg = player.fieldsOwned[i];
+                            console.log(i);
+                            if(field.color == fieldtarg.color){
+                                $("#TradingModal").click();
+                                await new Promise(r => setTimeout(r, 1000));
+                                let newstr = "#targetButton" + playercounter;
+                                $(newstr).click();
+                                await new Promise(r => setTimeout(r, 1000));
+                                let str : string = "#4tradingButton" + i;
+                                $(str).click();
+                                let amount : string = String(field.initialPrice);
+                                $("#inputLable1").html(amount);
+                                await new Promise(r => setTimeout(r, 1000));
+                                $("#approveButtonTrading").click();
+                            }
+                        }
+                    })
+                })
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
                     await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                     return;

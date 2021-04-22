@@ -41,9 +41,9 @@ export class Trade {
             }
             this.traderingRow1.push(init.fieldsOwned[i]);
             if (init.fieldsOwned[i].isMortgage) {
-                tradingButtonCollum1.append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
+                tradingButtonCollum1.append("<tr><td><button class='tradingButtons' id='1tradingButton" + i + "' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
             } else {
-                tradingButtonCollum1.append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + "</button></td></tr>");
+                tradingButtonCollum1.append("<tr><td><button class='tradingButtons' id='1tradingButton" + i + "' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + init.fieldsOwned[i].color + "'>" + init.fieldsOwned[i].name + "</button></td></tr>");
             }
         }
         for (let i = 0; i < target.fieldsOwned.length; i++) {
@@ -55,19 +55,18 @@ export class Trade {
             }
             this.traderingRow4.push(target.fieldsOwned[i]);
             if (target.fieldsOwned[i].isMortgage) {
-                tradingButtonCollum4.append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
+                tradingButtonCollum4.append("<tr><td><button class='tradingButtons' id='4tradingButton" + i + "' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + " 💸" + "</button></td></tr>");
             } else {
-                tradingButtonCollum4.append("<tr><td><button class='tradingButtons' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + "</button></td></tr>");
+                tradingButtonCollum4.append("<tr><td><button class='tradingButtons' id='4tradingButton" + i + "' style='color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;background-color:" + target.fieldsOwned[i].color + "'>" + target.fieldsOwned[i].name + "</button></td></tr>");
             }
         }
 
         if (target.hasErasmusDispense) {
-            tradingButtonCollum4.append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+            tradingButtonCollum4.append("<tr><td><button class='tradingButtons' id='erasmusButton'><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
         }
         if (init.hasErasmusDispense) {
-            tradingButtonCollum1.append("<tr><td><button class='tradingButtons' ><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
+            tradingButtonCollum1.append("<tr><td><button class='tradingButtons' id='erasmusButton'><h2 style='-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;-webkit-text-fill-color:white'>Erasmus Dispense</h2></button> </td></tr>")
         }
-
 
         let self = this;
         $(".tradingButtons").click(function () {
@@ -134,9 +133,27 @@ export class Trade {
 
         $("#approveButtonTrading").click(() => {
 
-            modal.hide();
             let valueForInit: number = Number(trader1.text());
             let valueForTransfer: number = Number(trader2.text());
+            if(self.targetPlayer.isBot){
+                let total = 0;
+                for(let i = 0; i < self.traderingRow2.length; i++){
+                    total += self.traderingRow2[i].initialPrice;
+                }
+                total += valueForInit;
+                if(this.ErasmusDispenseGiven1){total += 500;}
+                for(let i = 0; i < self.traderingRow3.length; i++){
+                    total -= self.traderingRow3[i].initialPrice;
+                }
+                total -= valueForTransfer;
+                if(this.ErasmusDispenseGiven2){total -= 500;}
+                if(total <= 0){
+                    $("#approveButtonTrading").html("Trade is not balanced");
+                    return;
+                }
+            }
+            modal.hide();
+            console.log(valueForInit + " " + valueForTransfer);
             init.recieveMoney(valueForTransfer);
             init.payAmmount(valueForInit);
             target.recieveMoney(valueForInit);
