@@ -658,7 +658,6 @@ export class main {
         let renovationSell = $("#sellRenovationsButton");
         let cansell: boolean = false;
         for (let i = 0; i < p.fieldsOwned.length; i++) {
-
             if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
                 if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
@@ -671,11 +670,13 @@ export class main {
         } else {
             renovationSell.hide();
         }
+        p.receive(this.FieldArray[1]);
+        p.receive(this.FieldArray[3]);
         //Set Mortgage properties
         let SellMortage = $("#RenovationsButton");
         cansell = false;
         for (let i = 0; i < p.fieldsOwned.length; i++) {
-
+            console.log(p.fieldsOwned[i].hasAll);
             if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
                 if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].hasAll) {
