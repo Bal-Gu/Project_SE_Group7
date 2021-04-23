@@ -69,9 +69,9 @@ export class Player {
     updateFields() {
         this.nrOfBus = 0;
         this.nrOfParking = 0;
-        let map = new Map<Colors, number>();
-        for (let i = 0; i < Object.keys(Colors).length; i++) {
-            map.set(<Colors>Object.keys(Colors)[i], 0);
+        let map = new Map<String, number>();
+        for (let i = 0; i < Object.values(Colors).length; i++) {
+            map.set(<Colors>Object.values(Colors)[i], 0);
         }
         for (let i = 0; i < this.fieldsOwned.length; i++) {
             if (this.fieldsOwned[i] instanceof Bus) {
@@ -81,19 +81,21 @@ export class Player {
             } else if (this.fieldsOwned[i] instanceof Properties) {
                 let color = this.fieldsOwned[i].color!;
                 map.set(color, map.get(color)! + 1);
+
             }
 
         }
+
         for (let i = 0; i < this.fieldsOwned.length; i++) {
             let color: Colors = this.fieldsOwned[i].color!;
-
             let index: number = 0;
-            for (let j = 0; j < Object.keys(Colors).length; j++) {
-                if (<Colors>Object.keys(Colors)[j] == color) {
+            for (let j = 0; j < Object.values(Colors).length; j++) {
+                if (<Colors>Object.values(Colors)[j] == color) {
                     index = j;
                     break;
                 }
             }
+
             this.updateOwnAll(globals.colors[index] == map.get(color), this.fieldsOwned[i]);
         }
 
