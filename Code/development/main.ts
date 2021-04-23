@@ -21,8 +21,8 @@ import {RepayMortgage} from "./Events/RepayMortgage";
 import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
-import {Quiz} from "./Events/quiz";
-import {Renovation} from "./Events/Renovation";
+import {Renovation} from "./Events/Renovation"
+import propertiesFile from '../properties.json';
 
 declare var fallingCoins;
 declare var showHideStars;
@@ -337,7 +337,6 @@ export class main {
 
     InitializeFieldArray(): void {
         this.FieldArray = [];
-        let propertiesFile = require('../properties.json');
         let a, b, c, d;
         a = b = c = 0;
 
@@ -380,7 +379,38 @@ export class main {
                 this.FieldArray.push(quizfield);
             } else {
                 let prop = propertiesFile.properties[c];
-                let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialprice);
+                let color:Colors
+                switch (prop.color) {
+                    case "Green":
+                        color = Colors.Green
+                        break;
+                    case "Yellow":
+                        color = Colors.Yellow
+                        break;
+                    case "Red":
+                        color = Colors.Red
+                        break;
+                    case "Brown":
+                        color = Colors.Brown
+                        break;
+                    case "Light_Blue":
+                        color = Colors.Light_Blue
+                        break;
+                    case "Purple":
+                        color = Colors.Purple
+                        break;
+                    case "Orange":
+                        color = Colors.Orange
+                        break;
+                    case "Blue":
+                        color = Colors.Blue
+                        break;
+                    default:
+                        color = Colors.default;
+                        break;
+
+                }
+                let p: Properties = new Properties(color, prop.pricetopay, prop.renovationscost, prop.name, prop.initialprice);
                 this.FieldArray.push(p);
                 c++;
             }

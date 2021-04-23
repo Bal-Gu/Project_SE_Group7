@@ -11,7 +11,7 @@ export class Renovation {
     async event(p: Player) {
         this.pressed = false;
         this.p = p;
-        console.log("Test");
+
         let modal = $("#MorageModal");
         if (p.totalWorth() < 0) {
             p.gameOver();
@@ -36,7 +36,6 @@ export class Renovation {
 
                 output += "💸💸💸💸";
             }
-            console.log(stars);
             // @ts-ignore
             for (var j = 0; j < stars; j++) {
                 output += "⭐";
@@ -47,9 +46,11 @@ export class Renovation {
             output += "<td id = 'Price" + this.i + "' style='color: #18892b'>0</td>";
             output += "</tr>";
         }
-
-        output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
-
+        if(p.Money < 0) {
+            output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+        }else{
+            output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accept</button></td></tr>"
+        }
 
         $("#mortageTable").html(output);
 
@@ -232,7 +233,7 @@ export class Renovation {
                     }
 
                 }
-                this.p.recieveMoney(ammount);
+                this.p.recieveMoney(value  -this.p.Money);
                 this.pressed = true;
                 $("#MorageModal").hide();
             });

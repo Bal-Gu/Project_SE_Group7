@@ -185,7 +185,7 @@ export class Mortage {
                     }
                     
                 }
-                this.p.recieveMoney(ammount);
+                this.p.recieveMoney(this.total-this.p.Money);
                 this.pressed = true;
                 $("#MorageModal").hide();
             });
