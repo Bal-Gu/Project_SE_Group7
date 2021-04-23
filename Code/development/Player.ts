@@ -165,6 +165,7 @@ export class Player {
 
     receive(field: Field): void {
         this.fieldsOwned.push(field);
+        this.updateFields();
     }
 
     recieveMoney(ammount: number) {
@@ -201,10 +202,11 @@ export class Player {
     }
 
     goToErasmus(): void {
+
         this.move(globals.MaxNumberField/2);
-        this.TurnsInPrison = 1;
+        this.payAmmount(globals.payDay);
         this.currentposition = globals.Erasmus;
-        this.Money -= globals.payDay;
+
     }
 
     startBonus(): void {
