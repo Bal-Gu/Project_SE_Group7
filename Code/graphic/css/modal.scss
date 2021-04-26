@@ -72,7 +72,6 @@
   }
   
   .grid-item-trading {
-    outline:1px darkgrey solid;
     font-size: 30px;
     text-align: center;
   }
@@ -81,12 +80,14 @@
     text-align: left;
     grid-column: 1 / span 2;
     grid-row: 1;
+    border-bottom: 1px solid gray;
   }
   
   .item2-trading {
     text-align: right;
     grid-column: 4 / span 2;
     grid-row: 1;
+    border-bottom: 1px solid gray;
   }
   
   .item3-trading {
@@ -94,6 +95,8 @@
     overflow: auto;
     grid-row: 2;
     grid-column: 1 / span 1;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
   }
   
   .item4-trading {
@@ -101,6 +104,9 @@
     overflow: auto;
     grid-column: 2;
     grid-row: 2;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
   }
   
   .item5-trading{
@@ -113,6 +119,9 @@
     overflow: auto;
     grid-row: 2;
     grid-column:  4/ span 1;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
   }
   
   .item7-trading{
@@ -120,6 +129,8 @@
     overflow: auto;
     grid-row: 2;
     grid-column:  5/ span 1;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
   }
   
   .item8-trading{
@@ -130,17 +141,24 @@
   .item9-trading{
     grid-row: 4;
     grid-column:  4/ span 1;
+
   }
   
   .tradingButtons, .tableTradingsButtons{
     width: 100%;
   }
 
+  .tradingButtons{
+    font-size: 22px;
+  }
+
+
 #approveButtonTrading{
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  font: 15px;
 }
 
   
