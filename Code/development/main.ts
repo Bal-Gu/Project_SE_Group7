@@ -263,7 +263,6 @@ export class main {
                         playercounter++;
                         for(let i = 0; i < player.fieldsOwned.length; i++){
                             let fieldtarg = player.fieldsOwned[i];
-                            console.log(i);
                             if(field.color == fieldtarg.color){
                                 $("#TradingModal").click();
                                 await new Promise(r => setTimeout(r, 1000));
@@ -295,6 +294,50 @@ export class main {
                         }
                     }
 
+                }
+                console.log(this.ReferencePlayer.fieldsOwned[0].renovationscosts+ " renovation cost");
+                if($("#RenovationsButton").is(":visible")){
+                    $("#RenovationsButton").click();
+                    if(this.ReferencePlayer.Money<=500){
+                        for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                            if(!this.ReferencePlayer.fieldsOwned[i].isMortgage){
+                                await new Promise(r => setTimeout(r, 2000));
+                                let str :string= "#Removebutton" + i;
+                                $(str).click();
+                                await new Promise(r => setTimeout(r, 2000));
+                                $("#ApproveButtonMortgage").click();
+                                break;
+                            }
+                        }
+                    }else if(this.ReferencePlayer.Money>=1000){
+                        await new Promise(r => setTimeout(r, 2000));
+                        let total = 0;
+                        while(total<=100){
+                            for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                if(this.ReferencePlayer.fieldsOwned[i].hasAll){
+                                    //Decide which building to upgrade
+                                    let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
+                                    let y;
+                                    for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                        // @ts-ignore
+                                        if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
+                                            buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
+                                            break;
+                                        }
+                                    }
+                                    let str = "#Addbutton" + y;
+                                    await new Promise(r => setTimeout(r, 2000));
+                                    $(str).click();
+                                    // @ts-ignore
+                                    total += this.ReferencePlayer.fieldsOwned[i].renovationscosts;
+                                    await new Promise(r => setTimeout(r, 2000));
+                                }
+                            }
+                        }
+                        $("#ApproveButtonMortgage").click();
+
+                    }
+                    await new Promise(r => setTimeout(r, 10000));
                 }
                 if (this.ReferencePlayer.TurnsInPrison > 0) {
                     await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
@@ -652,7 +695,8 @@ export class main {
             self.ReferencePlayer.fieldsOwned.pop();
         });
         $("#Addfield").click(function () {
-            self.ReferencePlayer.receive(self.FieldArray[31]);
+            self.ReferencePlayer.receive(self.FieldArray[1]);
+            self.ReferencePlayer.receive(self.FieldArray[3]);
         });
         $("#MoveToTax").click(function () {
             self.ReferencePlayer.move(4);
@@ -700,8 +744,6 @@ export class main {
         } else {
             renovationSell.hide();
         }
-        p.receive(this.FieldArray[1]);
-        p.receive(this.FieldArray[3]);
         //Set Mortgage properties
         let SellMortage = $("#RenovationsButton");
         cansell = false;
