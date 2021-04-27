@@ -102,7 +102,7 @@ export class main {
 
     InitializeQueue(): void {
         for (let i = 0; i < this.PlayerArray.length; i++) {
-            this.dice.roll();
+            this.dice.roll(this.PlayerArray[i].ReferenceNumber, this.PlayerArray[i].name);
             this.PlayerArray[i].queue = this.dice.total();
         }
         let n = this.PlayerArray.length;
@@ -137,7 +137,7 @@ export class main {
         if (this.ReferencePlayer.isBot) {
             let double:boolean = false;
             while($("#rollButton").is(":visible")){
-                this.dice.roll();
+                this.dice.roll(self.ReferencePlayer.ReferenceNumber, self.ReferencePlayer.name);
                 double = this.dice.isdouble();
                 this.ReferencePlayer.move(this.dice.total());
                 await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
@@ -168,7 +168,7 @@ export class main {
             while($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot){
                 let double:boolean = false;
                 if(!this.ReferencePlayer.stillMovingBot){
-                    this.dice.roll();
+                    this.dice.roll(this.ReferencePlayer.ReferenceNumber, this.ReferencePlayer.name);
                     double = this.dice.isdouble();
                     this.ReferencePlayer.move(this.dice.total());
                     await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
@@ -655,11 +655,8 @@ export class main {
         // to roll the dices
         $("#rollButton").click(function () {
             //handle the doubles
-            self.dice.roll();
-
+            self.dice.roll(self.ReferencePlayer.ReferenceNumber, self.ReferencePlayer.name);
             self.MakePlayerTurn();
-
-
         });
         // to test the renovation modal
 

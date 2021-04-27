@@ -1,29 +1,29 @@
-#cube .front, #cube3 .front, #cube5 .front, #cube7 .front {
+#cube1 .front, #cube3 .front, #cube5 .front, #cube7 .front {
   -webkit-transform: translateZ(25px);
           transform: translateZ(25px);
 }
 
-#cube .back, #cube3 .back, #cube5 .back, #cube7 .back {
+#cube1 .back, #cube3 .back, #cube5 .back, #cube7 .back {
   -webkit-transform: rotateX(-180deg) translateZ(25px);
           transform: rotateX(-180deg) translateZ(25px);
 }
 
-#cube .right, #cube3 .right, #cube5 .right, #cube7 .right {
+#cube1 .right, #cube3 .right, #cube5 .right, #cube7 .right {
   -webkit-transform: rotateY(90deg) translateZ(25px);
           transform: rotateY(90deg) translateZ(25px);
 }
 
-#cube .left, #cube3 .left, #cube5 .left, #cube7 .left {
+#cube1 .left, #cube3 .left, #cube5 .left, #cube7 .left {
   -webkit-transform: rotateY(-90deg) translateZ(25px);
           transform: rotateY(-90deg) translateZ(25px);
 }
 
-#cube .top, #cube3 .top, #cube5 .top, #cube7 .top {
+#cube1 .top, #cube3 .top, #cube5 .top, #cube7 .top {
   -webkit-transform: rotateX(90deg) translateZ(25px);
           transform: rotateX(90deg) translateZ(25px);
 }
 
-#cube .bottom, #cube3 .bottom, #cube5 .bottom, #cube7 .bottom {
+#cube1 .bottom, #cube3 .bottom, #cube5 .bottom, #cube7 .bottom {
   -webkit-transform: rotateX(-90deg) translateZ(25px);
           transform: rotateX(-90deg) translateZ(25px);
 }
@@ -41,7 +41,7 @@
   padding: 50px;
 }
 
-#cube, #cube3, #cube5, #cube7 {
+#cube1, #cube3, #cube5, #cube7 {
   width: 30%;
   height: 30%;
   top: 50px;
@@ -55,7 +55,7 @@
   transition: transform 2s, -webkit-transform 2s;
 }
 
-#cube div, #cube3 div, #cube5 div, #cube7 div {
+#cube1 div, #cube3 div, #cube5 div, #cube7 div {
   background: white;
   display: block;
   position: absolute;
@@ -246,7 +246,7 @@
           box-sizing: unset;
 }
 
-#dices, #dices2, #dices3, #dices4 {
+#dices1, #dices2, #dices3, #dices4 {
   height: 280px;
   display: none;
 }

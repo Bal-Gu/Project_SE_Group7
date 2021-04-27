@@ -1,10 +1,15 @@
-var cube = document.getElementById('cube');
-var cube2 = document.getElementById('cube2');
 var rollButton = $("#rollButton");
 
-function rolldices(numberDice1, numberDice2) {
+function rolldices(numberDice1, numberDice2, playerNr, playerName) {
+  $("#playerName"+(playerNr+1)).html("Player: " + playerName);
+
+  let cube1Id = 'cube' + ((2*playerNr)+1);
+  var cube = document.getElementById(cube1Id);
+  let cube2Id = 'cube' + ((2*playerNr)+2);
+  var cube2 = document.getElementById(cube2Id);
+
   rollButton.prop("disabled", true);
-  $("#dices").show();
+  $("#dices"+(playerNr+1)).show();
 
   var xRand = getRandom(numberDice1)[0];
   var yRand = getRandom(numberDice1)[1];
@@ -24,7 +29,7 @@ function rolldices(numberDice1, numberDice2) {
   }, 20);
 
   setTimeout(function () {
-    $("#dices").hide();
+    $("#dices"+(playerNr+1)).hide();
     rollButton.prop("disabled", false);
   }, 3000);
 }

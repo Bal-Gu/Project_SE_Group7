@@ -5,10 +5,10 @@ export class Dice {
     first:number;
     second:number;
 
-    roll(){
+    roll(playerNr, playerName){
         this.first = 1+this.getRandomInt(globals.DiceNumber);
         this.second = 1+this.getRandomInt(globals.DiceNumber);
-        rolldices(this.first, this.second);
+        rolldices(this.first, this.second,playerNr,playerName);
     }
     total():number{
         return this.first + this.second;

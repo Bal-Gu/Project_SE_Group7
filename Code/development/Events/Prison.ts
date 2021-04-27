@@ -91,7 +91,7 @@ export class Prison {
 
     outOfPrison(p: Player) {
         let d: Dice = new Dice();
-        d.roll();
+        d.roll(p.ReferenceNumber, p.name);
         p.move(d.total());
         p.TurnsInPrison = 0;
         console.log("Paying");
@@ -100,7 +100,7 @@ export class Prison {
     }
     outRollDouble(p:Player){
         let d: Dice = new Dice();
-        d.roll();
+        d.roll(p.ReferenceNumber, p.name);
         p.TurnsInPrison++;
 
         if (d.isdouble()) {
