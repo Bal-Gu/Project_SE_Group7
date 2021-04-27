@@ -266,8 +266,8 @@
 }
 
 .board .center .deck .flip-card:hover .flip-card-inner {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
+  -webkit-transform: rotate(135deg) rotateX(180deg) scale(2);
+          transform: rotate(135deg) rotateX(180deg) scale(2);
 }
 
 .board .center .deck .flip-card-front, .board .center .deck .flip-card-back {

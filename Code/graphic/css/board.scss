@@ -93,7 +93,7 @@ $backgroundColor : #79ad8c;
 
       /* Do an vertical flip when you move the mouse over the flip box container */
       .flip-card:hover .flip-card-inner {
-        transform: rotateX(180deg);
+        transform: rotate(135deg) rotateX(180deg) scale(2);
       }
 
       /* Position the front and back side */
