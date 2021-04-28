@@ -167,6 +167,8 @@ export class main {
         if (this.ReferencePlayer.isBot) {
             while($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot){
                 let double:boolean = false;
+                //This is if is the normal handeling of the move/event
+                //The else is the handeling of when the bot is moving because of the reward it gets in the quizz
                 if(!this.ReferencePlayer.stillMovingBot){
                     this.dice.roll(this.ReferencePlayer.ReferenceNumber, this.ReferencePlayer.name);
                     double = this.dice.isdouble();
@@ -288,25 +290,49 @@ export class main {
                     }
                     await new Promise(r => setTimeout(r, 5000));
                 }
+                //Might rework later for better optimisation
                 if($("#MorageModal").is(":visible")){
-                    let MorgagePool = 0;
                     let MoneyPool = 0;
-                    for(let i = 0; i < 28; i++){
-                        let str: string = "#Addbutton" + (i).toString();
-                        if($(str).text() != ""){
-                            MorgagePool += 1;
-                        }else{
-                            break;
+                        for(let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                            //This part handle the first building to come until the moneypool is superior to 0
+                            if (this.ReferencePlayer.botDifficulty == 0) {
+                                if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                    MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                                    let str: string = "#Removebutton" + (i).toString();
+                                    $(str).click();
+                                }
+                            } else if (this.ReferencePlayer.botDifficulty == 1) {
+                                //This part is to firstly handle fields between 20 and 39 for botdiff advanced
+                                for (let y = 0; y < this.FieldArray.length; y++) {
+                                    if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 20) && (y <= 39) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                        MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                                        let str: string = "#Removebutton" + (i).toString();
+                                        //Already handled in mortgage event, but need to set true for next for loop
+                                        this.ReferencePlayer.fieldsOwned[i].isMortgage = true;
+                                        $(str).click();
+                                        break;
+                                    }
+                                }
+                            }
+                            if((this.ReferencePlayer.Money + MoneyPool) > 0){
+                                break;
+                            }
                         }
-                    }
-                    let i = 0;
-                    while((this.ReferencePlayer.Money + MoneyPool) < 0){
-                        if(!this.ReferencePlayer.fieldsOwned[i].isMortgage){
-                            MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
-                            let str: string = "#Removebutton" + (i).toString();
-                            $(str).click();
+                        //For advanced bot if he can't mortgage between 20 and 39
+                        if((this.ReferencePlayer.botDifficulty == 1) && ((this.ReferencePlayer.Money + MoneyPool) < 0)){
+                            for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                                if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                    MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                                    let str: string = "#Removebutton" + (i).toString();
+                                    $(str).click();
+                                }
+                                if((this.ReferencePlayer.Money + MoneyPool) > 0){
+                                    break;
+                                }
+                            }
                         }
-                    }
+
+
                     await new Promise(r => setTimeout(r, 2000));
                     $("#ApproveButtonMortgage").click();
 
@@ -541,9 +567,6 @@ export class main {
             this.ConseqDoubles = 0;
         }
         this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
-        this.ReferencePlayer.move(this.dice.total());
-
-
     }
 
     CheckWinCondition(player: Player): void {
@@ -712,6 +735,7 @@ export class main {
         $("#rollButton").click(function () {
             //handle the doubles
             self.dice.roll(self.ReferencePlayer.ReferenceNumber, self.ReferencePlayer.name);
+            self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
         });
         // to test the renovation modal
