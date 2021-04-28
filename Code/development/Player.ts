@@ -10,6 +10,7 @@ declare var nextMoveLogic;
 
 export class Player {
     isBot: boolean;
+    botDifficulty: number;
     isGameOver: boolean;
     Money: number;
     fieldsOwned: Field[] = [];
@@ -32,9 +33,9 @@ export class Player {
     nrOfMove: number = 0;
     inAuctionBot: boolean = false;
 
-    constructor(isBot: boolean, name: string, ReferenceNumber: number/*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
-        this.Money = 1500;
+        this.Money = 200;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;
@@ -44,6 +45,7 @@ export class Player {
         this.name = name;
         this.ReferenceNumber = ReferenceNumber;
         this.hasFreeRent = false;
+        this.botDifficulty = botDifficulty;
     }
 
     getName(): string {
