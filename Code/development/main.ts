@@ -731,6 +731,18 @@ export class main {
             // TODO: the building discription needs to me added
             $("#funfactModal").show();
         });
+
+        let botDifficultyButton = 1;
+        $("#botDifficultyButton").click(function () {
+            if (botDifficultyButton){
+                $(this).html("Bot Advanced");
+                botDifficultyButton = 0;
+            }else{
+                $(this).html("Bot Standard");
+                botDifficultyButton = 1;
+            }
+        });
+
     }
 
     updateButtons(p: Player) {
