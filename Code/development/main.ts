@@ -23,9 +23,13 @@ import {Trade} from "./Events/Trade";
 import $ from "jquery";
 import {Renovation} from "./Events/Renovation"
 import propertiesFile from '../properties.json';
+import {bigBoard} from './boardHtml';
+import {mediumBoard} from './boardHtml';
+import {smallBoard} from './boardHtml';
 
 declare var fallingCoins;
 declare var showHideStars;
+declare var setBoardSize;
 
 export class main {
     first:boolean = true;
@@ -42,6 +46,7 @@ export class main {
 
 
     async main() {
+        bigBoard();
         this.buttonEvent();
         this.EndTurnButton();
         this.InitializeGameLength(1);
@@ -878,13 +883,28 @@ export class main {
         $("#lobbyButton").click(function () {
             $("#lobbyModal").show();
         });
+        // select board size
+        $(".boardSizeButton").click(function () {
+            if (this.id == "bigBoardButton"){
+                setBoardSize(0);
+                bigBoard();
+            }else if (this.id == "mediumBoardButton"){
+                setBoardSize(1);
+                mediumBoard();
+            }else if (this.id == "smallBoardButton"){
+                setBoardSize(2);
+                smallBoard();
+            }else {
+                bigBoard();
+            }
+            $("#boardResizeModal").hide();
+            $("#lobbyModal").show();
+        });
         // hide the start menu if the play button inside the
         $("#menuPlayButton").click(function () {
             $("#startMenu").hide();
-            $("#lobbyModal").show();
+            $("#boardResizeModal").show();
             fallingCoins('body');
-            //showHideStars(39,4,1);
-            //showHideStars(FieldNumber, howManyStars0-5, PlayerReference0-3)
         });
         // show the start menu
         $("#startMenuButton").click(function () {
@@ -957,19 +977,6 @@ export class main {
                 $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
                 counter = 1;
             }
-        });
-
-        $(".buildingFunFact").click(function () {
-            // @ts-ignore
-            const buildingTitle = this.lastElementChild.firstChild.nextSibling.innerHTML;
-            // @ts-ignore
-            const buildingCredits = this.lastElementChild.lastElementChild.innerHTML;
-            // @ts-ignore
-            const imageName = this.lastElementChild.id;
-            $("#buildingFunFactTitle").html(buildingTitle + " ("+buildingCredits+")");
-            $("#imageBuilding").html("<img src='./graphic/images/large/"+imageName+".jpg' style='width: 100%;'>");
-            // TODO: the building discription needs to me added
-            $("#funfactModal").show();
         });
     }
 
