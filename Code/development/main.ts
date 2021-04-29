@@ -338,62 +338,132 @@ export class main {
 
                 }
                 //Trade handeling, will buy if a player has a building the same color as one of his
-                this.ReferencePlayer.fieldsOwned.forEach(field =>{
-                    let playercounter = 0;
-                    this.PlayerArray.forEach(async player=>{
-                        playercounter++;
-                        //TODO try implement buy proposition of erasmus
-                        for(let i = 0; i < player.fieldsOwned.length; i++){
-                            let fieldtarg = player.fieldsOwned[i];
-                            if(field.color == fieldtarg.color){
-                                $("#TradingModal").click();
-                                await new Promise(r => setTimeout(r, 1000));
-                                let newstr = "#targetButton" + playercounter;
-                                $(newstr).click();
-                                await new Promise(r => setTimeout(r, 1000));
-                                let str : string = "#4tradingButton" + i;
-                                $(str).click();
-                                let amount : string = String(field.initialPrice);
-                                $("#inputLable1").html(amount);
-                                await new Promise(r => setTimeout(r, 1000));
-                                $("#approveButtonTrading").click();
+                if(this.ReferencePlayer.botDifficulty == 1) {
+                    this.ReferencePlayer.fieldsOwned.forEach(field => {
+                        let playercounter = 0;
+                        this.PlayerArray.forEach(async player => {
+                            playercounter++;
+                            //TODO try implement buy proposition of erasmus
+                            for (let i = 0; i < player.fieldsOwned.length; i++) {
+                                let fieldtarg = player.fieldsOwned[i];
+                                if (field.color == fieldtarg.color) {
+                                    $("#TradingModal").click();
+                                    await new Promise(r => setTimeout(r, 1000));
+                                    let newstr = "#targetButton" + playercounter;
+                                    $(newstr).click();
+                                    await new Promise(r => setTimeout(r, 1000));
+                                    let str: string = "#4tradingButton" + i;
+                                    $(str).click();
+                                    let amount: string = String(field.initialPrice);
+                                    $("#inputLable1").html(amount);
+                                    await new Promise(r => setTimeout(r, 1000));
+                                }
                             }
-                        }
+                        })
+                        //TODO implement way to reset everything if player doesn't accept in 10 sec and to block every other buttons
                     })
-                })
+                }
+                //Might need further testing
                 if($("#repayMortgageButton").is(":visible")) {
-                    let refMoney = this.ReferencePlayer.Money;
                     let i = 0;
-                    if (this.ReferencePlayer.Money >= 500) {
+                    let RefMoney = this.ReferencePlayer.Money;
+                    await new Promise(r => setTimeout(r, 2000));
+                    while ((RefMoney >= 500) && (i < this.ReferencePlayer.fieldsOwned.length)) {
                         $("#repayMortgageButton").click();
-                        await new Promise(r => setTimeout(r, 2000));
-                        while ((refMoney >= 500) && (i < this.ReferencePlayer.fieldsOwned.length)) {
+                        if(this.ReferencePlayer.botDifficulty == 0 && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                            RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
                             let str = "#paybuttonRepayMortgage" + i;
                             $(str).click();
                             await new Promise(r => setTimeout(r, 2000));
-                            $("#ApproveButtonMortgage").click();
-                            i++;
+                        }else if(this.ReferencePlayer.botDifficulty == 1){
+                            //way to priorize bot to repay in a certain area
+                            for(let y = 0; y < this.FieldArray.length; y++){
+                                if((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < 20) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)){
+                                    RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                                    let str = "#paybuttonRepayMortgage" + i;
+                                    $(str).click();
+                                    await new Promise(r => setTimeout(r, 2000));
+                                }
+                            }
+                            //if bot repayed all other buildings and has enough money
+                            if(i+1 == this.ReferencePlayer.fieldsOwned.length ){
+                                for(let y = 0; y < this.FieldArray.length; y++){
+                                    if((this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                        RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
+                                        let str = "#paybuttonRepayMortgage" + i;
+                                        $(str).click();
+                                        await new Promise(r => setTimeout(r, 2000));
+                                    }
+                                }
+                            }
                         }
+                        i++;
                     }
-
+                    $("#ApproveButtonMortgage").click();
                 }
+                //2 difficulties for setmortgage and renovations
+                //Behaviour for advanced bot in renovations -> randomly chose what bot will pay, can pay less or more than standard bot
+                //Behaviour for advanced bot in setMortgage -> bot is way more insecure about money, can be tempted to mortgage at 700 and even at 1000
                 if($("#RenovationsButton").is(":visible")){
                     $("#RenovationsButton").click();
                     if(this.ReferencePlayer.Money<=500){
-                        for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
-                            if(!this.ReferencePlayer.fieldsOwned[i].isMortgage){
-                                await new Promise(r => setTimeout(r, 2000));
-                                let str :string= "#Removebutton" + i;
-                                $(str).click();
-                                await new Promise(r => setTimeout(r, 2000));
-                                $("#ApproveButtonMortgage").click();
-                                break;
+                        if(this.ReferencePlayer.botDifficulty == 0) {
+                            for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                                if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                    await new Promise(r => setTimeout(r, 2000));
+                                    let str: string = "#Removebutton" + i;
+                                    $(str).click();
+                                    await new Promise(r => setTimeout(r, 2000));
+                                    $("#ApproveButtonMortgage").click();
+                                    break;
+                                }
+                            }
+                        }else if(this.ReferencePlayer.botDifficulty == 1){
+                            if(this.ReferencePlayer.Money<=400){
+                                if((this.dice.getRandomInt(10)) > 0){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            let str: string = "#Removebutton" + i;
+                                            $(str).click();
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $("#ApproveButtonMortgage").click();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }else if(this.ReferencePlayer.Money <= 700){
+                                if((this.dice.getRandomInt(10)) > 4){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            let str: string = "#Removebutton" + i;
+                                            $(str).click();
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $("#ApproveButtonMortgage").click();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }else if(this.ReferencePlayer.Money <= 1000){
+                                if((this.dice.getRandomInt(10)) > 8){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            let str: string = "#Removebutton" + i;
+                                            $(str).click();
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $("#ApproveButtonMortgage").click();
+                                            break;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }else if(this.ReferencePlayer.Money>=1000){
                         await new Promise(r => setTimeout(r, 2000));
                         let total = 0;
-                        while(total<=100){
+                        while(total<=100 && this.ReferencePlayer.botDifficulty == 0){
                             for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
                                 if(this.ReferencePlayer.fieldsOwned[i].hasAll){
                                     //Decide which building to upgrade
@@ -412,6 +482,96 @@ export class main {
                                     // @ts-ignore
                                     total += this.ReferencePlayer.fieldsOwned[i].renovationscosts;
                                     await new Promise(r => setTimeout(r, 2000));
+                                }
+                            }
+                        }
+
+                        let rand = this.dice.getRandomInt(10);
+                        if(rand >4){
+                            while(total<=50 && this.ReferencePlayer.botDifficulty == 1){
+                                let renovationleft = false;
+                                for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    if(this.ReferencePlayer.fieldsOwned[i].hasAll && this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != 5){
+                                        //Decide which building to upgrade
+                                        let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
+                                        let y;
+                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                            // @ts-ignore
+                                            if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
+                                                buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
+                                                if(buildToUpgrade.renovatiosAmmount != 5){
+                                                    renovationleft = true;
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        if(total<= 50){
+                                            let str = "#Addbutton" + y;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $(str).click();
+                                            // @ts-ignore
+                                            total += this.ReferencePlayer.fieldsOwned[i].renovationscosts;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                        }
+                                    }
+                                }
+                            }
+                        }else if((rand > 3) && (rand < 8)){
+                            while(total<=150 && this.ReferencePlayer.botDifficulty == 1){
+                                let renovationleft = false;
+                                for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    if(this.ReferencePlayer.fieldsOwned[i].hasAll && this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != 5){
+                                        //Decide which building to upgrade
+                                        let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
+                                        let y;
+                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                            // @ts-ignore
+                                            if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
+                                                buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
+                                                if(buildToUpgrade.renovatiosAmmount != 5){
+                                                    renovationleft = true;
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        if(total<= 150){
+                                            let str = "#Addbutton" + y;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $(str).click();
+                                            // @ts-ignore
+                                            total += this.ReferencePlayer.fieldsOwned[i].renovationscosts;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                        }
+                                    }
+                                }
+                            }
+                        }else if(rand > 7){
+                            while(total<=200 && this.ReferencePlayer.botDifficulty == 1){
+                                let renovationleft = false;
+                                for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    if(this.ReferencePlayer.fieldsOwned[i].hasAll && this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != 5){
+                                        //Decide which building to upgrade
+                                        let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
+                                        let y;
+                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                            // @ts-ignore
+                                            if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
+                                                buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
+                                                if(buildToUpgrade.renovatiosAmmount != 5){
+                                                    renovationleft = true;
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        if(total<= 200){
+                                            let str = "#Addbutton" + y;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                            $(str).click();
+                                            // @ts-ignore
+                                            total += this.ReferencePlayer.fieldsOwned[i].renovationscosts;
+                                            await new Promise(r => setTimeout(r, 2000));
+                                        }
+                                    }
                                 }
                             }
                         }
