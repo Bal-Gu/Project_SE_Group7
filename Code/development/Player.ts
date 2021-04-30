@@ -5,6 +5,7 @@ import {Bus} from "./Fields/Bus";
 import {Parking} from "./Fields/Parking";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
+import {Mortage} from "./Events/mortage";
 
 declare var nextMoveLogic;
 
@@ -115,10 +116,13 @@ export class Player {
         return (this.Money - cost) > 0;
     }
 
-    buying(field: Field, amount: number): void {
+    async buying(field: Field, amount: number): Promise<void> {
         this.fieldsOwned.push(field);
         this.payAmmount(amount);
         this.updateFields();
+        if (this.Money < 0) {
+            await new Mortage().event(this)
+        }
         this.ShowPlayerMoney();
     }
 

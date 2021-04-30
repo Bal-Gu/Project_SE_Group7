@@ -26,6 +26,8 @@ import propertiesFile from '../properties.json';
 import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
+import * as QueryString from "querystring";
+import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
 declare var showHideStars;
@@ -922,7 +924,7 @@ export class main {
 
         $("#quizButton").click(async () => {
 
-            await this.RenovationTest();
+            new Quiz().event(this.ReferencePlayer);
 
         });
 

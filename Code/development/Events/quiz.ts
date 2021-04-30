@@ -8,7 +8,7 @@ export class Quiz {
     goodanswer:number = 0
     goodanswerString:String = "";
     private pressed: Boolean;
-
+    private indexes: number = 4;
     getIndexes(maxnum: number): number[] {
         var array: number[] = [];
         for (let i = 1; i <= maxnum; i++) {
@@ -40,7 +40,7 @@ export class Quiz {
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
         modal.show();
 
-        let indexes = 4;
+
         for (let i = 1; i < 4; i++) {
             let str: String = "#Answer" + (i + 1).toString();
             let button = $(str);
@@ -48,13 +48,14 @@ export class Quiz {
             if (finalQuizArray[(i + 1).toString()] == "") {
                 button.hide();
                 button.prop("disable", true);
-                indexes -= 1;
+                this.indexes -= 1;
             }
 
         }
 
-        var indexarray = this.getIndexes(indexes);
-        for (var i = 0; i < indexes; i++) {
+
+        var indexarray = this.getIndexes(this.indexes);
+        for (var i = 0; i < this.indexes; i++) {
             if (indexarray[i] == 1) {
                 this.goodanswer = i;
             }
@@ -62,7 +63,7 @@ export class Quiz {
             let button = $(str);
 
             button.show();
-            button.prop("disable", false);
+                button.prop("disable", false);
             button.text(finalQuizArray[indexarray[i]]);
             this.clicks(button, i, modal, p);
         }
@@ -75,9 +76,20 @@ export class Quiz {
         console.log("This event is being called by: " + p.name);
         let self = this;
         button.click(async function () {
+            for(let i=0;i<self.indexes;i++){
+                let str: String = "#Answer" + (i + 1).toString();
+                let button = $(str);
+                console.log(button.text())
+                if(i != index){
+                    button.hide();
+                }
+                button.prop("disable", true);
+            }
             button.css("background-color", "orange");
             await new Promise(r => setTimeout(r, 1000));
             button.css("background-color", "white");
+
+
             if(self.goodanswer == index){
                 console.log("Hello this is player " + p.name)
                 let goodconsequence = questions.Consequences[Math.floor(Math.random() * questions.Consequences.length)];
@@ -113,7 +125,8 @@ export class Quiz {
                     await self.exit("You were wrong you loose: " + penalty + " B-Coins");
                 }
                 else if(badconsequence.Type == "Movement"){
-                    await self.exit("You were wrong but moving backwards is not yet implemented so you're lucky this time");
+                    p.move(-3)
+                    await self.exit("Move 3 tiles backwards");
                 }
 
                 self.pressed = true;

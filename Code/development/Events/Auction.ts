@@ -124,7 +124,7 @@ export class Auction {
         if (!(winner == undefined)) {
             //winner gets the card
             console.log("winner has been chosen");
-            winner!.buying(field,currentprice);
+            await winner!.buying(field,currentprice);
             winnermodal.show();
             let string = winner!.name+ " has won";
             $("#WinnerModal .modal-content .modal-header h1").html(string);

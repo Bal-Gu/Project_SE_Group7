@@ -53,7 +53,9 @@ export class Renovation {
         }
 
         $("#mortageTable").html(output);
-
+        $("ApproveButtonMortgage").click(()=>{
+            modal.css("display", "none");
+        })
 
         for (this.i = 0; this.i < p.fieldsOwned.length; this.i++) {
             let value = this.i;
