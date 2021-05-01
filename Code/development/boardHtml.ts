@@ -924,20 +924,20 @@ export function smallBoard() {
                         <span class="price">150 BCoins</span>
                     </div>
                 </div>
-                <div class="sm-box rot-180 sm-box-pink buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star13"
+                <div class="sm-box rot-180 sm-box-orange buildingFunFact">
+                    <span class="stars"><img class="star" id="1-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star13"
+                    <span class="stars"><img class="star" id="2-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star13"
+                    <span class="stars"><img class="star" id="3-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star13"
+                    <span class="stars"><img class="star" id="4-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star13"
+                    <span class="stars"><img class="star" id="5-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='rockhal'>
-                        <span class="title">Rockhal</span>
-                        <span class="price">140 BCoins</span>
+                    <div id='student_lounge_belval'>
+                        <span class="title">Student Lounge Belval</span>
+                        <span class="price">180 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-white">
@@ -1020,36 +1020,36 @@ export function smallBoard() {
                         <span class="price">200 BCoins</span>
                     </div>
                 </div>
-                <div class="sm-box sm-box-brown buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star1"
+                <div class="sm-box sm-box-lightBlue buildingFunFact">
+                    <span class="stars"><img class="star" id="1-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star1"
+                    <span class="stars"><img class="star" id="2-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star1"
+                    <span class="stars"><img class="star" id="3-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star1"
+                    <span class="stars"><img class="star" id="4-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star1"
+                    <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='residence_etudiante_Uni-ValI'>
-                        <span class="title">Résidence Etudiante Uni-Val I</span>
-                        <span class="price">50 BCoins</span>
+                    <div class="rot-90" id='maison_du_nombre'>
+                        <span class="title">Maison du Nombre</span>
+                        <span class="price">120 BCoins</span>
                     </div>
                 </div>
-                <div class="sm-box sm-box-yellow buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star29"
+                <div class="sm-box sm-box-red buildingFunFact">
+                    <span class="stars"><img class="star" id="1-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star29"
+                    <span class="stars"><img class="star" id="2-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star29"
+                    <span class="stars"><img class="star" id="3-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star29"
+                    <span class="stars"><img class="star" id="4-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star29"
+                    <span class="stars"><img class="star" id="5-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='bil_bank'>
-                        <span class="title">Bil Bank</span>
-                        <span class="price">280 Bcoins</span>
+                    <div class="rot-90-reverse" id='gaart_belval'>
+                        <span class="title">Gaart Belval</span>
+                        <span class="price">220 BCoins</span>
                     </div>
                 </div>
                 <div class="lg-box">
@@ -1083,20 +1083,20 @@ export function smallBoard() {
                         <span class="price">200 BCoins</span>
                     </div>
                 </div>
-                <div class="sm-box sm-box-green buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star32"
+                <div class="sm-box sm-box-blue buildingFunFact">
+                    <span class="stars"><img class="star" id="1-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star32"
+                    <span class="stars"><img class="star" id="2-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star32"
+                    <span class="stars"><img class="star" id="3-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star32"
+                    <span class="stars"><img class="star" id="4-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star32"
+                    <span class="stars"><img class="star" id="5-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_biomedecineI'>
-                        <span class="title">Maison Biomédecine I</span>
-                        <span class="price">300 BCoins</span>
+                    <div id='llc'>
+                        <span class="title">Luxembourg Learning Center</span>
+                        <span class="price">Price 3</span>
                     </div>
                 </div>
                 <div class="lg-box">
