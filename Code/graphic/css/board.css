@@ -236,7 +236,16 @@
   /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
   /* This container is needed to position the front and back side */
   /* Do an vertical flip when you move the mouse over the flip box container */
-  /* Position the front and back side */
+  /*
+      .flip-card #evnt {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      }
+
+      .flip-card #qz {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      } 
+      
+      /* Position the front and back side */
   /* Style the front side (fallback if image is missing) */
   /* Style the back side */
   /* Style the back side */
@@ -262,11 +271,6 @@
   transition: transform 2s, -webkit-transform 2s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-}
-
-.board .center .deck .flip-card:hover .flip-card-inner {
-  -webkit-transform: rotate(135deg) rotateX(180deg) scale(2);
-          transform: rotate(135deg) rotateX(180deg) scale(2);
 }
 
 .board .center .deck .flip-card-front, .board .center .deck .flip-card-back {

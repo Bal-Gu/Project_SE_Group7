@@ -37,8 +37,12 @@ export class Quiz {
         let finalQuizArray = questions.Quiz[Math.floor(Math.random() * questions.Quiz.length)];
         this.goodanswerString = finalQuizArray["1"];
         let modal = $("#QuestionModal");
+        $(".flip-card, #qz").css("transform","translate(0px, -230px)", "rotate(135deg)", "rotateX(180deg)", "scale(3)");
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
+        await this.sleep(2000);
         modal.show();
+        
+        
 
         let indexes = 4;
         for (let i = 1; i < 4; i++) {
