@@ -5,11 +5,13 @@ import {Bus} from "./Fields/Bus";
 import {Parking} from "./Fields/Parking";
 import {Properties} from "./Fields/Properties";
 import {Colors} from "./Fields/colors";
+import {Mortage} from "./Events/mortage";
 
 declare var nextMoveLogic;
 
 export class Player {
     isBot: boolean;
+    botDifficulty: number;
     isGameOver: boolean;
     Money: number;
     fieldsOwned: Field[] = [];
@@ -32,9 +34,9 @@ export class Player {
     nrOfMove: number = 0;
     inAuctionBot: boolean = false;
 
-    constructor(isBot: boolean, name: string, ReferenceNumber: number/*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
-        this.Money = 1500;
+        this.Money = 200;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;
@@ -44,6 +46,7 @@ export class Player {
         this.name = name;
         this.ReferenceNumber = ReferenceNumber;
         this.hasFreeRent = false;
+        this.botDifficulty = botDifficulty;
     }
 
     getName(): string {
@@ -113,10 +116,13 @@ export class Player {
         return (this.Money - cost) > 0;
     }
 
-    buying(field: Field, amount: number): void {
+    async buying(field: Field, amount: number): Promise<void> {
         this.fieldsOwned.push(field);
         this.payAmmount(amount);
         this.updateFields();
+        if (this.Money < 0) {
+            await new Mortage().event(this)
+        }
         this.ShowPlayerMoney();
     }
 

@@ -235,6 +235,20 @@
                     </div>
                 </div>
             </div>
+            <div id="boardResizeModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Game length</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ButtonContainer">
+                            <Button class="StartBoxButton boardSizeButton" id="smallBoardButton">Small board</Button>
+                            <Button class="StartBoxButton boardSizeButton" id="mediumBoardButton">Medium board</Button>
+                            <Button class="StartBoxButton boardSizeButton" id="bigBoardButton">Big board (Default)</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="lobbyModal" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -285,7 +299,9 @@
                             </tr>
                         </table>
                         <div class="ButtonContainer">
+                            <Button class="StartBoxButton" id="botDifficultyButton">Bot Standard</Button>
                             <Button class="StartBoxButton" id="StartButton">Start Game</Button>
+                            <Button class="StartBoxButton" style="visibility: hidden;"></Button>
                         </div>
                     </div>
                 </div>
@@ -483,11 +499,11 @@
                     </div>
                 </div>
             </div>
-
             <!-- End Modals -->
         </div>
 
         <div class='grid-mid'>
+<<<<<<< HEAD
             <div class="board">
                 <div class="center">
                     <div class="community-chest-deck">
@@ -975,6 +991,9 @@
                 <div class="lg-box">
                     <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
                 </div>
+=======
+            <div class="board" id="boardContent">
+>>>>>>> 158f8313f6df20f3c48246201b0ba2d08eaed234
             </div>
             <div class='figure-start' id="positions">
                 <img class="figures" id="position1" src="./graphic/svg/car_orange.svg ">

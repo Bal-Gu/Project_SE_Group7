@@ -5,12 +5,13 @@ export class PlayerSelection{
     PlayerArray: Player[] = [];
     PlayerIsBot: boolean[] = [true, true, true, true];
     PlayerName: string[] = ["","","",""];
+    botDifficultyButton: number;
     getPlayers():Player[]{
         return this.PlayerArray;
     }
     initializePlayers(){
         for(let i = 0; i < this.PlayerIsBot.length; i++){
-            let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i], i);
+            let p:Player = new Player(this.PlayerIsBot[i],this.PlayerName[i], i, this.botDifficultyButton);
             this.PlayerArray.push(p);
         }
         this.PlayerArray[0].Color = "orange";
@@ -26,6 +27,8 @@ export class PlayerSelection{
         let button3 = $("#PlayerButton3");
         let button4 = $("#PlayerButton4");
         let StartButton = $("#StartButton");
+        let botDiff = $("#botDifficultyButton");
+        this.botDifficultyButton = 0;
         button1.click(function(){
             if(!self.PlayerIsBot[0]){
                 self.PlayerIsBot[0] = true;
@@ -92,6 +95,15 @@ export class PlayerSelection{
                 document.getElementById("PlayerStatus4").value="";
                 // @ts-ignore
                 document.getElementById("PlayerStatus4").disabled=false;
+            }
+        });
+        botDiff.click(function (){
+            if (self.botDifficultyButton){
+                $(this).html("Bot Standard");
+                self.botDifficultyButton = 0;
+            }else{
+                $(this).html("Bot Advanced");
+                self.botDifficultyButton = 1;
             }
         });
         StartButton.click(function(){
