@@ -53,6 +53,7 @@ export class EventEvent {
 
 
         }
+        // @ts-ignore
         $(".flip-card, #evnt").css("transform","translate(0px, -230px)", "rotate(135deg)", "rotateX(180deg)", "scale(3)");
         await this.sleep(2000);
         modal.show();
