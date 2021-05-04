@@ -180,10 +180,10 @@ export class main {
                     this.dice.roll(this.ReferencePlayer.ReferenceNumber, this.ReferencePlayer.name);
                     double = this.dice.isdouble();
                     this.ReferencePlayer.move(this.dice.total());
-                    await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                    await new Promise(r => setTimeout(r, this.dice.total() * 500));
                 }else{
                     this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
-                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
+                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 ));
                     this.ReferencePlayer.nrOfMove = 0;
                     this.ReferencePlayer.stillMovingBot = false;
                 }
@@ -285,6 +285,23 @@ export class main {
                             sizeAnswerPool += 1;
                         }
                     }
+                    // @ts-ignore
+                    document.getElementById("Answer1").disabled=true;
+                    // @ts-ignore
+                    document.getElementById("Answer2").disabled=true;
+                    // @ts-ignore
+                    document.getElementById("Answer3").disabled=true;
+                    // @ts-ignore
+                    document.getElementById("Answer4").disabled=true;
+                    await new Promise(r => setTimeout(r, 3000));
+                    // @ts-ignore
+                    document.getElementById("Answer1").disabled=false;
+                    // @ts-ignore
+                    document.getElementById("Answer2").disabled=false;
+                    // @ts-ignore
+                    document.getElementById("Answer3").disabled=false;
+                    // @ts-ignore
+                    document.getElementById("Answer4").disabled=false;
                     if(sizeAnswerPool == 2){
                         let randChoice = self.dice.getRandomInt(2);
                         (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
@@ -295,7 +312,6 @@ export class main {
                         let randChoice = self.dice.getRandomInt(4);
                         (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
                     }
-                    await new Promise(r => setTimeout(r, 5000));
                 }
                 //Might rework later for better optimisation
                 if($("#MorageModal").is(":visible")){
@@ -412,11 +428,16 @@ export class main {
                 //Behaviour for advanced bot in renovations -> randomly chose what bot will pay, can pay less or more than standard bot
                 //Behaviour for advanced bot in setMortgage -> bot is way more insecure about money, can be tempted to mortgage at 700 and even at 1000
                 if($("#RenovationsButton").is(":visible")){
+                    console.log("renov visible");
                     $("#RenovationsButton").click();
+                    await new Promise(r => setTimeout(r, 2000));
                     if(this.ReferencePlayer.Money<=500){
+                        console.log("not enough money");
                         if(this.ReferencePlayer.botDifficulty == 0) {
+                            console.log("bot diff 0");
                             for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                 if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                    console.log("mortgaged");
                                     await new Promise(r => setTimeout(r, 2000));
                                     let str: string = "#Removebutton" + i;
                                     $(str).click();
@@ -472,16 +493,19 @@ export class main {
                         let total = 0;
                         while(total<=100 && this.ReferencePlayer.botDifficulty == 0){
                             for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
-                                if(this.ReferencePlayer.fieldsOwned[i].hasAll){
+                                if(this.ReferencePlayer.fieldsOwned[i].hasAll && total<=100 && this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != 5){
                                     //Decide which building to upgrade
                                     let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
                                     let y;
-                                    for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                    for(y = 0; y < this.ReferencePlayer.fieldsOwned.length; y++){
                                         // @ts-ignore
                                         if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
                                             buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
                                             break;
                                         }
+                                    }
+                                    if(buildToUpgrade == this.ReferencePlayer.fieldsOwned[i]){
+                                        y = i;
                                     }
                                     let str = "#Addbutton" + y;
                                     await new Promise(r => setTimeout(r, 2000));
@@ -494,7 +518,7 @@ export class main {
                         }
 
                         let rand = this.dice.getRandomInt(10);
-                        if(rand >4){
+                        if(rand >1){
                             while(total<=50 && this.ReferencePlayer.botDifficulty == 1){
                                 let renovationleft = false;
                                 for(let i=0; i < this.ReferencePlayer.fieldsOwned.length; i++){
@@ -502,7 +526,7 @@ export class main {
                                         //Decide which building to upgrade
                                         let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
                                         let y;
-                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                        for(y = 0; y < this.ReferencePlayer.fieldsOwned.length; y++){
                                             // @ts-ignore
                                             if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
                                                 buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
@@ -511,6 +535,9 @@ export class main {
                                                 }
                                                 break;
                                             }
+                                        }
+                                        if(buildToUpgrade == this.ReferencePlayer.fieldsOwned[i]){
+                                            y = i;
                                         }
                                         if(total<= 50){
                                             let str = "#Addbutton" + y;
@@ -531,7 +558,7 @@ export class main {
                                         //Decide which building to upgrade
                                         let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
                                         let y;
-                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                        for(y = 0; y < this.ReferencePlayer.fieldsOwned.length; y++){
                                             // @ts-ignore
                                             if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
                                                 buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
@@ -540,6 +567,9 @@ export class main {
                                                 }
                                                 break;
                                             }
+                                        }
+                                        if(buildToUpgrade == this.ReferencePlayer.fieldsOwned[i]){
+                                            y = i;
                                         }
                                         if(total<= 150){
                                             let str = "#Addbutton" + y;
@@ -560,7 +590,7 @@ export class main {
                                         //Decide which building to upgrade
                                         let buildToUpgrade = this.ReferencePlayer.fieldsOwned[i];
                                         let y;
-                                        for(y = 0; i < this.ReferencePlayer.fieldsOwned.length; y++){
+                                        for(y = 0; y < this.ReferencePlayer.fieldsOwned.length; y++){
                                             // @ts-ignore
                                             if((buildToUpgrade.color == this.ReferencePlayer.fieldsOwned[y].color) && (y != i) && (buildToUpgrade.renovatiosAmmount > this.ReferencePlayer.fieldsOwned[y].renovatiosAmmount)){
                                                 buildToUpgrade = this.ReferencePlayer.fieldsOwned[y];
@@ -569,6 +599,9 @@ export class main {
                                                 }
                                                 break;
                                             }
+                                        }
+                                        if(buildToUpgrade == this.ReferencePlayer.fieldsOwned[i]){
+                                            y = i;
                                         }
                                         if(total<= 200){
                                             let str = "#Addbutton" + y;

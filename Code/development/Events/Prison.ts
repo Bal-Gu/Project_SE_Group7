@@ -73,6 +73,32 @@ export class Prison {
             self.outOfPrison(p);
             self.pressed =  true;
         });
+
+        if(p.isBot){
+            if(p.hasErasmusDispense){
+                luckyButton.click();
+            }else if(p.canBuy(globals.ErasmusFees)){
+                let d: Dice = new Dice();
+                let rand = d.getRandomInt(10);
+                if((p.Money/4) > globals.Erasmus){
+                    if(rand > 1){
+                        pay.click();
+                    }
+                }else if((p.Money/2) > globals.Erasmus){
+                    if(rand > 3){
+                        pay.click();
+                    }
+                }else{
+                    if(rand > 5){
+                        pay.click();
+                    }
+                }
+            }else {
+                $("#roleDouble").click();
+            }
+
+        }
+
         await this.wait();
         modal.hide();
     };
