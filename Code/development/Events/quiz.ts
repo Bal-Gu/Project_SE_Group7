@@ -37,8 +37,7 @@ export class Quiz {
         let finalQuizArray = questions.Quiz[Math.floor(Math.random() * questions.Quiz.length)];
         this.goodanswerString = finalQuizArray["1"];
         let modal = $("#QuestionModal");
-        // @ts-ignore
-        $(".flip-card, #qz").css("transform","translate(0px, -230px)", "rotate(135deg)", "rotateX(180deg)", "scale(3)");
+        $("#qz .flip-card-inner").css("transform", "translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3)");
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
         await this.sleep(2000);
         modal.show();
@@ -117,6 +116,7 @@ export class Quiz {
 
                 self.pressed = true;
                 modal.hide();
+                $("#qz .flip-card-inner").css("transform", "translate(0) rotate(0) rotateX(0) scale(1)");
             }
             else{
                 let badconsequence = questions.Consequences[Math.floor(Math.random() * questions.Consequences.length)];
@@ -136,6 +136,7 @@ export class Quiz {
 
                 self.pressed = true;
                 modal.hide();
+                $("#qz .flip-card-inner").css("transform", "translate(0) rotate(0) rotateX(0) scale(1)");
             }
             $(this).off("click");
         });

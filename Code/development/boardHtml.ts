@@ -8,7 +8,7 @@ export function bigBoard() {
                     <div class="community-chest-deck">
                         <h2 class="label">Event</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="evnt">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front2">
                                         <div>
@@ -27,7 +27,7 @@ export function bigBoard() {
                     <div class="chance-deck">
                         <h2 class="label">Quiz</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="qz">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
                                         <div>
@@ -509,7 +509,7 @@ export function mediumBoard() {
                     <div class="community-chest-deck">
                         <h2 class="label">Event</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="evnt">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front2">
                                         <div>
@@ -528,7 +528,7 @@ export function mediumBoard() {
                     <div class="chance-deck">
                         <h2 class="label">Quiz</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="qz">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
                                         <div>
@@ -880,7 +880,7 @@ export function smallBoard() {
                     <div class="community-chest-deck">
                         <h2 class="label">Event</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="evnt">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front2">
                                         <div>
@@ -899,7 +899,7 @@ export function smallBoard() {
                     <div class="chance-deck">
                         <h2 class="label">Quiz</h2>
                         <div class="deck">
-                            <div class="flip-card">
+                            <div class="flip-card" id="qz">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
                                         <div>
