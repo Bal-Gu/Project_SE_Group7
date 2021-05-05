@@ -658,6 +658,7 @@ export class main {
         ps.initializePlayers();
         this.PlayerArray = ps.getPlayers();
         this.PlayerArray.forEach((player) => {
+            player.setLanguage(this.language);
             player.setMap(this.FieldArray);
         });
         this.InitializeQueue();

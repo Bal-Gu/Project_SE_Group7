@@ -33,10 +33,11 @@ export class Player {
     stillMovingBot: boolean = false;
     nrOfMove: number = 0;
     inAuctionBot: boolean = false;
+    language: string;
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
-        this.Money = 200;
+        this.Money = 0;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;
@@ -253,6 +254,10 @@ export class Player {
             index += index % globals.MaxNumberField;
         }
 
+    }
+
+    setLanguage(language: string) {
+        this.language = language;
     }
 }
 
