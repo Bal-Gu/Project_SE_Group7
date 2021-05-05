@@ -643,7 +643,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='maison_du_nombre'>
+                    <div class="rot-90-medium" id='maison_du_nombre'>
                         <span class="title">Maison du Nombre</span>
                         <span class="price">120 BCoins</span>
                     </div>
@@ -659,18 +659,18 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='cafe_savoir'>
+                    <div class="rot-90-reverse-medium" id='cafe_savoir'>
                         <span class="title">Café du Savoir</span>
                         <span class="price">200 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90 " id="quiz-card2">
+                    <div class="rot-90-medium" id="quiz-card2">
                         <span class="title">QUIZ</span>
                     </div>
                 </div>                
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse" id="quiz-card3">
+                    <div class="rot-90-reverse-medium" id="quiz-card3">
                         <span class="title">QUIZ</span>
                     </div>
                 </div>
@@ -685,7 +685,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star6"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='halles_essais_ingenieur'>
+                    <div class="rot-90-medium" id='halles_essais_ingenieur'>
                         <span class="title">Halles d’Essais Ingénieurs</span>
                         <span class="price">100 BCoins</span>
                     </div>
@@ -701,25 +701,25 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='restaurant_uni'>
+                    <div class="rot-90-reverse-medium" id='restaurant_uni'>
                         <span class="title">Restaurant Universitaire</span>
                         <span class="price">220 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90">
+                    <div class="rot-90-medium">
                         <span class="title">BELVAL RAILROAD</span>
                         <span class="price">200 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
+                    <div class="rot-90-reverse-medium">
                         <span class="title">PORTE DES SCIENCES</span>
                         <span class="price">200 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90">
+                    <div class="rot-90-medium">
                         <span class="title">STUDIES FEES</span>
                         <span class="price">Pay 10% or 200 BCoins</span>
                     </div>
@@ -735,19 +735,19 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star26"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='massenoire'>
+                    <div class="rot-90-reverse-medium" id='massenoire'>
                         <span class="title">Massenoire</span>
                         <span class="price">260 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90" id="event-card">
+                    <div class="rot-90-medium" id="event-card">
                         <span class="title">EVENT</span>
                         <span class="price">Follow Instructions</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
+                    <div class="rot-90-reverse-medium">
                         <span class="title">SQUARE MILE BELVAL</span>
                         <span class="price">150 BCoins</span>
                     </div>
@@ -763,7 +763,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='residence_etudiante_Uni-ValI'>
+                    <div class="rot-90-medium" id='residence_etudiante_Uni-ValI'>
                         <span class="title">Résidence Etudiante Uni-Val I</span>
                         <span class="price">50 BCoins</span>
                     </div>
@@ -779,7 +779,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star29"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='bil_bank'>
+                    <div class="rot-90-reverse-medium" id='bil_bank'>
                         <span class="title">Bil Bank</span>
                         <span class="price">280 Bcoins</span>
                     </div>
@@ -863,11 +863,11 @@ export function mediumBoard() {
                 </div>
     `;
 
-    $(".board").css("grid-template-columns", "120px repeat(7, 75px) 120px");
-    $(".board").css("grid-template-rows", "120px repeat(7, 75px) 120px");
+    $(".board").css("grid-template-columns", "120px repeat(7, 85px) 120px");
+    $(".board").css("grid-template-rows", "120px repeat(7, 85px) 120px");
     $(".center").css("grid-column", "2 / 9");
     $(".center").css("grid-row", "2 / 9");
-    $(".figure-start").css("width", "767px");
+    $(".figure-start").css("width", "838px");
     $(".board .center .title").css("font-size", "27px");
     funFactButtons();
 }
@@ -976,18 +976,18 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star6"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='halles_essais_ingenieur'>
+                    <div class="rot-90-small" id='halles_essais_ingenieur'>
                         <span class="title">Halles d’Essais Ingénieurs</span>
                         <span class="price">100 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse" id="quiz-card3">
+                    <div class="rot-90-reverse-small" id="quiz-card3">
                         <span class="title">QUIZ</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90">
+                    <div class="rot-90-small">
                         <span class="title">BELVAL RAILROAD</span>
                         <span class="price">200 BCoins</span>
                     </div>
@@ -1003,19 +1003,19 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='restaurant_uni'>
+                    <div class="rot-90-reverse-small" id='restaurant_uni'>
                         <span class="title">Restaurant Universitaire</span>
                         <span class="price">220 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90" id="event-card">
+                    <div class="rot-90-small" id="event-card">
                         <span class="title">EVENT</span>
                         <span class="price">Follow Instructions</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
+                    <div class="rot-90-reverse-small">
                         <span class="title">PORTE DES SCIENCES</span>
                         <span class="price">200 BCoins</span>
                     </div>
@@ -1031,7 +1031,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='maison_du_nombre'>
+                    <div class="rot-90-small" id='maison_du_nombre'>
                         <span class="title">Maison du Nombre</span>
                         <span class="price">120 BCoins</span>
                     </div>
@@ -1047,7 +1047,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='gaart_belval'>
+                    <div class="rot-90-reverse-small" id='gaart_belval'>
                         <span class="title">Gaart Belval</span>
                         <span class="price">220 BCoins</span>
                     </div>
@@ -1104,11 +1104,11 @@ export function smallBoard() {
                 </div>
     `;
 
-    $(".board").css("grid-template-columns", "120px repeat(4, 75px) 120px");
-    $(".board").css("grid-template-rows", "120px repeat(4, 75px) 120px");
+    $(".board").css("grid-template-columns", "120px repeat(4, 150px) 120px");
+    $(".board").css("grid-template-rows", "120px repeat(4, 150px) 120px");
     $(".center").css("grid-column", "2 / 6");
     $(".center").css("grid-row", "2 / 6");
-    $(".figure-start").css("width", "541px");
-    $(".board .center .title").css("font-size", "10px");
+    $(".figure-start").css("width", "842px");
+    $(".board .center .title").css("font-size", "25px");
     funFactButtons();
 }

@@ -474,6 +474,46 @@
   height: 100px;
 }
 
+.sm-box .rot-90-small {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  position: absolute;
+  left: -27px;
+  top: 22px;
+  width: 151px;
+  height: 101px;
+}
+
+.sm-box .rot-90-medium {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 84px;
+  height: 100px;
+}
+
+.sm-box .rot-90-reverse-medium {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: 26px;
+  top: -8px;
+  width: 84px;
+  height: 100px;
+}
+
+.sm-box .rot-90-reverse-small {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: -5px;
+  top: 26px;
+  width: 149px;
+  height: 97px;
+}
+
 .sm-box .rot-90-reverse {
   left: initial;
   right: 12px;
@@ -529,13 +569,13 @@
   background-image: url("../images/small/chance_card2.png");
   background-size: 60px 60px;
   background-repeat: no-repeat;
-  background-position: 6px 30px;
+  background-position: center;
 }
 
 #event-card, #event-card2, #event-card3 {
   background-image: url("../images/small/community_card3.png");
   background-size: 40px 40px;
   background-repeat: no-repeat;
-  background-position: 15px 25px;
+  background-position: center;
 }
 /*# sourceMappingURL=board.css.map */

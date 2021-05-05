@@ -1,25 +1,41 @@
 const delay = 0.5;
 let boardSize = 0;
 let fieldNumbers = 10;
+let boxSizes = 75;
+let turn1 = 75;
+let turn2 = 75;
+
 
 function setBoardSize(size){
     // mediumboard
     if (size === 1){
         boardSize = size;
         fieldNumbers = 8;
+        boxSizes = 85;
+        turn1 = 84;
+        turn2 = 85;
     }
     // smallboard
     else if (size === 2){
         boardSize = size;
         fieldNumbers = 5;
+        boxSizes = 150;
+        turn1 = 135;
+        turn2 = 75;
     }
     // bigboard
     else if (size === 0){
         boardSize = size;
         fieldNumbers = 10;
+        boxSizes = 75;
+        turn1 = 75;
+        turn2 = 75;
     }else{
         boardSize = 0;
         fieldNumbers = 10;
+        boxSizes = 75;
+        turn1 = 75;
+        turn2 = 75;
     }
 }
 
@@ -30,7 +46,7 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
     } else {
         if (FieldNumber >= 0 && FieldNumber < fieldNumbers) {
             if (FieldNumber === (fieldNumbers-1)) {
-                movingUpAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingUpAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("90_cw", "-15px 36px", position);
                 }
@@ -50,11 +66,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("90_cw", "82px 37px", '#position4');
                 }
             } else {
-                movingUpAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingUpAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
         } else if (FieldNumber >= fieldNumbers && FieldNumber < (fieldNumbers*2)) {
             if (FieldNumber === ((fieldNumbers*2)-1)) {
-                movingRightAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingRightAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("180_cw", "-15px 37px", position);
                 }
@@ -74,11 +90,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("180_cw", "82px 37px", '#position4');
                 }
             } else {
-                movingRightAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingRightAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
         } else if (FieldNumber >= (fieldNumbers*2) && FieldNumber < (fieldNumbers*3)) {
             if (FieldNumber === ((fieldNumbers*3)-1)) {
-                movingDownAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingDownAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("270_cw", "-15px 38px", position);
                 }
@@ -98,11 +114,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("270_cw", "83px 37px", '#position4');
                 }
             } else {
-                movingDownAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingDownAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
         } else if (FieldNumber >= (fieldNumbers*3) && FieldNumber < (fieldNumbers*4)) {
             if (FieldNumber === ((fieldNumbers*4)-1)) {
-                movingLeftAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingLeftAnimation(FieldNumber, FieldsToPlay, turn2, position);
                 if (position === '#position1') {
                     figureRotation("0_cw", "-15px 38px", position);
                 }
@@ -122,7 +138,7 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("0_cw", "83px 37px", '#position4');
                 }
             } else {
-                movingLeftAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingLeftAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
         }
     }
