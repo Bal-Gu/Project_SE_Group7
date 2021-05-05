@@ -3,6 +3,7 @@ import Event from "../../Event.json";
 import $ from "jquery";
 import globals from "../../globalVariable.json";
 import {Restplace} from "../Fields/Restplace";
+import {Mortage} from "./mortage";
 
 export class EventEvent {
     private pressed: boolean;
@@ -16,6 +17,9 @@ export class EventEvent {
         let modal = $("#EventModal");
         $("#EventText").html(finalQuizArray.Title);
         p.recieveMoney(finalQuizArray.Money);
+        if(p.Money < 0){
+            await new Mortage().event(p);
+        }
         if(finalQuizArray.Money<0){
             let restplace:Restplace  = <Restplace>p.map[globals.ParkingNumber]
             restplace.addToPot(finalQuizArray.Money * -1);
