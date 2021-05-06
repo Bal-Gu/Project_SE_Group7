@@ -34,6 +34,7 @@ export class Player {
     nrOfMove: number = 0;
     inAuctionBot: boolean = false;
     language: string;
+    haspressed:boolean = false;
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
@@ -128,6 +129,7 @@ export class Player {
     }
 
     gameOver() {
+        console.log("GAME OVER");
         this.isGameOver = true;
     }
 
@@ -180,21 +182,27 @@ export class Player {
         this.updateFields();
     }
 
-    recieveMoney(ammount: number) {
+    async recieveMoney(ammount: number) {
         this.Money += ammount;
-        if(isNaN(this.Money)){
+        if (isNaN(this.Money)) {
 
             throw new Error().stack;
+        }
+        if (this.Money < 0) {
+            await new Mortage().event(this);
         }
         this.ShowPlayerMoney();
     }
 
-    payAmmount(ammount: number) {
+    async payAmmount(ammount: number) {
 
         this.Money -= ammount;
-        if(isNaN(this.Money)){
+        if (isNaN(this.Money)) {
 
             throw new Error().stack;
+        }
+        if (this.Money < 0) {
+            await new Mortage().event(this);
         }
         this.ShowPlayerMoney();
     }
