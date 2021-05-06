@@ -2,7 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
 module.exports ={
+
     devtool: "eval-source-map",
 
     entry:  "./Code/development/main.ts",
@@ -51,7 +53,8 @@ module.exports ={
     },
     resolve: {
         extensions: [".ts",".js",".json"],
-        modules: ['node_modules']
+        modules: ['node_modules'],
+        fallback: {fs: false}
     },
     mode: "development",
     output:{
@@ -60,6 +63,7 @@ module.exports ={
         path: path.resolve(__dirname,"public")
 
     },
+
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
