@@ -224,12 +224,14 @@ export class Player {
     goToErasmus(): void {
 
         this.move(globals.MaxNumberField/2);
-        this.payAmmount(globals.payDay);
         this.currentposition = globals.Erasmus;
 
     }
 
     startBonus(): void {
+        if(this.TurnsInPrison > 0){
+            return;
+        }
         this.Money += globals.payDay;
         this.ShowPlayerMoney();
     }
@@ -246,8 +248,9 @@ export class Player {
     //TODO while loop is buggy
     moveToNextBus() {
         let index = this.currentposition;
-        while(this.currentposition-1 != index && !(this.map[index] instanceof Bus)) {
-            index += index % globals.MaxNumberField;
+        while(this.currentposition-1 !== index && !(this.map[index] instanceof Bus)) {
+            console.log(index + "is currentpos? " + (this.currentposition-1 != index));
+            index = (index+1) % globals.MaxNumberField;
         }
         if (this.currentposition > index) {
             this.move(globals.MaxNumberField - this.currentposition + index);
@@ -257,11 +260,16 @@ export class Player {
     }
 
     goToRockhal() {
+        console.log(this.map);
         let index = this.currentposition;
-        while (!(this.map[index].name != "Rockhal")) {
-            index += index % globals.MaxNumberField;
+        while (this.map[index].name !== "Rockhal") {
+            index = (index+1) % globals.MaxNumberField;
         }
-
+        if (this.currentposition > index) {
+            this.move(globals.MaxNumberField - this.currentposition + index);
+        } else {
+            this.move(index - this.currentposition);
+        }
     }
 
     setLanguage(language: string) {
