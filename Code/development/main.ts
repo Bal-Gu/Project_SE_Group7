@@ -62,8 +62,11 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
             )
-            this.PlayerArray.forEach(
-                player => this.CheckLooseCondition(player)
+            this.PlayerArray.forEach((player) =>
+                {
+                    this.CheckLooseCondition(player);
+
+                }
             )
             console.log("Before next turn Ref player =" + this.ReferencePlayer.name);
             this.NextTurn();
@@ -813,6 +816,7 @@ export class main {
     }
 
     CheckLooseCondition(player: Player): void {
+        console.log("enters"+player.isGameOver);
         if (player.isGameOver) {
             this.Surrender(player);
         }
@@ -821,7 +825,10 @@ export class main {
     Surrender(p: Player): void {
         let index = this.PlayerArray.indexOf(p);
         this.PlayerArray.splice(index, 1);
-
+        let PlayerIdString:String = "#player-"+(p.ReferenceNumber+1);
+        console.log(PlayerIdString);
+        let payerdiv = $(PlayerIdString);
+        payerdiv.html("<h6>💀💀💀💀💀💀</h6>");
         for (let i = 0; i < p.fieldsOwned.length; i++) {
             p.fieldsOwned[i].owner = undefined;
         }

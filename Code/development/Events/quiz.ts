@@ -9,14 +9,14 @@ import quizPR from "../../QuizPR.json";
 import quizDE from "../../QuizDE.json";
 
 
-
 export class Quiz {
-    goodanswer:number = 0
-    questions:{Quiz: {Title: string, "1": string, "2": string, "3": string, "4": string}[]};
-    goodanswerString:String = "";
-    private pressed: Boolean;
+    goodanswer: number = 0
+    questions: { Quiz: { Title: string, "1": string, "2": string, "3": string, "4": string }[] };
+    goodanswerString: String = "";
+    private pressed: Boolean = false;
     private indexes: number = 4;
     private p: Player;
+
     getIndexes(maxnum: number): number[] {
         var array: number[] = [];
         for (let i = 1; i <= maxnum; i++) {
@@ -40,7 +40,10 @@ export class Quiz {
     }
 
     async event(p: Player) {
-        let stringrequire = "../../Quiz"+p.language+".json";
+        if(this.p == p){
+            return;
+        }
+        let stringrequire = "../../Quiz" + p.language + ".json";
         this.p = p;
         switch (p.language) {
             case "LUX":
@@ -64,7 +67,6 @@ export class Quiz {
         }
 
 
-        this.pressed = false;
         let finalQuizArray = this.questions["Quiz"][Math.floor(Math.random() * this.questions["Quiz"].length)];
         this.goodanswerString = finalQuizArray["1"];
         let modal = $("#QuestionModal");
@@ -72,10 +74,9 @@ export class Quiz {
         $("#QuestionModal .modal-content .modal-header h2").html(finalQuizArray.Title);
         await this.sleep(2000);
         modal.show();
-        
-        
 
 
+        this.indexes = 4;
         for (let i = 1; i < 4; i++) {
             let str: String = "#Answer" + (i + 1).toString();
             let button = $(str);
@@ -86,19 +87,19 @@ export class Quiz {
                 this.indexes -= 1;
             }
 
+
         }
 
 
         var indexarray = this.getIndexes(this.indexes);
-        for (var i = 0; i < this.indexes; i++) {
+        for (var i = 0; i < indexarray.length; i++) {
             if (indexarray[i] == 1) {
                 this.goodanswer = i;
             }
             let str: String = "#Answer" + (i + 1).toString();
             let button = $(str);
-
             button.show();
-                button.prop("disable", false);
+            button.prop("disable", false);
             button.text(finalQuizArray[indexarray[i]]);
             this.clicks(button, i, modal, p);
         }
@@ -107,13 +108,17 @@ export class Quiz {
     }
 
 
-    clicks(button:JQuery<String>,index:number,modal:JQuery, p: Player){
+    clicks(button: JQuery<String>, index: number, modal: JQuery, p: Player) {
         let self = this;
         button.click(async function () {
-            for(let i=0;i<self.indexes;i++){
+            console.log(self.pressed + "click");
+            if (self.pressed) {
+                return;
+            }
+            for (let i = 0; i < self.indexes; i++) {
                 let str: String = "#Answer" + (i + 1).toString();
                 let button = $(str);
-                if(i != index){
+                if (i != index) {
                     button.hide();
                 }
                 button.prop("disable", true);
@@ -123,10 +128,10 @@ export class Quiz {
             button.css("background-color", "white");
 
 
-            if(self.goodanswer == index){
+            if (self.goodanswer == index) {
                 let goodconsequence = self.questions["Consequences"][Math.floor(Math.random() * self.questions["Consequences"].length)];
 
-                if(goodconsequence.Type == "Money"){
+                if (goodconsequence.Type == "Money") {
                     let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
                     p.recieveMoney(reward);
 
@@ -151,13 +156,12 @@ export class Quiz {
                             await self.exit("You were right, you receive: " + reward + " B-Coins");
 
                     }
-                }
-                else if(goodconsequence.Type == "Movement"){
+                } else if (goodconsequence.Type == "Movement") {
                     let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
-                    if(p.isBot){
+                    if (p.isBot) {
                         p.stillMovingBot = true;
                         p.nrOfMove = reward;
-                    }else{
+                    } else {
                         p.move(reward);
                     }
 
@@ -188,14 +192,13 @@ export class Quiz {
                 self.pressed = true;
                 modal.hide();
                 $("#qz .flip-card-inner").css("transform", "translate(0) rotate(0) rotateX(0) scale(1)");
-            }
-            else{
+            } else {
                 let badconsequence = self.questions["Consequences"][Math.floor(Math.random() * self.questions["Consequences"].length)];
-
-                if(badconsequence.Type == "Money"){
+                console.log(badconsequence);
+                if (badconsequence.Type == "Money") {
                     let penalty = badconsequence[Math.floor(Math.random() * 4).toString()]
                     p.payAmmount(penalty);
-                    let restplace:Restplace  = <Restplace>p.map[globals.ParkingNumber]
+                    let restplace: Restplace = <Restplace>p.map[globals.ParkingNumber]
                     restplace.addToPot(penalty);
 
                     //TODO ADD LANGUAGE SUPPORT
@@ -220,29 +223,26 @@ export class Quiz {
 
                     }
 
-                }
-                else if(badconsequence.Type == "Movement"){
-                    p.move(-3)
-
+                } else if (badconsequence.Type == "Movement") {
                     //TODO ADD LANGUAGE SUPPORT
                     switch (self.p.language) {
                         case "LUX":
-                            await self.exit("Gei 3 casen zereck no hannen.");
+                            await self.exit("Glëck gehadt neischt ass geschitt.");
                             break;
                         case "FR":
-                            await self.exit("Move 3 tiles backwards");
+                            await self.exit("Rien ne se passe");
                             break;
                         case "PR":
-                            await self.exit("Move 3 tiles backwards");
+                            await self.exit("nada acontece");
                             break;
                         case "":
-                            await self.exit("Move 3 tiles backwards");
+                            await self.exit("Nothing happends. You got lucky");
                             break;
                         case "DE":
-                            await self.exit("Move 3 tiles backwards");
+                            await self.exit("Glück gehabt. Es geschieht nix.");
                             break;
                         default:
-                            await self.exit("Move 3 tiles backwards");
+                            await self.exit("Nothing happends. You got lucky");
 
                     }
                 }
@@ -251,11 +251,15 @@ export class Quiz {
                 modal.hide();
                 $("#qz .flip-card-inner").css("transform", "translate(0) rotate(0) rotateX(0) scale(1)");
             }
-            $(this).off("click");
+            self.pressed = true;
+            //$(this).off("click");
         });
     }
 
-    async exit( Consquence: String) {
+    async exit(Consquence: String) {
+        if (this.pressed) {
+            return;
+        }
         for (let i = 0; i < 4; i++) {
             let str: String = "#Answer" + (i + 1).toString();
             let button = $(str);
@@ -263,7 +267,7 @@ export class Quiz {
             button.hide();
         }
         $("#TimerQuestion").hide();
-        let self =this;
+        let self = this;
         let questionModalHeader = $("#QuestionModal .modal-content .modal-header h2");
 
         //TODO ADD LANGUAGE SUPPORT
@@ -289,8 +293,10 @@ export class Quiz {
         }
 
         await new Promise(r => setTimeout(r, 2000));
-
+        self.pressed = true;
+        return;
     }
+
     async wait() {
         let i = 60;
         while (!this.pressed && i >= 0) {
@@ -298,10 +304,11 @@ export class Quiz {
             $("#TimerQuestion").text("Time left: " + i);
             i--;
         }
-        if(this.pressed){
+        this.p =  new Player(false,"2",10,1);
+        if (this.pressed) {
             $("#TimerQuestion").hide();
         }
-        if(i <= 0){
+        if (i <= 0) {
             //case such that the player gets punished.
             $("#QuestionModal").hide();
         }

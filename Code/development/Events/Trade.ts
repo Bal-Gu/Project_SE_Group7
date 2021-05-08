@@ -281,7 +281,7 @@ export class Trade {
         target.show();
         let out = "<tr>";
         for (let i = 0; i < PlayerArray.length; i++) {
-            if (PlayerArray[i] == ReferencePlayer) {
+            if (PlayerArray[i] == ReferencePlayer || PlayerArray[i].isGameOver) {
 
             } else {
                 out += "<th><button class='buttonListDesign' id='targetButton" + i + "'>" + PlayerArray[i].name + "</button></th>";
