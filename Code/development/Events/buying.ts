@@ -11,7 +11,6 @@ export class BuyEvent {
         let buybutton = $("#Buy");
         let Autionbutton = $("#Auction")
         let self = this;
-
         //hiddes the buttons that can't be used
         $("#BuyingModal").css("display", "block");
         if(! p.canBuy(price)){
@@ -37,7 +36,6 @@ export class BuyEvent {
         // the tree buttons inside the modal
 
         buybutton.on("click", function(){
-            console.log("nb")
             if (p.canBuy(price)){
                 p.buying(field,price);
                 field.owner = p;
@@ -52,6 +50,7 @@ export class BuyEvent {
             $("#BuyingModal").css("display", "none");
             await auction.AuctionEvent(p,playerList,field);
             self.pressed = true;
+            $(this).off("click");
         });
 
         //waits for buttons

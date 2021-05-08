@@ -37,7 +37,7 @@ export class Player {
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
-        this.Money = 0;
+        this.Money = 1500;
         this.hasErasmusDispense = false;
         this.currentposition = 0;
         this.isGameOver = false;

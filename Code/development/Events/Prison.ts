@@ -61,22 +61,27 @@ export class Prison {
         pay.click(function () {
             p.payAmmount(globals.ErasmusFees);
             self.outOfPrison(p);
+            $(this).off("click");
         });
 
 
         $("#roleDouble").click(function () {
             self.outRollDouble(p)
             self.pressed =  true;
+            $(this).off("click");
         });
 
         luckyButton.click(function () {
             self.outOfPrison(p);
             self.pressed =  true;
+            $(this).off("click");
         });
 
         if(p.isBot){
+            await new Promise(r => setTimeout(r, 2000));
             if(p.hasErasmusDispense){
                 luckyButton.click();
+                await new Promise(r => setTimeout(r, 2000));
             }else if(p.canBuy(globals.ErasmusFees)){
                 let d: Dice = new Dice();
                 let rand = d.getRandomInt(10);
@@ -93,8 +98,10 @@ export class Prison {
                         pay.click();
                     }
                 }
+                await new Promise(r => setTimeout(r, 2000));
             }else {
                 $("#roleDouble").click();
+                await new Promise(r => setTimeout(r, 2000));
             }
 
         }
@@ -118,7 +125,12 @@ export class Prison {
     outOfPrison(p: Player) {
         let d: Dice = new Dice();
         d.roll(p.ReferenceNumber, p.name);
-        p.move(d.total());
+        if(!p.isBot){
+            p.move(d.total());
+        }else{
+            p.stillMovingBot = true;
+            p.nrOfMove = d.total();
+        }
         p.TurnsInPrison = 0;
         console.log("Paying");
         $("#myModal").css("display", "none");
@@ -130,9 +142,15 @@ export class Prison {
         p.TurnsInPrison++;
 
         if (d.isdouble()) {
-            p.move(d.total());
+            if(!p.isBot){
+                p.move(d.total());
+            }else{
+                p.stillMovingBot = true;
+                p.nrOfMove = d.total();
+            }
             p.TurnsInPrison = 0;
             console.log("Out of erasmus");
+            $("#rollButton").show();
             $("#myModal").css("display", "none");
             this.pressed = true;
 

@@ -65,7 +65,9 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckLooseCondition(player)
             )
+            console.log("Before next turn Ref player =" + this.ReferencePlayer.name);
             this.NextTurn();
+            console.log("After next turn Ref player =" + this.ReferencePlayer.name);
             //check gameover for player and change value
             //checking makeplayerturn
             //puting surrender button and mechanics
@@ -130,11 +132,14 @@ export class main {
     }
 
     NextTurn(): void {
+        console.log(this.PlayerArray.length);
         let temp = this.PlayerArray[0];
         for (let i = 0; i < this.PlayerArray.length - 1; i++) {
             this.PlayerArray[i] = this.PlayerArray[i + 1];
         }
-        this.PlayerArray[this.PlayerArray.length] = temp;
+        console.log(this.PlayerArray.length);
+        this.PlayerArray[this.PlayerArray.length - 1] = temp;
+        console.log(this.PlayerArray.length);
         this.ReferencePlayer = this.PlayerArray[0];
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
@@ -175,6 +180,16 @@ export class main {
         let self = this;
         let erasmus = new Erasmus()
         if (this.ReferencePlayer.isBot) {
+            console.log("new turn");
+            if (this.ReferencePlayer.TurnsInPrison > 0) {
+                await new Promise(r => setTimeout(r, 1000));
+                await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
+                await new Promise(r => setTimeout(r, 2000));
+                while($("#startGameModal").is(":visible")){
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                await new Promise(r => setTimeout(r, 1000));
+            }
             while ($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot) {
                 let double: boolean = false;
                 //This is if is the normal handeling of the move/event
@@ -182,11 +197,33 @@ export class main {
                 if (!this.ReferencePlayer.stillMovingBot) {
                     this.dice.roll(this.ReferencePlayer.ReferenceNumber, this.ReferencePlayer.name);
                     double = this.dice.isdouble();
-                    this.ReferencePlayer.move(this.dice.total());
-                    await new Promise(r => setTimeout(r, this.dice.total() * 500));
+                    if (double) {
+                        if (this.ConseqDoubles >= 2) {
+                            this.ReferencePlayer.goToErasmus()
+                            this.ConseqDoubles = 0;
+                            await new Promise(r => setTimeout(r, 20 * 500 + 2000));
+                            while($("#startGameModal").is(":visible")){
+                                await new Promise(r => setTimeout(r, 100));
+                            }
+                        } else {
+                            //this.ReferencePlayer.move(this.dice.total());
+                            this.ReferencePlayer.move(this.dice.total());
+                            this.ConseqDoubles += 1;
+                            await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                        }
+                    } else {
+                        //this.ReferencePlayer.move(this.dice.total());
+                        this.ReferencePlayer.move(this.dice.total());
+                        $("#rollButton").hide()
+                        this.ConseqDoubles = 0;
+                        await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                    }
+                    if(this.ReferencePlayer.currentposition == 30){
+                        await new Promise(r => setTimeout(r, 20 * 500 + 2000));
+                    }
                 } else {
                     this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
-                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500));
+                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
                     this.ReferencePlayer.nrOfMove = 0;
                     this.ReferencePlayer.stillMovingBot = false;
                 }
@@ -280,40 +317,48 @@ export class main {
                     }
 
                     await new Promise(r => setTimeout(r, 2000));
-                } else if ($("#QuestionModal").is(":visible")) {
-                    let sizeAnswerPool = 0;
-                    for (let i = 0; i < 4; i++) {
-                        let str: string = "#Answer" + (i + 1).toString();
-                        if ($(str).text() != "") {
-                            sizeAnswerPool += 1;
+                } else if (this.ReferencePlayer.currentposition == 7 || this.ReferencePlayer.currentposition == 22 || this.ReferencePlayer.currentposition == 36){
+                    while(true){
+                        if($("#QuestionModal").is(":visible")){
+                            let sizeAnswerPool = 0;
+                            for (let i = 0; i < 4; i++) {
+                                let str: string = "#Answer" + (i + 1).toString();
+                                if ($(str).text() != "") {
+                                    sizeAnswerPool += 1;
+                                }
+                            }
+                            // @ts-ignore
+                            document.getElementById("Answer1").disabled = true;
+                            // @ts-ignore
+                            document.getElementById("Answer2").disabled = true;
+                            // @ts-ignore
+                            document.getElementById("Answer3").disabled = true;
+                            // @ts-ignore
+                            document.getElementById("Answer4").disabled = true;
+                            await new Promise(r => setTimeout(r, 3000));
+                            // @ts-ignore
+                            document.getElementById("Answer1").disabled = false;
+                            // @ts-ignore
+                            document.getElementById("Answer2").disabled = false;
+                            // @ts-ignore
+                            document.getElementById("Answer3").disabled = false;
+                            // @ts-ignore
+                            document.getElementById("Answer4").disabled = false;
+                            if (sizeAnswerPool == 2) {
+                                let randChoice = self.dice.getRandomInt(2);
+                                (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                            } else if (sizeAnswerPool == 3) {
+                                let randChoice = self.dice.getRandomInt(3);
+                                (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                            } else {
+                                let randChoice = self.dice.getRandomInt(4);
+                                (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                            }
+                            console.log("is waiting");
+                            await new Promise(r => setTimeout(r, 2000));
+                            break;
                         }
-                    }
-                    // @ts-ignore
-                    document.getElementById("Answer1").disabled = true;
-                    // @ts-ignore
-                    document.getElementById("Answer2").disabled = true;
-                    // @ts-ignore
-                    document.getElementById("Answer3").disabled = true;
-                    // @ts-ignore
-                    document.getElementById("Answer4").disabled = true;
-                    await new Promise(r => setTimeout(r, 3000));
-                    // @ts-ignore
-                    document.getElementById("Answer1").disabled = false;
-                    // @ts-ignore
-                    document.getElementById("Answer2").disabled = false;
-                    // @ts-ignore
-                    document.getElementById("Answer3").disabled = false;
-                    // @ts-ignore
-                    document.getElementById("Answer4").disabled = false;
-                    if (sizeAnswerPool == 2) {
-                        let randChoice = self.dice.getRandomInt(2);
-                        (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
-                    } else if (sizeAnswerPool == 3) {
-                        let randChoice = self.dice.getRandomInt(3);
-                        (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
-                    } else {
-                        let randChoice = self.dice.getRandomInt(4);
-                        (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
+                        await new Promise(r => setTimeout(r, 100));
                     }
                 }
                 //Might rework later for better optimisation
@@ -624,23 +669,10 @@ export class main {
                     }
                     await new Promise(r => setTimeout(r, 10000));
                 }
-                if (this.ReferencePlayer.TurnsInPrison > 0) {
-                    await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
-                    return;
-                }
                 await new Promise(r => setTimeout(r, 2000));
-                if (double) {
-                    if (this.ConseqDoubles >= 2) {
-                        this.ReferencePlayer.goToErasmus()
-                        this.ConseqDoubles = 0;
-                    } else {
-                        this.ConseqDoubles += 1;
-                    }
-                } else {
-                    $("#rollButton").hide()
-                    this.ConseqDoubles = 0;
-                }
             }
+            console.log("Turn ended");
+            await new Promise(r => setTimeout(r, 2000));
             this.TurnEnded = true;
         }
     }
