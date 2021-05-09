@@ -11,6 +11,7 @@ export function funFactButtons(){
         $("#buildingFunFactTitle").html(buildingTitle + " ("+buildingCredits+")");
         $("#imageBuilding").html("<img src='./graphic/images/large/"+imageName+".jpg' style='width: 100%;'>");
         // TODO: the building discription needs to me added
+        $("#buildingFunFactDescription").html("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam dolorem dolore quia architecto laboriosam nobis adipisci placeat minima ipsa sequi, id accusamus ipsum ab unde dolores tenetur sapiente nisi eligendi?")
         $("#funfactModal").show();
     });
 }
