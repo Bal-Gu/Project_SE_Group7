@@ -24,10 +24,9 @@ export class BuyEvent {
                 Autionbutton.text("Enchère");
                 break;
             case "PR":
-                //TODO translate
-                buyingeventtitle.text("Comprando evento");
+                buyingeventtitle.text("Comprar evento");
                 buybutton.text("Comprar");
-                Autionbutton.text("leilão");
+                Autionbutton.text("Leilão");
                 break;
             case "":
                 break;

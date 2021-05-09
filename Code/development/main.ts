@@ -1208,15 +1208,14 @@ export class main {
                 startMenu.html("menu d'accueil");
                 break;
             case "PR":
-                //TODO translate
                 RenovationsButton.html("Renovação");
-                tradeButton.html("Troca");
+                tradeButton.html("Trocar");
                 repayMortgageButton.html("Reembolsar hipoteca");
-                rollButton.html("lance os dados");
-                endTurnButton.html("Feito");
+                rollButton.html("Lancar os dados");
+                endTurnButton.html("Fim do turno");
                 currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
                 playersround.html("Vez :<span id=\"round-counter\">0</span>");
-                startMenu.html("Menu Iniciar");
+                startMenu.html("Menu principal");
                 break;
             case "":
                 break;
