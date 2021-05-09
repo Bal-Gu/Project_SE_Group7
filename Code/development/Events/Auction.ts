@@ -32,25 +32,28 @@ export class Auction {
 
         switch (p.language) {
             case "LUX":
+                xAmmount.text("Aktuellen preis: 0 B-coins");
                 AuctionTitle.text("Auktioun");
                 BCoinIncrease.text("B-coins erheigerung");
                 xPlaying.text(PlayerList[currentindex].getName() + " as drun");
                 break;
             case "FR":
+                xAmmount.text("Prix actuelle: 0 B-coins");
                 AuctionTitle.text("Enchère");
                 BCoinIncrease.text("B-coins augmentation:");
                 xPlaying.text(PlayerList[currentindex].getName() + ": C'est à toi");
                 break;
             case "PR":
-                //TODO translate
-                AuctionTitle.text("Auction");
-                BCoinIncrease.text("B-coins increase");
-                xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+                xAmmount.text("Preço atual: 0 B-coins");
+                AuctionTitle.text("Leilão");
+                BCoinIncrease.text("B-coins aumento");
+                xPlaying.text(PlayerList[currentindex].getName() + " é a tua vez");
                 break;
             case "":
                 xPlaying.text(PlayerList[currentindex].getName() + " is playing");
                 break;
             case "DE":
+                xAmmount.text("Aktueller Preis: 0 B-coins");
                 AuctionTitle.text("Versteigerung");
                 BCoinIncrease.text("B-coins erhört");
                 xPlaying.text(PlayerList[currentindex].getName() + " du bist dran");
@@ -84,8 +87,7 @@ export class Auction {
                     xAmmount.text("Prix actuelle: " + currentprice +  "B-coins");
                     break;
                 case "PR":
-                    //TODO translate
-                    xAmmount.text("Current price " + currentprice +  "B-coins");
+                    xAmmount.text("Preço atual " + currentprice +  "B-coins");
                     break;
                 case "":
                     xAmmount.text("Current price " + currentprice +  "B-coins");
@@ -155,8 +157,7 @@ export class Auction {
                 case "FR": xPlaying.text(PlayerList[currentindex].getName() + ": C'est à toi");
                     break;
                 case "PR":
-                    //TODO translate
-                   xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+                   xPlaying.text(PlayerList[currentindex].getName() + " é a tua vez");
                     break;
                 case "":
                     xPlaying.text(PlayerList[currentindex].getName() + " is playing");
@@ -205,8 +206,7 @@ export class Auction {
                     string = winner!.name + " has won";
                     break;
                 case "PR":
-                    //TODO translate
-                    string = winner!.name + " venceu";
+                    string = winner!.name + " ganhou";
                     break;
                 case "DE":
                     string = winner!.name + " hat gewonnen";

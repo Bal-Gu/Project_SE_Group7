@@ -1,5 +1,10 @@
 import {Player} from "../Player";
 import Event from "../../Event.json";
+import EventDE from "../../EventDE.json";
+import EventFR from "../../EventFR.json";
+import EventPR from "../../EventPR.json";
+import EventLUX from "../../EventLUX.json";
+
 import $ from "jquery";
 import globals from "../../globalVariable.json";
 import {Restplace} from "../Fields/Restplace";
@@ -7,14 +12,32 @@ import {Mortage} from "./mortage";
 
 export class EventEvent {
     private pressed: boolean;
-
-
+    private Event:{Events: {Title: string, Money: number, Move: number, CardRecieved: string, GoTo: number}[]};
 
     async event(p: Player) {
-        console.log(p.name+" entered Event");
+
+        switch (p.language) {
+            case "LUX":
+                this.Event = EventLUX;
+                break;
+            case "FR":
+                this.Event = EventFR;
+                break;
+            case "PR":
+                this.Event = EventPR;
+                break;
+            case "":
+                this.Event = Event;
+                break;
+            case "DE":
+                this.Event = EventDE;
+                break;
+            default:
+                this.Event = Event;
+
+        }
         this.pressed = false;
-        //let finalQuizArray = Event.Events[Math.floor(Math.random() * Event.Events.length)];
-        let finalQuizArray = Event.Events[3];
+        let finalQuizArray = this.Event.Events[Math.floor(Math.random() * this.Event.Events.length)];
         let modal = $("#EventModal");
         $("#EventText").html(finalQuizArray.Title);
         p.recieveMoney(finalQuizArray.Money);

@@ -62,8 +62,7 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
             )
-            this.PlayerArray.forEach((player) =>
-                {
+            this.PlayerArray.forEach((player) => {
                     this.CheckLooseCondition(player);
 
                 }
@@ -187,7 +186,7 @@ export class main {
                 await new Promise(r => setTimeout(r, 1000));
                 await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                 await new Promise(r => setTimeout(r, 2000));
-                while($("#startGameModal").is(":visible")){
+                while ($("#startGameModal").is(":visible")) {
                     await new Promise(r => setTimeout(r, 100));
                 }
                 await new Promise(r => setTimeout(r, 1000));
@@ -202,18 +201,18 @@ export class main {
                     if (double) {
                         if (this.ConseqDoubles >= 2) {
                             $("#rollButton").hide();
-                            let movment : number;
-                            if(this.ReferencePlayer.currentposition > 10){
-                                movment = (globals.MaxNumberField/4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
+                            let movment: number;
+                            if (this.ReferencePlayer.currentposition > 10) {
+                                movment = (globals.MaxNumberField / 4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
-                            }else if(this.ReferencePlayer.currentposition <= 10){
-                                movment = (globals.MaxNumberField/4) - this.ReferencePlayer.currentposition;
+                            } else if (this.ReferencePlayer.currentposition <= 10) {
+                                movment = (globals.MaxNumberField / 4) - this.ReferencePlayer.currentposition;
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
                             }
                             this.ConseqDoubles = 0;
-                            while($("#startGameModal").is(":visible")){
+                            while ($("#startGameModal").is(":visible")) {
                                 await new Promise(r => setTimeout(r, 100));
                             }
                         } else {
@@ -227,7 +226,7 @@ export class main {
                         this.ConseqDoubles = 0;
                         await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
                     }
-                    if(this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)){
+                    if (this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)) {
                         await new Promise(r => setTimeout(r, 20 * 500 + 2000));
                     }
                 } else {
@@ -287,7 +286,7 @@ export class main {
                         //Makes him always buy a field if he has enough money and he had a field of the same color
                         if ((this.ReferencePlayer.Money * 0.9) > fieldprice && needtobuy) {
                             $("#Buy").click();
-                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField/2)) {
+                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField / 2)) {
                             if ((this.ReferencePlayer.Money / 4) > fieldprice) {
                                 if (rand > 1) {
                                     $("#Buy").click();
@@ -344,7 +343,7 @@ export class main {
                     }
 
                     await new Promise(r => setTimeout(r, 2000));
-                } else if ($("#QuestionModal").is(":visible")){
+                } else if ($("#QuestionModal").is(":visible")) {
                     let sizeAnswerPool = 0;
                     for (let i = 0; i < 4; i++) {
                         let str: string = "#Answer" + (i + 1).toString();
@@ -396,7 +395,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //This part is to firstly handle fields between 20 and 39 for botdiff advanced
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField/2) && (y <= globals.MaxNumberField-1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField / 2) && (y <= globals.MaxNumberField - 1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str: string = "#Removebutton" + (i).toString();
                                     //Already handled in mortgage event, but need to set true for next for loop
@@ -470,7 +469,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //way to priorize bot to repay in a certain area
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField/2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField / 2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str = "#paybuttonRepayMortgage" + i;
                                     $(str).click();
@@ -714,6 +713,7 @@ export class main {
             player.setLanguage(this.language);
             player.setMap(this.FieldArray);
         });
+        this.initLanguage(this.language);
         this.InitializeQueue();
 
     }
@@ -834,7 +834,7 @@ export class main {
     }
 
     CheckLooseCondition(player: Player): void {
-        console.log("enters"+player.isGameOver);
+        console.log("enters" + player.isGameOver);
         if (player.isGameOver) {
             this.Surrender(player);
         }
@@ -843,7 +843,7 @@ export class main {
     Surrender(p: Player): void {
         let index = this.PlayerArray.indexOf(p);
         this.PlayerArray.splice(index, 1);
-        let PlayerIdString:String = "#player-"+(p.ReferenceNumber+1);
+        let PlayerIdString: String = "#player-" + (p.ReferenceNumber + 1);
         console.log(PlayerIdString);
         let payerdiv = $(PlayerIdString);
         payerdiv.html("<h6>💀💀💀💀💀💀</h6>");
@@ -1061,24 +1061,91 @@ export class main {
 
         let counter = 1;
         $("#menuLanguageButton").click(function () {
+            let PlayerButton1   = $("#PlayerButton1");
+            let PlayerButton2   = $("#PlayerButton2");
+            let PlayerButton3   = $("#PlayerButton3");
+            let PlayerButton4   = $("#PlayerButton4");
+            let BoardSizeHeader = $("#boardResizeModal .modal-content .modal-header h2");
+            let smallButton     = $("#boardResizeModal .modal-body .ButtonContainer #smallBoardButton");
+            let mediumButton    = $("#boardResizeModal .modal-body .ButtonContainer #mediumBoardButton");
+            let defaultButton   = $("#boardResizeModal .modal-body .ButtonContainer #bigBoardButton");
+            let inputLobby = $(".inputLobby");
+
             if (counter === 1) {
                 self.language = "FR";
+                PlayerButton1.text("Joeur 1 (click sur moi)");
+                PlayerButton2.text("Jouer 2 (click sur moi)");
+                PlayerButton3.text("Jouer 3 (click sur moi)");
+                PlayerButton4.text("Jouer 4 (click sur moi)");
+                BoardSizeHeader.text("Durée de jeux");
+                smallButton.text("Courte");
+                mediumButton.text("Moyenne");
+                defaultButton.text("longue (par défaut)");
+                $("#menuPlayButton").text("Jouer");
+                $("#menuLoadButton").text("Charger la partie");
+                inputLobby.prop("placeholder","Votre pseudo");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 2) {
                 self.language = "DE";
+                BoardSizeHeader.text("Spiel länge");
+                smallButton.text("Kurz");
+                mediumButton.text("Mittlemäßig");
+                defaultButton.text("lang (Standard)");
+                PlayerButton1.text("Spieler 1 (Klick mich)");
+                PlayerButton2.text("Spieler 2 (Klick mich)");
+                PlayerButton3.text("Spieler 3 (Klick mich)");
+                PlayerButton4.text("Spieler 4 (Klick mich)");
+                inputLobby.prop("placeholder","Dein Spielername");
+
+
+                $("#menuPlayButton").text("Spielen");
+                $("#menuLoadButton").text("Spiel laden");
                 $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 3) {
                 self.language = "PR";
+                //TODO TRANSLATE
+                BoardSizeHeader.text("Durée de jeux");
+                smallButton.text("Courte");
+                mediumButton.text("Moyenne");
+                defaultButton.text("longue (par défaut)");
+                PlayerButton1.text("Spieler 1 (Klick mich)");
+                PlayerButton2.text("Spieler 2 (Klick mich)");
+                PlayerButton3.text("Spieler 3 (Klick mich)");
+                PlayerButton4.text("Spieler 4 (Klick mich)");
+                inputLobby.prop("placeholder","Votre pseudo");
+                $("#menuPlayButton").text("Jogar");
+                $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
+                BoardSizeHeader.text("Spill lengt");
+                smallButton.text("Keurz");
+                mediumButton.text("Mettelmeiseg");
+                defaultButton.text("laang (default)");
+                PlayerButton1.text("Spiller 1 (Klick mech)");
+                PlayerButton2.text("Spiller 2 (Klick mech)");
+                PlayerButton3.text("Spiller 3 (Klick mech)");
+                PlayerButton4.text("Spiller 4 (Klick mech)");
+                inputLobby.prop("placeholder","Dein Spillernum");
+                $("#menuPlayButton").text("Spilen");
+                $("#menuLoadButton").text("Spil leuden");
                 $(this).html("Sproch: <img src='./graphic/images/flags/lux.png' style='height: 25px'>");
                 counter++;
             } else {
                 self.language = "";
+                BoardSizeHeader.text("Game length");
+                smallButton.text("Short");
+                mediumButton.text("Medium");
+                defaultButton.text("longue (default)");
+                PlayerButton1.text("Player 1 (click me)");
+                PlayerButton2.text("Player 2 (Click me)");
+                PlayerButton3.text("Player 3 (Click me)");
+                PlayerButton4.text("Player 4 (Click me)");
+                $("#menuPlayButton").text("Play");
+                $("#menuLoadButton").text("Load game");
                 $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
                 counter = 1;
             }
@@ -1181,6 +1248,62 @@ export class main {
     }
 
 
+    private initLanguage(language: string) {
+        let RenovationsButton = $("#RenovationsButton");
+        let tradeButton = $("#tradeButton");
+        let repayMortgageButton = $("#repayMortgageButton");
+        let rollButton = $("#rollButton");
+        let endTurnButton = $("#endTurnButton");
+        let currentplayer = $("#current-player-p");
+        let playersround = $("#round-counter-p");
+        let startMenu = $("#startMenuButton");
+
+        switch (this.language) {
+            case "LUX":
+                RenovationsButton.html("Renovatioun");
+                tradeButton.html("Handel");
+                repayMortgageButton.html("Prêt zréckbezuelen");
+                rollButton.html("wierflen");
+                endTurnButton.html("Fäerdeg");
+                currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
+                playersround.html("Teur :<span id=\"round-counter\">0</span>");
+                startMenu.html("Start menu");
+                break;
+            case "FR":
+                RenovationsButton.html("rénovation");
+                tradeButton.html("Troque");
+                repayMortgageButton.html("rembourser l'hypothèque");
+                rollButton.html("lancer des dés");
+                endTurnButton.html("fin du tour");
+                currentplayer.html("Joueur actuel:<span id=\"current-player\"></span>");
+                playersround.html("Tour :<span id=\"round-counter\">0</span>");
+                startMenu.html("menu d'accueil");
+                break;
+            case "PR":
+                RenovationsButton.html("Renovação");
+                tradeButton.html("Trocar");
+                repayMortgageButton.html("Reembolsar hipoteca");
+                rollButton.html("Lancar os dados");
+                endTurnButton.html("Fim do turno");
+                currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
+                playersround.html("Vez :<span id=\"round-counter\">0</span>");
+                startMenu.html("Menu principal");
+                break;
+            case "":
+                break;
+            case "DE":
+                RenovationsButton.html("Renovierung");
+                tradeButton.html("Handel");
+                repayMortgageButton.html("Hypothek zurückzahlen");
+                rollButton.html("würfeln");
+                endTurnButton.html("fertig");
+                currentplayer.html("Aktueller Spieler:<span id=\"current-player\"></span>")
+                playersround.html("Runde :<span id=\"round-counter\">0</span>");
+                break;
+            default:
+
+        }
+    }
 }
 
 
