@@ -707,7 +707,7 @@ export class main {
         while (!ps.StartTheGamePressed) {
             await new Promise(r => setTimeout(r, 500));
         }
-        ps.initializePlayers();
+        ps.initializePlayers(this.language);
         this.PlayerArray = ps.getPlayers();
         this.PlayerArray.forEach((player) => {
             player.setLanguage(this.language);
@@ -1257,6 +1257,8 @@ export class main {
         let currentplayer = $("#current-player-p");
         let playersround = $("#round-counter-p");
         let startMenu = $("#startMenuButton");
+        let StartGame = $("#StartButton");
+
 
         switch (this.language) {
             case "LUX":
