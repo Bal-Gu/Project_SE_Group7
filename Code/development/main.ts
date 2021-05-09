@@ -68,7 +68,9 @@ export class main {
 
                 }
             )
+            console.log("Before next turn Ref player =" + this.ReferencePlayer.name);
             this.NextTurn();
+            console.log("After next turn Ref player =" + this.ReferencePlayer.name);
             //check gameover for player and change value
             //checking makeplayerturn
             //puting surrender button and mechanics
@@ -133,11 +135,14 @@ export class main {
     }
 
     NextTurn(): void {
+        console.log(this.PlayerArray.length);
         let temp = this.PlayerArray[0];
         for (let i = 0; i < this.PlayerArray.length - 1; i++) {
             this.PlayerArray[i] = this.PlayerArray[i + 1];
         }
-        this.PlayerArray[this.PlayerArray.length] = temp;
+        console.log(this.PlayerArray.length);
+        this.PlayerArray[this.PlayerArray.length - 1] = temp;
+        console.log(this.PlayerArray.length);
         this.ReferencePlayer = this.PlayerArray[0];
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
@@ -178,6 +183,15 @@ export class main {
         let self = this;
         let erasmus = new Erasmus()
         if (this.ReferencePlayer.isBot) {
+            if (this.ReferencePlayer.TurnsInPrison > 0) {
+                await new Promise(r => setTimeout(r, 1000));
+                await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
+                await new Promise(r => setTimeout(r, 2000));
+                while($("#startGameModal").is(":visible")){
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                await new Promise(r => setTimeout(r, 1000));
+            }
             while ($("#rollButton").is(":visible") || this.ReferencePlayer.stillMovingBot) {
                 let double: boolean = false;
                 //This is if is the normal handeling of the move/event
@@ -185,14 +199,45 @@ export class main {
                 if (!this.ReferencePlayer.stillMovingBot) {
                     this.dice.roll(this.ReferencePlayer.ReferenceNumber, this.ReferencePlayer.name);
                     double = this.dice.isdouble();
-                    this.ReferencePlayer.move(this.dice.total());
-                    await new Promise(r => setTimeout(r, this.dice.total() * 500));
+                    if (double) {
+                        if (this.ConseqDoubles >= 2) {
+                            $("#rollButton").hide();
+                            let movment : number;
+                            if(this.ReferencePlayer.currentposition > 10){
+                                movment = (globals.MaxNumberField/4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
+                                this.ReferencePlayer.move(movment);
+                                await new Promise(r => setTimeout(r, movment * 500 + 2000));
+                            }else if(this.ReferencePlayer.currentposition <= 10){
+                                movment = (globals.MaxNumberField/4) - this.ReferencePlayer.currentposition;
+                                this.ReferencePlayer.move(movment);
+                                await new Promise(r => setTimeout(r, movment * 500 + 2000));
+                            }
+                            this.ConseqDoubles = 0;
+                            while($("#startGameModal").is(":visible")){
+                                await new Promise(r => setTimeout(r, 100));
+                            }
+                        } else {
+                            this.ReferencePlayer.move(this.dice.total());
+                            this.ConseqDoubles += 1;
+                            await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                        }
+                    } else {
+                        this.ReferencePlayer.move(this.dice.total());
+                        $("#rollButton").hide()
+                        this.ConseqDoubles = 0;
+                        await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
+                    }
+                    if(this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)){
+                        await new Promise(r => setTimeout(r, 20 * 500 + 2000));
+                    }
                 } else {
                     this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
-                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500));
+                    await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
                     this.ReferencePlayer.nrOfMove = 0;
                     this.ReferencePlayer.stillMovingBot = false;
                 }
+                console.log("new modal should come");
+                await new Promise(r => setTimeout(r, 500));
                 //Buy and Auction handeling, basic chance for a bot to buy for some money conditions, some conditions could be added
                 if ($("#BuyingModal").is(":visible")) {
                     let fieldprice = this.FieldArray[this.ReferencePlayer.currentposition].initialPrice;
@@ -206,7 +251,7 @@ export class main {
                                     $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
                                     while (this.ReferencePlayer.inAuctionBot) {
-                                        await new Promise(r => setTimeout(r, 500));
+                                        await new Promise(r => setTimeout(r, 100));
                                     }
                                 }
                             } else if ((fieldprice * 2) < this.ReferencePlayer.Money) {
@@ -216,7 +261,7 @@ export class main {
                                     $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
                                     while (this.ReferencePlayer.inAuctionBot) {
-                                        await new Promise(r => setTimeout(r, 500));
+                                        await new Promise(r => setTimeout(r, 100));
                                     }
                                 }
                             }
@@ -224,20 +269,23 @@ export class main {
                             $("#Auction").click();
                             this.ReferencePlayer.inAuctionBot = true;
                             while (this.ReferencePlayer.inAuctionBot) {
-                                await new Promise(r => setTimeout(r, 500));
+                                await new Promise(r => setTimeout(r, 100));
                             }
                         }
                     } else if (this.ReferencePlayer.botDifficulty == 1) {
+                        console.log("bot diff 1");
+                        let needtobuy = false;
+                        for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
+                            if ((this.ReferencePlayer.fieldsOwned[i].color == this.FieldArray[this.ReferencePlayer.currentposition].color)) {
+                                needtobuy = true;
+                                break;
+                            }
+                        }
                         //Try to create a more intelligent behaviour
                         //Makes him always buy a field if he has enough money and he had a field of the same color
-                        if ((this.ReferencePlayer.Money * 0.9) > fieldprice) {
-                            for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i].color == this.FieldArray[this.ReferencePlayer.currentposition].color)) {
-                                    $("#Buy").click();
-                                    break;
-                                }
-                            }
-                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < 20)) {
+                        if ((this.ReferencePlayer.Money * 0.9) > fieldprice && needtobuy) {
+                            $("#Buy").click();
+                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField/2)) {
                             if ((this.ReferencePlayer.Money / 4) > fieldprice) {
                                 if (rand > 1) {
                                     $("#Buy").click();
@@ -245,7 +293,7 @@ export class main {
                                     $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
                                     while (this.ReferencePlayer.inAuctionBot) {
-                                        await new Promise(r => setTimeout(r, 500));
+                                        await new Promise(r => setTimeout(r, 100));
                                     }
                                 }
                             } else if ((this.ReferencePlayer.Money / 2) > fieldprice) {
@@ -255,7 +303,7 @@ export class main {
                                     $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
                                     while (this.ReferencePlayer.inAuctionBot) {
-                                        await new Promise(r => setTimeout(r, 500));
+                                        await new Promise(r => setTimeout(r, 100));
                                     }
                                 }
                             }
@@ -266,7 +314,7 @@ export class main {
                                 $("#Auction").click();
                                 this.ReferencePlayer.inAuctionBot = true;
                                 while (this.ReferencePlayer.inAuctionBot) {
-                                    await new Promise(r => setTimeout(r, 500));
+                                    await new Promise(r => setTimeout(r, 100));
                                 }
                             }
                         } else if ((this.ReferencePlayer.Money / 2) > fieldprice) {
@@ -276,14 +324,14 @@ export class main {
                                 $("#Auction").click();
                                 this.ReferencePlayer.inAuctionBot = true;
                                 while (this.ReferencePlayer.inAuctionBot) {
-                                    await new Promise(r => setTimeout(r, 500));
+                                    await new Promise(r => setTimeout(r, 100));
                                 }
                             }
                         }
                     }
 
                     await new Promise(r => setTimeout(r, 2000));
-                } else if ($("#QuestionModal").is(":visible")) {
+                } else if ($("#QuestionModal").is(":visible")){
                     let sizeAnswerPool = 0;
                     for (let i = 0; i < 4; i++) {
                         let str: string = "#Answer" + (i + 1).toString();
@@ -318,6 +366,8 @@ export class main {
                         let randChoice = self.dice.getRandomInt(4);
                         (randChoice == 3) ? $("#Answer4").click() : (randChoice == 2) ? $("#Answer3").click() : (randChoice == 1) ? $("#Answer2").click() : $("#Answer1").click();
                     }
+                    console.log("is waiting");
+                    await new Promise(r => setTimeout(r, 2000));
                 }
                 //Might rework later for better optimisation
                 if ($("#MorageModal").is(":visible")) {
@@ -333,7 +383,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //This part is to firstly handle fields between 20 and 39 for botdiff advanced
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 20) && (y <= 39) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField/2) && (y <= globals.MaxNumberField-1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str: string = "#Removebutton" + (i).toString();
                                     //Already handled in mortgage event, but need to set true for next for loop
@@ -407,7 +457,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //way to priorize bot to repay in a certain area
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < 20) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField/2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str = "#paybuttonRepayMortgage" + i;
                                     $(str).click();
@@ -627,23 +677,10 @@ export class main {
                     }
                     await new Promise(r => setTimeout(r, 10000));
                 }
-                if (this.ReferencePlayer.TurnsInPrison > 0) {
-                    await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
-                    return;
-                }
                 await new Promise(r => setTimeout(r, 2000));
-                if (double) {
-                    if (this.ConseqDoubles >= 2) {
-                        this.ReferencePlayer.goToErasmus()
-                        this.ConseqDoubles = 0;
-                    } else {
-                        this.ConseqDoubles += 1;
-                    }
-                } else {
-                    $("#rollButton").hide()
-                    this.ConseqDoubles = 0;
-                }
             }
+            console.log("Turn ended");
+            await new Promise(r => setTimeout(r, 2000));
             this.TurnEnded = true;
         }
     }

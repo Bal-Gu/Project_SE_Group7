@@ -1,5 +1,6 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
+import $ from "jquery";
 
 
 export class GoToErasmus  implements Field{
@@ -12,6 +13,7 @@ export class GoToErasmus  implements Field{
     }
 
     Event(player: Player,playerList:Player[]): void {
+        $("#rollButton").hide();
         player.TurnsInPrison = 1;
         player.goToErasmus();
     }
