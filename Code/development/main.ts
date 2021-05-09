@@ -62,8 +62,7 @@ export class main {
             this.PlayerArray.forEach(
                 player => this.CheckWinCondition(player)
             )
-            this.PlayerArray.forEach((player) =>
-                {
+            this.PlayerArray.forEach((player) => {
                     this.CheckLooseCondition(player);
 
                 }
@@ -187,7 +186,7 @@ export class main {
                 await new Promise(r => setTimeout(r, 1000));
                 await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
                 await new Promise(r => setTimeout(r, 2000));
-                while($("#startGameModal").is(":visible")){
+                while ($("#startGameModal").is(":visible")) {
                     await new Promise(r => setTimeout(r, 100));
                 }
                 await new Promise(r => setTimeout(r, 1000));
@@ -202,18 +201,18 @@ export class main {
                     if (double) {
                         if (this.ConseqDoubles >= 2) {
                             $("#rollButton").hide();
-                            let movment : number;
-                            if(this.ReferencePlayer.currentposition > 10){
-                                movment = (globals.MaxNumberField/4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
+                            let movment: number;
+                            if (this.ReferencePlayer.currentposition > 10) {
+                                movment = (globals.MaxNumberField / 4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
-                            }else if(this.ReferencePlayer.currentposition <= 10){
-                                movment = (globals.MaxNumberField/4) - this.ReferencePlayer.currentposition;
+                            } else if (this.ReferencePlayer.currentposition <= 10) {
+                                movment = (globals.MaxNumberField / 4) - this.ReferencePlayer.currentposition;
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
                             }
                             this.ConseqDoubles = 0;
-                            while($("#startGameModal").is(":visible")){
+                            while ($("#startGameModal").is(":visible")) {
                                 await new Promise(r => setTimeout(r, 100));
                             }
                         } else {
@@ -227,7 +226,7 @@ export class main {
                         this.ConseqDoubles = 0;
                         await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
                     }
-                    if(this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)){
+                    if (this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)) {
                         await new Promise(r => setTimeout(r, 20 * 500 + 2000));
                     }
                 } else {
@@ -285,7 +284,7 @@ export class main {
                         //Makes him always buy a field if he has enough money and he had a field of the same color
                         if ((this.ReferencePlayer.Money * 0.9) > fieldprice && needtobuy) {
                             $("#Buy").click();
-                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField/2)) {
+                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField / 2)) {
                             if ((this.ReferencePlayer.Money / 4) > fieldprice) {
                                 if (rand > 1) {
                                     $("#Buy").click();
@@ -331,7 +330,7 @@ export class main {
                     }
 
                     await new Promise(r => setTimeout(r, 2000));
-                } else if ($("#QuestionModal").is(":visible")){
+                } else if ($("#QuestionModal").is(":visible")) {
                     let sizeAnswerPool = 0;
                     for (let i = 0; i < 4; i++) {
                         let str: string = "#Answer" + (i + 1).toString();
@@ -383,7 +382,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //This part is to firstly handle fields between 20 and 39 for botdiff advanced
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField/2) && (y <= globals.MaxNumberField-1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField / 2) && (y <= globals.MaxNumberField - 1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str: string = "#Removebutton" + (i).toString();
                                     //Already handled in mortgage event, but need to set true for next for loop
@@ -457,7 +456,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //way to priorize bot to repay in a certain area
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField/2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField / 2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str = "#paybuttonRepayMortgage" + i;
                                     $(str).click();
@@ -701,6 +700,7 @@ export class main {
             player.setLanguage(this.language);
             player.setMap(this.FieldArray);
         });
+        this.initLanguage(this.language);
         this.InitializeQueue();
 
     }
@@ -821,7 +821,7 @@ export class main {
     }
 
     CheckLooseCondition(player: Player): void {
-        console.log("enters"+player.isGameOver);
+        console.log("enters" + player.isGameOver);
         if (player.isGameOver) {
             this.Surrender(player);
         }
@@ -830,7 +830,7 @@ export class main {
     Surrender(p: Player): void {
         let index = this.PlayerArray.indexOf(p);
         this.PlayerArray.splice(index, 1);
-        let PlayerIdString:String = "#player-"+(p.ReferenceNumber+1);
+        let PlayerIdString: String = "#player-" + (p.ReferenceNumber + 1);
         console.log(PlayerIdString);
         let payerdiv = $(PlayerIdString);
         payerdiv.html("<h6>💀💀💀💀💀💀</h6>");
@@ -1050,18 +1050,26 @@ export class main {
         $("#menuLanguageButton").click(function () {
             if (counter === 1) {
                 self.language = "FR";
+                $("#menuPlayButton").text("Jouer");
+                $("#menuLoadButton").text("Charger la partie");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 2) {
                 self.language = "DE";
+                $("#menuPlayButton").text("Spielen");
+                $("#menuLoadButton").text("Spiel laden");
                 $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 3) {
                 self.language = "PR";
+                $("#menuPlayButton").text("Jogar");
+                $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
+                $("#menuPlayButton").text("Spillen");
+                $("#menuLoadButton").text("Spil leuden");
                 $(this).html("Sproch: <img src='./graphic/images/flags/lux.png' style='height: 25px'>");
                 counter++;
             } else {
@@ -1168,6 +1176,63 @@ export class main {
     }
 
 
+    private initLanguage(language: string) {
+        let RenovationsButton = $("#RenovationsButton");
+        let tradeButton = $("#tradeButton");
+        let repayMortgageButton = $("#repayMortgageButton");
+        let rollButton = $("#rollButton");
+        let endTurnButton = $("#endTurnButton");
+        let currentplayer = $("#current-player-p");
+        let playersround = $("#round-counter-p");
+        let startMenu = $("#startMenuButton");
+
+        switch (this.language) {
+            case "LUX":
+                RenovationsButton.html("Renovatioun");
+                tradeButton.html("Handel");
+                repayMortgageButton.html("Prêt zréckbezuelen");
+                rollButton.html("wierflen");
+                endTurnButton.html("Fäerdeg");
+                currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
+                playersround.html("Teur :<span id=\"round-counter\">0</span>");
+                startMenu.html("Start menu");
+                break;
+            case "FR":
+                RenovationsButton.html("rénovation");
+                tradeButton.html("Troque");
+                repayMortgageButton.html("rembourser l'hypothèque");
+                rollButton.html("lancer des dés");
+                endTurnButton.html("fin du tour");
+                currentplayer.html("Joueur actuel:<span id=\"current-player\"></span>");
+                playersround.html("Tour :<span id=\"round-counter\">0</span>");
+                startMenu.html("menu d'accueil");
+                break;
+            case "PR":
+                //TODO translate
+                RenovationsButton.html("Renovação");
+                tradeButton.html("Troca");
+                repayMortgageButton.html("Reembolsar hipoteca");
+                rollButton.html("lance os dados");
+                endTurnButton.html("Feito");
+                currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
+                playersround.html("Vez :<span id=\"round-counter\">0</span>");
+                startMenu.html("Menu Iniciar");
+                break;
+            case "":
+                break;
+            case "DE":
+                RenovationsButton.html("Renovierung");
+                tradeButton.html("Handel");
+                repayMortgageButton.html("Hypothek zurückzahlen");
+                rollButton.html("würfeln");
+                endTurnButton.html("fertig");
+                currentplayer.html("Aktueller Spieler:<span id=\"current-player\"></span>")
+                playersround.html("Runde :<span id=\"round-counter\">0</span>");
+                break;
+            default:
+
+        }
+    }
 }
 
 

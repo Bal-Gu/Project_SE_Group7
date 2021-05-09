@@ -38,8 +38,6 @@
             <button class='menuButtons' id='menuLanguageButton'>Language: <img src="./graphic/images/flags/kingdom.png"
                     style="height: 25px"></button>
             <br><br>
-            <button class='menuButtons' id='menuCreditsButton'>Credits</button>
-            <br><br>
         </div>
     </div>
 
@@ -48,10 +46,10 @@
         <div class='left-grid'>
             <div class="monopoly-info">
                 <!--<button id="startGame">Start Game</button>-->
-                <p>Turn:
+                <p id="round-counter-p">Turn:
                     <span id="round-counter">0</span>
                 </p>
-                <p>Current Player:
+                <p id="current-player-p">Current Player:
                     <span id="current-player"></span>
                 </p>
                 <p>
@@ -310,7 +308,7 @@
             <div id="BuyingModal" class="modal" style="display: none">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Buying Event</h2>
+                        <h2 id="buyingeventtitle">Buying Event</h2>
                     </div>
                     <div class="modal-body">
                         <div style="width: 40%; margin:auto;">
@@ -515,20 +513,6 @@
         </div>
 
         <div class='grid-right'>
-            <h2>Testing Buttons</h2>
-            <button id='lobbyButton'>Lobby</button>
-            <button id='nextFieldP1'>Move p1</button>
-            <button id='nextFieldP2'>Move p2</button>
-            <button id='nextFieldP3'>Move p3</button>
-            <button id='nextFieldP4'>Move p4</button>
-            <button id='moveMoreFields'>Move 50 fields</button>
-            <button id='quizButton'>Quiz</button>
-            <button id='RemoveMoneyButton'>Remove Money</button>
-            <button id='Add500Money'>Add 500 Money</button>
-            <button id='Addfield'>Add a Field</button>
-            <button id='Removefield'>Remove fields</button>
-            <button id='MoveToTax'>Move to Tax</button>
-
             <div id='buttonList'>
                 <!--<h2>:Button List</h2>-->
                 <button id='RenovationsButton' class="buttonListDesign">Buildings</button>

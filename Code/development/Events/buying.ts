@@ -9,8 +9,37 @@ export class BuyEvent {
         console.log(p.name+" entered Buying");
         let modal = document.getElementById("BuyingModal");
         let buybutton = $("#Buy");
-        let Autionbutton = $("#Auction")
-        let self = this;
+        let Autionbutton = $("#Auction");
+        let buyingeventtitle = $("#buyingeventtitle");
+
+        switch (p.language) {
+            case "LUX":
+                buyingeventtitle.text("Kaaf Event");
+                buybutton.text("Kaafen");
+                Autionbutton.text("Auktioun");
+                break;
+            case "FR":
+                buyingeventtitle.text("Événement d'achat");
+                buybutton.text("Achat");
+                Autionbutton.text("Enchère");
+                break;
+            case "PR":
+                //TODO translate
+                buyingeventtitle.text("Comprando evento");
+                buybutton.text("Comprar");
+                Autionbutton.text("leilão");
+                break;
+            case "":
+                break;
+            case "DE":
+                buybutton.text("Kaufereignis");
+                Autionbutton.text("Versteigerung");
+                break;
+            default:
+
+        }
+
+                let self = this;
         //hiddes the buttons that can't be used
         $("#BuyingModal").css("display", "block");
         if(! p.canBuy(price)){
