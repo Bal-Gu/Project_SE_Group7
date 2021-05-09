@@ -32,17 +32,20 @@ export class Auction {
 
         switch (p.language) {
             case "LUX":
+                xAmmount.text("Aktuellen preis: 0 B-coins");
                 AuctionTitle.text("Auktioun");
                 BCoinIncrease.text("B-coins erheigerung");
                 xPlaying.text(PlayerList[currentindex].getName() + " as drun");
                 break;
             case "FR":
+                xAmmount.text("Prix actuelle: 0 B-coins");
                 AuctionTitle.text("Enchère");
                 BCoinIncrease.text("B-coins augmentation:");
                 xPlaying.text(PlayerList[currentindex].getName() + ": C'est à toi");
                 break;
             case "PR":
                 //TODO translate
+                xAmmount.text("Aktuellen preis: 0 B-coins");
                 AuctionTitle.text("Auction");
                 BCoinIncrease.text("B-coins increase");
                 xPlaying.text(PlayerList[currentindex].getName() + " is playing");
@@ -51,6 +54,7 @@ export class Auction {
                 xPlaying.text(PlayerList[currentindex].getName() + " is playing");
                 break;
             case "DE":
+                xAmmount.text("Aktueller Preis: 0 B-coins");
                 AuctionTitle.text("Versteigerung");
                 BCoinIncrease.text("B-coins erhört");
                 xPlaying.text(PlayerList[currentindex].getName() + " du bist dran");
