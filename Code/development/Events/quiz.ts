@@ -144,7 +144,7 @@ export class Quiz {
                             await self.exit("You were right, you receive: " + reward + " B-Coins");
                             break;
                         case "PR":
-                            await self.exit("You were right, you receive: " + reward + " B-Coins");
+                            await self.exit("Certo, vais receber: " + reward + " B-Coins");
                             break;
                         case "":
                             await self.exit("You were right, you receive: " + reward + " B-Coins");
@@ -174,7 +174,7 @@ export class Quiz {
                             await self.exit("You were right, you can move: " + reward + " Cases");
                             break;
                         case "PR":
-                            await self.exit("You were right, you can move: " + reward + " Cases");
+                            await self.exit("Certo podes avançar até " + reward);
                             break;
                         case "":
                             await self.exit("You were right, you can move: " + reward + " Cases");
@@ -210,7 +210,7 @@ export class Quiz {
                             await self.exit("You were wrong you loose: " + penalty + " B-Coins");
                             break;
                         case "PR":
-                            await self.exit("You were wrong you loose: " + penalty + " B-Coins");
+                            await self.exit("Errado, vais perder " + penalty + " B-Coins");
                             break;
                         case "":
                             await self.exit("You were wrong you loose: " + penalty + " B-Coins");
@@ -224,7 +224,6 @@ export class Quiz {
                     }
 
                 } else if (badconsequence.Type == "Movement") {
-                    //TODO ADD LANGUAGE SUPPORT
                     switch (self.p.language) {
                         case "LUX":
                             await self.exit("Glëck gehadt neischt ass geschitt.");
@@ -233,7 +232,7 @@ export class Quiz {
                             await self.exit("Rien ne se passe");
                             break;
                         case "PR":
-                            await self.exit("nada acontece");
+                            await self.exit("Tivestes sorte, não aconteceu nada");
                             break;
                         case "":
                             await self.exit("Nothing happends. You got lucky");
@@ -279,7 +278,7 @@ export class Quiz {
                 questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             case "PR":
-                questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
+                questionModalHeader.html("A resposta era: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             case "":
                 questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
