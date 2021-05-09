@@ -231,12 +231,12 @@ export class main {
                         await new Promise(r => setTimeout(r, 20 * 500 + 2000));
                     }
                 } else {
+                    await new Promise(r => setTimeout(r, 3000));
                     this.ReferencePlayer.move(this.ReferencePlayer.nrOfMove);
                     await new Promise(r => setTimeout(r, this.ReferencePlayer.nrOfMove * 500 + 2000));
                     this.ReferencePlayer.nrOfMove = 0;
                     this.ReferencePlayer.stillMovingBot = false;
                 }
-                console.log("new modal should come");
                 await new Promise(r => setTimeout(r, 500));
                 //Buy and Auction handeling, basic chance for a bot to buy for some money conditions, some conditions could be added
                 if ($("#BuyingModal").is(":visible")) {
@@ -248,8 +248,9 @@ export class main {
                                 if (rand > 1) {
                                     $("#Buy").click();
                                 } else {
-                                    $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
+                                    this.ReferencePlayer.AuctionEntry = true;
+                                    $("#Auction").click();
                                     while (this.ReferencePlayer.inAuctionBot) {
                                         await new Promise(r => setTimeout(r, 100));
                                     }
@@ -258,22 +259,23 @@ export class main {
                                 if (rand > 3) {
                                     $("#Buy").click();
                                 } else {
-                                    $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
+                                    this.ReferencePlayer.AuctionEntry = true;
+                                    $("#Auction").click();
                                     while (this.ReferencePlayer.inAuctionBot) {
                                         await new Promise(r => setTimeout(r, 100));
                                     }
                                 }
                             }
                         } else {
-                            $("#Auction").click();
                             this.ReferencePlayer.inAuctionBot = true;
+                            this.ReferencePlayer.AuctionEntry = true;
+                            $("#Auction").click();
                             while (this.ReferencePlayer.inAuctionBot) {
                                 await new Promise(r => setTimeout(r, 100));
                             }
                         }
                     } else if (this.ReferencePlayer.botDifficulty == 1) {
-                        console.log("bot diff 1");
                         let needtobuy = false;
                         for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                             if ((this.ReferencePlayer.fieldsOwned[i].color == this.FieldArray[this.ReferencePlayer.currentposition].color)) {
@@ -290,8 +292,9 @@ export class main {
                                 if (rand > 1) {
                                     $("#Buy").click();
                                 } else {
-                                    $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
+                                    this.ReferencePlayer.AuctionEntry = true;
+                                    $("#Auction").click();
                                     while (this.ReferencePlayer.inAuctionBot) {
                                         await new Promise(r => setTimeout(r, 100));
                                     }
@@ -300,8 +303,9 @@ export class main {
                                 if (rand > 3) {
                                     $("#Buy").click();
                                 } else {
-                                    $("#Auction").click();
                                     this.ReferencePlayer.inAuctionBot = true;
+                                    this.ReferencePlayer.AuctionEntry = true;
+                                    $("#Auction").click();
                                     while (this.ReferencePlayer.inAuctionBot) {
                                         await new Promise(r => setTimeout(r, 100));
                                     }
@@ -311,8 +315,9 @@ export class main {
                             if (rand > 2) {
                                 $("#Buy").click();
                             } else {
-                                $("#Auction").click();
                                 this.ReferencePlayer.inAuctionBot = true;
+                                this.ReferencePlayer.AuctionEntry = true;
+                                $("#Auction").click();
                                 while (this.ReferencePlayer.inAuctionBot) {
                                     await new Promise(r => setTimeout(r, 100));
                                 }
@@ -321,11 +326,19 @@ export class main {
                             if (rand > 5) {
                                 $("#Buy").click();
                             } else {
-                                $("#Auction").click();
                                 this.ReferencePlayer.inAuctionBot = true;
+                                this.ReferencePlayer.AuctionEntry = true;
+                                $("#Auction").click();
                                 while (this.ReferencePlayer.inAuctionBot) {
                                     await new Promise(r => setTimeout(r, 100));
                                 }
+                            }
+                        }else{
+                            this.ReferencePlayer.inAuctionBot = true;
+                            this.ReferencePlayer.AuctionEntry = true;
+                            $("#Auction").click();
+                            while (this.ReferencePlayer.inAuctionBot) {
+                                await new Promise(r => setTimeout(r, 100));
                             }
                         }
                     }

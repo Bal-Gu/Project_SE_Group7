@@ -33,6 +33,7 @@ export class Player {
     stillMovingBot: boolean = false;
     nrOfMove: number = 0;
     inAuctionBot: boolean = false;
+    AuctionEntry: boolean = false;
     language: string;
     haspressed:boolean = false;
 
@@ -253,9 +254,19 @@ export class Player {
             index = (index+1) % globals.MaxNumberField;
         }
         if (this.currentposition > index) {
-            this.move(globals.MaxNumberField - this.currentposition + index);
+            if(this.isBot){
+                this.stillMovingBot = true;
+                this.nrOfMove = globals.MaxNumberField - this.currentposition + index;
+            }else{
+                this.move(globals.MaxNumberField - this.currentposition + index);
+            }
         } else {
-            this.move(index - this.currentposition);
+            if(this.isBot){
+                this.stillMovingBot = true;
+                this.nrOfMove = index - this.currentposition;
+            }else{
+                this.move(index - this.currentposition);
+            }
         }
     }
 
@@ -266,9 +277,19 @@ export class Player {
             index = (index+1) % globals.MaxNumberField;
         }
         if (this.currentposition > index) {
-            this.move(globals.MaxNumberField - this.currentposition + index);
+            if(this.isBot){
+                this.stillMovingBot = true;
+                this.nrOfMove = globals.MaxNumberField - this.currentposition + index;
+            }else{
+                this.move(globals.MaxNumberField - this.currentposition + index);
+            }
         } else {
-            this.move(index - this.currentposition);
+            if(this.isBot){
+                this.stillMovingBot = true;
+                this.nrOfMove = index - this.currentposition;
+            }else{
+                this.move(index - this.currentposition);
+            }
         }
     }
 

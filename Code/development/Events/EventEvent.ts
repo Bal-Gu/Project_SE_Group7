@@ -40,7 +40,12 @@ export class EventEvent {
         }
         switch (finalQuizArray.GoTo){
             case 0:
-                p.move(globals.MaxNumberField - p.currentposition);
+                if(p.isBot){
+                    p.stillMovingBot = true;
+                    p.nrOfMove = globals.MaxNumberField - p.currentposition;
+                }else{
+                    p.move(globals.MaxNumberField - p.currentposition);
+                }
                 break;
             case -1:
                 break;
