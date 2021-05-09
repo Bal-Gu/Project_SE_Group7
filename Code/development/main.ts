@@ -1048,32 +1048,91 @@ export class main {
 
         let counter = 1;
         $("#menuLanguageButton").click(function () {
+            let PlayerButton1   = $("#PlayerButton1");
+            let PlayerButton2   = $("#PlayerButton2");
+            let PlayerButton3   = $("#PlayerButton3");
+            let PlayerButton4   = $("#PlayerButton4");
+            let BoardSizeHeader = $("#boardResizeModal .modal-content .modal-header h2");
+            let smallButton     = $("#boardResizeModal .modal-body .ButtonContainer #smallBoardButton");
+            let mediumButton    = $("#boardResizeModal .modal-body .ButtonContainer #mediumBoardButton");
+            let defaultButton   = $("#boardResizeModal .modal-body .ButtonContainer #bigBoardButton");
+            let inputLobby = $(".inputLobby");
+
             if (counter === 1) {
                 self.language = "FR";
+                PlayerButton1.text("Joeur 1 (click sur moi)");
+                PlayerButton2.text("Jouer 2 (click sur moi)");
+                PlayerButton3.text("Jouer 3 (click sur moi)");
+                PlayerButton4.text("Jouer 4 (click sur moi)");
+                BoardSizeHeader.text("Durée de jeux");
+                smallButton.text("Courte");
+                mediumButton.text("Moyenne");
+                defaultButton.text("longue (par défaut)");
                 $("#menuPlayButton").text("Jouer");
                 $("#menuLoadButton").text("Charger la partie");
+                inputLobby.prop("placeholder","Votre pseudo");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 2) {
                 self.language = "DE";
+                BoardSizeHeader.text("Spiel länge");
+                smallButton.text("Kurz");
+                mediumButton.text("Mittlemäßig");
+                defaultButton.text("lang (Standard)");
+                PlayerButton1.text("Spieler 1 (Klick mich)");
+                PlayerButton2.text("Spieler 2 (Klick mich)");
+                PlayerButton3.text("Spieler 3 (Klick mich)");
+                PlayerButton4.text("Spieler 4 (Klick mich)");
+                inputLobby.prop("placeholder","Dein Spielername");
+
+
                 $("#menuPlayButton").text("Spielen");
                 $("#menuLoadButton").text("Spiel laden");
                 $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 3) {
                 self.language = "PR";
+                //TODO TRANSLATE
+                BoardSizeHeader.text("Durée de jeux");
+                smallButton.text("Courte");
+                mediumButton.text("Moyenne");
+                defaultButton.text("longue (par défaut)");
+                PlayerButton1.text("Spieler 1 (Klick mich)");
+                PlayerButton2.text("Spieler 2 (Klick mich)");
+                PlayerButton3.text("Spieler 3 (Klick mich)");
+                PlayerButton4.text("Spieler 4 (Klick mich)");
+                inputLobby.prop("placeholder","Votre pseudo");
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
-                $("#menuPlayButton").text("Spillen");
+                BoardSizeHeader.text("Spill lengt");
+                smallButton.text("Keurz");
+                mediumButton.text("Mettelmeiseg");
+                defaultButton.text("laang (default)");
+                PlayerButton1.text("Spiller 1 (Klick mech)");
+                PlayerButton2.text("Spiller 2 (Klick mech)");
+                PlayerButton3.text("Spiller 3 (Klick mech)");
+                PlayerButton4.text("Spiller 4 (Klick mech)");
+                inputLobby.prop("placeholder","Dein Spillernum");
+                $("#menuPlayButton").text("Spilen");
                 $("#menuLoadButton").text("Spil leuden");
                 $(this).html("Sproch: <img src='./graphic/images/flags/lux.png' style='height: 25px'>");
                 counter++;
             } else {
                 self.language = "";
+                BoardSizeHeader.text("Game length");
+                smallButton.text("Short");
+                mediumButton.text("Medium");
+                defaultButton.text("longue (default)");
+                PlayerButton1.text("Player 1 (click me)");
+                PlayerButton2.text("Player 2 (Click me)");
+                PlayerButton3.text("Player 3 (Click me)");
+                PlayerButton4.text("Player 4 (Click me)");
+                $("#menuPlayButton").text("Play");
+                $("#menuLoadButton").text("Load game");
                 $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
                 counter = 1;
             }
