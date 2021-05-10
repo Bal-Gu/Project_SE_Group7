@@ -26,7 +26,8 @@ import propertiesFile from '../properties.json';
 import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
-import fs from 'fs';
+import Redis from "redis";
+
 import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
@@ -53,7 +54,7 @@ export class main {
         this.buttonEvent();
         this.EndTurnButton();
         this.InitializeGameLength(1);
-        this.InitializeFieldArray();
+        await this.InitializeFieldArrayfromDB();
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
@@ -804,7 +805,7 @@ export class main {
 
     }
 
-/*InitializeFieldArrayfromDB() {
+InitializeFieldArrayfromDB() {
     this.FieldArray = [];
     let client = Redis.createClient(6379);
 
@@ -895,7 +896,7 @@ export class main {
         }
     });
     client.quit();
-} */
+}
 
 
 

@@ -18,3 +18,21 @@ node_modules/*
 
 public/*
 public/
+
+Code/Tests/Dice.test.js
+
+Code/Tests/Dice.test.js.map
+
+Code/Tests/InitializeFieldArray.test.js
+
+Code/Tests/InitializeFieldArray.test.js.map
+
+Code/Tests/PlayerTest.test.js
+
+Code/Tests/PlayerTest.test.js.map
+
+Code/Tests/restplace.test.js
+
+Code/Tests/restplace.test.js.map
+
+Code/development/Events/quiz.js
