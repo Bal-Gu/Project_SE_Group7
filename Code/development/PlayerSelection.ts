@@ -156,7 +156,7 @@ export class PlayerSelection {
                         $(this).html("Bot schweier");
                         break;
                     case "FR":
-                        $(this).html("bot difficile");
+                        $(this).html("Bot Avancé");
                         break;
                     case "PR":
                         $(this).html("Bot avançado");
