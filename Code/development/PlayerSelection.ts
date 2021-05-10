@@ -9,12 +9,17 @@ export class PlayerSelection {
     botDifficultyButton: number;
     language: String = "";
 
+    constructor(lang: String) {
+        console.log("lamg = " + lang);
+        this.language = lang;
+    }
+
     getPlayers(): Player[] {
         return this.PlayerArray;
     }
 
-    initializePlayers(lang: String) {
-        this.language = lang;
+    initializePlayers() {
+
         for (let i = 0; i < this.PlayerIsBot.length; i++) {
             let p: Player = new Player(this.PlayerIsBot[i], this.PlayerName[i], i, this.botDifficultyButton);
             this.PlayerArray.push(p);
@@ -24,32 +29,13 @@ export class PlayerSelection {
         this.PlayerArray[2].Color = "#cccc4c";
         this.PlayerArray[3].Color = "red";
 
-        let startbutton =  $("#StartButton");
-        switch (this.language) {
-            case "LUX":
-                startbutton.text("Spill starten");
-                break;
-            case "FR":
-                startbutton.text("Commencer");
-                break;
-            case "PR":
-                //TODO translate
-                startbutton.text("Começar o jogo");
-                break;
-            case "":
-                startbutton.text("Start game");
-                break;
-            case "DE":
-                startbutton.text("Spiel starten");
-                break;
-            default:
-                startbutton.text("Start game");
+        let startbutton = $("#StartButton");
 
-        }
 
     }
 
     async event() {
+
         let self = this;
         let button1 = $("#PlayerButton1");
         let button2 = $("#PlayerButton2");
@@ -112,7 +98,7 @@ export class PlayerSelection {
         button4.click(function () {
             if (!self.PlayerIsBot[3]) {
                 self.PlayerIsBot[3] = true;
-                button4.css("background-color", "rgb(206, 60, 60)");
+                button4.css("background-color", "rgb(206,60,60)");
                 // @ts-ignore
                 document.getElementById("PlayerStatus4").value = "Bot Player 4";
                 // @ts-ignore
@@ -127,8 +113,9 @@ export class PlayerSelection {
             }
         });
         botDiff.click(function () {
-            if (self.botDifficultyButton) {
-                //TODO translate
+            if (self.botDifficultyButton == 1) {
+                //TODO
+
                 switch (self.language) {
                     case "LUX":
                         $(this).html("Bot Standard");
@@ -162,13 +149,13 @@ export class PlayerSelection {
                         $(this).html("Bot avançado");
                         break;
                     case "":
-                        $(this).html("Bot Standard");
+                        $(this).html("Bot advance");
                         break;
                     case "DE":
                         $(this).html("Bot fortgeschritten");
                         break;
                     default:
-                        $(this).html("Bot Standard");
+                        $(this).html("Bot advance");
 
                 }
                 self.botDifficultyButton = 1;
@@ -192,6 +179,42 @@ export class PlayerSelection {
     async wait() {
         while (!this.StartTheGamePressed) {
             await new Promise(r => setTimeout(r, 500));
+        }
+    }
+
+    languagesetter(language: string) {
+        if (language != this.language) {
+            this.language = language;
+            let StartButton = $("#StartButton");
+            let botDiff = $("#botDifficultyButton");
+            switch (this.language) {
+                case "LUX":
+                    StartButton.html("Spill starten");
+                    botDiff.html("Bot Standard");
+                    break;
+                case "FR":
+                    StartButton.text("Commencer");
+                    botDiff.html("Bot standard");
+                    break;
+                case "PR":
+                    //TODO translate
+                    StartButton.text("Começar o jogo");
+                    botDiff.html("Bot padrão");
+                    break;
+                case "":
+                    StartButton.text("Start game");
+                    botDiff.text("Bot standard");
+                    break;
+                case "DE":
+                    StartButton.text("Spiel starten");
+                    botDiff.html("Bot Standard");
+                    break;
+                default:
+                    StartButton.text("Start game");
+                    botDiff.html("Bot Standard");
+
+            }
+
         }
     }
 }

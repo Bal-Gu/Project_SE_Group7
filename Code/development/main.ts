@@ -45,7 +45,7 @@ export class main {
     ConseqDoubles: number = 0;
     GameEnded: boolean = false;
     TurnEnded: boolean = false;
-    language: string;
+    language: string = "ENG";
 
 
     async main() {
@@ -332,7 +332,7 @@ export class main {
                                     await new Promise(r => setTimeout(r, 100));
                                 }
                             }
-                        }else{
+                        } else {
                             this.ReferencePlayer.inAuctionBot = true;
                             this.ReferencePlayer.AuctionEntry = true;
                             $("#Auction").click();
@@ -702,12 +702,15 @@ export class main {
     }
 
     async InitializePlayers() {
-        let ps: PlayerSelection = new PlayerSelection();
+        let ps: PlayerSelection = new PlayerSelection(this.language);
         ps.event();
         while (!ps.StartTheGamePressed) {
-            await new Promise(r => setTimeout(r, 500));
+            await new Promise(r => {
+                ps.languagesetter(this.language);
+                setTimeout(r, 50);
+            });
         }
-        ps.initializePlayers(this.language);
+        ps.initializePlayers();
         this.PlayerArray = ps.getPlayers();
         this.PlayerArray.forEach((player) => {
             player.setLanguage(this.language);
@@ -1061,14 +1064,14 @@ export class main {
 
         let counter = 1;
         $("#menuLanguageButton").click(function () {
-            let PlayerButton1   = $("#PlayerButton1");
-            let PlayerButton2   = $("#PlayerButton2");
-            let PlayerButton3   = $("#PlayerButton3");
-            let PlayerButton4   = $("#PlayerButton4");
+            let PlayerButton1 = $("#PlayerButton1");
+            let PlayerButton2 = $("#PlayerButton2");
+            let PlayerButton3 = $("#PlayerButton3");
+            let PlayerButton4 = $("#PlayerButton4");
             let BoardSizeHeader = $("#boardResizeModal .modal-content .modal-header h2");
-            let smallButton     = $("#boardResizeModal .modal-body .ButtonContainer #smallBoardButton");
-            let mediumButton    = $("#boardResizeModal .modal-body .ButtonContainer #mediumBoardButton");
-            let defaultButton   = $("#boardResizeModal .modal-body .ButtonContainer #bigBoardButton");
+            let smallButton = $("#boardResizeModal .modal-body .ButtonContainer #smallBoardButton");
+            let mediumButton = $("#boardResizeModal .modal-body .ButtonContainer #mediumBoardButton");
+            let defaultButton = $("#boardResizeModal .modal-body .ButtonContainer #bigBoardButton");
             let inputLobby = $(".inputLobby");
 
             if (counter === 1) {
@@ -1083,7 +1086,7 @@ export class main {
                 defaultButton.text("longue (par défaut)");
                 $("#menuPlayButton").text("Jouer");
                 $("#menuLoadButton").text("Charger la partie");
-                inputLobby.prop("placeholder","Votre pseudo");
+                inputLobby.prop("placeholder", "Votre pseudo");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
                 counter++;
             } else if (counter === 2) {
@@ -1096,7 +1099,7 @@ export class main {
                 PlayerButton2.text("Spieler 2 (Klick mich)");
                 PlayerButton3.text("Spieler 3 (Klick mich)");
                 PlayerButton4.text("Spieler 4 (Klick mich)");
-                inputLobby.prop("placeholder","Dein Spielername");
+                inputLobby.prop("placeholder", "Dein Spielername");
 
 
                 $("#menuPlayButton").text("Spielen");
@@ -1114,7 +1117,7 @@ export class main {
                 PlayerButton2.text("Spieler 2 (Klick mich)");
                 PlayerButton3.text("Spieler 3 (Klick mich)");
                 PlayerButton4.text("Spieler 4 (Klick mich)");
-                inputLobby.prop("placeholder","Votre pseudo");
+                inputLobby.prop("placeholder", "Votre pseudo");
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
@@ -1129,7 +1132,7 @@ export class main {
                 PlayerButton2.text("Spiller 2 (Klick mech)");
                 PlayerButton3.text("Spiller 3 (Klick mech)");
                 PlayerButton4.text("Spiller 4 (Klick mech)");
-                inputLobby.prop("placeholder","Dein Spillernum");
+                inputLobby.prop("placeholder", "Dein Spillernum");
                 $("#menuPlayButton").text("Spilen");
                 $("#menuLoadButton").text("Spil leuden");
                 $(this).html("Sproch: <img src='./graphic/images/flags/lux.png' style='height: 25px'>");
