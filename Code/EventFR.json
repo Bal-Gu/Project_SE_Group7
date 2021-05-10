@@ -1,62 +1,62 @@
 {
   "Events": [
     {
-      "Title": "Paple visited the forge and blessed the site.<br> You receive a Erasmus dispense",
+      "Title": "Le pape est venu visiter la forge et a béni le site.<br> Vous êtes dispensé d'Erasmus",
       "Money": 0,
       "Move": 0,
       "CardRecieved": "Out of Erasmus",
       "GoTo": -1
     },
     {
-      "Title": "Uni.lu Welcome Day. <br> Knowledge  is money: Get 200 B-coins",
+      "Title": "Jour de bienvenue de Uni.lu. <br> Le savoir est de l'or: Vous recevez 200 B-coins",
       "Money": 200,
       "Move": 0,
       "CardRecieved": "",
       "GoTo": -1
     },{
-      "Title": "Blast Furnace Tour by Night <br> Go to start",
+      "Title": "Blast Furnace Tour by Night <br> Allez au point de départ",
       "Money": 0,
       "Move": 0,
       "CardRecieved": "",
       "GoTo": 0
     },{
-      "Title": "The Escher Kulturlaf happened<br> You broke your leg: Go to the next public transport and pay 50 B-coins for the hospital fees.",
+      "Title": "Le Escher Kulturlaf s'est produit.<br> Tu t'es cassé la jambe: Vous allez au prochain transport en publique et payez 50 B-Coins pour les frais d'hospitalisation.",
       "Money": -50,
       "Move": 0,
       "CardRecieved": "",
       "GoTo": -2
     },{
-      "Title": "TEDx Conference happened.You meet Varan Pathmanathan creator of make!mpact<br> He likes your idea and invest 50 B-coins",
+      "Title": "La conférence TEDx s'est produit. Vous rencontrez Varan Pathmanathan, le créateur de make!mpact<br> Il aime votre idée et investit 50 B-coins.",
       "Money": 50,
       "Move": 0,
       "CardRecieved": "",
       "GoTo": -1
     },{
-      "Title": "Grand Ducal Visit: He gives you his blessing<br> Next rent has not to be payed",
+      "Title": "La visite du Grand Duché: Il vous donne sa bénédiction<br> La prochaine location n'a pas besoin d'être payée.",
       "Money": 0,
       "Move": 0,
       "CardRecieved": "Rent Free",
       "GoTo": -1
     },{
-      "Title": "Nuit de la Culture happend.<br>The piano flew away with the hot air balloon.<br> You try to catch it back <br> Move 5 fields forwards",
+      "Title": "La Nuit de la Culture s'est produit.<br>Le piano s'est envolé avec la mongolfière.<br> Vous essayez de le rattraper <br> Avancer de 5 cases.",
       "Money": 0,
       "Move": 5,
       "CardRecieved": "",
       "GoTo": -1
     },{
-      "Title": "Uni.lu Open Day at Belval.<br> Due to it's success you are forced to go to erasmus <br> Go to erasmus",
+      "Title": "Journée portes ouvertes de Uni.lu à Belval.<br> À cause de son succès, vous êtes forcé d'aller en Erasmus <br> Allez en Erasmus.",
       "Money": 0,
       "Move": 0,
       "CardRecieved": "",
       "GoTo": -3
     },{
-      "Title": "Rockhal Music Event<br> Move to the Rockhal",
+      "Title": "Évènement de musique à La Rockhal.<br> Allez à La Rockhal",
       "Money": 0,
       "Move": 0,
       "CardRecieved": "Out of Erasmus",
       "GoTo": -4
     },{
-      "Title": "You organise the Red Rock Challenge<br>You donate 150 B-coins to \"Fondatioun Kriibskrank kanner\"",
+      "Title": "Vous organisez le Red Rock Challenge<br> Vous faites dons de 150 B-coins à la \"Fondatioun Kriibskrank kanner\"",
       "Money": -150,
       "Move": 0,
       "CardRecieved": "Out of Erasmus",
