@@ -1,5 +1,4 @@
 .monopoly-info {
-  position: absolute;
   width: 240px;
   font-size: 14px;
   line-height: 1.5em;
@@ -14,7 +13,7 @@
 
 .monopoly-info .player {
   display: table;
-  width: 30px;
+  width: 200px;
   height: 30px;
   margin: 10px 0 10px 10px;
   font-size: 18px;
@@ -38,7 +37,7 @@
 }
 
 .monopoly-info #player-3 {
-  background-color: #cccc4c;
+  background-color: #cfcf4e;
 }
 
 .monopoly-info #player-4 {
@@ -103,6 +102,34 @@
   background-color: #414141;
   color: #5c5c5c;
   border-color: #362323;
+}
+
+.star-player1 {
+  background-color: orange;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px orange;
+          box-shadow: 0 0 6px 1px orange;
+}
+
+.star-player2 {
+  background-color: #161616;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px #161616;
+          box-shadow: 0 0 6px 1px #161616;
+}
+
+.star-player3 {
+  background-color: #cfcf4e;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px #cfcf4e;
+          box-shadow: 0 0 6px 1px #cfcf4e;
+}
+
+.star-player4 {
+  background-color: red;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px 1px red;
+          box-shadow: 0 0 6px 1px red;
 }
 
 * {
@@ -209,6 +236,12 @@
   /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
   /* This container is needed to position the front and back side */
   /* Do an vertical flip when you move the mouse over the flip box container */
+  /*.flip-card:hover .flip-card-inner {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      }*/
+  /*.flip-card #qz {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      } */
   /* Position the front and back side */
   /* Style the front side (fallback if image is missing) */
   /* Style the back side */
@@ -235,11 +268,6 @@
   transition: transform 2s, -webkit-transform 2s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-}
-
-.board .center .deck .flip-card:hover .flip-card-inner {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
 }
 
 .board .center .deck .flip-card-front, .board .center .deck .flip-card-back {
@@ -353,7 +381,7 @@
 }
 
 .sm-box-yellow {
-  background-color: #cccc4c;
+  background-color: #cfcf4e;
 }
 
 .sm-box-blue {
@@ -446,6 +474,46 @@
   height: 100px;
 }
 
+.sm-box .rot-90-small {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  position: absolute;
+  left: -27px;
+  top: 22px;
+  width: 151px;
+  height: 101px;
+}
+
+.sm-box .rot-90-medium {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 84px;
+  height: 100px;
+}
+
+.sm-box .rot-90-reverse-medium {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: 26px;
+  top: -8px;
+  width: 84px;
+  height: 100px;
+}
+
+.sm-box .rot-90-reverse-small {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: -5px;
+  top: 26px;
+  width: 149px;
+  height: 97px;
+}
+
 .sm-box .rot-90-reverse {
   left: initial;
   right: 12px;
@@ -495,5 +563,19 @@
           transform: rotate(-80deg);
   visibility: hidden;
   /* Delete this to see stars */
+}
+
+#quiz-card, #quiz-card2, #quiz-card3 {
+  background-image: url("../images/small/chance_card2.png");
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-card, #event-card2, #event-card3 {
+  background-image: url("../images/small/community_card3.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /*# sourceMappingURL=board.css.map */

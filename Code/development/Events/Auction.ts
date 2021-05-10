@@ -6,6 +6,7 @@ export class Auction {
 
 
     async AuctionEvent(p: Player, PlayerList: Player[], field) {
+        console.log(p.name+" entered Auction");
         let modal = $("#AuctionModal");
         modal.show();
         let textfield = $("#IncText");
@@ -23,22 +24,82 @@ export class Auction {
         let increment:number = 10;
         let currentprice:number = 0;
 
-        //setting the values
-        xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+        let AuctionTitle = $("#AuctionModal .modal-content .modal-header h1");
+        let BCoinIncrease = $("#B-coinsIncrease")
 
+
+        //setting the values
+
+        switch (p.language) {
+            case "LUX":
+                xAmmount.text("Aktuellen preis: 0 B-coins");
+                AuctionTitle.text("Auktioun");
+                BCoinIncrease.text("B-coins erheigerung");
+                xPlaying.text(PlayerList[currentindex].getName() + " as drun");
+                break;
+            case "FR":
+                xAmmount.text("Prix actuelle: 0 B-coins");
+                AuctionTitle.text("Enchère");
+                BCoinIncrease.text("B-coins augmentation:");
+                xPlaying.text(PlayerList[currentindex].getName() + ": C'est à toi");
+                break;
+            case "PR":
+                xAmmount.text("Preço atual: 0 B-coins");
+                AuctionTitle.text("Leilão");
+                BCoinIncrease.text("B-coins aumento");
+                xPlaying.text(PlayerList[currentindex].getName() + " é a tua vez");
+                break;
+            case "":
+                xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+                break;
+            case "DE":
+                xAmmount.text("Aktueller Preis: 0 B-coins");
+                AuctionTitle.text("Versteigerung");
+                BCoinIncrease.text("B-coins erhört");
+                xPlaying.text(PlayerList[currentindex].getName() + " du bist dran");
+                break;
+            default:
+                xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+
+        }
 
         //init leavebutton
         let self = this;
-        leavebutton.click(function () {if(isNaN(Number(textfield.val()!.toString())))
-            console.log("leave");
+        leavebutton.off().on("click", () => {
+            if(isNaN(Number(textfield.val()))){
+                self.pressed = true;
+                return;
+            }
+
             PlayerList[currentindex].canAuction = false;
             ammountOfPlayer--;
             self.pressed = true;
         });
 
-        bidbutton.click(function (){
+        bidbutton.off().on("click",  ()=>{
             currentprice += increment;
-            xAmmount.text("Current price " + currentprice +  "B-coins");
+
+            switch (p.language) {
+                case "LUX":
+                    xAmmount.text("Preis as : " + currentprice +  "B-coins");
+                    break;
+                case "FR":
+                    xAmmount.text("Prix actuelle: " + currentprice +  "B-coins");
+                    break;
+                case "PR":
+                    xAmmount.text("Preço atual " + currentprice +  "B-coins");
+                    break;
+                case "":
+                    xAmmount.text("Current price " + currentprice +  "B-coins");
+                    break;
+                case "DE":
+                    xAmmount.text("Preis ist " + currentprice +  "B-coins");
+                    break;
+                default:
+                    xAmmount.text("Current price " + currentprice +  "B-coins");
+
+            }
+
             winner = PlayerList[currentindex];
             self.pressed = true;
         });
@@ -61,9 +122,10 @@ export class Auction {
             }
         });
 
-        while (ammountOfPlayer != 1) {
+        while (ammountOfPlayer > 1) {
             //skips players that are out
             if(!PlayerList[currentindex].canAuction){
+                ammountOfPlayer = PlayerList.filter(x=>x.canAuction).length;
                 currentindex = (currentindex + 1) % maxplayers;
                 continue;
             }
@@ -75,20 +137,48 @@ export class Auction {
                 continue;
             }
             else if(increment < 10){
-                PlayerList[currentindex].canAuction = false;
-                currentindex = (currentindex + 1) % maxplayers;
-                ammountOfPlayer--;
+                increment = Math.max((PlayerList[currentindex].Money - increment),10);
+                textfield.val(increment);
                 continue;
             }
             else{
                 if(!PlayerList[currentindex].canBuy(currentprice+10)){
-                    increment = Math.max((PlayerList[currentindex].Money - increment),10);
-                    textfield.val(increment);
+                    PlayerList[currentindex].canAuction = false;
+                    currentindex = (currentindex + 1) % maxplayers;
+                    ammountOfPlayer--;
                     continue;
                 }
             }
             //update the player who is playing
-            xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+            switch (p.language) {
+                case "LUX":
+                    xPlaying.text(PlayerList[currentindex].getName() + " as drun");
+                    break;
+                case "FR": xPlaying.text(PlayerList[currentindex].getName() + ": C'est à toi");
+                    break;
+                case "PR":
+                   xPlaying.text(PlayerList[currentindex].getName() + " é a tua vez");
+                    break;
+                case "":
+                    xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+                    break;
+                case "DE":
+                    xPlaying.text(PlayerList[currentindex].getName() + " du bist dran");
+                    break;
+                default:
+                    xPlaying.text(PlayerList[currentindex].getName() + " is playing");
+
+            }
+
+            //Bot handeling of Auction
+            if(PlayerList[currentindex].isBot){
+                if(((currentprice+10) < field.initialPrice) && ((currentprice*2) < PlayerList[currentindex].Money)){
+                    bidbutton.click();
+                }else{
+                    leavebutton.click();
+                }
+                await new Promise(r => setTimeout(r, 2000));
+            }
 
             //waits until a button has been pressed
             await this.wait();
@@ -101,15 +191,37 @@ export class Auction {
         //checks if a winner was selected
         if (!(winner == undefined)) {
             //winner gets the card
-            console.log("winner has been chosen");
-            winner!.buying(field,currentprice);
+            await winner!.buying(field,currentprice);
             winnermodal.show();
-            let string = winner!.name+ " has won";
+            let string = ""
+
+            switch (p.language) {
+                case "LUX":
+                    string = winner!.name + " heut gewon";
+                    break;
+                case "FR":
+                    string = winner!.name + " à gagné";
+                    break;
+                case "":
+                    string = winner!.name + " has won";
+                    break;
+                case "PR":
+                    string = winner!.name + " ganhou";
+                    break;
+                case "DE":
+                    string = winner!.name + " hat gewonnen";
+                    break;
+                default:
+                    string = winner!.name + " has won";
+
+            }
             $("#WinnerModal .modal-content .modal-header h1").html(string);
         }
         //closes the modal
         modal.hide();
         await this.sleep(4000);
+        PlayerList.forEach(player => player.canAuction = true);
+        PlayerList.forEach(player => player.inAuctionBot = false);
         winnermodal.hide();
 
 

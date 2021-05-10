@@ -1,5 +1,6 @@
 import {Field} from "./Field";
 import {Player} from "../Player";
+import {EventEvent} from "../Events/EventEvent";
 
 
 export class EventField implements Field{
@@ -11,7 +12,9 @@ export class EventField implements Field{
         return false;
     }
 
-    Event(player: Player, playerList: Player[]): void {
+    async Event(player: Player, playerList: Player[]): Promise<void> {
+        await new EventEvent().event(player);
+
     }
 
 }

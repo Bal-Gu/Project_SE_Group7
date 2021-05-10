@@ -11,9 +11,11 @@ export class Parking implements Field{
     PriceToPayMultiplier:number[] = [4,10];
     rentCostFinal: number = 0;
     isMortgage:boolean = false;
+    hasAll:boolean;
 
     constructor(name: string){
         this.name = name;
+        this.hasAll = false;
     }
 
     async Event(player: Player,playerList:Player[]): Promise<void> {
@@ -44,52 +46,11 @@ export class Parking implements Field{
 
     }
 
-    setMortgage(): void{
-        this.owner.recieveMoney(75);
-        this.isMortgage = true;
-    }
-
-    repayMortgage():void{
-        if(this.canRepayMortgage()){
-            this.owner.payAmmount(75 * 1.10);
-            this.isMortgage = false;
-        }
-        //TODO add the payements of the player.
-    }
-
-    canRepayMortgage(): boolean {
-        return this.owner.canBuy(75 * 1.10);
-    }
 
 
     CanBuy(player: Player): boolean {
         return player.Money > this.initialPrice;
     }
 
-    UpdateRentCost(player: Player, rentDice: number): void{
-        this.rentCostFinal = rentDice * this.PriceToPayMultiplier[this.owner.nrOfParking-1];
-    }
-
-    CanPayRent(player:Player, rentDice:number): boolean{
-        this.UpdateRentCost(player, rentDice);
-        return player.Money > this.rentCostFinal;
-    }
-
-    PayRent(player:Player, rentDice: number) : void{
-        if(this.owner == null){
-            return;
-        }else if(this.CanPayRent(player, rentDice) && !this.isMortgage){
-            player.payAmmount(this.rentCostFinal);
-        }
-    }
-
-    sellParking(playerToSellTo:Player, exchangePrice: number) : void{
-        if(playerToSellTo.canBuy(exchangePrice)){
-            this.owner.exchange(this, playerToSellTo);
-            this.owner.recieveMoney(exchangePrice);
-            playerToSellTo.payAmmount(exchangePrice);
-            this.owner = playerToSellTo;
-        }
-    }
 
 }

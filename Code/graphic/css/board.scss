@@ -89,13 +89,19 @@ $backgroundColor : #79ad8c;
         height: 100%;
         transition: transform 2s;
         transform-style: preserve-3d;
+        
       }
-
+      
       /* Do an vertical flip when you move the mouse over the flip box container */
-      .flip-card:hover .flip-card-inner {
-        transform: rotateX(180deg);
-      }
+      
+      /*.flip-card:hover .flip-card-inner {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      }*/
 
+      /*.flip-card #qz {
+        transform: translate(0px, -280px) rotate(135deg) rotateX(180deg) scale(3);
+      } */
+      
       /* Position the front and back side */
       .flip-card-front, .flip-card-back {
         position: absolute;
@@ -278,6 +284,41 @@ $backgroundColor : #79ad8c;
     width: 75px;
     height: 100px;
   }
+  .sm-box .rot-90-small {
+    transform: rotate(90deg);
+    position: absolute;
+    left: -27px;
+    top: 22px;
+    width: 151px;
+    height: 101px;
+  }
+
+  .sm-box .rot-90-medium {
+    transform: rotate(90deg);
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    width: 84px;
+    height: 100px;
+  }
+
+  .sm-box .rot-90-reverse-medium {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: 26px;
+    top: -8px;
+    width: 84px;
+    height: 100px;
+  }
+
+  .sm-box .rot-90-reverse-small {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: -5px;
+    top: 26px;
+    width: 149px;
+    height: 97px;
+  }
   
   .sm-box .rot-90-reverse {
     left: initial;
@@ -321,6 +362,20 @@ $backgroundColor : #79ad8c;
   margin-left: 2px;
   transform: rotate(-80deg);
   visibility: hidden; /* Delete this to see stars */
+}
+
+#quiz-card, #quiz-card2, #quiz-card3{
+  background-image: url("../images/small/chance_card2.png");
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-card, #event-card2, #event-card3{
+  background-image: url("../images/small/community_card3.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 

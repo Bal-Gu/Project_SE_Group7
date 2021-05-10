@@ -7,7 +7,7 @@ $pink: pink;
 $orange: orange;
 $red: red;
 $brown: brown;
-$yellow: #cccc4c;
+$yellow: #cfcf4e;
 $blue: blue;
 $green: green;
 $violet: violet;
@@ -19,7 +19,6 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
 
 .monopoly-info{
     
-    position: absolute;
     width: 240px;
     font-size: 14px;
     line-height: 1.5em;
@@ -33,7 +32,7 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
 
     .player{
       display: table;
-      width: 30px;
+      width: 200px;
       height: 30px;
       margin: 10px 0 10px 10px;
       font-size: 18px;
@@ -120,4 +119,27 @@ $game-info : Verdana, Geneva, Tahoma, sans-serif;
   border-color: #362323;
 }
 
+.star-player1{
+  background-color: $orange;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $orange;
+}
+
+.star-player2{
+  background-color: $black;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $black;
+}
+
+.star-player3{
+  background-color: $yellow;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $yellow;
+}
+
+.star-player4{
+  background-color: $red;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $red;
+}
   

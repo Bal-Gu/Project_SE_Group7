@@ -1,34 +1,34 @@
 
-#cube .front {
+#cube1 .front, #cube3 .front, #cube5 .front, #cube7 .front {
   transform: 
     translateZ(25px);
 }
 
-#cube .back {
+#cube1 .back, #cube3 .back, #cube5 .back, #cube7 .back {
   transform: 
     rotateX(-180deg)
     translateZ(25px);
 }
 
-#cube .right {
+#cube1 .right, #cube3 .right, #cube5 .right, #cube7 .right {
   transform:
     rotateY(90deg)
     translateZ(25px);
 }
 
-#cube .left {
+#cube1 .left, #cube3 .left, #cube5 .left, #cube7 .left {
   transform:
     rotateY(-90deg)
     translateZ(25px);
 }
 
-#cube .top {
+#cube1 .top, #cube3 .top, #cube5 .top, #cube7 .top {
   transform:
     rotateX(90deg)
     translateZ(25px);
 }
 
-#cube .bottom {
+#cube1 .bottom, #cube3 .bottom, #cube5 .bottom, #cube7 .bottom {
   transform:
     rotateX(-90deg)
     translateZ(25px);
@@ -45,7 +45,7 @@
   padding: 50px;
 }
 
-#cube {
+#cube1, #cube3, #cube5, #cube7{
   width: 30%;
   height: 30%;
   top: 50px;
@@ -57,7 +57,7 @@
   transition: transform 2s;
 }
 
-#cube div {
+#cube1 div, #cube3 div, #cube5 div, #cube7 div {
   background: rgb(255, 255, 255);
   display: block;
   position: absolute;
@@ -106,42 +106,42 @@
 .bottom .dot5 { top: 37px; left: 21px; }
 .bottom .dot6 { top: 37px; left: 37px; }
 
-#cube2 .front {
+#cube2 .front, #cube4 .front, #cube6 .front, #cube8 .front {
   transform: 
     translateZ(25px);
 }
 
-#cube2 .back {
+#cube2 .back, #cube4 .back, #cube6 .back, #cube8 .back {
   transform: 
     rotateX(-180deg)
     translateZ(25px);
 }
 
-#cube2 .right {
+#cube2 .right, #cube4 .right, #cube6 .right, #cube8 .right {
   transform:
     rotateY(90deg)
     translateZ(25px);
 }
 
-#cube2 .left {
+#cube2 .left, #cube4 .left, #cube6 .left, #cube8 .left {
   transform:
     rotateY(-90deg)
     translateZ(25px);
 }
 
-#cube2 .top {
+#cube2 .top, #cube4 .top, #cube6 .top, #cube8 .top {
   transform:
     rotateX(90deg)
     translateZ(25px);
 }
 
-#cube2 .bottom {
+#cube2 .bottom, #cube4 .bottom, #cube6 .bottom, #cube8 .bottom {
   transform:
     rotateX(-90deg)
     translateZ(25px);
 }
 
-#cube2 {
+#cube2, #cube4, #cube6, #cube8 {
   width: 30%;
   height: 30%;
   top: 50px;
@@ -152,7 +152,7 @@
   transition: transform 2s;
 }
 
-#cube2 div {
+#cube2 div, #cube4 div, #cube6 div, #cube8 div {
   background: rgb(255, 255, 255);
   display: block;
   position: absolute;
@@ -170,7 +170,7 @@
   box-sizing: unset;
 }
 
-#dices{
+#dices1, #dices2, #dices3, #dices4 {
   height: 280px;
   display: none;
 }

@@ -6,235 +6,274 @@
       "2": "Faculté de Droit, d’Economie et de Finance",
       "3": "Faculty of Humanities, Education and Social Sciences",
       "4": ""
-    },{
+    },
+    {
       "Title": "Is mobility mandatory for Bachelor Programs at Uni Luxembourg?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "When the University of Luxembourg was founded?",
       "1": "2003",
       "2": "2001",
       "3": "2005",
       "4": ""
-    },{
+    },
+    {
       "Title": "Approximately, how many students are there in the UNI ? ",
       "1": "6714",
       "2": "2657",
       "3": "9456",
       "4": "4572"
-    },{
+    },
+    {
       "Title": "How many faculties are there in the UNI? ",
       "1": "3",
       "2": "2",
       "3": "4",
       "4": "1"
-    },{
+    },
+    {
       "Title": "Who’s the program director of BINFO?",
       "1": "Volker Müller",
       "2": "Steffen Rothkugel",
       "3": "Stéphane PALLAGE",
       "4": "Nicolas Guelfi"
-    },{
+    },
+    {
       "Title": "When the last blast furnace in Belval is shut down?",
       "1": "1997",
       "2": "2003",
       "3": "1985",
       "4": "1979"
-    },{
+    },
+    {
       "Title": "When the “Fonds Belval” was founded?",
       "1": "2002",
       "2": "2006",
       "3": "1995",
       "4": "1998"
-    },{
+    },
+    {
       "Title": "How many ECTS a Bachelor student needs to obtain to be graduated? ",
       "1": "180",
       "2": "120",
       "3": "200",
       "4": "160"
-    },{
+    },
+    {
       "Title": "What is the meaning for LLC ?",
       "1": "Luxembourg Learning Centre",
       "2": "Luxembourg Learning Campus",
       "3": "Luxembourg Library Center",
       "4": ""
-    },{
+    },
+    {
       "Title": "Which of the 3 University campuses has been founded the latest?",
       "1": "Belval campus",
       "2": "Limperstberg campus",
       "3": "Kirchberg campus",
       "4": ""
-    },{
+    },
+    {
       "Title": "How many University cafés are there on the Belval Campus.",
       "1": "4",
       "2": "1",
       "3": "5",
       "4": "3"
-    },{
+    },
+    {
       "Title": "How many Parking slots are there in the Parking “Maison du savoir”?",
       "1": "560",
       "2": "1200",
       "3": "210",
       "4": "450"
-    },{
+    },
+    {
       "Title": "How many floors does la maison du savoir has?",
       "1": "18",
       "2": "22",
       "3": "32",
       "4": "11"
-    },{
+    },
+    {
       "Title": "Is mobility mandatory for Bachelor Programs at Uni Luxembourg?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "How many floors does the “BIL” tower have ?",
       "1": "19",
       "2": "9",
       "3": "27",
       "4": "18"
-    },{
+    },
+    {
       "Title": "When did the Pope visit Esch Belval?",
       "1": "1985",
       "2": "1952",
       "3": "1971",
       "4": "1969"
-    },{
+    },
+    {
       "Title": "Did the LLC remain open during the covid-19 ?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "Which building is dedicated to Mathematic and Informatic students ?",
       "1": "Maison du Nombre",
       "2": "Maison du Savoir",
       "3": "Maison de L'innovation",
       "4": "Massenoire"
-    },{
+    },
+    {
       "Title": "Which Building is dedicated to cultural, social and artistic events that student organisations make?",
       "1": "Maison des Arts et des Étudiants",
       "2": "Massenoire",
       "3": "Expo Art",
       "4": "Maison des Étudiants et de la culture"
-    },{
+    },
+    {
       "Title": "When did the Rockhal open?",
       "1": "23 september 2005",
       "2": "31 janurary 2008",
       "3": "11 september 2001",
       "4": "17 june 2003"
-    },{
+    },
+    {
       "Title": "Which building hosts the Faculté des Sciences de l'Éducation?",
       "1": "Maison des Sciences Humaines",
       "2": "Maison du Savoir",
       "3": "Maison de l'apprentisage",
       "4": "Maison de l'Éducation"
-    },{
+    },
+    {
       "Title": "What is the name of the Building that has old infrastructure inside?",
       "1": "LLC",
       "2": "Café du Savoir",
       "3": "Gaart Belval",
       "4": "Résidence étudiante Uni-Val 1"
-    },{
+    },
+    {
       "Title": "What is the max capacity of the Rockhal?",
       "1": "6500",
       "2": "2500",
       "3": "10000",
       "4": "8000"
-    },{
+    },
+    {
       "Title": "What is the Motto of Belval?",
       "1": "Future of innovation",
       "2": "European state of culture",
       "3": "One place, one life",
       "4": "Green for a better future"
-    },{
+    },
+    {
       "Title": "How many stores are in Belval Plaza?",
       "1": "46",
       "2": "51",
       "3": "64",
       "4": "38"
-    },{
+    },
+    {
       "Title": "Which Building hosts music concerts?",
       "1": "Rockhal",
       "2": "Maison des Arts et des Étudiants",
       "3": "Metalhal",
       "4": "Belval Plaza"
-    },{
+    },
+    {
       "Title": "Which Building hosts a Shopping Centre in Belval? ",
       "1": "Belval Plaza",
       "2": "Rockhal",
       "3": "LLC",
       "4": "Maison du Commerces"
-    },{
+    },
+    {
       "Title": "What is the name of the Little Garden maintained by students?",
       "1": "Gaart Belval",
       "2": "Besch Belval",
       "3": "Wiss Belval",
       "4": "Bio Belval"
-    },{
+    },
+    {
       "Title": "When was the first Railway built in Esch?",
       "1": "23 april 1859",
       "2": "23 april 1839",
       "3": "23 april 1819",
       "4": "23 april 1879"
-    },{
+    },
+    {
       "Title": "What is the name of the Cinema Complex in Belval?",
       "1": "Kinepolis Belval",
       "2": "Utopia Belval",
       "3": "CinemaxX Belval",
       "4": ""
-    },{
+    },
+    {
       "Title": "What is the name of the train station at Belval?",
       "1": "Belval-Université",
       "2": "Porte de France",
       "3": "Porte des Sciences",
       "4": "Porte des Garre"
-    },{
+    },
+    {
       "Title": "Which city was connected to the first Railway of Esch?",
       "1": "Bettembourg",
       "2": "Luxemburg",
       "3": "Differdange",
       "4": "Dudelange"
-    },{
+    },
+    {
       "Title": "A magazine appears 4 times a year where we can follow the development of the projects in Belval ?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "Which of the following research centers is owned by the state?",
       "1": "ILNAS",
       "2": "Luxembourg Centre for Systems Biomedicine",
       "3": "LIS",
       "4": "CVCE"
-    },{
+    },
+    {
       "Title": "What is the nickname given to the iron producing regions of Luxembourg?",
       "1": "Red Lands",
       "2": "Purle Lands",
       "3": "Wasted Lands",
       "4": "Iron Lands"
-    },{
+    },
+    {
       "Title": "Can we visit the “Hauts Fourneaux” in Belval?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "ArcelorMittal was still active in 2019. How many Tons of steel did they produce?",
       "1": "865",
       "2": "1245",
       "3": "0",
       "4": "255"
-    },{
+    },
+    {
       "Title": "Is “Usine de Belval” a part of UNESCO world heritage ?",
       "1": "Yes",
       "2": "No",
       "3": "",
       "4": ""
-    },{
+    },
+    {
       "Title": "The Rockhal is the largest place for shows and concerts in Luxembourg ?",
       "1": "Yes",
       "2": "No",
@@ -242,20 +281,20 @@
       "4": ""
     }
   ],
-  "Consequences":[
+  "Consequences": [
     {
-      "Type":  "Money",
+      "Type": "Money",
       "0": 50,
       "1": 100,
       "2": 150,
       "3": 200
     },
     {
-      "Type":  "Movement",
-      "0": 10,
-      "1": 15,
-      "2": 20,
-      "3": 25
+      "Type": "Movement",
+      "0": 2,
+      "1": 3,
+      "2": 5,
+      "3": 10
     }
   ]
 }

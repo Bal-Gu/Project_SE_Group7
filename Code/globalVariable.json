@@ -5,6 +5,9 @@
   "MaxTurnInErasmus": 3,
   "DiceNumber": 6,
   "ErasmusFees": 500,
-  "payDay": 2000,
-  "amountToPayBuyTax": [100,200]
+  "payDay": 200,
+  "amountToPayBuyTax": [100,200],
+  "ParkingNumber": 20,
+  "colors": [3,3,3,2,3,3,3,2,0]
+
 }

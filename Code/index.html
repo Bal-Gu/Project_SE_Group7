@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Monopoly belval edition</title>
+    <link rel="shortcut icon" href="./graphic/images/coin_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./graphic/css/main.css">
     <link rel="stylesheet" href="./graphic/css/board.css">
     <link rel="stylesheet" href="./graphic/css/modal.css">
@@ -22,7 +23,7 @@
     <script src="./frameworks/ScrollTrigger.min.js"></script>
     <script src="./frameworks/jquery.min.js"></script>
 
-    <!-- Makes sure js is actiavted-->
+    <!-- Makes sure js is activated-->
     <noscript>Please enable Javascript to be able to play</noscript>
 </head>
 
@@ -34,9 +35,8 @@
             <br><br>
             <button class='menuButtons' id='menuLoadButton'>Load game</button>
             <br><br>
-            <button class='menuButtons' id='menuCreditsButton'>Credits</button>
-            <br><br>
-            <button class='menuButtons' id='dropCoins'>Drop coins</button>
+            <button class='menuButtons' id='menuLanguageButton'>Language: <img src="./graphic/images/flags/kingdom.png"
+                    style="height: 25px"></button>
             <br><br>
         </div>
     </div>
@@ -46,10 +46,10 @@
         <div class='left-grid'>
             <div class="monopoly-info">
                 <!--<button id="startGame">Start Game</button>-->
-                <p>Turn:
-                    <span id="round-counter">0</span>/-
+                <p id="round-counter-p">Turn:
+                    <span id="round-counter">0</span>
                 </p>
-                <p>Current Player:
+                <p id="current-player-p">Current Player:
                     <span id="current-player"></span>
                 </p>
                 <p>
@@ -65,6 +65,161 @@
                 <div class="player" id="player-4">4</div>
                 <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
             </div>
+            <div id='dices3'>
+                <p style="text-align: left; direction: ltr;" id="playerName3">Player: </p>
+                <div class="container">
+                    <div id="cube5">
+                        <div class="front" id='dice15'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice25'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice35'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice45'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice55'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice65'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="cube6">
+                        <div class="front" id='dice1-two6'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice2-two6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice3-two6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice4-two6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice5-two6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice6-two6'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='dices4'>
+                <p style="text-align: left; direction: ltr;" id="playerName4">Player: </p>
+                <div class="container">
+                    <div id="cube7">
+                        <div class="front" id='dice17'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice27'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice37'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice47'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice57'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice67'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="cube8">
+                        <div class="front" id='dice1-two28'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice2-two28'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice3-two28'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice4-two28'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice5-two28'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice6-two28'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Modals -->
             <div id="startGameModal" class="modal" style="display: none">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -78,10 +233,23 @@
                     </div>
                 </div>
             </div>
+            <div id="boardResizeModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Game length</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ButtonContainer">
+                            <Button class="StartBoxButton boardSizeButton" id="smallBoardButton">Small board</Button>
+                            <Button class="StartBoxButton boardSizeButton" id="mediumBoardButton">Medium board</Button>
+                            <Button class="StartBoxButton boardSizeButton" id="bigBoardButton">Big board (Default)</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="lobbyModal" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="close">&times;</span>
                         <h2>Monopoly Belval Edition</h2>
                     </div>
                     <div class="modal-body">
@@ -128,7 +296,9 @@
                             </tr>
                         </table>
                         <div class="ButtonContainer">
+                            <Button class="StartBoxButton" id="botDifficultyButton">Bot Standard</Button>
                             <Button class="StartBoxButton" id="StartButton">Start Game</Button>
+                            <Button class="StartBoxButton" style="visibility: hidden;"></Button>
                         </div>
                     </div>
                 </div>
@@ -137,8 +307,7 @@
             <div id="BuyingModal" class="modal" style="display: none">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="close">&times;</span>
-                        <h2>Buying Event</h2>
+                        <h2 id="buyingeventtitle">Buying Event</h2>
                     </div>
                     <div class="modal-body">
                         <div style="width: 40%; margin:auto;">
@@ -251,13 +420,13 @@
                         </div>
                         <div>
                             <!--3-->
-                            <h2 style="vertical-align: top">B-coins increase</h2>
+                            <h2 id="B-coinsIncrease" style="vertical-align: top">B-coins increase</h2>
                         </div>
                         <div>
                             <!--4-->
                             <button id='Bid'
                                 style="background-color: #18892b;color:white;border-radius: 10px;horiz-align: right;
-                                    width:100%;height: 100%;margin-left: 3px;font-size: 50px">▲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bet&nbsp;&nbsp;&nbsp;&nbsp;
+                                    width:100%;height: 100%;margin-left: 3px;font-size: 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;&nbsp;&nbsp;
                             </button>
                         </div>
                         <div>
@@ -274,7 +443,7 @@
                         <div>
                             <!--7-->
                             <button id='Leave' style="background-color: darkred;border-radius: 10px;color:white;horiz-align: right;
-                                    width:100%;height: 100%;margin-left: 3px;font-size: 50px">▼ Drop out
+                                    width:100%;height: 100%;margin-left: 3px;font-size: 50px">▼
                             </button>
                         </div>
                         <div>
@@ -294,7 +463,6 @@
 
             </div>
 
-
             <div id="WinnerModal" class="modal" style="display: none">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -302,498 +470,35 @@
                     </div>
                 </div>
             </div>
-
-
+            <div id="EventModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="EventText" style="text-align: center">Winner TADA</h1>
+                    </div>
+                </div>
+            </div>
+            <div id="funfactModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h1 style="text-align: center" id="buildingFunFactTitle">BUILDING NAME</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div style="width: 50%; float: left;">
+                            <span id="buildingFunFactDescription">
+                            </span>
+                        </div>
+                        <div style="width: 50%; display:inline-block;" id="imageBuilding">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modals -->
         </div>
 
         <div class='grid-mid'>
-            <div class="board">
-                <div class="center">
-                    <div class="community-chest-deck">
-                        <h2 class="label">Event</h2>
-                        <div class="deck">
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front2">
-                                        <div>
-                                            <span class="title2">
-                                                <h2>EVENT</h2>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="flip-card-back2">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h1 class="title">Monopoly Belval Edition</h1>
-                    <div class="chance-deck">
-                        <h2 class="label">Quiz</h2>
-                        <div class="deck">
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <div>
-                                            <span class="title1">
-                                                <h2>QUIZ</h2>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="flip-card-back">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg-box">
-                    <div class="lg-rot rot-135">Just Visiting / In Erasmus</div>
-                </div>
-                <div class="sm-box rot-180 sm-box-pink">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='kinepolis'>
-                        <span class="title">Kinepolis</span>
-                        <span class="price">140 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-white">
-                    <div>
-                        <span class="title">PARKING MAISON DU SAVOIR</span>
-                        <span class="price">150 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-pink">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='rockhal'>
-                        <span class="title">Rockhal</span>
-                        <span class="price">140 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-pink">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='belval_plaza'>
-                        <span class="title">Belval Plaza</span>
-                        <span class="price">160 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-white">
-                    <div>
-                        <span class="title">PORTE DE FRANCE</span>
-                        <span class="price">200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-orange">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='student_lounge_belval'>
-                        <span class="title">Student Lounge Belval</span>
-                        <span class="price">180 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-white">
-                    <div>
-                        <span class="title">EVENT</span>
-                        <span class="price">Follow Instructions</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-orange">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_arts_etudiants'>
-                        <span class="title">Maison des Arts et des Etudiants</span>
-                        <span class="price">180 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box rot-180 sm-box-orange">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_science_humaines'>
-                        <span class="title">Maison des Sciences Humaines</span>
-                        <span class="price">200 BCoins</span>
-                    </div>
-                </div>
-                <div class="lg-box">
-                    <div class="lg-rot rot-135-reverse">Free Parking</div>
-                </div>
-                <div class="sm-box sm-box-lightBlue">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='maison_du_nombre'>
-                        <span class="title">Maison du Nombre</span>
-                        <span class="price">120 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-red">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='cafe_savoir'>
-                        <span class="title">Café du Savoir</span>
-                        <span class="price">200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-lightBlue">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='luxembourg_institute_science_technology'>
-                        <span class="title">L.I.S.T</span>
-                        <span class="price">100 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
-                        <span class="title">QUIZ</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90">
-                        <span class="title">QUIZ</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-red">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='restaurant_uni'>
-                        <span class="title">Restaurant Universitaire</span>
-                        <span class="price">220 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-lightBlue">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='halles_essais_ingenieur'>
-                        <span class="title">Halles d’Essais Ingénieurs</span>
-                        <span class="price">100 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-red">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='gaart_belval'>
-                        <span class="title">Gaart Belval</span>
-                        <span class="price">220 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90">
-                        <span class="title">Belval Railroad</span>
-                        <span class="price">Price 200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
-                        <span class="title">PORTE DES SCIENCES</span>
-                        <span class="price">200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90">
-                        <span class="title">INCOME TAX</span>
-                        <span class="price">Pay 10% or 200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-yellow">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='massenoire'>
-                        <span class="title">Massenoire</span>
-                        <span class="price">260 BCoins</span>
-                    </div>
-                </div>
 
-
-                <div class="sm-box sm-box-brown">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='residence_etudiante_Uni-ValII'>
-                        <span class="title">Résidence Etudiante Uni-Val II</span>
-                        <span class="price">50 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-yellow">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='lycee_belval'>
-                        <span class="title">Lycée Belval</span>
-                        <span class="price">260 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90">
-                        <span class="title">EVENT</span>
-                        <span class="price">Follow Instructions</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div class="rot-90-reverse">
-                        <span class="title">SQUARE MILE BELVAL</span>
-                        <span class="price">150 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-brown">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90" id='residence_etudiante_Uni-ValI'>
-                        <span class="title">Résidence Etudiante Uni-Val I</span>
-                        <span class="price">50 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-yellow">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse" id='bil_bank'>
-                        <span class="title">Bil Bank</span>
-                        <span class="price">280 Bcoins</span>
-                    </div>
-                </div>
-                <div class="lg-box">
-                    <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
-                </div>
-                <div class="sm-box sm-box-blue">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_du_savoir'>
-                        <span class="title">Maison du Savoir</span>
-                        <span class="price">Price 5</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div>
-                        <span class="title">LUXURY TAX</span>
-                        <span class="price">Pay 100 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-blue">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='llc'>
-                        <span class="title">Luxembourg Learning Center</span>
-                        <span class="price">Price 3</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div>
-                        <span class="title">QUIZ</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div>
-                        <span class="title">MAISON DU SAVOIR</span>
-                        <span class="price">200 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-green">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_biomedecineII'>
-                        <span class="title">Maison Biomédecine II</span>
-                        <span class="price">320 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-white">
-                    <div>
-                        <span class="title">EVENT</span>
-                        <span class="price">Follow Instructions</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-green">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_biomedecineI'>
-                        <span class="title">Maison Biomédecine I</span>
-                        <span class="price">300 BCoins</span>
-                    </div>
-                </div>
-                <div class="sm-box sm-box-green">
-                    <span class="stars"><img class="star" id="1-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star"
-                            src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_innovation'>
-                        <span class="title">Maison de l'Innovation</span>
-                        <span class="price">300 BCoins</span>
-                    </div>
-                </div>
-                <div class="lg-box">
-                    <div class="lg-rot rot-45-reverse">Go to Erasmus</div>
-                </div>
+            <div class="board" id="boardContent">
             </div>
             <div class='figure-start' id="positions">
                 <img class="figures" id="position1" src="./graphic/svg/car_orange.svg ">
@@ -804,19 +509,9 @@
         </div>
 
         <div class='grid-right'>
-            <h2>Testing Buttons</h2>
-            <button id='lobbyButton'>Lobby</button>
-            <button id='nextFieldP1'>Move p1</button>
-            <button id='nextFieldP2'>Move p2</button>
-            <button id='nextFieldP3'>Move p3</button>
-            <button id='nextFieldP4'>Move p4</button>
-            <button id='moveMoreFields'>Move 50 fields</button>
-            <button id='quizButton'>Quiz</button>
             <div id='buttonList'>
                 <!--<h2>:Button List</h2>-->
-                <button id='sellRenovationsButton' class="buttonListDesign">Sell Renovations</button>
-                <button id='sellMortageProButton' class="buttonListDesign">Set Mortgage properties</button>
-                <button id='buyRenovationButton' class="buttonListDesign">Buy renovations</button>
+                <button id='RenovationsButton' class="buttonListDesign">Buildings</button>
                 <button id='tradeButton' class="buttonListDesign">Trade</button>
                 <button id='repayMortgageButton' class="buttonListDesign">Repay mortgage</button>
                 <button id='rollButton' class="buttonListDesign">Roll dice</button>
@@ -824,9 +519,10 @@
                 <hr>
                 <button id='startMenuButton' class="buttonListDesign">Start Menu</button>
             </div>
-            <div id='dices'>
+            <div id='dices1'>
+                <p style="text-align: left; direction: ltr;" id="playerName1">Player: </p>
                 <div class="container">
-                    <div id="cube">
+                    <div id="cube1">
                         <div class="front" id='dice1'>
                             <span class="dot dot1"></span>
                         </div>
@@ -900,13 +596,89 @@
                     </div>
                 </div>
             </div>
-
+            <div id='dices2'>
+                <p style="text-align: left; direction: ltr;" id="playerName2">Player: </p>
+                <div class="container">
+                    <div id="cube3">
+                        <div class="front" id='dice12'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice22'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice32'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice42'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice52'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice62'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="cube4">
+                        <div class="front" id='dice1-two2'>
+                            <span class="dot dot1"></span>
+                        </div>
+                        <div class="back" id='dice2-two2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                        </div>
+                        <div class="right" id='dice3-two2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                        </div>
+                        <div class="left" id='dice4-two2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                        </div>
+                        <div class="top" id='dice5-two2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                        </div>
+                        <div class="bottom" id='dice6-two2'>
+                            <span class="dot dot1"></span>
+                            <span class="dot dot2"></span>
+                            <span class="dot dot3"></span>
+                            <span class="dot dot4"></span>
+                            <span class="dot dot5"></span>
+                            <span class="dot dot6"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="./graphic/animation/dice.js"></script>
     <script src="./../public/main.js"></script>
-    <script src="./graphic/animation/dice.js"></script>
+    <script src="./graphic/animation/stars.js"></script>
     <script src="./graphic/animation/car.js"></script>
     <script src="./graphic/animation/fallingcoins.js"></script>
 </body>

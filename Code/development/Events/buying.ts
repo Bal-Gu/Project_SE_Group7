@@ -6,11 +6,39 @@ import {Auction} from "./Auction";
 export class BuyEvent {
     private pressed: Boolean = false;
     async event(p:Player,price:number,field:Field,playerList:Player[]){
+        console.log(p.name+" entered Buying");
         let modal = document.getElementById("BuyingModal");
         let buybutton = $("#Buy");
-        let Autionbutton = $("#Auction")
-        let self = this;
+        let Autionbutton = $("#Auction");
+        let buyingeventtitle = $("#buyingeventtitle");
 
+        switch (p.language) {
+            case "LUX":
+                buyingeventtitle.text("Kaaf Event");
+                buybutton.text("Kaafen");
+                Autionbutton.text("Auktioun");
+                break;
+            case "FR":
+                buyingeventtitle.text("Événement d'achat");
+                buybutton.text("Achat");
+                Autionbutton.text("Enchère");
+                break;
+            case "PR":
+                buyingeventtitle.text("Comprar evento");
+                buybutton.text("Comprar");
+                Autionbutton.text("Leilão");
+                break;
+            case "":
+                break;
+            case "DE":
+                buybutton.text("Kaufereignis");
+                Autionbutton.text("Versteigerung");
+                break;
+            default:
+
+        }
+
+                let self = this;
         //hiddes the buttons that can't be used
         $("#BuyingModal").css("display", "block");
         if(! p.canBuy(price)){
@@ -21,7 +49,6 @@ export class BuyEvent {
             buybutton.show();
             buybutton.prop("disable", false);
         }
-        //
         window.onclick = function (event) {
             if (event.target == modal && modal != undefined) {
                 modal.style.display = "none";
@@ -32,29 +59,30 @@ export class BuyEvent {
             self.pressed = true;
         });
 
-
         // the tree buttons inside the modal
-
         buybutton.on("click", function(){
-            console.log("nb")
+            $(this).off("click");
             if (p.canBuy(price)){
                 p.buying(field,price);
                 field.owner = p;
             }
             $("#BuyingModal").css("display", "none");
             self.pressed = true;
-            $(this).off("click");
         });
 
         Autionbutton.click(async function () {
-            let auction =  new Auction();
-            $("#BuyingModal").css("display", "none");
-            await auction.AuctionEvent(p,playerList,field);
+            if(p.AuctionEntry){
+                p.AuctionEntry = false;
+                $(this).off("click");
+                let auction =  new Auction();
+                $("#BuyingModal").css("display", "none");
+                auction.AuctionEvent(p,playerList,field);
+            }
             self.pressed = true;
         });
 
         //waits for buttons
-        this.wait();
+        await this.wait();
 
     }
     async wait() {

@@ -1,0 +1,300 @@
+{
+  "Quiz": [
+    {
+      "Title": "A wéi enger Fakultéit as den BINFO program deel vun?",
+      "1": "Faculty of Science, Technology and Medicine",
+      "2": "Faculté de Droit, d’Economie et de Finance",
+      "3": "Faculty of Humanities, Education and Social Sciences",
+      "4": ""
+    },
+    {
+      "Title": "An der Uni ass Mobilitéit semester obligatoresch ?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Wéini gouf d'Uni lu gegrënnt ?",
+      "1": "2003",
+      "2": "2001",
+      "3": "2005",
+      "4": ""
+    },
+    {
+      "Title": "Ongeféier, wéi vill Studenten gin et op der Uni lu ?",
+      "1": "6714",
+      "2": "2657",
+      "3": "9456",
+      "4": "4572"
+    },
+    {
+      "Title": "Wéi vill Fakultéiten gin et op der Uni ?",
+      "1": "3",
+      "2": "2",
+      "3": "4",
+      "4": "1"
+    },
+    {
+      "Title": "Wien ass de Programmdirekter vum BINFO ?",
+      "1": "Volker Müller",
+      "2": "Steffen Rothkugel",
+      "3": "Stéphane PALLAGE",
+      "4": "Nicolas Guelfi"
+    },
+    {
+      "Title": "Wéini heut de leschten Héichuewen um Belval zougemaach ?",
+      "1": "1997",
+      "2": "2003",
+      "3": "1985",
+      "4": "1979"
+    },
+    {
+      "Title": "Wéini geuf den “Fonds Belval” gegrënnt ?",
+      "1": "2002",
+      "2": "2006",
+      "3": "1995",
+      "4": "1998"
+    },
+    {
+      "Title": "Wéi vill ECTS muss ëen Bachelor student validéieren fier säi bachelor ze kréien ? ",
+      "1": "180",
+      "2": "120",
+      "3": "200",
+      "4": "160"
+    },
+    {
+      "Title": "What hëescht LLC ?",
+      "1": "Luxembourg Learning Centre",
+      "2": "Luxembourg Learning Campus",
+      "3": "Luxembourg Library Center",
+      "4": ""
+    },
+    {
+      "Title": "Wéi eng vun den 3 Universitéitscampuss gouf fier lescht gegrënnt ?",
+      "1": "Belval campus",
+      "2": "Limperstberg campus",
+      "3": "Kirchberg campus",
+      "4": ""
+    },
+    {
+      "Title": "Wéi vill Universitéitscaféë ginn et um Belval Campus ?",
+      "1": "4",
+      "2": "1",
+      "3": "5",
+      "4": "3"
+    },
+    {
+      "Title": "Wéi vill Parkplaze ginn et um Parking “Maison du savoir ?",
+      "1": "560",
+      "2": "1200",
+      "3": "210",
+      "4": "450"
+    },
+    {
+      "Title": "Wéi vill Stack heut \"maison du savoir\" ?",
+      "1": "18",
+      "2": "22",
+      "3": "32",
+      "4": "11"
+    },
+    {
+      "Title": "Ass Mobilitéit obligatoresch fir den Bachelor Programmer op der Uni Lëtzebuerg ?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Wéi vill stack heut den “BIL” Tuerm ?",
+      "1": "19",
+      "2": "9",
+      "3": "27",
+      "4": "18"
+    },
+    {
+      "Title": "Wéini war de Poopst zu Esch um Belval ?",
+      "1": "1985",
+      "2": "1952",
+      "3": "1971",
+      "4": "1969"
+    },
+    {
+      "Title": "War den LLC wärend dem covid op bliwwen ?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Wéi ee Gebai ass fir mathematesch an informatesch Studenten?",
+      "1": "Maison du Nombre",
+      "2": "Maison du Savoir",
+      "3": "Maison de L'innovation",
+      "4": "Massenoire"
+    },
+    {
+      "Title": "Wéi ee Gebai as do fier kulturell, sozial an artistesch Eventer déi vum Studentenroot organiseiert get ?",
+      "1": "Maison des Arts et des Étudiants",
+      "2": "Massenoire",
+      "3": "Expo Art",
+      "4": "Maison des Étudiants et de la culture"
+    },
+    {
+      "Title": "Wéini ass Rockhall op gangen?",
+      "1": "23 September 2005",
+      "2": "31 Januar 2008",
+      "3": "11 September 2001",
+      "4": "17 Juni 2003"
+    },
+    {
+      "Title": "Wéi ee Gebai ass do fir Faculté des Sciences de l'Éducation?",
+      "1": "Maison des Sciences Humaines",
+      "2": "Maison du Savoir",
+      "3": "Maison de l'apprentisage",
+      "4": "Maison de l'Éducation"
+    },
+    {
+      "Title": "Wéi heescht dat Gebai daat nach al Infrastruktur dobannen?",
+      "1": "LLC",
+      "2": "Café du Savoir",
+      "3": "Gaart Belval",
+      "4": "Résidence étudiante Uni-Val 1"
+    },
+    {
+      "Title": "Wat ass déi maximal Kapazitéit vun der Rockhal?",
+      "1": "6500",
+      "2": "2500",
+      "3": "10000",
+      "4": "8000"
+    },
+    {
+      "Title": "Wat ass de Motto vum Belval?",
+      "1": "Future of innovation",
+      "2": "European state of culture",
+      "3": "One place, one life",
+      "4": "Green for a better future"
+    },
+    {
+      "Title": "Wéi vill Geschäfter gin et um Belval Plaza?",
+      "1": "46",
+      "2": "51",
+      "3": "64",
+      "4": "38"
+    },
+    {
+      "Title": "Which Building hosts music concerts?",
+      "1": "Rockhal",
+      "2": "Maison des Arts et des Étudiants",
+      "3": "Metalhal",
+      "4": "Belval Plaza"
+    },
+    {
+      "Title": "Wéi ee Gebai organiséiert Museksconcerten? ",
+      "1": "Belval Plaza",
+      "2": "Rockhal",
+      "3": "LLC",
+      "4": "Maison du Commerces"
+    },
+    {
+      "Title": "What as den num vum klengen Gaart vun der Uni?",
+      "1": "Gaart Belval",
+      "2": "Besch Belval",
+      "3": "Wiss Belval",
+      "4": "Bio Belval"
+    },
+    {
+      "Title": "Wéini gouf déi éischt Eisebunn zu Esch gebaut?",
+      "1": "23 Abrëll 1859",
+      "2": "23 Abrëll 1839",
+      "3": "23 Abrëll 1819",
+      "4": "23 Abrëll 1879"
+    },
+    {
+      "Title": "Wéi heescht de Cinema Complex zu Belval?",
+      "1": "Kinepolis Belval",
+      "2": "Utopia Belval",
+      "3": "CinemaxX Belval",
+      "4": ""
+    },
+    {
+      "Title": "Wéi heescht d'Gare statioun vum Belval?",
+      "1": "Belval-Université",
+      "2": "Porte de France",
+      "3": "Porte des Sciences",
+      "4": "Porte des Garre"
+    },
+    {
+      "Title": "Wéi eng Stad war mat der éischter Eisebunn vun Esch verbonnen?",
+      "1": "Bettembourg",
+      "2": "Luxemburg",
+      "3": "Differdange",
+      "4": "Dudelange"
+    },
+    {
+      "Title": "E Magazin erschéngt 4 Mol d'Joer wou mir d'Entwécklung vun de Projeten op Belval kënne verfolgen",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Wéi eng vun de folgende Fuerschungszentere gehéiert dem Staat?",
+      "1": "ILNAS",
+      "2": "Luxembourg Centre for Systems Biomedicine",
+      "3": "LIS",
+      "4": "CVCE"
+    },
+    {
+      "Title": "Wat ass de Spëtznumm fir déi Eiseproductioun vum Belval?",
+      "1": "Reude Buedem",
+      "2": "Propert Buedem",
+      "3": "Drëcks Buedem",
+      "4": "Eisen Buedem"
+    },
+    {
+      "Title": "Can ëen d'“Hauts Fourneaux” visiteieren?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "ArcelorMittal war nach ëmmer aktiv am Joer 2019. Wéi vill Tonne Stol hu se produzéiert?",
+      "1": "865",
+      "2": "1245",
+      "3": "0",
+      "4": "255"
+    },
+    {
+      "Title": "As “Usine de Belval” ëen dëel vum UNESCO Welterbe?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "D'Rockhal ass déi gréisst Plaz fir Shows a Concerten zu Lëtzebuerg?",
+      "1": "Yes",
+      "2": "No",
+      "3": "",
+      "4": ""
+    }
+  ],
+  "Consequences": [
+    {
+      "Type": "Money",
+      "0": 50,
+      "1": 100,
+      "2": 150,
+      "3": 200
+    },
+    {
+      "Type": "Movement",
+      "0": 2,
+      "1": 3,
+      "2": 5,
+      "3": 10
+    }
+  ]
+}

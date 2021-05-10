@@ -4,7 +4,7 @@ import {Dice} from '../development/Events/Dice';
 test('DiceLimitTestingOfRandomGenerator', () => {
     let dice:Dice = new Dice();
     for(let i=0; i<300; i++) {
-        dice.roll()
+        dice.roll(1, "TEST")
         expect(0).not.toBe(dice.second);
         expect(7).not.toBe(dice.first);
         expect(0).not.toBe(dice.first);

@@ -1,13 +1,19 @@
 import {Player} from "../Player";
+import {starshower} from "../../graphic/animation/starshower";
 
 export class Mortage {
-    i: number;
+
+    total:number = 0;
+    i: number = 0;
     private pressed: boolean;
     p: Player
 
     async event(p: Player) {
         this.pressed = false;
         this.p = p;
+        let totalAmmountText = $("#totalAmmountInModal");
+        totalAmmountText.text(p.Money+"");
+        this.total =  p.Money;
         if (p.Money >= 0) {
             return;
         }
@@ -17,9 +23,9 @@ export class Mortage {
             return;
         }
 
+        $("#MorageModal .modal-content h1").html("Mortage");
         $("#MorageModal").css("display", "block");
-        var output;
-        let total = 0;
+        var output = "";
 
         for (this.i = 0; this.i < p.fieldsOwned.length; this.i++) {
             output += "<tr>";
@@ -160,29 +166,32 @@ export class Mortage {
 
     totalModifier(ammount: number) {
         let total = $("#totalAmmountInModal");
-        let value = parseInt(total.text());
-        value += ammount;
+        this.total += ammount;
 
-        if (value >= 0) {
-            total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+        if (this.total >= 0) {
+            total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
             $("#ApproveButtonMortgage").click(() => {
                 for (let m = 0; m < this.p.fieldsOwned.length; m++) {
                     let starstrings = "#stars" + m;
-                    let star = $(starstrings);
-                    if (star.text() === "💸💸💸💸💸" || star.text() === "💸💸💸💸") {
-                        this.p.fieldsOwned[m].renovatiosAmmount = 0;
+                    let starr = $(starstrings);
+                    let s:starshower = new starshower();
+                    if (starr.text() === "💸💸💸💸💸" || starr.text() === "💸💸💸💸") {
+                        this.p.fieldsOwned[m].renovatiosAmmount = 0
+                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]),0,this.p.ReferenceNumber);
                     } else {
-                        this.p.fieldsOwned[m].renovatiosAmmount = star.text().length;
+                        this.p.fieldsOwned[m].renovatiosAmmount = starr.text().length;
+                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]),starr.text().length,this.p.ReferenceNumber);
                     }
                     
                 }
-                this.p.Money = value;
+                this.p.recieveMoney(this.total-this.p.Money);
                 this.pressed = true;
                 $("#MorageModal").hide();
             });
 
         } else {
-            total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+            console.log(this.total);
+            total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
 
         }
     }

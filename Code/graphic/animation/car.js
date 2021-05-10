@@ -1,13 +1,52 @@
 const delay = 0.5;
+let boardSize = 0;
+let fieldNumbers = 10;
+let boxSizes = 75;
+let turn1 = 75;
+let turn2 = 75;
+
+
+function setBoardSize(size){
+    // mediumboard
+    if (size === 1){
+        boardSize = size;
+        fieldNumbers = 8;
+        boxSizes = 85;
+        turn1 = 84;
+        turn2 = 85;
+    }
+    // smallboard
+    else if (size === 2){
+        boardSize = size;
+        fieldNumbers = 5;
+        boxSizes = 150;
+        turn1 = 135;
+        turn2 = 75;
+    }
+    // bigboard
+    else if (size === 0){
+        boardSize = size;
+        fieldNumbers = 10;
+        boxSizes = 75;
+        turn1 = 75;
+        turn2 = 75;
+    }else{
+        boardSize = 0;
+        fieldNumbers = 10;
+        boxSizes = 75;
+        turn1 = 75;
+        turn2 = 75;
+    }
+}
 
 function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
-    console.log(FieldsToPlay);
+
     if (FieldsToPlay === 0) {
         return;
     } else {
-        if (FieldNumber >= 0 && FieldNumber < 10) {
-            if (FieldNumber === 9) {
-                movingUpAnimation(FieldNumber, FieldsToPlay, 75, position);
+        if (FieldNumber >= 0 && FieldNumber < fieldNumbers) {
+            if (FieldNumber === (fieldNumbers-1)) {
+                movingUpAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("90_cw", "-15px 36px", position);
                 }
@@ -27,11 +66,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("90_cw", "82px 37px", '#position4');
                 }
             } else {
-                movingUpAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingUpAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
-        } else if (FieldNumber >= 10 && FieldNumber < 20) {
-            if (FieldNumber === 19) {
-                movingRightAnimation(FieldNumber, FieldsToPlay, 75, position);
+        } else if (FieldNumber >= fieldNumbers && FieldNumber < (fieldNumbers*2)) {
+            if (FieldNumber === ((fieldNumbers*2)-1)) {
+                movingRightAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("180_cw", "-15px 37px", position);
                 }
@@ -51,11 +90,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("180_cw", "82px 37px", '#position4');
                 }
             } else {
-                movingRightAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingRightAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
-        } else if (FieldNumber >= 20 && FieldNumber < 30) {
-            if (FieldNumber === 29) {
-                movingDownAnimation(FieldNumber, FieldsToPlay, 75, position);
+        } else if (FieldNumber >= (fieldNumbers*2) && FieldNumber < (fieldNumbers*3)) {
+            if (FieldNumber === ((fieldNumbers*3)-1)) {
+                movingDownAnimation(FieldNumber, FieldsToPlay, turn1, position);
                 if (position === '#position1') {
                     figureRotation("270_cw", "-15px 38px", position);
                 }
@@ -75,11 +114,11 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("270_cw", "83px 37px", '#position4');
                 }
             } else {
-                movingDownAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingDownAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
-        } else if (FieldNumber >= 30 && FieldNumber < 40) {
-            if (FieldNumber === 39) {
-                movingLeftAnimation(FieldNumber, FieldsToPlay, 75, position);
+        } else if (FieldNumber >= (fieldNumbers*3) && FieldNumber < (fieldNumbers*4)) {
+            if (FieldNumber === ((fieldNumbers*4)-1)) {
+                movingLeftAnimation(FieldNumber, FieldsToPlay, turn2, position);
                 if (position === '#position1') {
                     figureRotation("0_cw", "-15px 38px", position);
                 }
@@ -99,7 +138,7 @@ function nextMoveLogic(FieldNumber, FieldsToPlay, position) {
                     figureRotation("0_cw", "83px 37px", '#position4');
                 }
             } else {
-                movingLeftAnimation(FieldNumber, FieldsToPlay, 75, position);
+                movingLeftAnimation(FieldNumber, FieldsToPlay, boxSizes, position);
             }
         }
     }
@@ -119,20 +158,20 @@ function movingUpAnimation(FieldNumber, FieldsToPlay, distance, position) {
         onCompleteParams: [FieldNumber + 1, FieldsToPlay - 1, position]
     });
 
-    tl.fromTo(position, {y: -1 * (FieldNumber % 10) * distance}, {
+    tl.fromTo(position, {y: -1 * (FieldNumber % fieldNumbers) * distance}, {
         duration: delay,
-        y: -1 * (FieldNumber % 10) * distance + (distance / 2),
+        y: -1 * (FieldNumber % fieldNumbers) * distance + (distance / 2),
         scaleX: 2,
         scaleY: 2,
         ease: "expoScale(1,2,power1.out)"
     })
         .fromTo(position, {
-            y: -1 * (FieldNumber % 10) * distance + (distance / 2),
+            y: -1 * (FieldNumber % fieldNumbers) * distance + (distance / 2),
             scaleX: 2,
             scaleY: 2
         }, {
             duration: delay,
-            y: -1 * ((FieldNumber % 10 + 1)) * distance,
+            y: -1 * ((FieldNumber % fieldNumbers + 1)) * distance,
             scaleX: 1,
             scaleY: 1,
             ease: "expoScale(2,1,power4.out)"
@@ -147,23 +186,23 @@ function movingLeftAnimation(FieldNumber, FieldsToPlay, distance, position) {
 
     var tl = gsap.timeline({
         onComplete: nextMoveLogic,
-        onCompleteParams: [(FieldNumber + 1) % 40, FieldsToPlay - 1, position]
+        onCompleteParams: [(FieldNumber + 1) % (fieldNumbers*4), FieldsToPlay - 1, position]
     });
 
-    tl.fromTo(position, {x: 1 * (10 - (FieldNumber % 10)) * distance}, {
+    tl.fromTo(position, {x: 1 * (fieldNumbers - (FieldNumber % fieldNumbers)) * distance}, {
         duration: delay,
-        x: 1 * (10 - (FieldNumber % 10)) * distance + (distance / 2),
+        x: 1 * (fieldNumbers - (FieldNumber % fieldNumbers)) * distance + (distance / 2),
         scaleX: 2,
         scaleY: 2,
         ease: "expoScale(1,2,power1.out)"
     })
         .fromTo(position, {
-            x: 1 * (10 - (FieldNumber % 10)) * distance + (distance / 2),
+            x: 1 * (fieldNumbers - (FieldNumber % fieldNumbers)) * distance + (distance / 2),
             scaleX: 2,
             scaleY: 2
         }, {
             duration: delay,
-            x: 1 * ((/*breite-2*/8 - (FieldNumber % 10) + 1)) * distance,
+            x: 1 * (((fieldNumbers-2) - (FieldNumber % fieldNumbers) + 1)) * distance,
             scaleX: 1,
             scaleY: 1,
             ease: "expoScale(2,1,power4.out)"
@@ -183,20 +222,20 @@ function movingDownAnimation(FieldNumber, FieldsToPlay, distance, position) {
         onCompleteParams: [FieldNumber + 1, FieldsToPlay - 1, position]
     });
 
-    tl.fromTo(position, {y: 1 * (-10 + (FieldNumber % 10)) * distance}, {
+    tl.fromTo(position, {y: 1 * ((fieldNumbers*-1) + (FieldNumber % fieldNumbers)) * distance}, {
         duration: delay,
-        y: 1 * (-10 + (FieldNumber % 10)) * distance + (distance / 2),
+        y: 1 * ((fieldNumbers*-1) + (FieldNumber % fieldNumbers)) * distance + (distance / 2),
         scaleX: 2,
         scaleY: 2,
         ease: "expoScale(1,2,power1.out)"
     })
         .fromTo(position, {
-            y: 1 * (-10 + (FieldNumber % 10)) * distance + (distance / 2),
+            y: 1 * ((fieldNumbers*-1) + (FieldNumber % fieldNumbers)) * distance + (distance / 2),
             scaleX: 2,
             scaleY: 2
         }, {
             duration: delay,
-            y: 1 * ((-10 + (FieldNumber % 10) + 1)) * distance,
+            y: 1 * (((fieldNumbers*-1) + (FieldNumber % fieldNumbers) + 1)) * distance,
             scaleX: 1,
             scaleY: 1,
             ease: "expoScale(2,1,power4.out)"
@@ -215,20 +254,20 @@ function movingRightAnimation(FieldNumber, FieldsToPlay, distance, position) {
         onCompleteParams: [FieldNumber + 1, FieldsToPlay - 1, position]
     });
 
-    tl.fromTo(position, {x: 1 * (FieldNumber % 10) * distance}, {
+    tl.fromTo(position, {x: 1 * (FieldNumber % fieldNumbers) * distance}, {
         duration: delay,
-        x: 1 * (FieldNumber % 10) * distance + (distance / 2),
+        x: 1 * (FieldNumber % fieldNumbers) * distance + (distance / 2),
         scaleX: 2,
         scaleY: 2,
         ease: "expoScale(1,2,power1.out)"
     })
         .fromTo(position, {
-            x: 1 * (FieldNumber % 10) * distance + (distance / 2),
+            x: 1 * (FieldNumber % fieldNumbers) * distance + (distance / 2),
             scaleX: 2,
             scaleY: 2
         }, {
             duration: delay,
-            x: 1 * ((FieldNumber % 10 + 1)) * distance,
+            x: 1 * ((FieldNumber % fieldNumbers + 1)) * distance,
             scaleX: 1,
             scaleY: 1,
             ease: "expoScale(2,1,power4.out)"
@@ -246,7 +285,7 @@ $(document).ready(function () {
     $("#nextFieldP1").click(function () {
         nextMoveLogic(counter1, 1, "#position1");
         counter1++;
-        if (counter1 == 40) {
+        if (counter1 == (fieldNumbers*4)) {
             counter1 = 0;
         }
     });
@@ -255,7 +294,7 @@ $(document).ready(function () {
     $("#nextFieldP2").click(function () {
         nextMoveLogic(counter2, 1, "#position2");
         counter2++;
-        if (counter2 == 40) {
+        if (counter2 == (fieldNumbers*4)) {
             counter2 = 0;
         }
     });
@@ -264,7 +303,7 @@ $(document).ready(function () {
     $("#nextFieldP3").click(function () {
         nextMoveLogic(counter3, 1, "#position3");
         counter3++;
-        if (counter3 == 40) {
+        if (counter3 == (fieldNumbers*4)) {
             counter3 = 0;
         }
     });
@@ -273,7 +312,7 @@ $(document).ready(function () {
     $("#nextFieldP4").click(function () {
         nextMoveLogic(counter4, 1, "#position4");
         counter4++;
-        if (counter4 == 40) {
+        if (counter4 == (fieldNumbers*4)) {
             counter4 = 0;
         }
     });
