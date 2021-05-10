@@ -1,0 +1,165 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    padding: 0;
+    border: 1px solid rgb(231, 231, 231);
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    box-shadow: 0px 0px 5px 5px whitesmoke;
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    font-size: 19px;
+    padding: 2px 16px;
+    background-color: rgba(143, 143, 143, 0.9);
+    color: white;
+  }
+  
+  .modal-body {padding: 2px 16px;}
+
+  /* START TRADING MODAL */
+
+  $collumHeight: 350px;
+
+  .grid-container-trading {
+    display: grid;
+  }
+  
+  .grid-item-trading {
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .item1-trading {
+    text-align: left;
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    border-bottom: 1px solid gray;
+  }
+  
+  .item2-trading {
+    text-align: right;
+    grid-column: 4 / span 2;
+    grid-row: 1;
+    border-bottom: 1px solid gray;
+  }
+  
+  .item3-trading {
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column: 1 / span 1;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+  
+  .item4-trading {
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-column: 2;
+    grid-row: 2;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+  
+  .item5-trading{
+    position: relative;
+    grid-row: 2;
+    grid-column:  3/ span 1;
+  }
+  .item6-trading{
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column:  4/ span 1;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+  
+  .item7-trading{
+    max-height: $collumHeight;
+    overflow: auto;
+    grid-row: 2;
+    grid-column:  5/ span 1;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+  
+  .item8-trading{
+    grid-row: 4;
+    grid-column:  2/ span 1;
+  }
+  
+  .item9-trading{
+    grid-row: 4;
+    grid-column:  4/ span 1;
+
+  }
+  
+  .tradingButtons, .tableTradingsButtons{
+    width: 100%;
+  }
+
+  .tradingButtons{
+    font-size: 22px;
+  }
+
+
+#approveButtonTrading{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font: 15px;
+}
+
+  
+  /* ENDING TRADING MODAL */

@@ -1,0 +1,300 @@
+{
+  "Quiz": [
+    {
+      "Title": "Dans quelle faculté le programme BINFO se déroule?",
+      "1": "Faculté de Science, Technologie and Médicine",
+      "2": "Faculté de Droit, d’Economie et de Finance",
+      "3": "Faculté des Sciences Humaines, de l'Education et des Sciences Sociales",
+      "4": ""
+    },
+    {
+      "Title": "Est-ce que le programme d'échange est obligatoire pour les étudiants en Bachelor à l'UNI?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "En quelle année l'Université du Luxembourg a été fondé?",
+      "1": "2003",
+      "2": "2001",
+      "3": "2005",
+      "4": ""
+    },
+    {
+      "Title": "Combien il y a t-il approximativement d'étudiants à l'Université?",
+      "1": "6714",
+      "2": "2657",
+      "3": "9456",
+      "4": "4572"
+    },
+    {
+      "Title": "Combien il y a t-il de facultés à l'Université?",
+      "1": "3",
+      "2": "2",
+      "3": "4",
+      "4": "1"
+    },
+    {
+      "Title": "Qui est le directeur du programme BINFO?",
+      "1": "Volker Müller",
+      "2": "Steffen Rothkugel",
+      "3": "Stéphane PALLAGE",
+      "4": "Nicolas Guelfi"
+    },
+    {
+      "Title": "Quand est-ce que le dernier haut fourneau fut arreté?",
+      "1": "1997",
+      "2": "2003",
+      "3": "1985",
+      "4": "1979"
+    },
+    {
+      "Title": "En quelle année le 'Fonds Belval' a été fondé?",
+      "1": "2002",
+      "2": "2006",
+      "3": "1995",
+      "4": "1998"
+    },
+    {
+      "Title": "Combien d'ECTS un étudiant en Bachelor doit-il obtenir pour être diplomé? ",
+      "1": "180",
+      "2": "120",
+      "3": "200",
+      "4": "160"
+    },
+    {
+      "Title": "Que signifie LLC?",
+      "1": "Luxembourg Learning Centre",
+      "2": "Luxembourg Learning Campus",
+      "3": "Luxembourg Library Center",
+      "4": ""
+    },
+    {
+      "Title": "Lequel de ces 3 campus a été fondé le dernier?",
+      "1": "Belval campus",
+      "2": "Limperstberg campus",
+      "3": "Kirchberg campus",
+      "4": ""
+    },
+    {
+      "Title": "Combien de cafés Universitaire il y a t-il sur le campus de Belval?",
+      "1": "4",
+      "2": "1",
+      "3": "5",
+      "4": "3"
+    },
+    {
+      "Title": "Combien de place il y a t-il de disponible sur le parking Maison du savoir?",
+      "1": "560",
+      "2": "1200",
+      "3": "210",
+      "4": "450"
+    },
+    {
+      "Title": "Combien d'étages a la Maison du Savoir?",
+      "1": "18",
+      "2": "22",
+      "3": "32",
+      "4": "11"
+    },
+    {
+      "Title": "Est-ce que le programme d'échange est obligatoire pour les étudiants en Bachelor à l'UNI?",
+      "1": "Jio",
+      "2": "Nëe",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Combien d'étages il y a t-il dans la tour “BIL”?",
+      "1": "19",
+      "2": "9",
+      "3": "27",
+      "4": "18"
+    },
+    {
+      "Title": "En quelle année le Pape est venu visiter Esch-Belval?",
+      "1": "1985",
+      "2": "1952",
+      "3": "1971",
+      "4": "1969"
+    },
+    {
+      "Title": "Est-ce que la LLC est rester ouverte pendant le Covid-19?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Quel bâtiment est dedié aux étudiants en Informatique et Mathématique?",
+      "1": "Maison du Nombre",
+      "2": "Maison du Savoir",
+      "3": "Maison de L'innovation",
+      "4": "Massenoire"
+    },
+    {
+      "Title": "Quel bâtiment est dédié aux évènements culturelles, sociaux et artistiques que les étudiants font?",
+      "1": "Maison des Arts et des Étudiants",
+      "2": "Massenoire",
+      "3": "Expo Art",
+      "4": "Maison des Étudiants et de la culture"
+    },
+    {
+      "Title": "Quand est-ce que la Rockhal a ouvert?",
+      "1": "23 Septembre 2005",
+      "2": "31 Janvier 2008",
+      "3": "11 Septembre 2001",
+      "4": "17 Juin 2003"
+    },
+    {
+      "Title": "Quel bâtiment accueil la Faculté des Sciences de l'Education?",
+      "1": "Maison des Sciences Humaines",
+      "2": "Maison du Savoir",
+      "3": "Maison de l'apprentisage",
+      "4": "Maison de l'Éducation"
+    },
+    {
+      "Title": "Quel est le nom du bâtiment qui abrite à l'intérieur une ancienne infrastructure?",
+      "1": "LLC",
+      "2": "Café du Savoir",
+      "3": "Gaart Belval",
+      "4": "Résidence étudiante Uni-Val 1"
+    },
+    {
+      "Title": "Quelle est la capacité maximale de personne que La Rockhal peut accueillir?",
+      "1": "6500",
+      "2": "2500",
+      "3": "10000",
+      "4": "8000"
+    },
+    {
+      "Title": "Quel est le Motto de Belval?",
+      "1": "Future of innovation",
+      "2": "European state of culture",
+      "3": "One place, one life",
+      "4": "Green for a better future"
+    },
+    {
+      "Title": "Combien il y a t-il de magasins dans le Belval Plaza?",
+      "1": "46",
+      "2": "51",
+      "3": "64",
+      "4": "38"
+    },
+    {
+      "Title": "Quel bâtiments héberge les concerts de musiques?",
+      "1": "Rockhal",
+      "2": "Maison des Arts et des Étudiants",
+      "3": "Metalhal",
+      "4": "Belval Plaza"
+    },
+    {
+      "Title": "Quel bâtiment héberge un centre commercial à Belval?  ",
+      "1": "Belval Plaza",
+      "2": "Rockhal",
+      "3": "LLC",
+      "4": "Maison du Commerces"
+    },
+    {
+      "Title": "Quel est le nom de Little Garden maintenu par les étudiants?",
+      "1": "Gaart Belval",
+      "2": "Besch Belval",
+      "3": "Wiss Belval",
+      "4": "Bio Belval"
+    },
+    {
+      "Title": "Quand fut construit le premier chemin de fer à Esch?",
+      "1": "23 Abrëll 1859",
+      "2": "23 Abrëll 1839",
+      "3": "23 Abrëll 1819",
+      "4": "23 Abrëll 1879"
+    },
+    {
+      "Title": "Quel est le nom du Cinéma à Belval?",
+      "1": "Kinepolis Belval",
+      "2": "Utopia Belval",
+      "3": "CinemaxX Belval",
+      "4": ""
+    },
+    {
+      "Title": "Quel est le nom de la gare de Belval?",
+      "1": "Belval-Université",
+      "2": "Porte de France",
+      "3": "Porte des Sciences",
+      "4": "Porte des Garre"
+    },
+    {
+      "Title": "Quel ville fut connecté au premier chemin de fer de Esch?",
+      "1": "Bettembourg",
+      "2": "Luxembourg",
+      "3": "Differdange",
+      "4": "Dudelange"
+    },
+    {
+      "Title": "Un magazine apparait 4 fois par an où tu peux suivre le développement des projects de Belval?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "Lequel de ces 4 centres de recherches appartient à l'Etat?",
+      "1": "ILNAS",
+      "2": "Luxembourg Centre for Systems Biomedicine",
+      "3": "LIS",
+      "4": "CVCE"
+    },
+    {
+      "Title": "Quel est le surnom donné aux régions du Luxembourg productrices de fer ",
+      "1": "Terres Rouges",
+      "2": "Terres Violettes",
+      "3": "Terres Gaspillées",
+      "4": "Terre de fer"
+    },
+    {
+      "Title": "Peut-on visiter les Hauts Fourneaux?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "ArcelorMittal était encore actif en 2019. Combien de tonnes de fer ont-ils produit?",
+      "1": "865",
+      "2": "1245",
+      "3": "0",
+      "4": "255"
+    },
+    {
+      "Title": "Est-ce que “l'Usine de Belval” fait partie du patrimoine mondiale de l'UNESCO?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    },
+    {
+      "Title": "La Rockhal est le plus grand lieu du Luxembourg où les concerts et spectacle peuvent se dérouler?",
+      "1": "Oui",
+      "2": "Non",
+      "3": "",
+      "4": ""
+    }
+  ],
+  "Consequences": [
+    {
+      "Type": "Money",
+      "0": 50,
+      "1": 100,
+      "2": 150,
+      "3": 200
+    },
+    {
+      "Type": "Movement",
+      "0": 2,
+      "1": 3,
+      "2": 5,
+      "3": 10
+    }
+  ]
+}
