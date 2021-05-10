@@ -49,7 +49,6 @@ export class BuyEvent {
             buybutton.show();
             buybutton.prop("disable", false);
         }
-        //
         window.onclick = function (event) {
             if (event.target == modal && modal != undefined) {
                 modal.style.display = "none";
@@ -60,29 +59,30 @@ export class BuyEvent {
             self.pressed = true;
         });
 
-
         // the tree buttons inside the modal
-
         buybutton.on("click", function(){
+            $(this).off("click");
             if (p.canBuy(price)){
                 p.buying(field,price);
                 field.owner = p;
             }
             $("#BuyingModal").css("display", "none");
             self.pressed = true;
-            $(this).off("click");
         });
 
         Autionbutton.click(async function () {
-            let auction =  new Auction();
-            $("#BuyingModal").css("display", "none");
-            await auction.AuctionEvent(p,playerList,field);
+            if(p.AuctionEntry){
+                p.AuctionEntry = false;
+                $(this).off("click");
+                let auction =  new Auction();
+                $("#BuyingModal").css("display", "none");
+                auction.AuctionEvent(p,playerList,field);
+            }
             self.pressed = true;
-            $(this).off("click");
         });
 
         //waits for buttons
-        this.wait();
+        await this.wait();
 
     }
     async wait() {

@@ -9,7 +9,6 @@ export class Mortage {
     p: Player
 
     async event(p: Player) {
-        console.log("MORTGAGE ENTERS BY:" +p.name +  "And has "+p.Money);
         this.pressed = false;
         this.p = p;
         let totalAmmountText = $("#totalAmmountInModal");
