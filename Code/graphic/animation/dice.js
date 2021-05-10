@@ -32,11 +32,6 @@ function rolldices(numberDice1, numberDice2, playerNr, playerName) {
     $("#dices"+(playerNr+1)).hide();
     rollButton.prop("disabled", false);
   }, 3000);
-
-/*$("#dices"+(0+1)).show();
-$("#dices"+(1+1)).show();
-$("#dices"+(2+1)).show();
-$("#dices"+(3+1)).show(); */
 }
 
 function getRandom(max) {
