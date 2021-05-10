@@ -22,6 +22,7 @@ import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
 import {Quiz} from "./Events/quiz";
+//import Redis from "redis";
 
 declare var fallingCoins;
 
@@ -36,7 +37,6 @@ export class main {
     ConseqDoubles: number = 0;
     GameEnded: boolean = false;
     TurnEnded: boolean = false;
-
 
     async main() {
         this.buttonEvent();
@@ -194,286 +194,353 @@ export class main {
 
     }
 
-    SaveGameState(n: number, p: Player): void {
+/*    InitializeFieldArrayfromDB() {
+        this.FieldArray = [];
+        let client = Redis.createClient(6379);
+        console.log("test0");
 
-    }
+        client.mget('Properties', "Stations", "Parkings", (err, reply) => {
 
-    async MakePlayerTurn(): Promise<void> {
-        let erasmus = new Erasmus()
-        let double = this.dice.isdouble();
+            console.log("test");
+            if (err) console.log("error");
 
-        if (this.ReferencePlayer.TurnsInPrison > 0) {
-            await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
-        }
-        if (double) {
-            if (this.ConseqDoubles >= 2) {
-                this.ReferencePlayer.goToErasmus()
-                this.ConseqDoubles = 0;
-            } else {
-                this.ConseqDoubles += 1;
+            console.log("test1");
+            let properties = JSON.parse(reply[0]);
+            let stations = JSON.parse(reply[1]);
+            let parkings = JSON.parse(reply[2]);
+
+            let a, b, c, d;
+            a = b = c = 0;
+
+            for (let i = 0; i < 40; i++) {
+                if (i == 0 || i == 10) {
+                    let idle: Idle = new Idle();
+                    this.FieldArray.push(idle);
+                } else if (i == 20) {
+                    let restplace: Restplace = new Restplace();
+                    this.FieldArray.push(restplace);
+                } else if (i == 30) {
+                    let gotoerasmus: GoToErasmus = new GoToErasmus();
+                    this.FieldArray.push(gotoerasmus);
+                } else if (i == 5 || i == 15 || i == 25 || i == 35) {
+                    let station = stations[a];
+                    let b: Bus = new Bus(station.name);
+                    this.FieldArray.push(b);
+                    a++;
+                } else if (i == 12 || i == 28) {
+                    let parking = parkings[b];
+                    let pa: Parking = new Parking(parking.name);
+                    this.FieldArray.push(pa);
+                    b++;
+                } else if (i == 4 || i == 38) {
+                    switch (i) {
+                        case 4:
+                            let luxtax: Tax = new Tax("Luxury Tax");
+                            this.FieldArray.push(luxtax);
+                            break;
+                        case 38:
+                            let inctax: Tax = new Tax("Income Tax");
+                            this.FieldArray.push(inctax);
+                            break;
+                    }
+                } else if (i == 2 || i == 17 || i == 33) {
+                    let eventfield: EventField = new EventField();
+                    this.FieldArray.push(eventfield);
+                } else if (i == 7 || i == 22 || i == 36) {
+                    let quizfield: QuizField = new QuizField();
+                    this.FieldArray.push(quizfield);
+                } else {
+                    let prop = properties[c];
+                    let p: Properties = new Properties(prop.color, prop.pricetopay, prop.renovationscosts, prop.name, prop.initialprice);
+                    this.FieldArray.push(p);
+                    c++;
+                }
             }
-        } else {
-            $("#rollButton").hide()
+        });
+        client.quit();
+}
+*/
+
+SaveGameState(n: number, p: Player): void {
+
+}
+
+async MakePlayerTurn(): Promise<void> {
+    let erasmus = new Erasmus()
+    let double = this.dice.isdouble();
+
+    if (this.ReferencePlayer.TurnsInPrison > 0) {
+        await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
+    }
+    if (double) {
+        if (this.ConseqDoubles >= 2) {
+            this.ReferencePlayer.goToErasmus()
             this.ConseqDoubles = 0;
-        }
-        this.StaticPlayerArray.forEach(playerobject => console.log(playerobject.name));
-        this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
-    }
-
-    CheckWinCondition(player: Player): void {
-        if (player.Money >= this.WinCondition) {
-            this.GameEnded = true;
-        }
-    }
-
-    CheckLooseCondition(player: Player): void {
-        if (player.isGameOver) {
-            this.Surrender(player);
-        }
-    }
-
-    Surrender(p: Player): void {
-        let index = this.PlayerArray.indexOf(p);
-        this.PlayerArray.splice(index, 1);
-
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
-            p.fieldsOwned[i].owner = undefined;
-        }
-    }
-
-
-    //USED TO TEST STUFF
-    async launch() {
-        console.log("a");
-        await this.TradeTest();
-        console.log("c");
-    }
-
-    async SetMortgageTest() {
-        let p: Player = new Player(false, "f", 0);
-        this.playerInit(p);
-        let repay = new setMortgage();
-        await repay.event(p);
-    }
-
-
-    async RepayMortgageTest() {
-        let p: Player = new Player(false, "f", 0);
-        this.playerInit(p);
-        let repay = new RepayMortgage();
-        await repay.event(p);
-    }
-
-    AuctionTest() {
-        let aution: Auction = new Auction();
-        let player1 = new Player(false, "YEEEEEEEEEEET", 0);
-        let player2 = new Player(false, "Guillaume", 1);
-        let player3 = new Player(false, "Tina", 2);
-        let player4 = new Player(false, "Bob", 3);
-        let playerlist: Player[];
-        playerlist = [player1, player2, player3, player4];
-        aution.AuctionEvent(player2, playerlist, new Restplace());
-    }
-
-    async MortageTest() {
-        let p: Player = new Player(false, "f", 0);
-        this.playerInit(p);
-        for (let i = 0; i < 30; i++) {
-            var rand = Math.floor(Math.random() * Object.keys(Colors).length);
-            var randColorValue: Colors = Colors[Object.keys(Colors)[rand]];
-            let prop2: Properties = new Properties(randColorValue, [1, 2, 3, 4], 20, "Not today", 200);
-            prop2.renovatiosAmmount = 3;
-            prop2.isMortgage = false;
-            p.fieldsOwned.push(prop2);
-        }
-
-        await new Mortage().event(p);
-
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
-            console.log(p.fieldsOwned[i].renovatiosAmmount);
-        }
-
-    }
-
-    async TradeTest() {
-        let p1: Player = new Player(false, "ad", 0);
-        let p2: Player = new Player(false, "bc", 1);
-        this.playerInit(p1);
-        this.playerInit(p2);
-        p1.fieldsOwned[0].name = "aaaa";
-        p1.fieldsOwned[1].name = "bbbb";
-        p2.fieldsOwned[0].name = "cccc";
-        p2.fieldsOwned[1].name = "dddd";
-        p2.hasErasmusDispense = true;
-        await new Trade().event(p1, p2)
-        console.log("P1");
-        console.log("P1 has erasmus =>" + p1.fieldsOwned);
-        console.log("P2");
-        console.log("P2 has erasmus =>" + p2.fieldsOwned);
-    }
-
-    async BuyTest() {
-        let p: Player = new Player(false, "f", 0);
-        let p2: Player = new Player(false, "yieks", 1)
-        p.Money = 1000;
-        let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
-        prop.renovatiosAmmount = 3;
-        prop.isMortgage = false;
-        let buyevent = new BuyEvent();
-        await buyevent.event(p, 700, prop, [p, p2]);
-    }
-
-    playerInit(p: Player) {
-
-        p.Money = 1000;
-        let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
-        prop.renovatiosAmmount = 0;
-        prop.isMortgage = false;
-        p.fieldsOwned.push(prop);
-        let prop2: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 10000);
-        prop2.renovatiosAmmount = 0;
-        prop2.isMortgage = true;
-        p.fieldsOwned.push(prop2);
-    }
-
-    async buttonEvent() {
-        let self = this;
-        // show the start game modal
-        $("#startGame").click(function () {
-            $("#startGameModal").show();
-        });
-        // close any modal that has a close X
-        $(".close").click(function () {
-            $(".modal").hide();
-        });
-        // show the lobby
-        $("#lobbyButton").click(function () {
-            $("#lobbyModal").show();
-        });
-        // hide the start menu if the play button inside the
-        $("#menuPlayButton").click(function () {
-            $("#startMenu").hide();
-            fallingCoins('body');
-        });
-        // show the start menu
-        $("#startMenuButton").click(function () {
-            $("#startMenu").show();
-            fallingCoins('body');
-        });
-        // to roll the dices
-        $("#rollButton").click(function () {
-            //handle the doubles
-            self.dice.roll();
-            self.ReferencePlayer.move(self.dice.total());
-            setTimeout(function () {
-                self.MakePlayerTurn();
-            }, self.dice.total() * 500);
-
-
-        });
-        // to test the quiz modal
-        $("#quizButton").click(async () => {
-            await new Quiz().event(this.ReferencePlayer);
-        });
-
-        $("#tradeButton").click(async () => {
-            let trade = new Trade();
-            await trade.decidePlayer(self.ReferencePlayer, self.PlayerArray);
-            await trade.event(self.ReferencePlayer, trade.getTarger())
-        });
-
-        $("#sellMortageProButton").click(async function () {
-            await new setMortgage().event(self.ReferencePlayer);
-            self.updateButtons(self.ReferencePlayer);
-        });
-        $("#repayMortgageButton").click(function () {
-            new RepayMortgage().event(self.ReferencePlayer);
-            self.updateButtons(self.ReferencePlayer);
-        });
-    }
-
-    updateButtons(p: Player) {
-        //SELL RENOVATIONS
-        let renovationSell = $("#sellRenovationsButton");
-        let cansell: boolean = false;
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
-
-            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
-                // @ts-ignore
-                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
-                    cansell = true;
-                }
-
-            }
-        }
-        if (cansell) {
-            renovationSell.show();
         } else {
-            renovationSell.hide();
+            this.ConseqDoubles += 1;
         }
-        //Set Mortgage properties
-        let SellMortage = $("#sellMortageProButton");
-        cansell = false;
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
+    } else {
+        $("#rollButton").hide()
+        this.ConseqDoubles = 0;
+    }
 
-            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
-                // @ts-ignore
-                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount == 0) {
-                    cansell = true;
-                }
+    this.FieldArray[this.ReferencePlayer.currentposition].Event(this.ReferencePlayer, this.StaticPlayerArray);
+}
 
-            }
-        }
-        if (cansell) {
-            SellMortage.show();
-        } else {
-            SellMortage.hide();
-        }
-        //Buy renovations
-        let Buyrenovation = $("#buyRenovationButton");
-        cansell = false;
-
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
-            if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
-                // @ts-ignore
-                if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations) {
-                    cansell = true;
-                }
-
-            }
-
-        }
-        if (cansell) {
-            Buyrenovation.show();
-        } else {
-            Buyrenovation.hide();
-        }
-        //End turn → skip that one because always on
-        $("#endTurnButton").show();
-        //Menu Button → skip that one because always on
-        $("#startMenuButton").show();
-        //Trade
-        $("#tradeButton").show()
-        //Repay mortgage
-        let repaymortgage = $("#repayMortgageButton");
-        let minimumPrice: number = 20000000000;
-        for (let i = 0; i < p.fieldsOwned.length; i++) {
-            if (p.fieldsOwned[i].isMortgage) {
-                minimumPrice = minimumPrice < p.fieldsOwned[i].initialPrice ? minimumPrice : p.fieldsOwned[i].initialPrice;
-            }
-        }
-        if (p.canBuy(minimumPrice)) {
-            repaymortgage.show();
-        } else {
-            repaymortgage.hide();
-        }
-        //Roll dice
-        $("#rollButton").show();
+CheckWinCondition(player: Player): void {
+    if (player.Money >= this.WinCondition) {
+        this.GameEnded = true;
     }
 }
 
+CheckLooseCondition(player: Player): void {
+    if (player.isGameOver) {
+        this.Surrender(player);
+    }
+}
+
+Surrender(p: Player): void {
+    let index = this.PlayerArray.indexOf(p);
+    this.PlayerArray.splice(index, 1);
+
+    for (let i = 0; i < p.fieldsOwned.length; i++) {
+        p.fieldsOwned[i].owner = undefined;
+    }
+}
+
+
+//USED TO TEST STUFF
+async launch() {
+    console.log("a");
+    await this.TradeTest();
+    console.log("c");
+}
+
+async SetMortgageTest() {
+    let p: Player = new Player(false, "f", 0);
+    this.playerInit(p);
+    let repay = new setMortgage();
+    await repay.event(p);
+}
+
+
+async RepayMortgageTest() {
+    let p: Player = new Player(false, "f", 0);
+    this.playerInit(p);
+    let repay = new RepayMortgage();
+    await repay.event(p);
+}
+
+AuctionTest() {
+    let aution: Auction = new Auction();
+    let player1 = new Player(false, "YEEEEEEEEEEET", 0);
+    let player2 = new Player(false, "Guillaume", 1);
+    let player3 = new Player(false, "Tina", 2);
+    let player4 = new Player(false, "Bob", 3);
+    let playerlist: Player[];
+    playerlist = [player1, player2, player3, player4];
+    aution.AuctionEvent(player2, playerlist, new Restplace());
+}
+
+async MortageTest() {
+let p: Player = new Player(false, "f", 0);
+this.playerInit(p);
+for (let i = 0; i < 30; i++) {
+    var rand = Math.floor(Math.random() * Object.keys(Colors).length);
+    var randColorValue: Colors = Colors[Object.keys(Colors)[rand]];
+    let prop2: Properties = new Properties(randColorValue, [1, 2, 3, 4], 20, "Not today", 200);
+    prop2.renovatiosAmmount = 3;
+    prop2.isMortgage = false;
+    p.fieldsOwned.push(prop2);
+}
+
+await new Mortage().event(p);
+
+for (let i = 0; i < p.fieldsOwned.length; i++) {
+    console.log(p.fieldsOwned[i].renovatiosAmmount);
+}
+
+}
+
+async TradeTest() {
+let p1: Player = new Player(false, "ad", 0);
+let p2: Player = new Player(false, "bc", 1);
+this.playerInit(p1);
+this.playerInit(p2);
+p1.fieldsOwned[0].name = "aaaa";
+p1.fieldsOwned[1].name = "bbbb";
+p2.fieldsOwned[0].name = "cccc";
+p2.fieldsOwned[1].name = "dddd";
+p2.hasErasmusDispense = true;
+await new Trade().event(p1, p2)
+console.log("P1");
+console.log("P1 has erasmus =>" + p1.fieldsOwned);
+console.log("P2");
+console.log("P2 has erasmus =>" + p2.fieldsOwned);
+}
+
+async BuyTest() {
+let p: Player = new Player(false, "f", 0);
+let p2: Player = new Player(false, "yieks", 1)
+p.Money = 1000;
+let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
+prop.renovatiosAmmount = 3;
+prop.isMortgage = false;
+let buyevent = new BuyEvent();
+await buyevent.event(p, 700, prop, [p, p2]);
+}
+
+playerInit(p: Player) {
+
+p.Money = 1000;
+let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
+prop.renovatiosAmmount = 0;
+prop.isMortgage = false;
+p.fieldsOwned.push(prop);
+let prop2: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 10000);
+prop2.renovatiosAmmount = 0;
+prop2.isMortgage = true;
+p.fieldsOwned.push(prop2);
+}
+
+async buttonEvent() {
+let self = this;
+// show the start game modal
+$("#startGame").click(function () {
+    $("#startGameModal").show();
+});
+// close any modal that has a close X
+$(".close").click(function () {
+    $(".modal").hide();
+});
+// show the lobby
+$("#lobbyButton").click(function () {
+    $("#lobbyModal").show();
+});
+// hide the start menu if the play button inside the
+$("#menuPlayButton").click(function () {
+    $("#startMenu").hide();
+    fallingCoins('body');
+});
+// show the start menu
+$("#startMenuButton").click(function () {
+    $("#startMenu").show();
+    fallingCoins('body');
+});
+// to roll the dices
+$("#rollButton").click(function () {
+    //handle the doubles
+    self.dice.roll();
+    self.ReferencePlayer.move(self.dice.total());
+    setTimeout(function () {
+        self.MakePlayerTurn();
+    }, self.dice.total() * 500);
+
+
+});
+// to test the quiz modal
+$("#quizButton").click(async () => {
+    await new Quiz().event(this.ReferencePlayer);
+});
+
+$("#tradeButton").click(async () => {
+    let trade = new Trade();
+    await trade.decidePlayer(self.ReferencePlayer, self.PlayerArray);
+    await trade.event(self.ReferencePlayer, trade.getTarger())
+});
+
+$("#sellMortageProButton").click(async function () {
+    await new setMortgage().event(self.ReferencePlayer);
+    self.updateButtons(self.ReferencePlayer);
+});
+$("#repayMortgageButton").click(function () {
+    new RepayMortgage().event(self.ReferencePlayer);
+    self.updateButtons(self.ReferencePlayer);
+});
+}
+
+updateButtons(p: Player) {
+//SELL RENOVATIONS
+let renovationSell = $("#sellRenovationsButton");
+let cansell: boolean = false;
+for (let i = 0; i < p.fieldsOwned.length; i++) {
+
+    if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+        // @ts-ignore
+        if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount > 0) {
+            cansell = true;
+        }
+
+    }
+}
+if (cansell) {
+    renovationSell.show();
+} else {
+    renovationSell.hide();
+}
+//Set Mortgage properties
+let SellMortage = $("#sellMortageProButton");
+cansell = false;
+for (let i = 0; i < p.fieldsOwned.length; i++) {
+
+    if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+        // @ts-ignore
+        if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount == 0) {
+            cansell = true;
+        }
+
+    }
+}
+if (cansell) {
+    SellMortage.show();
+} else {
+    SellMortage.hide();
+}
+//Buy renovations
+let Buyrenovation = $("#buyRenovationButton");
+cansell = false;
+
+for (let i = 0; i < p.fieldsOwned.length; i++) {
+    if (p.fieldsOwned[i].isMortgage != undefined && p.fieldsOwned[i].renovatiosAmmount != undefined) {
+        // @ts-ignore
+        if (!p.fieldsOwned[i].isMortgage && p.fieldsOwned[i].renovatiosAmmount < globals.MaxRenovations) {
+            cansell = true;
+        }
+
+    }
+
+}
+if (cansell) {
+    Buyrenovation.show();
+} else {
+    Buyrenovation.hide();
+}
+//End turn → skip that one because always on
+$("#endTurnButton").show();
+//Menu Button → skip that one because always on
+$("#startMenuButton").show();
+//Trade
+$("#tradeButton").show()
+//Repay mortgage
+let repaymortgage = $("#repayMortgageButton");
+let minimumPrice: number = 20000000000;
+for (let i = 0; i < p.fieldsOwned.length; i++) {
+    if (p.fieldsOwned[i].isMortgage) {
+        minimumPrice = minimumPrice < p.fieldsOwned[i].initialPrice ? minimumPrice : p.fieldsOwned[i].initialPrice;
+    }
+}
+if (p.canBuy(minimumPrice)) {
+    repaymortgage.show();
+} else {
+    repaymortgage.hide();
+}
+//Roll dice
+$("#rollButton").show();
+}
+}
+
 $("#quizButton").click(() => {
-    $("#QuestionModal").show();
+$("#QuestionModal").show();
 });
 
 $("#lobbyModal").show();
