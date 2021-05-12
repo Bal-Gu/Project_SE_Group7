@@ -201,7 +201,7 @@ export class Auction {
                     string = winner!.name + " heut gewon";
                     break;
                 case "FR":
-                    string = winner!.name + " à gagne";
+                    string = winner!.name + " à gagné";
                     break;
                 case "":
                     string = winner!.name + " has won";

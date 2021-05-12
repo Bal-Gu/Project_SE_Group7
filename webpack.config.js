@@ -71,6 +71,9 @@ module.exports ={
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname,"Code/index.html"),
-        })
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
     ]
 }

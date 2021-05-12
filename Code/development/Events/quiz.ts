@@ -275,7 +275,7 @@ export class Quiz {
                 questionModalHeader.html("Äntweren war: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             case "FR":
-                questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
+                questionModalHeader.html("La réponse était: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             case "PR":
                 questionModalHeader.html("A resposta era: " + self.goodanswerString + "<br/>" + Consquence);

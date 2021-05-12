@@ -1,5 +1,9 @@
 import {Player} from "../Player";
 import {starshower} from "../../graphic/animation/starshower";
+import EventLUX from "../../EventLUX.json";
+import EventFR from "../../EventFR.json";
+import EventPR from "../../EventPR.json";
+import EventDE from "../../EventDE.json";
 
 export class Mortage {
 
@@ -9,7 +13,6 @@ export class Mortage {
     p: Player
 
     async event(p: Player) {
-        console.log("MORTGAGE ENTERS BY:" +p.name +  "And has "+p.Money);
         this.pressed = false;
         this.p = p;
         let totalAmmountText = $("#totalAmmountInModal");
@@ -23,8 +26,29 @@ export class Mortage {
             p.gameOver();
             return;
         }
+        let mortageh1 = $("#MorageModal .modal-content h1");
+        switch (p.language) {
+            case "LUX":
+                mortageh1.html("Prêt");
+                break;
+            case "FR":
+                mortageh1.html("Hypothèque");
+                break;
+            case "PR":
+                //TODO check
+                mortageh1.html("Hipoteca");
+                break;
+            case "":
+                mortageh1.html("Mortage");
+                break;
+            case "DE":
+                mortageh1.html("Hypothek");
+                break;
+            default:
+                mortageh1.html("Mortage");
 
-        $("#MorageModal .modal-content h1").html("Mortage");
+        }
+
         $("#MorageModal").css("display", "block");
         var output = "";
 
