@@ -211,6 +211,7 @@ export class main {
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
                             }
+                            this.ReferencePlayer.TurnsInPrison = 1;
                             this.ConseqDoubles = 0;
                             while ($("#startGameModal").is(":visible")) {
                                 await new Promise(r => setTimeout(r, 100));
@@ -1154,7 +1155,7 @@ export class main {
     }
 
     updateButtons(p: Player) {
-        if (p.TurnsInPrison >= 1) {
+        if (p.TurnsInPrison >= 1 && !p.isBot) {
             this.MakePlayerTurn();
             return;
         }
