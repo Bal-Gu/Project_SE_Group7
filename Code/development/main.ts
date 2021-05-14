@@ -52,8 +52,6 @@ export class main {
         this.InitializeGameLength(1);
         this.InitializeFieldArray();
         await this.InitializePlayers();
-        this.ReferencePlayer.buying(new Properties(Colors.Yellow,[1,1,1,1,1],10,"YEEEEET",10),0);
-        this.ReferencePlayer.Money = -2;
         await new Mortage().event(this.ReferencePlayer);
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
