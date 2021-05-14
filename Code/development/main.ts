@@ -1063,6 +1063,9 @@ SaveGameState(): void {
             self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
         });
+        $("#saveButton").click( function(){
+            self.SaveGameState()
+        });
         // to test the renovation modal
 
         $("#quizButton").click(async () => {
