@@ -24,13 +24,11 @@ export class Bus implements Field{
         } else if (this.owner == undefined) {
             let b: BuyEvent = new BuyEvent();
             await b.event(player,this.initialPrice,this,playerList);
-
-            this.UpdateRentCost();
         } else {
             let payment: PaymentEvent = new PaymentEvent();
             await payment.event(this.owner, player, this.rentCostFinal);
         }
-
+        this.UpdateRentCost();
     }
 
 

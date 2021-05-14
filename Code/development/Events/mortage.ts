@@ -140,10 +140,9 @@ export class Mortage {
         let starstrings = "#stars" + k;
         let star = $(starstrings);
         var starstring = "";
-        if (p.fieldsOwned[k].isMortgage == undefined || p.fieldsOwned[k].renovatiosAmmount == undefined) {
+        if (p.fieldsOwned[k].isMortgage == undefined) {
             return;
         }
-
         if (p.fieldsOwned[k].isMortgage && star.text() == "💸💸💸💸") {
             return;
         }
@@ -152,8 +151,6 @@ export class Mortage {
         if (p.fieldsOwned[k].isMortgage && star.text() === "💸💸💸💸💸") {
             return;
         }
-
-
         if (star.text().length == 0) {
             star.text("💸💸💸💸💸");
             p.fieldsOwned[k].isMortgage = true;

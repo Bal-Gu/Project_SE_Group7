@@ -59,10 +59,10 @@ export class main {
             this.updateButtons(this.ReferencePlayer)
             this.BotAction();
             await this.EndOfATurn();
-            this.PlayerArray.forEach(
+            this.StaticPlayerArray.forEach(
                 player => this.CheckWinCondition(player)
             )
-            this.PlayerArray.forEach((player) => {
+            this.StaticPlayerArray.forEach((player) => {
                     this.CheckLooseCondition(player);
 
                 }
@@ -134,15 +134,20 @@ export class main {
     }
 
     NextTurn(): void {
-        console.log(this.PlayerArray.length);
         let temp = this.PlayerArray[0];
         for (let i = 0; i < this.PlayerArray.length - 1; i++) {
             this.PlayerArray[i] = this.PlayerArray[i + 1];
         }
-        console.log(this.PlayerArray.length);
         this.PlayerArray[this.PlayerArray.length - 1] = temp;
-        console.log(this.PlayerArray.length);
         this.ReferencePlayer = this.PlayerArray[0];
+        while(this.ReferencePlayer.isGameOver){
+            temp = this.PlayerArray[0];
+            for (let i = 0; i < this.PlayerArray.length - 1; i++) {
+                this.PlayerArray[i] = this.PlayerArray[i + 1];
+            }
+            this.PlayerArray[this.PlayerArray.length - 1] = temp;
+            this.ReferencePlayer = this.PlayerArray[0];
+        }
         $("#current-player").text(this.ReferencePlayer.name);
         this.TurnEnded = false;
     }
@@ -407,6 +412,7 @@ export class main {
                             }
                         }
                         if ((this.ReferencePlayer.Money + MoneyPool) > 0) {
+                            let total = this.ReferencePlayer.Money + MoneyPool;
                             break;
                         }
                     }
@@ -505,8 +511,7 @@ export class main {
                         if (this.ReferencePlayer.botDifficulty == 0) {
                             console.log("bot diff 0");
                             for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
-                                if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
-                                    console.log("mortgaged");
+                                if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
                                     await new Promise(r => setTimeout(r, 2000));
                                     let str: string = "#Removebutton" + i;
                                     $(str).click();
@@ -519,7 +524,7 @@ export class main {
                             if (this.ReferencePlayer.Money <= 400) {
                                 if ((this.dice.getRandomInt(10)) > 0) {
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
-                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
                                             await new Promise(r => setTimeout(r, 2000));
                                             let str: string = "#Removebutton" + i;
                                             $(str).click();
@@ -532,7 +537,7 @@ export class main {
                             } else if (this.ReferencePlayer.Money <= 700) {
                                 if ((this.dice.getRandomInt(10)) > 4) {
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
-                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
                                             await new Promise(r => setTimeout(r, 2000));
                                             let str: string = "#Removebutton" + i;
                                             $(str).click();
@@ -545,7 +550,7 @@ export class main {
                             } else if (this.ReferencePlayer.Money <= 1000) {
                                 if ((this.dice.getRandomInt(10)) > 8) {
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
-                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage) {
+                                        if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
                                             await new Promise(r => setTimeout(r, 2000));
                                             let str: string = "#Removebutton" + i;
                                             $(str).click();
@@ -940,10 +945,9 @@ export class main {
     }
 
     Surrender(p: Player): void {
-        let index = this.PlayerArray.indexOf(p);
-        this.PlayerArray.splice(index, 1);
-        let PlayerIdString: String = "#player-" + (p.ReferenceNumber + 1);
-        console.log(PlayerIdString);
+        let index = this.StaticPlayerArray.indexOf(p);
+        //this.StaticPlayerArray.splice(index, 1);
+        let PlayerIdString: String = "#player-" + (index + 1);
         let payerdiv = $(PlayerIdString);
         payerdiv.html("<h6>💀💀💀💀💀💀</h6>");
         for (let i = 0; i < p.fieldsOwned.length; i++) {
@@ -1152,10 +1156,9 @@ export class main {
             self.ReferencePlayer.receive(self.FieldArray[3]);
         });
         $("#MoveToTax").click(function () {
-            self.ReferencePlayer.move(4);
-            setTimeout(function () {
-                self.MakePlayerTurn();
-            }, 2000);
+            // @ts-ignore
+            let tax = new Tax();
+            tax.Event(self.ReferencePlayer, self.PlayerArray);
         });
 
         let counter = 1;

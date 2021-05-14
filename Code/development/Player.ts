@@ -196,7 +196,6 @@ export class Player {
     }
 
     async payAmmount(ammount: number) {
-
         this.Money -= ammount;
         if (isNaN(this.Money)) {
 

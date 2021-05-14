@@ -68,7 +68,7 @@ export class Prison {
             pay.prop("disable", true);
             if (p.TurnsInPrison == globals.MaxTurnInErasmus) {
                 p.gameOver();
-                return;
+                this.pressed = true;
             }
         }
 
@@ -81,9 +81,9 @@ export class Prison {
                     p.payAmmount(globals.ErasmusFees);
                     self.outOfPrison(p);
                 } else {
-                    self.pressed = false;
                     $("#myModal").css("display", "none");
                     p.gameOver();
+                    self.pressed = true;
                 }
             } else {
                 self.outRollDouble(p);
@@ -176,7 +176,6 @@ export class Prison {
         let d: Dice = new Dice();
         d.roll(p.ReferenceNumber, p.name);
         p.TurnsInPrison++;
-
         if (d.isdouble()) {
             if (!p.isBot) {
                 p.move(d.total());
