@@ -60,8 +60,9 @@ export class BuyEvent {
         });
 
         // the tree buttons inside the modal
-        buybutton.on("click", function(){
-            $(this).off("click");
+        buybutton.click(async function(){
+            buybutton.off("click");
+            Autionbutton.off("click");
             if (p.canBuy(price)){
                 p.buying(field,price);
                 field.owner = p;
@@ -71,9 +72,10 @@ export class BuyEvent {
         });
 
         Autionbutton.click(async function () {
-            if(p.AuctionEntry){
+            buybutton.off("click");
+            Autionbutton.off("click");
+            if(p.AuctionEntry || !p.isBot){
                 p.AuctionEntry = false;
-                $(this).off("click");
                 let auction =  new Auction();
                 $("#BuyingModal").css("display", "none");
                 auction.AuctionEvent(p,playerList,field);

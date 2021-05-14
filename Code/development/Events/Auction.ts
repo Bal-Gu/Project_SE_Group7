@@ -192,6 +192,7 @@ export class Auction {
         if (!(winner == undefined)) {
             //winner gets the card
             await winner!.buying(field,currentprice);
+            field.owner = winner;
             winnermodal.show();
             let string = ""
 

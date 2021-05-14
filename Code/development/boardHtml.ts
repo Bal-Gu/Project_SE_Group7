@@ -397,7 +397,7 @@ export function bigBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_du_savoir'>
                         <span class="title">Maison du Savoir</span>
-                        <span class="price">Price 5</span>
+                        <span class="price">400 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
@@ -419,7 +419,7 @@ export function bigBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='llc'>
                         <span class="title">Luxembourg Learning Center</span>
-                        <span class="price">Price 3</span>
+                        <span class="price">350 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
@@ -558,7 +558,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='kinepolis'>
+                    <div id='kinepolis' style="background-image: url('./../Code/graphic/images/small/mediumBoard/kinepolis.jpg')">
                         <span class="title">Kinepolis</span>
                         <span class="price">140 BCoins</span>
                     </div>
@@ -580,7 +580,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='rockhal'>
+                    <div id='rockhal' style="background-image: url('./../Code/graphic/images/small/mediumBoard/rockhal.jpg')">
                         <span class="title">Rockhal</span>
                         <span class="price">140 BCoins</span>
                     </div>
@@ -602,7 +602,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='student_lounge_belval'>
+                    <div id='student_lounge_belval' style="background-image: url('./../Code/graphic/images/small/mediumBoard/student_lounge_belval.jpg')">
                         <span class="title">Student Lounge Belval</span>
                         <span class="price">180 BCoins</span>
                     </div>
@@ -624,7 +624,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star18"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_arts_etudiants'>
+                    <div id='maison_arts_etudiants' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_des_arts_et_des_etudiants.jpg')">
                         <span class="title">Maison des Arts et des Etudiants</span>
                         <span class="price">180 BCoins</span>
                     </div>
@@ -643,7 +643,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-medium" id='maison_du_nombre'>
+                    <div class="rot-90-medium" id='maison_du_nombre' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_du_nombre.jpg')">
                         <span class="title">Maison du Nombre</span>
                         <span class="price">120 BCoins</span>
                     </div>
@@ -659,7 +659,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-medium" id='cafe_savoir'>
+                    <div class="rot-90-reverse-medium" id='cafe_savoir' style="background-image: url('./../Code/graphic/images/small/mediumBoard/cafe_savoir.jpg')">
                         <span class="title">Café du Savoir</span>
                         <span class="price">200 BCoins</span>
                     </div>
@@ -685,7 +685,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star6"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-medium" id='halles_essais_ingenieur'>
+                    <div class="rot-90-medium" id='halles_essais_ingenieur' style="background-image: url('./../Code/graphic/images/small/mediumBoard/halle_d_essais_ingeneurs_belval.jpg')">
                         <span class="title">Halles d’Essais Ingénieurs</span>
                         <span class="price">100 BCoins</span>
                     </div>
@@ -701,7 +701,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-medium" id='restaurant_uni'>
+                    <div class="rot-90-reverse-medium" id='restaurant_uni' style="background-image: url('./../Code/graphic/images/small/mediumBoard/restaurant_universitaire.jpg')">
                         <span class="title">Restaurant Universitaire</span>
                         <span class="price">220 BCoins</span>
                     </div>
@@ -735,7 +735,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star26"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-medium" id='massenoire'>
+                    <div class="rot-90-reverse-medium" id='massenoire' style="background-image: url('./../Code/graphic/images/small/mediumBoard/massenoire.jpg')">
                         <span class="title">Massenoire</span>
                         <span class="price">260 BCoins</span>
                     </div>
@@ -763,7 +763,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-medium" id='residence_etudiante_Uni-ValI'>
+                    <div class="rot-90-medium" id='residence_etudiante_Uni-ValI' style="background-image: url('./../Code/graphic/images/small/mediumBoard/residence_etudiante_Uni-Val1.jpg')">
                         <span class="title">Résidence Etudiante Uni-Val I</span>
                         <span class="price">50 BCoins</span>
                     </div>
@@ -779,7 +779,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star29"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-medium" id='bil_bank'>
+                    <div class="rot-90-reverse-medium" id='bil_bank' style="background-image: url('./../Code/graphic/images/small/mediumBoard/bil_bank.jpg')">
                         <span class="title">Bil Bank</span>
                         <span class="price">280 Bcoins</span>
                     </div>
@@ -798,9 +798,9 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star39"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_du_savoir'>
+                    <div id='maison_du_savoir' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_du_savoir.jpg')">
                         <span class="title">Maison du Savoir</span>
-                        <span class="price">Price 5</span>
+                        <span class="price">400 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
@@ -831,7 +831,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star34"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_biomedecineII'>
+                    <div id='maison_biomedecineII' style="background-image: url('./../Code/graphic/images/small/mediumBoard/biotech2.jpg')">
                         <span class="title">Maison Biomédecine II</span>
                         <span class="price">320 BCoins</span>
                     </div>
@@ -853,7 +853,7 @@ export function mediumBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star32"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_biomedecineI'>
+                    <div id='maison_biomedecineI' style="background-image: url('./../Code/graphic/images/small/mediumBoard/biotech1.jpg')">
                         <span class="title">Maison Biomédecine I</span>
                         <span class="price">300 BCoins</span>
                     </div>
@@ -935,7 +935,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='rockhal'>
+                    <div id='rockhal' style="background-image: url('./../Code/graphic/images/small/smallBoard/rockhal.jpg')">
                         <span class="title">Rockhal</span>
                         <span class="price">140 BCoins</span>
                     </div>
@@ -957,7 +957,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='kinepolis'>
+                    <div id='kinepolis' style="background-image: url('./../Code/graphic/images/small/smallBoard/kinepolis.jpg')">
                         <span class="title">Kinepolis</span>
                         <span class="price">140 BCoins</span>
                     </div>
@@ -976,7 +976,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star6"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-small" id='halles_essais_ingenieur'>
+                    <div class="rot-90-small" id='halles_essais_ingenieur' style="background-image: url('./../Code/graphic/images/small/smallBoard/halles_essais_ingenieur.jpg')">
                         <span class="title">Halles d’Essais Ingénieurs</span>
                         <span class="price">100 BCoins</span>
                     </div>
@@ -1003,7 +1003,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-small" id='restaurant_uni'>
+                    <div class="rot-90-reverse-small" id='restaurant_uni' style="background-image: url('./../Code/graphic/images/small/smallBoard/restaurant_uni.jpg')">
                         <span class="title">Restaurant Universitaire</span>
                         <span class="price">220 BCoins</span>
                     </div>
@@ -1031,7 +1031,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-small" id='maison_du_nombre'>
+                    <div class="rot-90-small" id='maison_du_nombre' style="background-image: url('./../Code/graphic/images/small/smallBoard/maison_du_nombre.jpg')">
                         <span class="title">Maison du Nombre</span>
                         <span class="price">120 BCoins</span>
                     </div>
@@ -1047,7 +1047,7 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star24"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div class="rot-90-reverse-small" id='gaart_belval'>
+                    <div class="rot-90-reverse-small" id='gaart_belval' style="background-image: url('./../Code/graphic/images/small/smallBoard/gaart_belval.jpg')">
                         <span class="title">Gaart Belval</span>
                         <span class="price">220 BCoins</span>
                     </div>
@@ -1066,9 +1066,9 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star39"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='maison_du_savoir'>
+                    <div id='maison_du_savoir' style="background-image: url('./../Code/graphic/images/small/smallBoard/maison_du_savoir.jpg')">
                         <span class="title">Maison du Savoir</span>
-                        <span class="price">Price 5</span>
+                        <span class="price">400 BCoins</span>
                     </div>
                 </div>
                 <div class="sm-box sm-box-white">
@@ -1094,9 +1094,9 @@ export function smallBoard() {
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star37"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <div id='llc'>
+                    <div id='llc' style="background-image: url('./../Code/graphic/images/small/smallBoard/llc.jpg')">
                         <span class="title">Luxembourg Learning Center</span>
-                        <span class="price">Price 3</span>
+                        <span class="price">350 BCoins</span>
                     </div>
                 </div>
                 <div class="lg-box">

@@ -251,7 +251,10 @@ export class Quiz {
                 $("#qz .flip-card-inner").css("transform", "translate(0) rotate(0) rotateX(0) scale(1)");
             }
             self.pressed = true;
-            //$(this).off("click");
+            $("#Answer1").off("click");
+            $("#Answer2").off("click");
+            $("#Answer3").off("click");
+            $("#Answer4").off("click");
         });
     }
 

@@ -49,7 +49,12 @@ export class EventEvent {
             restplace.addToPot(finalQuizArray.Money * -1);
         }
         if(finalQuizArray.Move != 0){
-            p.move(finalQuizArray.Move);
+            if(p.isBot){
+                p.stillMovingBot = true;
+                p.nrOfMove = finalQuizArray.Move;
+            }else if(!p.isBot){
+                p.move(finalQuizArray.Move);
+            }
         }
         switch (finalQuizArray.CardRecieved) {
             case "Out of Erasmus":
@@ -76,7 +81,24 @@ export class EventEvent {
                 p.moveToNextBus();
                 break;
             case -3:
-                p.goToErasmus()
+                $("#rollButton").hide();
+                p.TurnsInPrison = 1;
+                if (p.currentposition > globals.MaxNumberField/4) {
+                    if(p.isBot){
+                        p.stillMovingBot = true;
+                        p.nrOfMove = globals.MaxNumberField - p.currentposition + (globals.MaxNumberField/4);
+                    }else{
+                        p.move(globals.MaxNumberField - p.currentposition + (globals.MaxNumberField/4));
+                    }
+                } else {
+                    if(p.isBot){
+                        p.stillMovingBot = true;
+                        p.nrOfMove = (globals.MaxNumberField/4) - p.currentposition;
+                    }else{
+                        p.move((globals.MaxNumberField/4) - p.currentposition);
+                    }
+                }
+                p.currentposition = globals.Erasmus;
                 break;
             case -4:
                 p.goToRockhal()

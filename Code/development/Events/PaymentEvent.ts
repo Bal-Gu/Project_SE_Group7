@@ -11,7 +11,6 @@ export class PaymentEvent {
      */
     async event(owner:Player,payer:Player,price:number){
         let value = owner.Money+price;
-        console.log(owner.name+" entered Payement "+owner.name +" has "+owner.Money + "and should be at"+ value + " Victim "+payer.name + "with "+payer.Money);
         if(isNaN(price)){
             throw new Error().stack;
         }
