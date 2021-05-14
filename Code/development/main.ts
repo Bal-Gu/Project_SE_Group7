@@ -18,7 +18,6 @@ import {QuizField} from "./Fields/QuizField";
 import {Idle} from "./Fields/Idle";
 import {GoToErasmus} from "./Fields/GoToErasmus";
 import {RepayMortgage} from "./Events/RepayMortgage";
-import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
 import {Renovation} from "./Events/Renovation"
@@ -53,6 +52,9 @@ export class main {
         this.InitializeGameLength(1);
         this.InitializeFieldArray();
         await this.InitializePlayers();
+        this.ReferencePlayer.buying(new Properties(Colors.Yellow,[1,1,1,1,1],10,"YEEEEET",10),0);
+        this.ReferencePlayer.Money = -2;
+        await new Mortage().event(this.ReferencePlayer);
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
             this.BotAction();
@@ -957,15 +959,7 @@ export class main {
         console.log("c");
     }
 
-    async SetMortgageTest() {
-        let p: Player = new Player(false, "f", 0, 0);
-        this.playerInit(p);
-        let repay = new setMortgage();
-        await repay.event(p);
-    }
-
-
-    async RepayMortgageTest() {
+     async RepayMortgageTest() {
         let p: Player = new Player(false, "f", 0, 0);
         this.playerInit(p);
         let repay = new RepayMortgage();

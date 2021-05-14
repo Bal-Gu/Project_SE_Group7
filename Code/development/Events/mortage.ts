@@ -74,7 +74,27 @@ export class Mortage {
             output += "</tr>";
         }
 
-        output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+        switch (p.language) {
+            case "LUX":
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>OK</button></td></tr>"
+                break;
+            case "FR":
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accepter</button></td></tr>"
+                break;
+            case "PR":
+                //TODO check
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Aceitar</button></td></tr>"
+                break;
+            case "":
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+                break;
+            case "DE":
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Akzeptieren</button></td></tr>"
+                break;
+            default:
+                output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+
+        }
 
 
         $("#mortageTable").html(output);
@@ -194,7 +214,26 @@ export class Mortage {
         this.total += ammount;
 
         if (this.total >= 0) {
-            total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+            switch (this.p.language) {
+                case "LUX":
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>OK</button>");
+                    break;
+                case "FR":
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accepter</button>");
+                    break;
+                case "PR":
+                    //TODO check
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Aceitar</button>");
+                    break;
+                case "":
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+                    break;
+                case "DE":
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Akzeptieren</button>");
+                    break;
+                default:
+                    total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+            }
             $("#ApproveButtonMortgage").click(() => {
                 for (let m = 0; m < this.p.fieldsOwned.length; m++) {
                     let starstrings = "#stars" + m;
@@ -215,8 +254,27 @@ export class Mortage {
             });
 
         } else {
-            console.log(this.total);
-            total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+            switch (this.p.language) {
+                case "LUX":
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>OK</button>");
+                    break;
+                case "FR":
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accepter</button>");
+                    break;
+                case "PR":
+                    //TODO check
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Aceitar</button>");
+                    break;
+                case "":
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+                    break;
+                case "DE":
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Akzeptieren</button>");
+                    break;
+                default:
+                    total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+            }
+
 
         }
     }
