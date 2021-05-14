@@ -1,6 +1,7 @@
 import {Player} from "../Player";
 import globals from "../../globalVariable.json"
 import {starshower} from "../../graphic/animation/starshower"
+
 export class Renovation {
 
 
@@ -17,13 +18,34 @@ export class Renovation {
             p.gameOver();
             return;
         }
-        $("#MorageModal .modal-content h1").html("Renovation");
+        let morageModal = $("#MorageModal .modal-content h1");
+        switch (this.p.language) {
+            case "LUX":
+                morageModal.html("Renovatioun");
+                break;
+            case "FR":
+                morageModal.html("Rénovation");
+                break;
+            case "PR":
+                //TODO check
+                morageModal.html("Renovação");
+                break;
+            case "":
+                morageModal.html("Renovation");
+                break;
+            case "DE":
+                morageModal.html("Renovierung");
+                break;
+            default:
+                morageModal.html("Renovation");
+        }
+
         modal.css("display", "block");
         let output = "";
         let total = 0;
 
         for (this.i = 0; this.i < p.fieldsOwned.length; this.i++) {
-            if(!p.fieldsOwned[this.i].hasAll){
+            if (!p.fieldsOwned[this.i].hasAll) {
                 continue;
             }
             output += "<tr>";
@@ -46,14 +68,55 @@ export class Renovation {
             output += "<td id = 'Price" + this.i + "' style='color: #18892b'>0</td>";
             output += "</tr>";
         }
-        if(p.Money < 0) {
-            output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
-        }else{
-            output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accept</button></td></tr>"
+        if (p.Money < 0) {
+            switch (p.language) {
+                case "LUX":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>OK</button></td></tr>";
+                    break;
+                case "FR":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accepter</button></td></tr>"
+                    break;
+                case "PR":
+                    //TODO check
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Aceitar</button></td></tr>"
+                    break;
+                case "":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+                    break;
+                case "DE":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Akzeptieren</button></td></tr>"
+                    break;
+                default:
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
+
+            }
+
+        } else {
+            switch (this.p.language) {
+                case "LUX":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >OK</button></td></tr>";
+                    break;
+                case "FR":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accepter</button></td></tr>";
+                    break;
+                case "PR":
+                    //TODO check
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Aceitar</button></td></tr>";
+                    break;
+                case "":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accept</button></td></tr>";
+                    break;
+                case "DE":
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Akzeptieren</button></td></tr>";
+                    break;
+                default:
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accept</button></td></tr>";
+            }
+
         }
 
         $("#mortageTable").html(output);
-        $("ApproveButtonMortgage").click(()=>{
+        $("ApproveButtonMortgage").click(() => {
             modal.css("display", "none");
         })
 
@@ -171,10 +234,10 @@ export class Renovation {
             let starstrings = "#stars" + i;
             let stari = $(starstrings);
             if (stari.text().length <= min && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
-                if(stari.text().length < min){
+                if (stari.text().length < min) {
                     min = stari.text().length;
                     allsame = false;
-                }else{
+                } else {
                     allsame = allsame && true;
                 }
             } else if (stari.text().length > min && p.fieldsOwned[i].color == p.fieldsOwned[k].color) {
@@ -220,29 +283,69 @@ export class Renovation {
         value += ammount;
 
         if (value >= 0) {
-            total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+            switch (this.p.language) {
+                case "LUX":
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>OK</button>");
+                    break;
+                case "FR":
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accepter</button>");
+                    break;
+                case "PR":
+                    //TODO check
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Aceitar</button>");
+                    break;
+                case "":
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+                    break;
+                case "DE":
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Akzeptieren</button>");
+                    break;
+                default:
+                    total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accept</button>");
+            }
+
+
             $("#ApproveButtonMortgage").click(() => {
                 for (let m = 0; m < this.p.fieldsOwned.length; m++) {
                     let starstrings = "#stars" + m;
                     let starr = $(starstrings);
-                    let s:starshower = new starshower();
+                    let s: starshower = new starshower();
                     if (starr.text() === "💸💸💸💸💸" || starr.text() === "💸💸💸💸") {
                         this.p.fieldsOwned[m].renovatiosAmmount = 0
-                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]),0,this.p.ReferenceNumber);
+                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]), 0, this.p.ReferenceNumber);
                     } else {
                         this.p.fieldsOwned[m].renovatiosAmmount = starr.text().length;
-                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]),starr.text().length,this.p.ReferenceNumber);
+                        s.showHideStars(this.p.map.indexOf(this.p.fieldsOwned[m]), starr.text().length, this.p.ReferenceNumber);
                     }
 
                 }
-                this.p.recieveMoney(value  -this.p.Money);
+                this.p.recieveMoney(value - this.p.Money);
                 this.pressed = true;
                 $("#MorageModal").hide();
             });
 
         } else {
-            total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
 
+            switch (this.p.language) {
+                case "LUX":
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>OK</button>");
+                    break;
+                case "FR":
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accepter</button>");
+                    break;
+                case "PR":
+                    //TODO check
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Aceitar</button>");
+                    break;
+                case "":
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+                    break;
+                case "DE":
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Akzeptieren</button>");
+                    break;
+                default:
+                    total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accept</button>");
+            }
         }
     }
 

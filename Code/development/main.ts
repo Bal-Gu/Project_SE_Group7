@@ -18,7 +18,6 @@ import {QuizField} from "./Fields/QuizField";
 import {Idle} from "./Fields/Idle";
 import {GoToErasmus} from "./Fields/GoToErasmus";
 import {RepayMortgage} from "./Events/RepayMortgage";
-import {setMortgage} from "./Events/SetMortgage";
 import {Trade} from "./Events/Trade";
 import $ from "jquery";
 import {Renovation} from "./Events/Renovation"
@@ -26,11 +25,9 @@ import propertiesFile from '../properties.json';
 import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
-import fs from 'fs';
 import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
-declare var showHideStars;
 declare var setBoardSize;
 
 export class main {
@@ -55,6 +52,7 @@ export class main {
         this.InitializeGameLength(1);
         this.InitializeFieldArray();
         await this.InitializePlayers();
+        await new Mortage().event(this.ReferencePlayer);
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
             this.BotAction();
@@ -963,15 +961,7 @@ export class main {
         console.log("c");
     }
 
-    async SetMortgageTest() {
-        let p: Player = new Player(false, "f", 0, 0);
-        this.playerInit(p);
-        let repay = new setMortgage();
-        await repay.event(p);
-    }
-
-
-    async RepayMortgageTest() {
+     async RepayMortgageTest() {
         let p: Player = new Player(false, "f", 0, 0);
         this.playerInit(p);
         let repay = new RepayMortgage();
