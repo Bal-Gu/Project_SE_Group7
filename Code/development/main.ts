@@ -26,11 +26,9 @@ import propertiesFile from '../properties.json';
 import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
-import fs from 'fs';
 import {Quiz} from "./Events/quiz";
 
 declare var fallingCoins;
-declare var showHideStars;
 declare var setBoardSize;
 
 export class main {
