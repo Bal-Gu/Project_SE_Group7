@@ -1,0 +1,68 @@
+{
+  "save0": [
+    {
+      "player": "gilles",
+      "current": true,
+      "currentposition": 16,
+      "money": 1208,
+      "prison": 0,
+      "fieldsowned": [
+        {
+          "name": "Maison du Nombre",
+          "renovationsAmmount": 0,
+          "isMortgage": false
+        },
+        {
+          "name": "Student Lounge Belval",
+          "renovationsAmmount": 0,
+          "isMortgage": false
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "save1": [
+    {
+      "player": "david",
+      "current": false,
+      "currentposition": 8,
+      "money": 1400,
+      "prison": 0,
+      "fieldsowned": [
+        {
+          "name": "Luxembourg Institute of Science and Technology",
+          "renovationsAmmount": 0,
+          "isMortgage": false
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "save2": [
+    {
+      "player": "yanick",
+      "current": false,
+      "currentposition": 5,
+      "money": 1300,
+      "prison": 0,
+      "fieldsowned": [
+        {
+          "name": "Belval Railroad",
+          "isMortgage": false
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "save3": [
+    {
+      "player": "sam",
+      "current": false,
+      "currentposition": 9,
+      "money": 1492,
+      "prison": 0,
+      "fieldsowned": [],
+      "id": 1
+    }
+  ]
+}

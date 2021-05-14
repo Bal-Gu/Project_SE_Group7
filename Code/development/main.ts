@@ -26,7 +26,6 @@ import propertiesFile from '../properties.json';
 import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
-import Redis from "redis";
 
 import {Quiz} from "./Events/quiz";
 
@@ -54,7 +53,7 @@ export class main {
         this.buttonEvent();
         this.EndTurnButton();
         this.InitializeGameLength(1);
-        await this.InitializeFieldArrayfromDB();
+        await this.InitializeFieldArray();
         await this.InitializePlayers();
         while (!this.GameEnded) {
             this.updateButtons(this.ReferencePlayer)
@@ -805,103 +804,58 @@ export class main {
 
     }
 
-InitializeFieldArrayfromDB() {
-    this.FieldArray = [];
-    let client = Redis.createClient(6379);
 
-    client.mget('Properties', "Stations", "Parkings", (err, reply) => {
-        if (err) console.log("error");
+SaveGameState(): void {
+    const axios = require('axios');
 
-        let properties = JSON.parse(reply[0]);
-        let stations = JSON.parse(reply[1]);
-        let parkings = JSON.parse(reply[2]);
+    let currentplayer = this.ReferencePlayer.name;
 
-        let a, b, c, d;
-        a = b = c = 0;
-
-        for (let i = 0; i < 40; i++) {
-            if (i == 0 || i == 10) {
-                let idle: Idle = new Idle();
-                this.FieldArray.push(idle);
-            } else if (i == 20) {
-                let restplace: Restplace = new Restplace();
-                this.FieldArray.push(restplace);
-            } else if (i == 30) {
-                let gotoerasmus: GoToErasmus = new GoToErasmus();
-                this.FieldArray.push(gotoerasmus);
-            } else if (i == 5 || i == 15 || i == 25 || i == 35) {
-                let station = propertiesFile.stations[a];
-                let b: Bus = new Bus(station.name);
-                this.FieldArray.push(b);
-                a++;
-            } else if (i == 12 || i == 28) {
-                let parking = propertiesFile.parkings[b];
-                let pa: Parking = new Parking(parking.name);
-                this.FieldArray.push(pa);
-                b++;
-            } else if (i == 4 || i == 38) {
-                switch (i) {
-                    case 4:
-                        let luxtax: Tax = new Tax("Luxury Tax");
-                        this.FieldArray.push(luxtax);
-                        break;
-                    case 38:
-                        let inctax: Tax = new Tax("Income Tax");
-                        this.FieldArray.push(inctax);
-                        break;
-                }
-            } else if (i == 2 || i == 17 || i == 33) {
-                let eventfield: EventField = new EventField();
-                this.FieldArray.push(eventfield);
-            } else if (i == 7 || i == 22 || i == 36) {
-                let quizfield: QuizField = new QuizField();
-                this.FieldArray.push(quizfield);
-            } else {
-                let prop = propertiesFile.properties[c];
-                let color: Colors
-                switch (prop.color) {
-                    case "Green":
-                        color = Colors.Green
-                        break;
-                    case "Yellow":
-                        color = Colors.Yellow
-                        break;
-                    case "Red":
-                        color = Colors.Red
-                        break;
-                    case "Brown":
-                        color = Colors.Brown
-                        break;
-                    case "Light_Blue":
-                        color = Colors.Light_Blue
-                        break;
-                    case "Purple":
-                        color = Colors.Purple
-                        break;
-                    case "Orange":
-                        color = Colors.Orange
-                        break;
-                    case "Blue":
-                        color = Colors.Blue
-                        break;
-                    default:
-                        color = Colors.default;
-                        break;
-
-                }
-                let p: Properties = new Properties(color, prop.pricetopay, prop.renovationscost, prop.name, prop.initialprice);
-                this.FieldArray.push(p);
-                c++;
+    for(let i = 0; i < this.PlayerArray.length; i++){
+        let player = this.PlayerArray[i];
+        let name = player.name;
+        let position = player.currentposition;
+        let money = player.Money;
+        let prison = player.TurnsInPrison;
+        let fieldsowned : any[] = [];
+        for(let j = 0; j <player.fieldsOwned.length; j++){
+            let fieldsave = {
+                name: player.fieldsOwned[j].name,
+                renovationsAmmount: player.fieldsOwned[j].renovatiosAmmount,
+                isMortgage: player.fieldsOwned[j].isMortgage
             }
+            fieldsowned.push(fieldsave);
         }
-    });
-    client.quit();
-}
+        let current = currentplayer === name;
 
-
-
-SaveGameState(n: number, p: Player): void {
-
+        axios.delete('http://localhost:3000/save' + i.toString() + "/1", {
+        }).then(response => {
+            axios.post('http://localhost:3000/save' + i.toString(), {
+                player: name,
+                current: current,
+                currentposition: position,
+                money: money,
+                prison: prison,
+                fieldsowned: fieldsowned
+            }).then(resp => {
+                console.log(resp.data);
+            }).catch(error => {
+                console.log(error);
+            });
+        }).catch(error => {
+            axios.post('http://localhost:3000/save' + i.toString(), {
+                player: name,
+                current: current,
+                currentposition: position,
+                money: money,
+                prison: prison,
+                fieldsowned: fieldsowned
+            }).then(resp => {
+                console.log(resp.data);
+            }).catch(error => {
+                console.log(error);
+            });
+        });
+    }
 }
 
 async MakePlayerTurn(): Promise<void> {
@@ -1078,6 +1032,10 @@ async buttonEvent() {
     // show the lobby
     $("#lobbyButton").click(function () {
         $("#lobbyModal").show();
+    });
+    //save Game State
+    $("#saveButton").click(function (){
+        self.SaveGameState();
     });
     // select board size
     $(".boardSizeButton").click(function () {
