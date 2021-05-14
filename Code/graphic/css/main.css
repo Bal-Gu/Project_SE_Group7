@@ -199,4 +199,10 @@ body {
   width: 915px;
   margin: 0 auto;
 }
+
+.playerNamesDices {
+  color: white;
+  font-size: 18px;
+  padding: 5px;
+}
 /*# sourceMappingURL=main.css.map */
