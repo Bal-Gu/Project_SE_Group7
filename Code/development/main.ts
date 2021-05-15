@@ -26,6 +26,7 @@ import {bigBoard} from './boardHtml';
 import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
 import {Quiz} from "./Events/quiz";
+import {funFactButtons} from "./funfacts";
 
 declare var fallingCoins;
 declare var setBoardSize;
@@ -46,15 +47,18 @@ export class main {
 
 
     async main() {
-        bigBoard();
+        let p:Player = new Player(false,"",1,1);
+        p.language = "ENG";
+        bigBoard(this.language);
         this.buttonEvent();
         this.EndTurnButton();
         this.InitializeGameLength(1);
         this.InitializeFieldArray();
         await this.InitializePlayers();
-        await new Mortage().event(this.ReferencePlayer);
+        funFactButtons(this.language);
         while (!this.GameEnded) {
-            this.updateButtons(this.ReferencePlayer)
+            this.updateButtons(this.ReferencePlayer);
+            funFactButtons(this.language);
             this.BotAction();
             await this.EndOfATurn();
             this.StaticPlayerArray.forEach(
@@ -1032,15 +1036,15 @@ SaveGameState(): void {
         $(".boardSizeButton").click(function () {
             if (this.id == "bigBoardButton") {
                 setBoardSize(0);
-                bigBoard();
+                bigBoard(self.language);
             } else if (this.id == "mediumBoardButton") {
                 setBoardSize(1);
-                mediumBoard();
+                mediumBoard(self.language);
             } else if (this.id == "smallBoardButton") {
                 setBoardSize(2);
-                smallBoard();
+                smallBoard(self.language);
             } else {
-                bigBoard();
+                bigBoard(self.language);
             }
             $("#boardResizeModal").hide();
             $("#lobbyModal").show();
