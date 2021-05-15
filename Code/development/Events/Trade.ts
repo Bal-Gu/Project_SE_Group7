@@ -17,18 +17,48 @@ export class Trade {
 
     async event(init: Player, target: Player) {
         let modal = $("#TradingModal");
+        let tradingModalTitle = $("#TradingModal .modal-content .modal-header h2");
+        let clicks = $("#approveButtonTrading");
+        switch (init.language) {
+            case "LUX":
+                tradingModalTitle.text("Handelsevent");
+                clicks.text("OK");
+                break;
+            case "FR":
+                tradingModalTitle.text("Événement de Commerce");
+                clicks.text("Accepter");
+                break;
+            case "PR":
+                //TODO check
+                tradingModalTitle.text("Evento de negociação");
+                clicks.text("Aceitar");
+                break;
+            case "":
+                tradingModalTitle.text("Trading event");
+                clicks.text("Accept");
+                break;
+            case "DE":
+                tradingModalTitle.text("Handelsereignis");
+                clicks.text("Akzeptieren");
+                break;
+            default:
+                tradingModalTitle.text("Trading event");
+                clicks.text("Accept");
+        }
+
+
         modal.show();
 
-
         $("#trader1").html(init.name);
+
         $("#trader2").html(target.name);
         //TODO only allow mortgage or unrenovated cards
 
-        let tradingButtonCollum1 =  $("#tradingButtonCollum1");
+        let tradingButtonCollum1 = $("#tradingButtonCollum1");
         tradingButtonCollum1.html("");
         $("#tradingButtonCollum2").html("");
         $("#tradingButtonCollum3").html("");
-        let tradingButtonCollum4 =  $("#tradingButtonCollum4");
+        let tradingButtonCollum4 = $("#tradingButtonCollum4");
         tradingButtonCollum4.html("");
 
 
@@ -131,23 +161,27 @@ export class Trade {
 
         });
 
-        $("#approveButtonTrading").click(() => {
+        clicks.click(() => {
 
             let valueForInit: number = Number(trader1.text());
             let valueForTransfer: number = Number(trader2.text());
-            if(self.targetPlayer.isBot){
+            if (self.targetPlayer.isBot) {
                 let total = 0;
-                for(let i = 0; i < self.traderingRow2.length; i++){
+                for (let i = 0; i < self.traderingRow2.length; i++) {
                     total += self.traderingRow2[i].initialPrice;
                 }
                 total += valueForInit;
-                if(this.ErasmusDispenseGiven1){total += 500;}
-                for(let i = 0; i < self.traderingRow3.length; i++){
+                if (this.ErasmusDispenseGiven1) {
+                    total += 500;
+                }
+                for (let i = 0; i < self.traderingRow3.length; i++) {
                     total -= self.traderingRow3[i].initialPrice;
                 }
                 total -= valueForTransfer;
-                if(this.ErasmusDispenseGiven2){total -= 500;}
-                if(total <= 0){
+                if (this.ErasmusDispenseGiven2) {
+                    total -= 500;
+                }
+                if (total <= 0) {
                     $("#approveButtonTrading").html("Trade is not balanced");
                     return;
                 }
@@ -191,7 +225,7 @@ export class Trade {
 
     swap(textContent: string | null, r1: number, r2: number) {
         console.log(textContent);
-        let Row1:Field[];
+        let Row1: Field[];
         switch (r1) {
             case 1:
                 Row1 = this.traderingRow1;
@@ -207,7 +241,7 @@ export class Trade {
                 break;
         }
 
-        let Row2:Field[];
+        let Row2: Field[];
         switch (r2) {
             case 1:
                 Row2 = this.traderingRow1;
@@ -224,11 +258,10 @@ export class Trade {
         }
 
 
-
         if (textContent == undefined || textContent == "Erasmus Dispense") {
             return;
         }
-        let textTrimmed: string = textContent.replace(" 💸","");
+        let textTrimmed: string = textContent.replace(" 💸", "");
         console.log(textTrimmed);
         console.log(Row1);
         let f: Field | undefined = Row1.find(element => textTrimmed.includes(element.name));
@@ -278,6 +311,37 @@ export class Trade {
     async decidePlayer(ReferencePlayer: Player, PlayerArray: Player[]) {
         let target = $("#TargetSelection");
         let targetRow = $("#TargetEntry");
+        let targetTitle = $("#TargetSelection .modal-content .modal-header h2");
+        let Titleh3 = $("#TargetSelection .modal-content h3");
+        switch (ReferencePlayer.language) {
+            case "LUX":
+                targetTitle.html("Handelsevent");
+                Titleh3.text("Mat wéiengem spiller wellt der handelen?");
+                break;
+            case "FR":
+                targetTitle.html("Événement de Commerce")
+                Titleh3.text("Avec quel joueur voulez vous commercer?");
+                break;
+            case "PR":
+                //TODO check
+                targetTitle.html("Evento de negociação");
+                Titleh3.text("");
+
+                break;
+            case "":
+                targetTitle.html("Trading event");
+                Titleh3.text("With which player do you want to trade");
+
+                break;
+            case "DE":
+                targetTitle.html("Handelsereignis");
+                Titleh3.text("Mit welchem Spieler möchten sie verhandlen?");
+
+                break;
+            default:
+                Titleh3.text("With which player do you want to trade");
+                targetTitle.html("Trading event");
+        }
         target.show();
         let out = "<tr>";
         for (let i = 0; i < PlayerArray.length; i++) {

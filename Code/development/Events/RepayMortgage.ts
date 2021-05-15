@@ -25,9 +25,31 @@ export class RepayMortgage {
         this.pressed = false;
         //Will be done on the same as the MortageModal
         let modal = $("#MorageModal");
+        let mortageh1 = $("#MorageModal .modal-content h1");
 
         if (!this.canRepay(p)) {
             return;
+        }
+        switch (p.language) {
+            case "LUX":
+                mortageh1.html("Prêt");
+                break;
+            case "FR":
+                mortageh1.html("Hypothèque");
+                break;
+            case "PR":
+                //TODO check
+                mortageh1.html("Hipoteca");
+                break;
+            case "":
+                mortageh1.html("Mortage");
+                break;
+            case "DE":
+                mortageh1.html("Hypothek");
+                break;
+            default:
+                mortageh1.html("Mortage");
+
         }
 
         modal.show();
@@ -53,14 +75,73 @@ export class RepayMortgage {
             //Button to pay
             //disabled if not enough money to pay
             if(p.fieldsOwned[i].initialPrice > p.Money) {
-                output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Not Enough</button></td>";
+                switch (p.language) {
+                    case "LUX":
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Not Enough</button></td>";
+                        break;
+                    case "FR":
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Pas assez</button></td>";
+                        break;
+                    case "PR":
+                        //TODO check
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Insuficiente</button></td>";
+                        break;
+                    case "":
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Not Enough</button></td>";
+                        break;
+                    case "DE":
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Nicht genug</button></td>";
+                        break;
+                    default:
+                        output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Not Enough</button></td>";
+
+                }
+
             }else{
-                output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>PAY</button></td>";
+                switch (p.language) {
+                    case "LUX":
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Bezuelen</button></td>";
+                        break;
+                    case "FR":
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Payer</button></td>";
+                        break;
+                    case "PR":
+                        //TODO check
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Pagar</button></td>";
+                        break;
+                    case "":
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>PAY</button></td>";
+                        break;
+                    case "DE":
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Zahlen</button></td>";
+                        break;
+                    default:
+                        output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>PAY</button></td>";
+                }
             }
             output += "</tr>";
         }
-        output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Accept</button></td></tr>"
+        switch (p.language) {
+            case "LUX":
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >OK</button></td></tr>"
+                break;
+            case "FR":
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Accepter</button></td></tr>"
+                break;
+            case "PR":
+                //TODO check
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Aceitar</button></td></tr>"
+                break;
+            case "":
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Accept</button></td></tr>"
+                break;
+            case "DE":
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Akzeptieren</button></td></tr>"
+                break;
+            default:
+                output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Accept</button></td></tr>"
 
+        }
 
         $("#mortageTable").html(output);
 
