@@ -1,4 +1,9 @@
 import $ from "jquery";
+import buildingDescriptionENG from "./BuildingDescription.json";
+import buildingDescriptionPR from "./BuildingDescriptionPR.json";
+import buildingDescriptionFR from "./BuildingDescriptionFR.json";
+import buildingDescriptionDE from "./BuildingDescriptionDE.json";
+import buildingDescriptionLUX from "./BuildingDescriptionLUX.json";
 
 export function funFactButtons(){
     $(".buildingFunFact").click(function () {
@@ -7,11 +12,13 @@ export function funFactButtons(){
         // @ts-ignore
         const buildingCredits = this.lastElementChild.lastElementChild.innerHTML;
         // @ts-ignore
-        const imageName = this.lastElementChild.id;
+        const buildingId = this.lastElementChild.id;
         $("#buildingFunFactTitle").html(buildingTitle + " ("+buildingCredits+")");
-        $("#imageBuilding").html("<img src='./graphic/images/large/"+imageName+".jpg' style='width: 100%;'>");
-        // TODO: the building discription needs to me added
-        $("#buildingFunFactDescription").html("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam dolorem dolore quia architecto laboriosam nobis adipisci placeat minima ipsa sequi, id accusamus ipsum ab unde dolores tenetur sapiente nisi eligendi?")
+        $("#imageBuilding").html("<img src='./graphic/images/large/"+buildingId+".jpg' style='width: 100%;'>");
+        // TODO: add different languages support
+        let buildingDescription = buildingDescriptionENG[buildingId];
+        $("#buildingFunFactDescription").html(buildingDescription);
+
         $("#funfactModal").show();
     });
 }
