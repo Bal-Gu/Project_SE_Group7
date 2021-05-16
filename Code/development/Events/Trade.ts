@@ -47,7 +47,7 @@ export class Trade {
             }
         }
         for (let i = 0; i < target.fieldsOwned.length; i++) {
-            if (init.fieldsOwned[i].renovatiosAmmount != undefined) {
+            if (target.fieldsOwned[i].renovatiosAmmount != undefined) {
                 // @ts-ignore
                 if (target.fieldsOwned[i].renovatiosAmmount > 0) {
                     continue;
@@ -130,9 +130,9 @@ export class Trade {
 
 
         });
-
-        $("#approveButtonTrading").click(() => {
-
+        let approve = $("#approveButtonTrading");
+        $(approve).click(() => {
+            $(approve).off("click");
             let valueForInit: number = Number(trader1.text());
             let valueForTransfer: number = Number(trader2.text());
             if(self.targetPlayer.isBot){
@@ -151,6 +151,7 @@ export class Trade {
                     $("#approveButtonTrading").html("Trade is not balanced");
                     return;
                 }
+                init.haspressed = false;
             }
             modal.hide();
             console.log(valueForInit + " " + valueForTransfer);
@@ -187,6 +188,10 @@ export class Trade {
         });
 
         await this.wait();
+        trader1.html("0");
+        trader2.html("0");
+        trader1input.off();
+        trader2input.off();
     }
 
     swap(textContent: string | null, r1: number, r2: number) {
@@ -259,18 +264,23 @@ export class Trade {
     }
 
     tradingValidation(trader1: JQuery<HTMLElement>, p: Player, first: boolean) {
+        console.log("called trade valid");
         let ammount = Number(trader1.val());
         trader1.val("");
         let lable = first ? $("#inputLable1") : $("#inputLable2");
         if (isNaN(ammount)) {
+            console.log("isnan");
             return;
         } else {
             if (ammount > p.Money) {
                 lable.html(p.Money + "");
+                console.log("toomuch");
             } else if (ammount <= 0) {
                 lable.html(0 + "");
+                console.log("less or equal to 0");
             } else {
                 lable.html(ammount + "");
+                console.log("final step");
             }
         }
     }
@@ -305,6 +315,14 @@ export class Trade {
             }
         }
         await this.wait();
+        console.log(ReferencePlayer.name);
+        console.log(this.targetPlayer.name);
+        this.targetPlayer.fieldsOwned.forEach( field => {
+            console.log(field.name);
+        })
+        ReferencePlayer.fieldsOwned.forEach( field => {
+            console.log(field.name);
+        })
         target.hide();
     }
 

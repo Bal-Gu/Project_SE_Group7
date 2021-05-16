@@ -123,14 +123,23 @@ export class Prison {
                 if ((p.Money / 4) > globals.Erasmus) {
                     if (rand > 1) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 } else if ((p.Money / 2) > globals.Erasmus) {
                     if (rand > 3) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 } else {
                     if (rand > 5) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 }
                 await new Promise(r => setTimeout(r, 2000));
