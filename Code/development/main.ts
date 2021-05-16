@@ -1159,16 +1159,15 @@ SaveGameState(): void {
                 counter++;
             } else if (counter === 3) {
                 self.language = "PR";
-                //TODO TRANSLATE
-                BoardSizeHeader.text("Durée de jeux");
-                smallButton.text("Courte");
-                mediumButton.text("Moyenne");
-                defaultButton.text("longue (par défaut)");
-                PlayerButton1.text("Spieler 1 (Klick mich)");
-                PlayerButton2.text("Spieler 2 (Klick mich)");
-                PlayerButton3.text("Spieler 3 (Klick mich)");
-                PlayerButton4.text("Spieler 4 (Klick mich)");
-                inputLobby.prop("placeholder", "Votre pseudo");
+                BoardSizeHeader.text("Duração do jogo");
+                smallButton.text("Curto");
+                mediumButton.text("Médio");
+                defaultButton.text("Longo (normal)");
+                PlayerButton1.text("Jogador 1 (clique em mim)");
+                PlayerButton2.text("Jogador 2 (clique em mim)");
+                PlayerButton3.text("Jogador 3 (clique em mim)");
+                PlayerButton4.text("Jogador 4 (clique em mim)");
+                inputLobby.prop("placeholder", "Seu nome");
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");

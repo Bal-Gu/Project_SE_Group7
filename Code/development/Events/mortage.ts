@@ -35,7 +35,6 @@ export class Mortage {
                 mortageh1.html("Hypothèque");
                 break;
             case "PR":
-                //TODO check
                 mortageh1.html("Hipoteca");
                 break;
             case "":
@@ -82,7 +81,6 @@ export class Mortage {
                 output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accepter</button></td></tr>"
                 break;
             case "PR":
-                //TODO check
                 output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Aceitar</button></td></tr>"
                 break;
             case "":
@@ -219,7 +217,6 @@ export class Mortage {
                     total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accepter</button>");
                     break;
                 case "PR":
-                    //TODO check
                     total.html(this.total + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Aceitar</button>");
                     break;
                 case "":
@@ -259,7 +256,6 @@ export class Mortage {
                     total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accepter</button>");
                     break;
                 case "PR":
-                    //TODO check
                     total.html(this.total + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Aceitar</button>");
                     break;
                 case "":

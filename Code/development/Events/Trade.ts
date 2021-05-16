@@ -29,7 +29,6 @@ export class Trade {
                 clicks.text("Accepter");
                 break;
             case "PR":
-                //TODO check
                 tradingModalTitle.text("Evento de negociação");
                 clicks.text("Aceitar");
                 break;
@@ -333,10 +332,8 @@ export class Trade {
                 Titleh3.text("Avec quel joueur voulez vous commercer?");
                 break;
             case "PR":
-                //TODO check
                 targetTitle.html("Evento de negociação");
-                Titleh3.text("");
-
+                Titleh3.text("Com que jogador queres começar?");
                 break;
             case "":
                 targetTitle.html("Trading event");
