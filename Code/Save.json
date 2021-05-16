@@ -1,0 +1,46 @@
+{
+  "save0": [
+    {
+      "player": "asdasd",
+      "current": true,
+      "currentposition": 0,
+      "money": 1500,
+      "prison": 0,
+      "fieldsowned": [],
+      "id": 1
+    }
+  ],
+  "save1": [
+    {
+      "player": "sadasd",
+      "current": false,
+      "currentposition": 0,
+      "money": 1500,
+      "prison": 0,
+      "fieldsowned": [],
+      "id": 1
+    }
+  ],
+  "save2": [
+    {
+      "player": "asdasd",
+      "current": true,
+      "currentposition": 0,
+      "money": 1500,
+      "prison": 0,
+      "fieldsowned": [],
+      "id": 1
+    }
+  ],
+  "save3": [
+    {
+      "player": "asdasd",
+      "current": true,
+      "currentposition": 0,
+      "money": 1500,
+      "prison": 0,
+      "fieldsowned": [],
+      "id": 1
+    }
+  ]
+}

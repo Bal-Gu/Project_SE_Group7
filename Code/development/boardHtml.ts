@@ -1,6 +1,8 @@
 import {funFactButtons} from "./funfacts";
+import {Player} from "./Player";
 
-export function bigBoard() {
+export function bigBoard(player:String) {
+
     // @ts-ignore
     document.getElementById("boardContent").innerHTML =
         `
@@ -327,7 +329,7 @@ export function bigBoard() {
                     <span class="stars"><img class="star" id="2-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="3-star27"
-                            src="../Code/graphic/images/small/star2.png"></span>
+                            src="./graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="4-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <span class="stars"><img class="star" id="5-star27"
@@ -498,10 +500,10 @@ export function bigBoard() {
     $(".center").css("grid-row", "2 / 11");
     $(".figure-start").css("width", "915px");
     $(".board .center .title").css("font-size", "35px");
-    funFactButtons();
+    funFactButtons(player);
 }
 
-export function mediumBoard() {
+export function mediumBoard(player:String) {
     // @ts-ignore
     document.getElementById("boardContent").innerHTML =
         `
@@ -869,10 +871,10 @@ export function mediumBoard() {
     $(".center").css("grid-row", "2 / 9");
     $(".figure-start").css("width", "838px");
     $(".board .center .title").css("font-size", "27px");
-    funFactButtons();
+    funFactButtons(player);
 }
 
-export function smallBoard() {
+export function smallBoard(player:String) {
 // @ts-ignore
     document.getElementById("boardContent").innerHTML =
         `
@@ -1110,5 +1112,5 @@ export function smallBoard() {
     $(".center").css("grid-row", "2 / 6");
     $(".figure-start").css("width", "842px");
     $(".board .center .title").css("font-size", "25px");
-    funFactButtons();
+    funFactButtons(player);
 }

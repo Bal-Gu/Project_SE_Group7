@@ -1,17 +1,51 @@
 import $ from "jquery";
+import buildingDescriptionENG from "./BuildingDescription.json";
+import buildingDescriptionPR from "./BuildingDescriptionPR.json";
+import buildingDescriptionFR from "./BuildingDescriptionFR.json";
+import buildingDescriptionDE from "./BuildingDescriptionDE.json";
+import buildingDescriptionLUX from "./BuildingDescriptionLUX.json";
+import {Player} from "./Player";
 
-export function funFactButtons(){
+
+export function funFactButtons(p:String){
     $(".buildingFunFact").click(function () {
         // @ts-ignore
         const buildingTitle = this.lastElementChild.firstChild.nextSibling.innerHTML;
         // @ts-ignore
         const buildingCredits = this.lastElementChild.lastElementChild.innerHTML;
         // @ts-ignore
-        const imageName = this.lastElementChild.id;
+        const buildingId = this.lastElementChild.id;
         $("#buildingFunFactTitle").html(buildingTitle + " ("+buildingCredits+")");
-        $("#imageBuilding").html("<img src='./graphic/images/large/"+imageName+".jpg' style='width: 100%;'>");
-        // TODO: the building discription needs to me added
-        $("#buildingFunFactDescription").html("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam dolorem dolore quia architecto laboriosam nobis adipisci placeat minima ipsa sequi, id accusamus ipsum ab unde dolores tenetur sapiente nisi eligendi?")
+        $("#imageBuilding").html("<img src='./graphic/images/large/"+buildingId+".jpg' style='width: 100%;'>");
+        // TODO: add different languages support
+        let buildingDescription: any;
+        if(p != undefined) {
+            switch (p) {
+                case "FR":
+                    buildingDescription = buildingDescriptionFR[buildingId];
+                    break;
+                case "PR":
+                    buildingDescription = buildingDescriptionPR[buildingId];
+                    break;
+                case "DE":
+                    buildingDescription = buildingDescriptionDE[buildingId];
+                    break;
+                case "ENG":
+                    buildingDescription = buildingDescriptionENG[buildingId];
+                    break;
+                case "LUX":
+                    buildingDescription = buildingDescriptionLUX[buildingId];
+                    break;
+                default:
+                    buildingDescription = buildingDescriptionENG[buildingId];
+                    break;
+            }
+        }
+        else{
+            buildingDescription = buildingDescriptionENG[buildingId];
+        }
+        $("#buildingFunFactDescription").html("<h2>"+buildingDescription+"</h2>");
+
         $("#funfactModal").show();
     });
 }
