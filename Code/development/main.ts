@@ -1111,7 +1111,7 @@ SaveGameState(): void {
             self.MakePlayerTurn();
         });
         let saveButton = $("#saveButton");
-        switch(this.ReferencePlayer.language){
+        switch(this.language){
             case "FR":
                 saveButton.html("Sauvegarder");
                 break;
