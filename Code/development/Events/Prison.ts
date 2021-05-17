@@ -31,11 +31,10 @@ export class Prison {
                 prisontitle.html(p.name + " a encore " + (3 - p.TurnsInPrison) + " tours en erasmus");
                 break;
             case "PR":
-                //TODO check
-                luckyButton.text("Glëcks Kaart");
-                pay.text("Bezeul");
-                roledouble.text("carte chance");
-                prisontitle.html(p.name + " has " + (3 - p.TurnsInPrison) + " in erasmus left");
+                luckyButton.text("Carta da sorte");
+                pay.text("Pagar");
+                roledouble.text("lançar um duplo");
+                prisontitle.html(p.name + " tens " + (3 - p.TurnsInPrison) + " voltas no erasmus");
                 break;
             case "":
                 prisontitle.html(p.name + " has " + (3 - p.TurnsInPrison) + " in erasums left");
@@ -123,14 +122,23 @@ export class Prison {
                 if ((p.Money / 4) > globals.Erasmus) {
                     if (rand > 1) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 } else if ((p.Money / 2) > globals.Erasmus) {
                     if (rand > 3) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 } else {
                     if (rand > 5) {
                         pay.click();
+                    }else {
+                        roledouble.click();
+                        await new Promise(r => setTimeout(r, 2000));
                     }
                 }
                 await new Promise(r => setTimeout(r, 2000));

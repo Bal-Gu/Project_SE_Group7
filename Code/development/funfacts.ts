@@ -1,9 +1,9 @@
 import $ from "jquery";
-import buildingDescriptionENG from "./BuildingDescription.json";
-import buildingDescriptionPR from "./BuildingDescriptionPR.json";
-import buildingDescriptionFR from "./BuildingDescriptionFR.json";
-import buildingDescriptionDE from "./BuildingDescriptionDE.json";
-import buildingDescriptionLUX from "./BuildingDescriptionLUX.json";
+import buildingDescriptionENG from "../BuildingDescription.json";
+import buildingDescriptionPR from "../BuildingDescriptionPR.json";
+import buildingDescriptionFR from "../BuildingDescriptionFR.json";
+import buildingDescriptionDE from "../BuildingDescriptionDE.json";
+import buildingDescriptionLUX from "../BuildingDescriptionLUX.json";
 import {Player} from "./Player";
 
 

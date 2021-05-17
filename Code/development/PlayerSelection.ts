@@ -114,8 +114,6 @@ export class PlayerSelection {
         });
         botDiff.click(function () {
             if (self.botDifficultyButton == 1) {
-                //TODO
-
                 switch (self.language) {
                     case "LUX":
                         $(this).html("Bot Standard");
@@ -124,7 +122,7 @@ export class PlayerSelection {
                         $(this).html("Bot standard");
                         break;
                     case "PR":
-                        $(this).html("Bot padrão");
+                        $(this).html("Bot normal");
                         break;
                     case "":
                         $(this).html("Bot Standard");
@@ -197,9 +195,8 @@ export class PlayerSelection {
                     botDiff.html("Bot standard");
                     break;
                 case "PR":
-                    //TODO translate
                     StartButton.text("Começar o jogo");
-                    botDiff.html("Bot padrão");
+                    botDiff.html("Bot normal");
                     break;
                 case "":
                     StartButton.text("Start game");

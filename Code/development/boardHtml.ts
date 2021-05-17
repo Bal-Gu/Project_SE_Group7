@@ -550,15 +550,15 @@ export function mediumBoard(player:String) {
                     <div class="lg-rot rot-135">Just Visiting / In Erasmus</div>
                 </div>
                 <div class="sm-box rot-180 sm-box-pink buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star11"
+                    <span class="stars"><img class="star" id="1-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star11"
+                    <span class="stars"><img class="star" id="2-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star11"
+                    <span class="stars"><img class="star" id="3-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star11"
+                    <span class="stars"><img class="star" id="4-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star11"
+                    <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='kinepolis' style="background-image: url('./../Code/graphic/images/small/mediumBoard/kinepolis.jpg')">
                         <span class="title">Kinepolis</span>
@@ -572,15 +572,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-pink buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star13"
+                    <span class="stars"><img class="star" id="1-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star13"
+                    <span class="stars"><img class="star" id="2-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star13"
+                    <span class="stars"><img class="star" id="3-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star13"
+                    <span class="stars"><img class="star" id="4-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star13"
+                    <span class="stars"><img class="star" id="5-star11"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='rockhal' style="background-image: url('./../Code/graphic/images/small/mediumBoard/rockhal.jpg')">
                         <span class="title">Rockhal</span>
@@ -594,15 +594,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-orange buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star16"
+                    <span class="stars"><img class="star" id="1-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star16"
+                    <span class="stars"><img class="star" id="2-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star16"
+                    <span class="stars"><img class="star" id="3-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star16"
+                    <span class="stars"><img class="star" id="4-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star16"
+                    <span class="stars"><img class="star" id="5-star13"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='student_lounge_belval' style="background-image: url('./../Code/graphic/images/small/mediumBoard/student_lounge_belval.jpg')">
                         <span class="title">Student Lounge Belval</span>
@@ -616,15 +616,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-orange buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star18"
+                    <span class="stars"><img class="star" id="1-star15"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star18"
+                    <span class="stars"><img class="star" id="2-star15"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star18"
+                    <span class="stars"><img class="star" id="3-star15"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star18"
+                    <span class="stars"><img class="star" id="4-star15"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star18"
+                    <span class="stars"><img class="star" id="5-star15"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_arts_etudiants' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_des_arts_et_des_etudiants.jpg')">
                         <span class="title">Maison des Arts et des Etudiants</span>
@@ -635,15 +635,15 @@ export function mediumBoard(player:String) {
                     <div class="lg-rot rot-135-reverse">Free Parking</div>
                 </div>
                 <div class="sm-box sm-box-lightBlue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star9"
+                    <span class="stars"><img class="star" id="1-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star9"
+                    <span class="stars"><img class="star" id="2-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star9"
+                    <span class="stars"><img class="star" id="3-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star9"
+                    <span class="stars"><img class="star" id="4-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star9"
+                    <span class="stars"><img class="star" id="5-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-medium" id='maison_du_nombre' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_du_nombre.jpg')">
                         <span class="title">Maison du Nombre</span>
@@ -651,15 +651,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-red buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star21"
+                    <span class="stars"><img class="star" id="1-star17"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star21"
+                    <span class="stars"><img class="star" id="2-star17"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star21"
+                    <span class="stars"><img class="star" id="3-star17"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star21"
+                    <span class="stars"><img class="star" id="4-star17"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star21"
+                    <span class="stars"><img class="star" id="5-star17"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-medium" id='cafe_savoir' style="background-image: url('./../Code/graphic/images/small/mediumBoard/cafe_savoir.jpg')">
                         <span class="title">Café du Savoir</span>
@@ -677,15 +677,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-lightBlue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star6"
+                    <span class="stars"><img class="star" id="1-star5"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star6"
+                    <span class="stars"><img class="star" id="2-star5"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star6"
+                    <span class="stars"><img class="star" id="3-star5"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star6"
+                    <span class="stars"><img class="star" id="4-star5"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star6"
+                    <span class="stars"><img class="star" id="5-star5"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-medium" id='halles_essais_ingenieur' style="background-image: url('./../Code/graphic/images/small/mediumBoard/halle_d_essais_ingeneurs_belval.jpg')">
                         <span class="title">Halles d’Essais Ingénieurs</span>
@@ -693,15 +693,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-red buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star23"
+                    <span class="stars"><img class="star" id="1-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star23"
+                    <span class="stars"><img class="star" id="2-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star23"
+                    <span class="stars"><img class="star" id="3-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star23"
+                    <span class="stars"><img class="star" id="4-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star23"
+                    <span class="stars"><img class="star" id="5-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-medium" id='restaurant_uni' style="background-image: url('./../Code/graphic/images/small/mediumBoard/restaurant_universitaire.jpg')">
                         <span class="title">Restaurant Universitaire</span>
@@ -727,15 +727,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-yellow buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star26"
+                    <span class="stars"><img class="star" id="1-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star26"
+                    <span class="stars"><img class="star" id="2-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star26"
+                    <span class="stars"><img class="star" id="3-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star26"
+                    <span class="stars"><img class="star" id="4-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star26"
+                    <span class="stars"><img class="star" id="5-star21"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-medium" id='massenoire' style="background-image: url('./../Code/graphic/images/small/mediumBoard/massenoire.jpg')">
                         <span class="title">Massenoire</span>
@@ -771,15 +771,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-yellow buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star29"
+                    <span class="stars"><img class="star" id="1-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star29"
+                    <span class="stars"><img class="star" id="2-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star29"
+                    <span class="stars"><img class="star" id="3-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star29"
+                    <span class="stars"><img class="star" id="4-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star29"
+                    <span class="stars"><img class="star" id="5-star23"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-medium" id='bil_bank' style="background-image: url('./../Code/graphic/images/small/mediumBoard/bil_bank.jpg')">
                         <span class="title">Bil Bank</span>
@@ -790,15 +790,15 @@ export function mediumBoard(player:String) {
                     <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
                 </div>
                 <div class="sm-box sm-box-blue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star39"
+                    <span class="stars"><img class="star" id="1-star31"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star39"
+                    <span class="stars"><img class="star" id="2-star31"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star39"
+                    <span class="stars"><img class="star" id="3-star31"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star39"
+                    <span class="stars"><img class="star" id="4-star31"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star39"
+                    <span class="stars"><img class="star" id="5-star31"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_du_savoir' style="background-image: url('./../Code/graphic/images/small/mediumBoard/maison_du_savoir.jpg')">
                         <span class="title">Maison du Savoir</span>
@@ -823,15 +823,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-green buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star34"
+                    <span class="stars"><img class="star" id="1-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star34"
+                    <span class="stars"><img class="star" id="2-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star34"
+                    <span class="stars"><img class="star" id="3-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star34"
+                    <span class="stars"><img class="star" id="4-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star34"
+                    <span class="stars"><img class="star" id="5-star27"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_biomedecineII' style="background-image: url('./../Code/graphic/images/small/mediumBoard/biotech2.jpg')">
                         <span class="title">Maison Biomédecine II</span>
@@ -845,15 +845,15 @@ export function mediumBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-green buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star32"
+                    <span class="stars"><img class="star" id="1-star25"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star32"
+                    <span class="stars"><img class="star" id="2-star25"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star32"
+                    <span class="stars"><img class="star" id="3-star25"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star32"
+                    <span class="stars"><img class="star" id="4-star25"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star32"
+                    <span class="stars"><img class="star" id="5-star25"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_biomedecineI' style="background-image: url('./../Code/graphic/images/small/mediumBoard/biotech1.jpg')">
                         <span class="title">Maison Biomédecine I</span>
@@ -927,15 +927,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-pink buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star13"
+                    <span class="stars"><img class="star" id="1-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star13"
+                    <span class="stars"><img class="star" id="2-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star13"
+                    <span class="stars"><img class="star" id="3-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star13"
+                    <span class="stars"><img class="star" id="4-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star13"
+                    <span class="stars"><img class="star" id="5-star7"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='rockhal' style="background-image: url('./../Code/graphic/images/small/smallBoard/rockhal.jpg')">
                         <span class="title">Rockhal</span>
@@ -949,15 +949,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box rot-180 sm-box-pink buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star11"
+                    <span class="stars"><img class="star" id="1-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star11"
+                    <span class="stars"><img class="star" id="2-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star11"
+                    <span class="stars"><img class="star" id="3-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star11"
+                    <span class="stars"><img class="star" id="4-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star11"
+                    <span class="stars"><img class="star" id="5-star9"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='kinepolis' style="background-image: url('./../Code/graphic/images/small/smallBoard/kinepolis.jpg')">
                         <span class="title">Kinepolis</span>
@@ -968,15 +968,15 @@ export function smallBoard(player:String) {
                     <div class="lg-rot rot-135-reverse">Free Parking</div>
                 </div>
                 <div class="sm-box sm-box-lightBlue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star6"
+                    <span class="stars"><img class="star" id="1-star4"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star6"
+                    <span class="stars"><img class="star" id="2-star4"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star6"
+                    <span class="stars"><img class="star" id="3-star4"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star6"
+                    <span class="stars"><img class="star" id="4-star4"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star6"
+                    <span class="stars"><img class="star" id="5-star4"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-small" id='halles_essais_ingenieur' style="background-image: url('./../Code/graphic/images/small/smallBoard/halles_essais_ingenieur.jpg')">
                         <span class="title">Halles d’Essais Ingénieurs</span>
@@ -995,15 +995,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-red buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star23"
+                    <span class="stars"><img class="star" id="1-star12"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star23"
+                    <span class="stars"><img class="star" id="2-star12"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star23"
+                    <span class="stars"><img class="star" id="3-star12"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star23"
+                    <span class="stars"><img class="star" id="4-star12"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star23"
+                    <span class="stars"><img class="star" id="5-star12"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-small" id='restaurant_uni' style="background-image: url('./../Code/graphic/images/small/smallBoard/restaurant_uni.jpg')">
                         <span class="title">Restaurant Universitaire</span>
@@ -1023,15 +1023,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-lightBlue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star9"
+                    <span class="stars"><img class="star" id="1-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star9"
+                    <span class="stars"><img class="star" id="2-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star9"
+                    <span class="stars"><img class="star" id="3-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star9"
+                    <span class="stars"><img class="star" id="4-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star9"
+                    <span class="stars"><img class="star" id="5-star1"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-small" id='maison_du_nombre' style="background-image: url('./../Code/graphic/images/small/smallBoard/maison_du_nombre.jpg')">
                         <span class="title">Maison du Nombre</span>
@@ -1039,15 +1039,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-red buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star24"
+                    <span class="stars"><img class="star" id="1-star14"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star24"
+                    <span class="stars"><img class="star" id="2-star14"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star24"
+                    <span class="stars"><img class="star" id="3-star14"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star24"
+                    <span class="stars"><img class="star" id="4-star14"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star24"
+                    <span class="stars"><img class="star" id="5-star14"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div class="rot-90-reverse-small" id='gaart_belval' style="background-image: url('./../Code/graphic/images/small/smallBoard/gaart_belval.jpg')">
                         <span class="title">Gaart Belval</span>
@@ -1058,15 +1058,15 @@ export function smallBoard(player:String) {
                     <div class="lg-rot rot-45">Start and Go (Collect Salary)</div>
                 </div>
                 <div class="sm-box sm-box-blue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star39"
+                    <span class="stars"><img class="star" id="1-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star39"
+                    <span class="stars"><img class="star" id="2-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star39"
+                    <span class="stars"><img class="star" id="3-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star39"
+                    <span class="stars"><img class="star" id="4-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star39"
+                    <span class="stars"><img class="star" id="5-star19"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='maison_du_savoir' style="background-image: url('./../Code/graphic/images/small/smallBoard/maison_du_savoir.jpg')">
                         <span class="title">Maison du Savoir</span>
@@ -1086,15 +1086,15 @@ export function smallBoard(player:String) {
                     </div>
                 </div>
                 <div class="sm-box sm-box-blue buildingFunFact">
-                    <span class="stars"><img class="star" id="1-star37"
+                    <span class="stars"><img class="star" id="1-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="2-star37"
+                    <span class="stars"><img class="star" id="2-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="3-star37"
+                    <span class="stars"><img class="star" id="3-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="4-star37"
+                    <span class="stars"><img class="star" id="4-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
-                    <span class="stars"><img class="star" id="5-star37"
+                    <span class="stars"><img class="star" id="5-star16"
                             src="../Code/graphic/images/small/star2.png"></span>
                     <div id='llc' style="background-image: url('./../Code/graphic/images/small/smallBoard/llc.jpg')">
                         <span class="title">Luxembourg Learning Center</span>
