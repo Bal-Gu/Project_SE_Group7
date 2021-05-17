@@ -109,7 +109,7 @@ export class main {
 
     //Will wait for a player to play its turn
     async EndOfATurn() {
-        while (!this.TurnEnded) {
+        while (!this.TurnEnded && !this.ReferencePlayer.isGameOver) {
             await new Promise(r => setTimeout(r, 500));
             //console.log("waiting");
         }
@@ -904,7 +904,7 @@ SaveGameState(): void {
             }
         }
         if(this.StaticPlayerArray.length-loosers == 1){
-            new ModalWinning().winingModal(winner);
+            new ModalWinning().winingModal(winner,this.StaticPlayerArray[0].language);
         }
     }
 
