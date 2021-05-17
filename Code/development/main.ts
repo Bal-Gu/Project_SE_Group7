@@ -1084,7 +1084,7 @@ SaveGameState(): void {
         let saveButton = $("#saveButton");
         switch(this.ReferencePlayer.language){
             case "FR":
-                saveButton.html("Sauvgarder");
+                saveButton.html("Sauvegarder");
                 break;
             case "DE":
                 saveButton.html("Spiel speichern");
@@ -1163,14 +1163,14 @@ SaveGameState(): void {
 
             if (counter === 1) {
                 self.language = "FR";
-                PlayerButton1.text("Joeur 1 (click sur moi)");
-                PlayerButton2.text("Jouer 2 (click sur moi)");
-                PlayerButton3.text("Jouer 3 (click sur moi)");
-                PlayerButton4.text("Jouer 4 (click sur moi)");
+                PlayerButton1.text("Joueur 1 (Clique sur moi)");
+                PlayerButton2.text("Joueur 2 (Clique sur moi)");
+                PlayerButton3.text("Joueur 3 (Clique sur moi)");
+                PlayerButton4.text("Joueur 4 (Clique sur moi)");
                 BoardSizeHeader.text("Durée de jeux");
-                smallButton.text("Courte");
-                mediumButton.text("Moyenne");
-                defaultButton.text("longue (par défaut)");
+                smallButton.text("Petit");
+                mediumButton.text("Moyen");
+                defaultButton.text("Grand (par défaut)");
                 $("#menuPlayButton").text("Jouer");
                 $("#menuLoadButton").text("Charger la partie");
                 inputLobby.prop("placeholder", "Votre pseudo");
@@ -1361,14 +1361,14 @@ SaveGameState(): void {
                 startMenu.html("Start menu");
                 break;
             case "FR":
-                RenovationsButton.html("rénovation");
+                RenovationsButton.html("Rénovation");
                 tradeButton.html("Troque");
-                repayMortgageButton.html("rembourser l'hypothèque");
-                rollButton.html("lancer des dés");
-                endTurnButton.html("fin du tour");
+                repayMortgageButton.html("Rembourser l'hypothèque");
+                rollButton.html("Lancer les dés");
+                endTurnButton.html("Fin du tour");
                 currentplayer.html("Joueur actuel:<span id=\"current-player\"></span>");
                 playersround.html("Tour :<span id=\"round-counter\">0</span>");
-                startMenu.html("menu d'accueil");
+                startMenu.html("Menu principal");
                 break;
             case "PR":
                 RenovationsButton.html("Renovação");
