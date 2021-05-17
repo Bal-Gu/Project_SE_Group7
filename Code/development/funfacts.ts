@@ -4,8 +4,6 @@ import buildingDescriptionPR from "../BuildingDescriptionPR.json";
 import buildingDescriptionFR from "../BuildingDescriptionFR.json";
 import buildingDescriptionDE from "../BuildingDescriptionDE.json";
 import buildingDescriptionLUX from "../BuildingDescriptionLUX.json";
-import {Player} from "./Player";
-
 
 export function funFactButtons(p:String){
     $(".buildingFunFact").click(function () {

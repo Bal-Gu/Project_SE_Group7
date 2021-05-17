@@ -27,6 +27,7 @@ import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
 import {Quiz} from "./Events/quiz";
 import {funFactButtons} from "./funfacts";
+import {ModalWinning} from "./winingModal";
 
 declare var fallingCoins;
 declare var setBoardSize;
@@ -891,6 +892,19 @@ SaveGameState(): void {
     CheckWinCondition(player: Player): void {
         if (player.Money >= this.WinCondition) {
             this.GameEnded = true;
+        }
+        let loosers = 0;
+        let winner = "";
+        for(let i=0;i<this.StaticPlayerArray.length;i++){
+            if(this.StaticPlayerArray[i].isGameOver){
+                loosers++;
+            }
+            else{
+                winner = this.StaticPlayerArray[i].name;
+            }
+        }
+        if(this.StaticPlayerArray.length-loosers == 1){
+            new ModalWinning().winingModal(winner);
         }
     }
 
