@@ -119,7 +119,7 @@ export class PlayerSelection {
                         $(this).html("Bot Standard");
                         break;
                     case "FR":
-                        $(this).html("Bot standard");
+                        $(this).html("Bot Standard");
                         break;
                     case "PR":
                         $(this).html("Bot normal");
