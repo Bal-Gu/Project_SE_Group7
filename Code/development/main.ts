@@ -1081,7 +1081,29 @@ SaveGameState(): void {
             self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
         });
-        $("#saveButton").click( function(){
+        let saveButton = $("#saveButton");
+        switch(this.ReferencePlayer.language){
+            case "FR":
+                saveButton.html("Sauvgarder");
+                break;
+            case "DE":
+                saveButton.html("Spiel speichern");
+                break;
+            case "PT":
+                saveButton.html("Guardar o jogo.");
+                break;
+            case "ENG":
+                saveButton.html("Save game");
+                break;
+            case "":
+                saveButton.html("Save game");
+                break;
+            case "LUX":
+                saveButton.html("Spill speichern");
+                break;
+        }
+        saveButton.text();
+        saveButton.click( function(){
             self.SaveGameState()
         });
         // to test the renovation modal
