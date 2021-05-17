@@ -167,6 +167,7 @@ export class Trade {
             let valueForTransfer: number = Number(trader2.text());
             if (self.targetPlayer.isBot) {
                 let total = 0;
+                console.log("targ bot received event");
                 for (let i = 0; i < self.traderingRow2.length; i++) {
                     total += self.traderingRow2[i].initialPrice;
                 }
@@ -175,13 +176,17 @@ export class Trade {
                     total += 500;
                 }
                 for (let i = 0; i < self.traderingRow3.length; i++) {
+                    console.log("goes there");
+                    console.log(self.traderingRow3[i].name);
+                    console.log(self.traderingRow3[i].initialPrice);
                     total -= self.traderingRow3[i].initialPrice;
                 }
                 total -= valueForTransfer;
                 if (this.ErasmusDispenseGiven2) {
                     total -= 500;
                 }
-                if (total <= 0) {
+                console.log("total" + total);
+                if (total < 0) {
                     $("#approveButtonTrading").html("Trade is not balanced");
                     return;
                 }
@@ -226,6 +231,7 @@ export class Trade {
         trader2.html("0");
         trader1input.off();
         trader2input.off();
+        init.botInTrade = false;
     }
 
     swap(textContent: string | null, r1: number, r2: number) {

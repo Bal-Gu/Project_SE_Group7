@@ -36,6 +36,7 @@ export class Player {
     AuctionEntry: boolean = false;
     language: string;
     haspressed:boolean = false;
+    botInTrade: boolean = false;
 
     constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;

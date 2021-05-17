@@ -151,6 +151,11 @@ export class main {
             this.ReferencePlayer = this.PlayerArray[0];
         }
         $("#current-player").text(this.ReferencePlayer.name);
+        this.StaticPlayerArray.forEach(player =>{
+            player.fieldsOwned.forEach( field =>{
+                console.log("player " + player.name + " field " + field.name);
+            })
+        })
         this.TurnEnded = false;
     }
 
@@ -441,27 +446,51 @@ export class main {
                 if (this.ReferencePlayer.botDifficulty == 1) {
                     this.ReferencePlayer.fieldsOwned.forEach(field => {
                         let playercounter = 0;
+                        console.log("in trade");
                         this.PlayerArray.forEach(async player => {
-                            playercounter++;
-                            //TODO try implement buy proposition of erasmus
-                            for (let i = 0; i < player.fieldsOwned.length; i++) {
-                                let fieldtarg = player.fieldsOwned[i];
-                                if (field.color == fieldtarg.color) {
-                                    $("#TradingModal").click();
-                                    await new Promise(r => setTimeout(r, 1000));
-                                    let newstr = "#targetButton" + playercounter;
-                                    $(newstr).click();
-                                    await new Promise(r => setTimeout(r, 1000));
-                                    let str: string = "#4tradingButton" + i;
-                                    $(str).click();
-                                    let amount: string = String(field.initialPrice);
-                                    $("#inputLable1").html(amount);
-                                    await new Promise(r => setTimeout(r, 1000));
+                            if (this.ReferencePlayer != player && !player.isGameOver) {
+                                playercounter++;
+                                console.log("in playerlist");
+                                //TODO try implement buy proposition of erasmus
+                                for (let i = 0; i < player.fieldsOwned.length; i++) {
+                                    console.log("in field list of targ player");
+                                    let fieldtarg = player.fieldsOwned[i];
+                                    if (field.color == fieldtarg.color && this.ReferencePlayer != player) {
+                                        console.log("init is  " + this.ReferencePlayer.name + " amd target is " + player.name);
+                                        console.log("found color");
+                                        this.ReferencePlayer.botInTrade = true;
+                                        $("#tradeButton").click();
+                                        await new Promise(r => setTimeout(r, 1000));
+                                        let newstr = "#targetButton" + playercounter;
+                                        console.log("should click on " + playercounter + " and what ");
+                                        $(newstr).click();
+                                        await new Promise(r => setTimeout(r, 1000));
+                                        let str: string = "#4tradingButton" + i;
+                                        $(str).click();
+                                        let amount: string = String(field.initialPrice);
+                                        $("#inputLable1").html(amount);
+                                        if(player.isBot){
+                                            console.log("is bot");
+                                            $("#approveButtonTrading").click();
+                                            console.log("came back");
+                                            this.ReferencePlayer.fieldsOwned.forEach(field =>{
+                                                console.log(field.name);
+                                            })
+                                        }else{
+                                            await new Promise(r => setTimeout(r, 10000));
+                                            $(".close").click();
+                                        }
+                                        await new Promise(r => setTimeout(r, 1000));
+                                    }
                                 }
                             }
                         })
                         //TODO implement way to reset everything if player doesn't accept in 10 sec and to block every other buttons
                     })
+                }
+                while(this.ReferencePlayer.botInTrade){
+                    await new Promise(r=> setTimeout(r, 500));
+                    console.log("waiting bot");
                 }
                 //Might need further testing
                 if ($("#repayMortgageButton").is(":visible")) {
@@ -1069,6 +1098,12 @@ SaveGameState(): void {
         });
         $("#saveButton").click( function(){
             self.SaveGameState()
+        });
+        $("#surrenderButton").click(function(){
+            if(!self.ReferencePlayer.isBot){
+                self.ReferencePlayer.isBot = true;
+                self.BotAction();
+            }
         });
         // to test the renovation modal
 
