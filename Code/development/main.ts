@@ -27,6 +27,7 @@ import {mediumBoard} from './boardHtml';
 import {smallBoard} from './boardHtml';
 import {Quiz} from "./Events/quiz";
 import {funFactButtons} from "./funfacts";
+import {ModalWinning} from "./winingModal";
 
 declare var fallingCoins;
 declare var setBoardSize;
@@ -108,7 +109,7 @@ export class main {
 
     //Will wait for a player to play its turn
     async EndOfATurn() {
-        while (!this.TurnEnded) {
+        while (!this.TurnEnded && !this.ReferencePlayer.isGameOver) {
             await new Promise(r => setTimeout(r, 500));
             //console.log("waiting");
         }
@@ -921,6 +922,19 @@ SaveGameState(): void {
         if (player.Money >= this.WinCondition) {
             this.GameEnded = true;
         }
+        let loosers = 0;
+        let winner = "";
+        for(let i=0;i<this.StaticPlayerArray.length;i++){
+            if(this.StaticPlayerArray[i].isGameOver){
+                loosers++;
+            }
+            else{
+                winner = this.StaticPlayerArray[i].name;
+            }
+        }
+        if(this.StaticPlayerArray.length-loosers == 1){
+            new ModalWinning().winingModal(winner,this.StaticPlayerArray[0].language);
+        }
     }
 
     CheckLooseCondition(player: Player): void {
@@ -1096,7 +1110,29 @@ SaveGameState(): void {
             self.ReferencePlayer.move(self.dice.total());
             self.MakePlayerTurn();
         });
-        $("#saveButton").click( function(){
+        let saveButton = $("#saveButton");
+        switch(this.ReferencePlayer.language){
+            case "FR":
+                saveButton.html("Sauvegarder");
+                break;
+            case "DE":
+                saveButton.html("Spiel speichern");
+                break;
+            case "PT":
+                saveButton.html("Guardar o jogo.");
+                break;
+            case "ENG":
+                saveButton.html("Save game");
+                break;
+            case "":
+                saveButton.html("Save game");
+                break;
+            case "LUX":
+                saveButton.html("Spill speichern");
+                break;
+        }
+        saveButton.text();
+        saveButton.click( function(){
             self.SaveGameState()
         });
         $("#surrenderButton").click(function(){
@@ -1162,14 +1198,14 @@ SaveGameState(): void {
 
             if (counter === 1) {
                 self.language = "FR";
-                PlayerButton1.text("Joeur 1 (click sur moi)");
-                PlayerButton2.text("Jouer 2 (click sur moi)");
-                PlayerButton3.text("Jouer 3 (click sur moi)");
-                PlayerButton4.text("Jouer 4 (click sur moi)");
+                PlayerButton1.text("Joueur 1 (Clique sur moi)");
+                PlayerButton2.text("Joueur 2 (Clique sur moi)");
+                PlayerButton3.text("Joueur 3 (Clique sur moi)");
+                PlayerButton4.text("Joueur 4 (Clique sur moi)");
                 BoardSizeHeader.text("Durée de jeux");
-                smallButton.text("Courte");
-                mediumButton.text("Moyenne");
-                defaultButton.text("longue (par défaut)");
+                smallButton.text("Petit");
+                mediumButton.text("Moyen");
+                defaultButton.text("Grand (par défaut)");
                 $("#menuPlayButton").text("Jouer");
                 $("#menuLoadButton").text("Charger la partie");
                 inputLobby.prop("placeholder", "Votre pseudo");
@@ -1194,16 +1230,15 @@ SaveGameState(): void {
                 counter++;
             } else if (counter === 3) {
                 self.language = "PR";
-                //TODO TRANSLATE
-                BoardSizeHeader.text("Durée de jeux");
-                smallButton.text("Courte");
-                mediumButton.text("Moyenne");
-                defaultButton.text("longue (par défaut)");
-                PlayerButton1.text("Spieler 1 (Klick mich)");
-                PlayerButton2.text("Spieler 2 (Klick mich)");
-                PlayerButton3.text("Spieler 3 (Klick mich)");
-                PlayerButton4.text("Spieler 4 (Klick mich)");
-                inputLobby.prop("placeholder", "Votre pseudo");
+                BoardSizeHeader.text("Duração do jogo");
+                smallButton.text("Curto");
+                mediumButton.text("Médio");
+                defaultButton.text("Longo (normal)");
+                PlayerButton1.text("Jogador 1 (clique em mim)");
+                PlayerButton2.text("Jogador 2 (clique em mim)");
+                PlayerButton3.text("Jogador 3 (clique em mim)");
+                PlayerButton4.text("Jogador 4 (clique em mim)");
+                inputLobby.prop("placeholder", "Seu nome");
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
@@ -1361,14 +1396,14 @@ SaveGameState(): void {
                 startMenu.html("Start menu");
                 break;
             case "FR":
-                RenovationsButton.html("rénovation");
+                RenovationsButton.html("Rénovation");
                 tradeButton.html("Troque");
-                repayMortgageButton.html("rembourser l'hypothèque");
-                rollButton.html("lancer des dés");
-                endTurnButton.html("fin du tour");
+                repayMortgageButton.html("Rembourser l'hypothèque");
+                rollButton.html("Lancer les dés");
+                endTurnButton.html("Fin du tour");
                 currentplayer.html("Joueur actuel:<span id=\"current-player\"></span>");
                 playersround.html("Tour :<span id=\"round-counter\">0</span>");
-                startMenu.html("menu d'accueil");
+                startMenu.html("Menu principal");
                 break;
             case "PR":
                 RenovationsButton.html("Renovação");

@@ -27,8 +27,7 @@ export class Renovation {
                 morageModal.html("Rénovation");
                 break;
             case "PR":
-                //TODO check
-                morageModal.html("Renovação");
+                morageModal.html("Renovar");
                 break;
             case "":
                 morageModal.html("Renovation");
@@ -77,14 +76,13 @@ export class Renovation {
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accepter</button></td></tr>"
                     break;
                 case "PR":
-                    //TODO check
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Aceitar</button></td></tr>"
                     break;
                 case "":
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
                     break;
                 case "DE":
-                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Akzeptieren</button></td></tr>"
+                    output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: #ff0000' disabled>Akzeptieren</button></td></tr>"
                     break;
                 default:
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: red' disabled>Accept</button></td></tr>"
@@ -100,7 +98,6 @@ export class Renovation {
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Accepter</button></td></tr>";
                     break;
                 case "PR":
-                    //TODO check
                     output += "<tr><td id='totalAmmountInModal' colspan='5' style='text-align: right'>" + p.Money + " <button id='ApproveButtonMortgage' style='color: green' >Aceitar</button></td></tr>";
                     break;
                 case "":
@@ -291,7 +288,6 @@ export class Renovation {
                     total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Accepter</button>");
                     break;
                 case "PR":
-                    //TODO check
                     total.html(value + "" + " <button style='color: #18892b'  id='ApproveButtonMortgage'>Aceitar</button>");
                     break;
                 case "":
@@ -334,7 +330,6 @@ export class Renovation {
                     total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Accepter</button>");
                     break;
                 case "PR":
-                    //TODO check
                     total.html(value + "" + " <button style='color: #990F02' disabled  id='ApproveButtonMortgage'>Aceitar</button>");
                     break;
                 case "":

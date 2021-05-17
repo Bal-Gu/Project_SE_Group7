@@ -66,7 +66,7 @@
                 <div class="player-coins">B-Coins:<span id="b-coins-4"> 0</span></div>
             </div>
             <div id='dices3'>
-                <p style="text-align: left; direction: ltr;" id="playerName3">Player: </p>
+                <p style="text-align: left; direction: ltr;" id="playerName3" class='playerNamesDices'>Player: </p>
                 <div class="container">
                     <div id="cube5">
                         <div class="front" id='dice15'>
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div id='dices4'>
-                <p style="text-align: left; direction: ltr;" id="playerName4">Player: </p>
+                <p style="text-align: left; direction: ltr;" id="playerName4" class='playerNamesDices'>Player: </p>
                 <div class="container">
                     <div id="cube7">
                         <div class="front" id='dice17'>
@@ -233,6 +233,13 @@
                     </div>
                 </div>
             </div>
+            <div id="winingModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="winnerName">Player has won:</h2>
+                    </div>
+                </div>
+            </div>
             <div id="boardResizeModal" class="modal" style="display: none">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -242,7 +249,8 @@
                         <div class="ButtonContainer">
                             <Button class="StartBoxButton boardSizeButton" id="smallBoardButton">Small board</Button>
                             <Button class="StartBoxButton boardSizeButton" id="mediumBoardButton">Medium board</Button>
-                            <Button class="StartBoxButton boardSizeButton" id="bigBoardButton">Big board (Default)</Button>
+                            <Button class="StartBoxButton boardSizeButton" id="bigBoardButton">Big board
+                                (Default)</Button>
                         </div>
                     </div>
                 </div>
@@ -516,11 +524,12 @@
                 <button id='repayMortgageButton' class="buttonListDesign">Repay mortgage</button>
                 <button id='rollButton' class="buttonListDesign">Roll dice</button>
                 <button id='endTurnButton' class="buttonListDesign">End Turn</button>
+                <button id ='saveButton' class="buttonListDesign">Save Game</button>
                 <hr>
                 <button id='startMenuButton' class="buttonListDesign">Start Menu</button>
             </div>
             <div id='dices1'>
-                <p style="text-align: left; direction: ltr;" id="playerName1">Player: </p>
+                <p style="text-align: left; direction: ltr;" id="playerName1" class='playerNamesDices'>Player: </p>
                 <div class="container">
                     <div id="cube1">
                         <div class="front" id='dice1'>
@@ -597,7 +606,7 @@
                 </div>
             </div>
             <div id='dices2'>
-                <p style="text-align: left; direction: ltr;" id="playerName2">Player: </p>
+                <p style="text-align: left; direction: ltr;" id="playerName2" class='playerNamesDices'>Player: </p>
                 <div class="container">
                     <div id="cube3">
                         <div class="front" id='dice12'>

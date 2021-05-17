@@ -38,7 +38,6 @@ export class RepayMortgage {
                 mortageh1.html("Hypothèque");
                 break;
             case "PR":
-                //TODO check
                 mortageh1.html("Hipoteca");
                 break;
             case "":
@@ -83,7 +82,6 @@ export class RepayMortgage {
                         output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Pas assez</button></td>";
                         break;
                     case "PR":
-                        //TODO check
                         output += "<td><button disabled style='height: 125px;width: 100%;color: red;text-align: center'>Insuficiente</button></td>";
                         break;
                     case "":
@@ -106,7 +104,6 @@ export class RepayMortgage {
                         output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Payer</button></td>";
                         break;
                     case "PR":
-                        //TODO check
                         output += "<td><button id='paybuttonRepayMortgage"+i+"' style='height: 125px;width: 100%;color: darkgreen;text-align: center'>Pagar</button></td>";
                         break;
                     case "":
@@ -129,7 +126,6 @@ export class RepayMortgage {
                 output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Accepter</button></td></tr>"
                 break;
             case "PR":
-                //TODO check
                 output += "<tr><td id='PlayersMoney' colspan='3' style='text-align: right;color: darkgreen'>" + p.Money + " <button id='ApproveButtonMortgage' style='background-color:gray; color: white' >Aceitar</button></td></tr>"
                 break;
             case "":
