@@ -444,7 +444,7 @@ export class main {
 
                 }
                 //Trade handeling, will buy if a player has a building the same color as one of his
-                if (this.ReferencePlayer.botDifficulty == 1 && this.ReferencePlayer.lastTimeTradeAsked == 0) {
+                if (this.ReferencePlayer.botDifficulty == 1 && this.ReferencePlayer.lastTimeTradeAsked == 0 && this.ReferencePlayer.Money >= 400) {
                     let choosedPlayer = false;
                     this.ReferencePlayer.fieldsOwned.forEach(field => {
                         let playercounter = 0;
@@ -465,7 +465,7 @@ export class main {
                                         await new Promise(r => setTimeout(r, 1000));
                                         let str: string = "#4tradingButton" + i;
                                         $(str).click();
-                                        let amount: string = String(field.initialPrice);
+                                        let amount: string = String(fieldtarg.initialPrice);
                                         $("#inputLable1").html(amount);
                                         if(player.isBot){
                                             $("#approveButtonTrading").click();
