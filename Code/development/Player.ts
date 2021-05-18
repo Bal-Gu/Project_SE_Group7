@@ -81,7 +81,6 @@ export class Player {
         for (let i = 0; i < Object.values(Colors).length; i++) {
             map.set(<Colors>Object.values(Colors)[i], 0);
         }
-        console.log(map);
         for (let i = 0; i < this.fieldsOwned.length; i++) {
             if (this.fieldsOwned[i] instanceof Bus) {
                 this.nrOfBus++;
@@ -95,7 +94,6 @@ export class Player {
             }
 
         }
-        console.log(map);
         for (let i = 0; i < this.fieldsOwned.length; i++) {
             let color: Colors = this.fieldsOwned[i].color!;
             let index: number = 0;
@@ -182,6 +180,7 @@ export class Player {
 
     receive(field: Field): void {
         this.fieldsOwned.push(field);
+        field.owner = this;
         this.updateFields();
     }
 
