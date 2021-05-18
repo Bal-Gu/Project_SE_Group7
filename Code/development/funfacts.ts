@@ -15,7 +15,6 @@ export function funFactButtons(p:String){
         const buildingId = this.lastElementChild.id;
         $("#buildingFunFactTitle").html(buildingTitle + " ("+buildingCredits+")");
         $("#imageBuilding").html("<img src='./graphic/images/large/"+buildingId+".jpg' style='width: 100%;'>");
-        // TODO: add different languages support
         let buildingDescription: any;
         if(p != undefined) {
             switch (p) {

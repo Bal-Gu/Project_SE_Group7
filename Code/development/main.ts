@@ -1218,9 +1218,8 @@ SaveGameState(): void {
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
-                //TODO translate
-                saveButton.text("Spiel speichern");
-                surrenderButton.text("Sich ergeben");
+                saveButton.text("Guardar o jogo");
+                surrenderButton.text("Desistir");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
@@ -1396,7 +1395,6 @@ SaveGameState(): void {
                 endTurnButton.html("Fim do turno");
                 currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
                 playersround.html("Vez :<span id=\"round-counter\">0</span>");
-                //TODO translate
                 startMenu.html("Menu principal");
                 break;
             case "":
