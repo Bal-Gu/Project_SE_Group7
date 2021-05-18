@@ -1090,7 +1090,8 @@ SaveGameState(): void {
             fallingCoins('body');
         });
         // show the start menu
-        $("#startMenuButton").click(function () {
+        let startMenu =  $("#startMenuButton");
+        startMenu.click(function () {
             $("#startMenu").show();
             fallingCoins('body');
         });
@@ -1103,32 +1104,7 @@ SaveGameState(): void {
         });
         let saveButton = $("#saveButton");
         let surrenderButton = $("#surrenderButton");
-        switch(this.language){
-            case "FR":
-                saveButton.html("Sauvegarder");
-                surrenderButton.html("Se rendre");
-                break;
-            case "DE":
-                saveButton.html("Spiel speichern");
-                surrenderButton.html("Sich ergeben");
-                break;
-            case "PT":
-                saveButton.html("Guardar o jogo.");
-                surrenderButton.html("Desistir");
-                break;
-            case "ENG":
-                saveButton.html("Save game");
-                surrenderButton.html("Surender");
-                break;
-            case "":
-                saveButton.html("Save game");
-                surrenderButton.html("Surender");
-                break;
-            case "LUX":
-                saveButton.html("Spill speichern");
-                surrenderButton.html("Sech ergin");
-                break;
-        }
+
         saveButton.text();
         saveButton.click( function(){
             self.SaveGameState()
@@ -1208,6 +1184,8 @@ SaveGameState(): void {
                 $("#menuLoadButton").text("Charger la partie");
                 inputLobby.prop("placeholder", "Votre pseudo");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
+                surrenderButton.text("Se rendre");
+                saveButton.text("Sauvegarder");
                 counter++;
             } else if (counter === 2) {
                 self.language = "DE";
@@ -1220,8 +1198,8 @@ SaveGameState(): void {
                 PlayerButton3.text("Spieler 3 (Klick mich)");
                 PlayerButton4.text("Spieler 4 (Klick mich)");
                 inputLobby.prop("placeholder", "Dein Spielername");
-
-
+                saveButton.html("Spiel speichern");
+                surrenderButton.html("Sich ergeben");
                 $("#menuPlayButton").text("Spielen");
                 $("#menuLoadButton").text("Spiel laden");
                 $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
@@ -1240,6 +1218,9 @@ SaveGameState(): void {
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
+                //TODO translate
+                saveButton.text("Spiel speichern");
+                surrenderButton.text("Sich ergeben");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
@@ -1251,6 +1232,8 @@ SaveGameState(): void {
                 PlayerButton2.text("Spiller 2 (Klick mech)");
                 PlayerButton3.text("Spiller 3 (Klick mech)");
                 PlayerButton4.text("Spiller 4 (Klick mech)");
+                saveButton.text("Spill speichern");
+                surrenderButton.text("Sech ergin");
                 inputLobby.prop("placeholder", "Dein Spillernum");
                 $("#menuPlayButton").text("Spilen");
                 $("#menuLoadButton").text("Spil leuden");
@@ -1268,6 +1251,8 @@ SaveGameState(): void {
                 PlayerButton4.text("Player 4 (Click me)");
                 $("#menuPlayButton").text("Play");
                 $("#menuLoadButton").text("Load game");
+                saveButton.text("Save game");
+                surrenderButton.text("Surender");
                 $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
                 counter = 1;
             }
@@ -1411,6 +1396,7 @@ SaveGameState(): void {
                 endTurnButton.html("Fim do turno");
                 currentplayer.html("Aktuellen spiller:<span id=\"current-player\"></span>");
                 playersround.html("Vez :<span id=\"round-counter\">0</span>");
+                //TODO translate
                 startMenu.html("Menu principal");
                 break;
             case "":
