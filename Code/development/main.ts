@@ -45,7 +45,6 @@ export class main {
     GameEnded: boolean = false;
     TurnEnded: boolean = false;
     language: string = "ENG";
-    give = 0;
 
 
     async main() {
@@ -463,9 +462,9 @@ export class main {
                                         $(str).click();
                                         let amount: string = String(fieldtarg.initialPrice);
                                         $("#inputLable1").html(amount);
-                                        if(player.isBot){
+                                        if (player.isBot) {
                                             $("#approveButtonTrading").click();
-                                        }else{
+                                        } else {
                                             await new Promise(r => setTimeout(r, 10000));
                                             $(".close").click();
                                         }
@@ -477,13 +476,12 @@ export class main {
 
                     })
                 }
-                while(this.ReferencePlayer.botInTrade){
-                    await new Promise(r=> setTimeout(r, 500));
+                while (this.ReferencePlayer.botInTrade) {
+                    await new Promise(r => setTimeout(r, 500));
                 }
-                if(this.ReferencePlayer.lastTimeTradeAsked > 0){
-                    this.ReferencePlayer.lastTimeTradeAsked --;
+                if (this.ReferencePlayer.lastTimeTradeAsked > 0) {
+                    this.ReferencePlayer.lastTimeTradeAsked--;
                 }
-                //Might need further testing
                 if ($("#repayMortgageButton").is(":visible")) {
                     let i = 0;
                     let RefMoney = this.ReferencePlayer.Money;
@@ -512,15 +510,15 @@ export class main {
                             let compared;
                             for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                 if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
-                                    if(this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined){
+                                    if (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined) {
                                         this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount = 0;
                                     }
                                     compared = this.ReferencePlayer.fieldsOwned[i];
                                 }
                             }
-                            for(let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                            for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                 // @ts-ignore
-                                if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)){
+                                if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)) {
                                     buildToMove = i;
                                 }
                             }
@@ -537,15 +535,15 @@ export class main {
                                     let compared;
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
-                                            if(this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined){
+                                            if (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined) {
                                                 this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount = 0;
                                             }
                                             compared = this.ReferencePlayer.fieldsOwned[i];
                                         }
                                     }
-                                    for(let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         // @ts-ignore
-                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)){
+                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)) {
                                             buildToMove = i;
                                         }
                                     }
@@ -562,15 +560,15 @@ export class main {
                                     let compared;
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
-                                            if(this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined){
+                                            if (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined) {
                                                 this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount = 0;
                                             }
                                             compared = this.ReferencePlayer.fieldsOwned[i];
                                         }
                                     }
-                                    for(let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         // @ts-ignore
-                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)){
+                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)) {
                                             buildToMove = i;
                                         }
                                     }
@@ -587,15 +585,15 @@ export class main {
                                     let compared;
                                     for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         if (!this.ReferencePlayer.fieldsOwned[i].isMortgage && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
-                                            if(this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined){
+                                            if (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount != undefined) {
                                                 this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount = 0;
                                             }
                                             compared = this.ReferencePlayer.fieldsOwned[i];
                                         }
                                     }
-                                    for(let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++){
+                                    for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                         // @ts-ignore
-                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)){
+                                        if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll) && (this.ReferencePlayer.fieldsOwned[i] != compared) && (this.ReferencePlayer.fieldsOwned[i].renovatiosAmmount >= compared.renovatiosAmmount)) {
                                             buildToMove = i;
                                         }
                                     }
@@ -607,6 +605,7 @@ export class main {
                                 }
                             }
                         }
+                        await new Promise(r => setTimeout(r, 2000));
                     } else if (this.ReferencePlayer.Money >= 1000) {
                         await new Promise(r => setTimeout(r, 2000));
                         let total = 0;
@@ -766,11 +765,10 @@ export class main {
                         }
 
                     }
-                    await new Promise(r => setTimeout(r, 1000));
+                    await new Promise(r => setTimeout(r, 3000));
                 }
                 await new Promise(r => setTimeout(r, 2000));
             }
-            console.log("Turn ended");
             await new Promise(r => setTimeout(r, 2000));
             this.TurnEnded = true;
         }
