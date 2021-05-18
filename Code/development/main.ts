@@ -444,39 +444,31 @@ export class main {
 
                 }
                 //Trade handeling, will buy if a player has a building the same color as one of his
-                if (this.ReferencePlayer.botDifficulty == 1) {
+                if (this.ReferencePlayer.botDifficulty == 1 && this.ReferencePlayer.lastTimeTradeAsked == 0 && this.ReferencePlayer.Money >= 400) {
+                    let choosedPlayer = false;
                     this.ReferencePlayer.fieldsOwned.forEach(field => {
                         let playercounter = 0;
-                        console.log("in trade");
                         this.PlayerArray.forEach(async player => {
-                            if (this.ReferencePlayer != player && !player.isGameOver) {
+                            if (this.ReferencePlayer != player && !player.isGameOver && !choosedPlayer) {
                                 playercounter++;
-                                console.log("in playerlist");
                                 //TODO try implement buy proposition of erasmus
                                 for (let i = 0; i < player.fieldsOwned.length; i++) {
-                                    console.log("in field list of targ player");
                                     let fieldtarg = player.fieldsOwned[i];
                                     if (field.color == fieldtarg.color && this.ReferencePlayer != player) {
-                                        console.log("init is  " + this.ReferencePlayer.name + " amd target is " + player.name);
-                                        console.log("found color");
+                                        choosedPlayer = true;
+                                        this.ReferencePlayer.lastTimeTradeAsked = 5;
                                         this.ReferencePlayer.botInTrade = true;
                                         $("#tradeButton").click();
                                         await new Promise(r => setTimeout(r, 1000));
                                         let newstr = "#targetButton" + playercounter;
-                                        console.log("should click on " + playercounter + " and what ");
                                         $(newstr).click();
                                         await new Promise(r => setTimeout(r, 1000));
                                         let str: string = "#4tradingButton" + i;
                                         $(str).click();
-                                        let amount: string = String(field.initialPrice);
+                                        let amount: string = String(fieldtarg.initialPrice);
                                         $("#inputLable1").html(amount);
                                         if(player.isBot){
-                                            console.log("is bot");
                                             $("#approveButtonTrading").click();
-                                            console.log("came back");
-                                            this.ReferencePlayer.fieldsOwned.forEach(field =>{
-                                                console.log(field.name);
-                                            })
                                         }else{
                                             await new Promise(r => setTimeout(r, 10000));
                                             $(".close").click();
@@ -491,7 +483,9 @@ export class main {
                 }
                 while(this.ReferencePlayer.botInTrade){
                     await new Promise(r=> setTimeout(r, 500));
-                    console.log("waiting bot");
+                }
+                if(this.ReferencePlayer.lastTimeTradeAsked > 0){
+                    this.ReferencePlayer.lastTimeTradeAsked --;
                 }
                 //Might need further testing
                 if ($("#repayMortgageButton").is(":visible")) {
@@ -535,13 +529,10 @@ export class main {
                 //Behaviour for advanced bot in renovations -> randomly chose what bot will pay, can pay less or more than standard bot
                 //Behaviour for advanced bot in setMortgage -> bot is way more insecure about money, can be tempted to mortgage at 700 and even at 1000
                 if ($("#RenovationsButton").is(":visible")) {
-                    console.log("renov visible");
                     $("#RenovationsButton").click();
                     await new Promise(r => setTimeout(r, 2000));
                     if (this.ReferencePlayer.Money <= 500) {
-                        console.log("not enough money");
                         if (this.ReferencePlayer.botDifficulty == 0) {
-                            console.log("bot diff 0");
                             for (let i = 0; i < this.ReferencePlayer.fieldsOwned.length; i++) {
                                 if ((!this.ReferencePlayer.fieldsOwned[i].isMortgage) && (this.ReferencePlayer.fieldsOwned[i].hasAll)) {
                                     await new Promise(r => setTimeout(r, 2000));

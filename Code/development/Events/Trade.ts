@@ -101,7 +101,6 @@ export class Trade {
         $(".tradingButtons").click(function () {
             // @ts-ignore
             const htmlToBeMoved = this.parentElement.parentElement;
-
             // @ts-ignore
             if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
                 // @ts-ignore
@@ -166,7 +165,6 @@ export class Trade {
             let valueForTransfer: number = Number(trader2.text());
             if (self.targetPlayer.isBot) {
                 let total = 0;
-                console.log("targ bot received event");
                 for (let i = 0; i < self.traderingRow2.length; i++) {
                     total += self.traderingRow2[i].initialPrice;
                 }
@@ -175,16 +173,12 @@ export class Trade {
                     total += 500;
                 }
                 for (let i = 0; i < self.traderingRow3.length; i++) {
-                    console.log("goes there");
-                    console.log(self.traderingRow3[i].name);
-                    console.log(self.traderingRow3[i].initialPrice);
                     total -= self.traderingRow3[i].initialPrice;
                 }
                 total -= valueForTransfer;
                 if (this.ErasmusDispenseGiven2) {
                     total -= 500;
                 }
-                console.log("total" + total);
                 if (total < 0) {
                     $("#approveButtonTrading").html("Trade is not balanced");
                     return;
@@ -192,7 +186,6 @@ export class Trade {
                 init.haspressed = false;
             }
             modal.hide();
-            console.log(valueForInit + " " + valueForTransfer);
             init.recieveMoney(valueForTransfer);
             init.payAmmount(valueForInit);
             target.recieveMoney(valueForInit);
@@ -234,7 +227,6 @@ export class Trade {
     }
 
     swap(textContent: string | null, r1: number, r2: number) {
-        console.log(textContent);
         let Row1: Field[];
         switch (r1) {
             case 1:
@@ -272,28 +264,20 @@ export class Trade {
             return;
         }
         let textTrimmed: string = textContent.replace(" 💸", "");
-        console.log(textTrimmed);
-        console.log(Row1);
         let f: Field | undefined = Row1.find(element => textTrimmed.includes(element.name));
         if (f == undefined) {
-            console.log("No f");
             return;
         }
         Row2.push(f);
         Row1.forEach((item, index) => {
             if (item === f) Row1.splice(index, 1);
         });
-        console.log(this.traderingRow1);
-        console.log(this.traderingRow2);
-        console.log(this.traderingRow3);
-        console.log(this.traderingRow4);
     }
 
     async wait() {
 
         while (!this.pressed) {
             await new Promise(r => setTimeout(r, 100));
-            console.log(this.pressed);
         }
     }
 
@@ -302,23 +286,18 @@ export class Trade {
     }
 
     tradingValidation(trader1: JQuery<HTMLElement>, p: Player, first: boolean) {
-        console.log("called trade valid");
         let ammount = Number(trader1.val());
         trader1.val("");
         let lable = first ? $("#inputLable1") : $("#inputLable2");
         if (isNaN(ammount)) {
-            console.log("isnan");
             return;
         } else {
             if (ammount > p.Money) {
                 lable.html(p.Money + "");
-                console.log("toomuch");
             } else if (ammount <= 0) {
                 lable.html(0 + "");
-                console.log("less or equal to 0");
             } else {
                 lable.html(ammount + "");
-                console.log("final step");
             }
         }
     }
@@ -382,14 +361,6 @@ export class Trade {
             }
         }
         await this.wait();
-        console.log(ReferencePlayer.name);
-        console.log(this.targetPlayer.name);
-        this.targetPlayer.fieldsOwned.forEach( field => {
-            console.log(field.name);
-        })
-        ReferencePlayer.fieldsOwned.forEach( field => {
-            console.log(field.name);
-        })
         target.hide();
     }
 
