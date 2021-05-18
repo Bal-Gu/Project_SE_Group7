@@ -1111,31 +1111,38 @@ SaveGameState(): void {
             self.MakePlayerTurn();
         });
         let saveButton = $("#saveButton");
+        let surrenderButton = $("#surrenderButton");
         switch(this.language){
             case "FR":
                 saveButton.html("Sauvegarder");
+                surrenderButton.html("Se rendre");
                 break;
             case "DE":
                 saveButton.html("Spiel speichern");
+                surrenderButton.html("Sich ergeben");
                 break;
             case "PT":
                 saveButton.html("Guardar o jogo.");
+                surrenderButton.html("Desistir");
                 break;
             case "ENG":
                 saveButton.html("Save game");
+                surrenderButton.html("Surender");
                 break;
             case "":
                 saveButton.html("Save game");
+                surrenderButton.html("Surender");
                 break;
             case "LUX":
                 saveButton.html("Spill speichern");
+                surrenderButton.html("Sech ergin");
                 break;
         }
         saveButton.text();
         saveButton.click( function(){
             self.SaveGameState()
         });
-        $("#surrenderButton").click(function(){
+        surrenderButton.click(function(){
             if(!self.ReferencePlayer.isBot){
                 self.ReferencePlayer.isBot = true;
                 self.BotAction();
