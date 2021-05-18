@@ -447,7 +447,7 @@ export class main {
                         this.PlayerArray.forEach(async player => {
                             if (this.ReferencePlayer != player && !player.isGameOver && !choosedPlayer) {
                                 playercounter++;
-                                //TODO try implement buy proposition of erasmus
+
                                 for (let i = 0; i < player.fieldsOwned.length; i++) {
                                     let fieldtarg = player.fieldsOwned[i];
                                     if (field.color == fieldtarg.color && this.ReferencePlayer != player) {
@@ -474,7 +474,7 @@ export class main {
                                 }
                             }
                         })
-                        //TODO implement way to reset everything if player doesn't accept in 10 sec and to block every other buttons
+
                     })
                 }
                 while(this.ReferencePlayer.botInTrade){
@@ -1147,7 +1147,8 @@ SaveGameState(): void {
             fallingCoins('body');
         });
         // show the start menu
-        $("#startMenuButton").click(function () {
+        let startMenu =  $("#startMenuButton");
+        startMenu.click(function () {
             $("#startMenu").show();
             fallingCoins('body');
         });
@@ -1159,31 +1160,13 @@ SaveGameState(): void {
             self.MakePlayerTurn();
         });
         let saveButton = $("#saveButton");
-        switch(this.language){
-            case "FR":
-                saveButton.html("Sauvegarder");
-                break;
-            case "DE":
-                saveButton.html("Spiel speichern");
-                break;
-            case "PT":
-                saveButton.html("Guardar o jogo.");
-                break;
-            case "ENG":
-                saveButton.html("Save game");
-                break;
-            case "":
-                saveButton.html("Save game");
-                break;
-            case "LUX":
-                saveButton.html("Spill speichern");
-                break;
-        }
+        let surrenderButton = $("#surrenderButton");
+
         saveButton.text();
         saveButton.click( function(){
             self.SaveGameState()
         });
-        $("#surrenderButton").click(function(){
+        surrenderButton.click(function(){
             if(!self.ReferencePlayer.isBot){
                 self.ReferencePlayer.isBot = true;
                 self.BotAction();
@@ -1254,6 +1237,8 @@ SaveGameState(): void {
                 $("#menuLoadButton").text("Charger la partie");
                 inputLobby.prop("placeholder", "Votre pseudo");
                 $(this).html("Langue: <img src='./graphic/images/flags/france.png' style='height: 25px'>");
+                surrenderButton.text("Se rendre");
+                saveButton.text("Sauvegarder");
                 counter++;
             } else if (counter === 2) {
                 self.language = "DE";
@@ -1266,8 +1251,8 @@ SaveGameState(): void {
                 PlayerButton3.text("Spieler 3 (Klick mich)");
                 PlayerButton4.text("Spieler 4 (Klick mich)");
                 inputLobby.prop("placeholder", "Dein Spielername");
-
-
+                saveButton.html("Spiel speichern");
+                surrenderButton.html("Sich ergeben");
                 $("#menuPlayButton").text("Spielen");
                 $("#menuLoadButton").text("Spiel laden");
                 $(this).html("Sprache: <img src='./graphic/images/flags/germany.png' style='height: 25px'>");
@@ -1286,6 +1271,8 @@ SaveGameState(): void {
                 $("#menuPlayButton").text("Jogar");
                 $("#menuLoadButton").text("Carregar jogo");
                 $(this).html("Língua: <img src='./graphic/images/flags/portugal.png' style='height: 25px'>");
+                saveButton.text("Guardar o jogo");
+                surrenderButton.text("Desistir");
                 counter++;
             } else if (counter === 4) {
                 self.language = "LUX";
@@ -1297,6 +1284,8 @@ SaveGameState(): void {
                 PlayerButton2.text("Spiller 2 (Klick mech)");
                 PlayerButton3.text("Spiller 3 (Klick mech)");
                 PlayerButton4.text("Spiller 4 (Klick mech)");
+                saveButton.text("Spill speichern");
+                surrenderButton.text("Sech ergin");
                 inputLobby.prop("placeholder", "Dein Spillernum");
                 $("#menuPlayButton").text("Spilen");
                 $("#menuLoadButton").text("Spil leuden");
@@ -1314,6 +1303,8 @@ SaveGameState(): void {
                 PlayerButton4.text("Player 4 (Click me)");
                 $("#menuPlayButton").text("Play");
                 $("#menuLoadButton").text("Load game");
+                saveButton.text("Save game");
+                surrenderButton.text("Surender");
                 $(this).html("Language: <img src='./graphic/images/flags/kingdom.png' style='height: 25px'>");
                 counter = 1;
             }

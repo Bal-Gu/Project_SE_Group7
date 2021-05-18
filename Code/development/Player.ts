@@ -246,7 +246,7 @@ export class Player {
         this.isBot = true;
     }
 
-    //TODO while loop is buggy
+
     moveToNextBus() {
         let index = this.currentposition;
         while(this.currentposition-1 !== index && !(this.map[index] instanceof Bus)) {

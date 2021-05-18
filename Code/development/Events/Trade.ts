@@ -51,7 +51,7 @@ export class Trade {
         $("#trader1").html(init.name);
 
         $("#trader2").html(target.name);
-        //TODO only allow mortgage or unrenovated cards
+
 
         let tradingButtonCollum1 = $("#tradingButtonCollum1");
         tradingButtonCollum1.html("");
@@ -197,7 +197,7 @@ export class Trade {
             if (this.ErasmusDispenseGiven2) {
                 target.tradeDispense(init);
             }
-            //TODO iterate through such that people get their traded carts
+            
             this.traderingRow2.forEach((value) => {
                 init.exchange(value, target);
             });
