@@ -451,7 +451,7 @@ export class main {
                         this.PlayerArray.forEach(async player => {
                             if (this.ReferencePlayer != player && !player.isGameOver && !choosedPlayer) {
                                 playercounter++;
-                                //TODO try implement buy proposition of erasmus
+
                                 for (let i = 0; i < player.fieldsOwned.length; i++) {
                                     let fieldtarg = player.fieldsOwned[i];
                                     if (field.color == fieldtarg.color && this.ReferencePlayer != player) {
@@ -478,7 +478,7 @@ export class main {
                                 }
                             }
                         })
-                        //TODO implement way to reset everything if player doesn't accept in 10 sec and to block every other buttons
+
                     })
                 }
                 while(this.ReferencePlayer.botInTrade){
