@@ -51,7 +51,7 @@ export class Trade {
         $("#trader1").html(init.name);
 
         $("#trader2").html(target.name);
-        //TODO only allow mortgage or unrenovated cards
+
 
         let tradingButtonCollum1 = $("#tradingButtonCollum1");
         tradingButtonCollum1.html("");
@@ -101,7 +101,6 @@ export class Trade {
         $(".tradingButtons").click(function () {
             // @ts-ignore
             const htmlToBeMoved = this.parentElement.parentElement;
-
             // @ts-ignore
             if (this.parentElement.parentElement.parentElement.id == "tradingButtonCollum1") {
                 // @ts-ignore
@@ -180,14 +179,13 @@ export class Trade {
                 if (this.ErasmusDispenseGiven2) {
                     total -= 500;
                 }
-                if (total <= 0) {
+                if (total < 0) {
                     $("#approveButtonTrading").html("Trade is not balanced");
                     return;
                 }
                 init.haspressed = false;
             }
             modal.hide();
-            console.log(valueForInit + " " + valueForTransfer);
             init.recieveMoney(valueForTransfer);
             init.payAmmount(valueForInit);
             target.recieveMoney(valueForInit);
@@ -199,7 +197,7 @@ export class Trade {
             if (this.ErasmusDispenseGiven2) {
                 target.tradeDispense(init);
             }
-            //TODO iterate through such that people get their traded carts
+            
             this.traderingRow2.forEach((value) => {
                 init.exchange(value, target);
             });
@@ -225,10 +223,10 @@ export class Trade {
         trader2.html("0");
         trader1input.off();
         trader2input.off();
+        init.botInTrade = false;
     }
 
     swap(textContent: string | null, r1: number, r2: number) {
-        console.log(textContent);
         let Row1: Field[];
         switch (r1) {
             case 1:
@@ -266,28 +264,20 @@ export class Trade {
             return;
         }
         let textTrimmed: string = textContent.replace(" 💸", "");
-        console.log(textTrimmed);
-        console.log(Row1);
         let f: Field | undefined = Row1.find(element => textTrimmed.includes(element.name));
         if (f == undefined) {
-            console.log("No f");
             return;
         }
         Row2.push(f);
         Row1.forEach((item, index) => {
             if (item === f) Row1.splice(index, 1);
         });
-        console.log(this.traderingRow1);
-        console.log(this.traderingRow2);
-        console.log(this.traderingRow3);
-        console.log(this.traderingRow4);
     }
 
     async wait() {
 
         while (!this.pressed) {
             await new Promise(r => setTimeout(r, 100));
-            console.log(this.pressed);
         }
     }
 
@@ -296,23 +286,18 @@ export class Trade {
     }
 
     tradingValidation(trader1: JQuery<HTMLElement>, p: Player, first: boolean) {
-        console.log("called trade valid");
         let ammount = Number(trader1.val());
         trader1.val("");
         let lable = first ? $("#inputLable1") : $("#inputLable2");
         if (isNaN(ammount)) {
-            console.log("isnan");
             return;
         } else {
             if (ammount > p.Money) {
                 lable.html(p.Money + "");
-                console.log("toomuch");
             } else if (ammount <= 0) {
                 lable.html(0 + "");
-                console.log("less or equal to 0");
             } else {
                 lable.html(ammount + "");
-                console.log("final step");
             }
         }
     }
@@ -376,14 +361,6 @@ export class Trade {
             }
         }
         await this.wait();
-        console.log(ReferencePlayer.name);
-        console.log(this.targetPlayer.name);
-        this.targetPlayer.fieldsOwned.forEach( field => {
-            console.log(field.name);
-        })
-        ReferencePlayer.fieldsOwned.forEach( field => {
-            console.log(field.name);
-        })
         target.hide();
     }
 

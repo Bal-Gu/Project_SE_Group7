@@ -135,13 +135,13 @@ export class Quiz {
                     let reward = goodconsequence[Math.floor(Math.random() * 4).toString()]
                     p.recieveMoney(reward);
 
-                    //TODO ADD LANGUAGE SUPPORT
+
                     switch (self.p.language) {
                         case "LUX":
                             await self.exit("Richteg, du krist " + reward + " B-Coins");
                             break;
                         case "FR":
-                            await self.exit("You were right, you receive: " + reward + " B-Coins");
+                            await self.exit("Correcte vous recevez: " + reward + " B-Coins");
                             break;
                         case "PR":
                             await self.exit("Certo, vais receber: " + reward + " B-Coins");
@@ -150,7 +150,7 @@ export class Quiz {
                             await self.exit("You were right, you receive: " + reward + " B-Coins");
                             break;
                         case "DE":
-                            await self.exit("You were right, you receive: " + reward + " B-Coins");
+                            await self.exit("Richtig, sie bekommen: " + reward + " B-Coins");
                             break;
                         default:
                             await self.exit("You were right, you receive: " + reward + " B-Coins");
@@ -165,25 +165,25 @@ export class Quiz {
                         p.move(reward);
                     }
 
-                    //TODO ADD LANGUAGE SUPPORT
+
                     switch (self.p.language) {
                         case "LUX":
                             await self.exit("Richteg gei " + reward + " cases no  fier");
                             break;
                         case "FR":
-                            await self.exit("You were right, you can move: " + reward + " Cases");
+                            await self.exit("Correcte avancer de : " + reward + " cases");
                             break;
                         case "PR":
                             await self.exit("Certo podes avançar até " + reward);
                             break;
                         case "":
-                            await self.exit("You were right, you can move: " + reward + " Cases");
+                            await self.exit("You were right, you can move: " + reward + " Fields");
                             break;
                         case "DE":
-                            await self.exit("You were right, you can move: " + reward + " Cases");
+                            await self.exit("Richtig, gehen sie : " + reward + " forwärst");
                             break;
                         default:
-                            await self.exit("You were right, you can move: " + reward + " Cases");
+                            await self.exit("You were right, you can move: " + reward + " Fields");
 
                     }
 
@@ -201,13 +201,13 @@ export class Quiz {
                     let restplace: Restplace = <Restplace>p.map[globals.ParkingNumber]
                     restplace.addToPot(penalty);
 
-                    //TODO ADD LANGUAGE SUPPORT
+
                     switch (self.p.language) {
                         case "LUX":
                             await self.exit("Falsch du verleierst: " + penalty + " B-Coins");
                             break;
                         case "FR":
-                            await self.exit("You were wrong you loose: " + penalty + " B-Coins");
+                            await self.exit("Faux, payer : " + penalty + " B-Coins");
                             break;
                         case "PR":
                             await self.exit("Errado, vais perder " + penalty + " B-Coins");
@@ -216,7 +216,7 @@ export class Quiz {
                             await self.exit("You were wrong you loose: " + penalty + " B-Coins");
                             break;
                         case "DE":
-                            await self.exit("You were wrong you loose: " + penalty + " B-Coins");
+                            await self.exit("Falsch sie verlieren : " + penalty + " B-Coins");
                             break;
                         default:
                             await self.exit("You were wrong you loose: " + penalty + " B-Coins");
@@ -272,7 +272,7 @@ export class Quiz {
         let self = this;
         let questionModalHeader = $("#QuestionModal .modal-content .modal-header h2");
 
-        //TODO ADD LANGUAGE SUPPORT
+
         switch (this.p.language) {
             case "LUX":
                 questionModalHeader.html("Äntweren war: " + self.goodanswerString + "<br/>" + Consquence);
@@ -287,7 +287,7 @@ export class Quiz {
                 questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             case "DE":
-                questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);
+                questionModalHeader.html("Antwort war: " + self.goodanswerString + "<br/>" + Consquence);
                 break;
             default:
                 questionModalHeader.html("Answer was: " + self.goodanswerString + "<br/>" + Consquence);

@@ -16,9 +16,7 @@ export class Bus implements Field{
     }
 
     async Event(player: Player,playerList:Player[]): Promise<void> {
-        //TODO Player pays the price to the player  that owns this field
-        //TODO if there is no owner pay buy event
-        //TODO if player can't pay enter mortage event
+
         if (player == this.owner) {
             return;
         } else if (this.owner == undefined) {

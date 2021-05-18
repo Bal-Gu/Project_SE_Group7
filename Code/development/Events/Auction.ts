@@ -173,6 +173,8 @@ export class Auction {
             //Bot handeling of Auction
             if(PlayerList[currentindex].isBot){
                 if(((currentprice+10) < field.initialPrice) && ((currentprice*2) < PlayerList[currentindex].Money)){
+                    textfield.val("10");
+                    increment = 10;
                     bidbutton.click();
                 }else{
                     leavebutton.click();
