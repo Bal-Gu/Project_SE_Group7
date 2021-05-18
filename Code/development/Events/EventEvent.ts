@@ -13,8 +13,12 @@ import {Mortage} from "./mortage";
 export class EventEvent {
     private pressed: boolean;
     private Event:{Events: {Title: string, Money: number, Move: number, CardRecieved: string, GoTo: number}[]};
+    private MaxNumberField: number;
+    private Erasmus: number;
 
-    async event(p: Player) {
+    async event(p: Player, MaxNumberField:number, Erasmus: number) {
+        this.MaxNumberField = MaxNumberField;
+        this.Erasmus = Erasmus;
 
         switch (p.language) {
             case "LUX":
@@ -70,9 +74,9 @@ export class EventEvent {
             case 0:
                 if(p.isBot){
                     p.stillMovingBot = true;
-                    p.nrOfMove = globals.MaxNumberField - p.currentposition;
+                    p.nrOfMove = this.MaxNumberField - p.currentposition;
                 }else{
-                    p.move(globals.MaxNumberField - p.currentposition);
+                    p.move(this.MaxNumberField - p.currentposition);
                 }
                 break;
             case -1:
@@ -83,22 +87,22 @@ export class EventEvent {
             case -3:
                 $("#rollButton").hide();
                 p.TurnsInPrison = 1;
-                if (p.currentposition > globals.MaxNumberField/4) {
+                if (p.currentposition > this.MaxNumberField/4) {
                     if(p.isBot){
                         p.stillMovingBot = true;
-                        p.nrOfMove = globals.MaxNumberField - p.currentposition + (globals.MaxNumberField/4);
+                        p.nrOfMove = this.MaxNumberField - p.currentposition + (this.MaxNumberField/4);
                     }else{
-                        p.move(globals.MaxNumberField - p.currentposition + (globals.MaxNumberField/4));
+                        p.move(this.MaxNumberField - p.currentposition + (this.MaxNumberField/4));
                     }
                 } else {
                     if(p.isBot){
                         p.stillMovingBot = true;
-                        p.nrOfMove = (globals.MaxNumberField/4) - p.currentposition;
+                        p.nrOfMove = (this.MaxNumberField/4) - p.currentposition;
                     }else{
-                        p.move((globals.MaxNumberField/4) - p.currentposition);
+                        p.move((this.MaxNumberField/4) - p.currentposition);
                     }
                 }
-                p.currentposition = globals.Erasmus;
+                p.currentposition = this.Erasmus;
                 break;
             case -4:
                 p.goToRockhal()

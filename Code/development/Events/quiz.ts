@@ -306,7 +306,7 @@ export class Quiz {
             $("#TimerQuestion").text("Time left: " + i);
             i--;
         }
-        this.p =  new Player(false,"2",10,1);
+        this.p =  new Player(false,"2",10,1, 40, 10);
         if (this.pressed) {
             $("#TimerQuestion").hide();
         }

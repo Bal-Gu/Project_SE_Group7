@@ -7,12 +7,17 @@ export class Erasmus implements Field{
     name: string = "Erasmus";
     owner:Player;
     initialPrice: number = 0;
+    ErasmusInt
+
+    constructor(Erasmus:number){
+        this.ErasmusInt = Erasmus;
+    }
 
     Event(player: Player,playerList:Player[]): void {
         $("#rollButton").hide();
         if(player.TurnsInPrison >= 1){
             let erasmus:Prison =  new Prison();
-            erasmus.prisonEvent(player);
+            erasmus.prisonEvent(player, this.ErasmusInt);
             player.TurnsInPrison++;
         }
         return;

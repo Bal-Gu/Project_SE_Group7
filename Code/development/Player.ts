@@ -36,8 +36,10 @@ export class Player {
     AuctionEntry: boolean = false;
     language: string;
     haspressed:boolean = false;
+    MaxNumberField: number;
+    Erasmus: number;
 
-    constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number/*, pawn: Pawn, Array: Property*/) {
+    constructor(isBot: boolean, name: string, ReferenceNumber: number, botDifficulty: number, MaxNumberField: number, Erasmus: number/*, pawn: Pawn, Array: Property*/) {
         this.isBot = isBot;
         this.Money = 1500;
         this.hasErasmusDispense = false;
@@ -50,6 +52,8 @@ export class Player {
         this.ReferenceNumber = ReferenceNumber;
         this.hasFreeRent = false;
         this.botDifficulty = botDifficulty;
+        this.MaxNumberField = MaxNumberField;
+        this.Erasmus = Erasmus;
     }
 
     getName(): string {
@@ -208,11 +212,11 @@ export class Player {
     }
 
     move(moveAction: number): void {
-        if (this.currentposition + moveAction >= globals.MaxNumberField) {
+        if (this.currentposition + moveAction >= this.MaxNumberField) {
             this.startBonus();
         }
         this.ReferenceNumber == 3 ? nextMoveLogic(this.currentposition, moveAction, "#position4") : this.ReferenceNumber == 2 ? nextMoveLogic(this.currentposition, moveAction, "#position3") : this.ReferenceNumber == 1 ? nextMoveLogic(this.currentposition, moveAction, "#position2") : nextMoveLogic(this.currentposition, moveAction, "#position1");
-        this.currentposition = (this.currentposition + moveAction) % globals.MaxNumberField;
+        this.currentposition = (this.currentposition + moveAction) % this.MaxNumberField;
         this.lastAmmountOfMoves = moveAction;
         let self = this;
         setTimeout(function () {
@@ -223,8 +227,8 @@ export class Player {
 
     goToErasmus(): void {
 
-        this.move(globals.MaxNumberField/2);
-        this.currentposition = globals.Erasmus;
+        this.move(this.MaxNumberField/2);
+        this.currentposition = this.Erasmus;
 
     }
 
@@ -250,14 +254,14 @@ export class Player {
         let index = this.currentposition;
         while(this.currentposition-1 !== index && !(this.map[index] instanceof Bus)) {
             console.log(index + "is currentpos? " + (this.currentposition-1 != index));
-            index = (index+1) % globals.MaxNumberField;
+            index = (index+1) % this.MaxNumberField;
         }
         if (this.currentposition > index) {
             if(this.isBot){
                 this.stillMovingBot = true;
-                this.nrOfMove = globals.MaxNumberField - this.currentposition + index;
+                this.nrOfMove = this.MaxNumberField - this.currentposition + index;
             }else{
-                this.move(globals.MaxNumberField - this.currentposition + index);
+                this.move(this.MaxNumberField - this.currentposition + index);
             }
         } else {
             if(this.isBot){
@@ -273,14 +277,14 @@ export class Player {
         console.log(this.map);
         let index = this.currentposition;
         while (this.map[index].name !== "Rockhal") {
-            index = (index+1) % globals.MaxNumberField;
+            index = (index+1) % this.MaxNumberField;
         }
         if (this.currentposition > index) {
             if(this.isBot){
                 this.stillMovingBot = true;
-                this.nrOfMove = globals.MaxNumberField - this.currentposition + index;
+                this.nrOfMove = this.MaxNumberField - this.currentposition + index;
             }else{
-                this.move(globals.MaxNumberField - this.currentposition + index);
+                this.move(this.MaxNumberField - this.currentposition + index);
             }
         } else {
             if(this.isBot){

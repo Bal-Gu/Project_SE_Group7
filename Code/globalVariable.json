@@ -1,6 +1,10 @@
 {
-  "Erasmus": 10,
-  "MaxNumberField": 40,
+  "Erasmus_standart": 10,
+  "Erasmus_medium": 8,
+  "Erasmus_small": 5,
+  "MaxNumberField_standart": 40,
+  "MaxNumberField_medium": 32,
+  "MaxNumberField_small": 20,
   "MaxRenovations": 5,
   "MaxTurnInErasmus": 3,
   "DiceNumber": 6,

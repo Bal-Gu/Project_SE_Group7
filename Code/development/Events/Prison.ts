@@ -5,10 +5,11 @@ import $ from 'jquery';
 
 export class Prison {
     pressed: boolean = false;
+    Erasmus: number;
 
-    async prisonEvent(p: Player) {
+    async prisonEvent(p: Player, Erasmus: number) {
         console.log(p.name + " entered Prison");
-
+        this.Erasmus = Erasmus;
 
         //hides or show the buttons
         let luckyButton = $("#luckyCard");
@@ -119,14 +120,14 @@ export class Prison {
             } else if (p.canBuy(globals.ErasmusFees)) {
                 let d: Dice = new Dice();
                 let rand = d.getRandomInt(10);
-                if ((p.Money / 4) > globals.Erasmus) {
+                if ((p.Money / 4) > this.Erasmus) {
                     if (rand > 1) {
                         pay.click();
                     }else {
                         roledouble.click();
                         await new Promise(r => setTimeout(r, 2000));
                     }
-                } else if ((p.Money / 2) > globals.Erasmus) {
+                } else if ((p.Money / 2) > this.Erasmus) {
                     if (rand > 3) {
                         pay.click();
                     }else {

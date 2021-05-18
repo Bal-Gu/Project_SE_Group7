@@ -45,16 +45,15 @@ export class main {
     GameEnded: boolean = false;
     TurnEnded: boolean = false;
     language: string = "ENG";
-
+    MaxNumberField: number;
+    Erasmus: number;
 
     async main() {
-        let p:Player = new Player(false,"",1,1);
+        let p:Player = new Player(false,"",1,1, 40, 10);
         p.language = "ENG";
         bigBoard(this.language);
         this.buttonEvent();
         this.EndTurnButton();
-        this.InitializeGameLength(1);
-        this.InitializeFieldArray();
         await this.InitializePlayers();
         funFactButtons(this.language);
         while (!this.GameEnded) {
@@ -157,7 +156,7 @@ export class main {
 
     async BotActionTest() {
         let self = this;
-        let erasmus = new Erasmus()
+        let erasmus = new Erasmus(this.Erasmus)
         if (this.ReferencePlayer.isBot) {
             let double: boolean = false;
             while ($("#rollButton").is(":visible")) {
@@ -188,7 +187,7 @@ export class main {
 
     async BotAction() {
         let self = this;
-        let erasmus = new Erasmus()
+        let erasmus = new Erasmus(this.Erasmus)
         if (this.ReferencePlayer.isBot) {
             if (this.ReferencePlayer.TurnsInPrison > 0) {
                 await new Promise(r => setTimeout(r, 1000));
@@ -211,11 +210,11 @@ export class main {
                             $("#rollButton").hide();
                             let movment: number;
                             if (this.ReferencePlayer.currentposition > 10) {
-                                movment = (globals.MaxNumberField / 4) + (globals.MaxNumberField - this.ReferencePlayer.currentposition);
+                                movment = (this.MaxNumberField / 4) + (this.MaxNumberField - this.ReferencePlayer.currentposition);
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
                             } else if (this.ReferencePlayer.currentposition <= 10) {
-                                movment = (globals.MaxNumberField / 4) - this.ReferencePlayer.currentposition;
+                                movment = (this.MaxNumberField / 4) - this.ReferencePlayer.currentposition;
                                 this.ReferencePlayer.move(movment);
                                 await new Promise(r => setTimeout(r, movment * 500 + 2000));
                             }
@@ -235,7 +234,7 @@ export class main {
                         this.ConseqDoubles = 0;
                         await new Promise(r => setTimeout(r, this.dice.total() * 500 + 2000));
                     }
-                    if (this.ReferencePlayer.currentposition == (globals.MaxNumberField * 0.75)) {
+                    if (this.ReferencePlayer.currentposition == (this.MaxNumberField * 0.75)) {
                         await new Promise(r => setTimeout(r, 20 * 500 + 2000));
                     }
                 } else {
@@ -295,7 +294,7 @@ export class main {
                         //Makes him always buy a field if he has enough money and he had a field of the same color
                         if ((this.ReferencePlayer.Money * 0.9) > fieldprice && needtobuy) {
                             $("#Buy").click();
-                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < globals.MaxNumberField / 2)) {
+                        } else if ((this.ReferencePlayer.currentposition > 0) && (this.ReferencePlayer.currentposition < this.MaxNumberField / 2)) {
                             if ((this.ReferencePlayer.Money / 4) > fieldprice) {
                                 if (rand > 1) {
                                     $("#Buy").click();
@@ -404,7 +403,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //This part is to firstly handle fields between 20 and 39 for botdiff advanced
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > globals.MaxNumberField / 2) && (y <= globals.MaxNumberField - 1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > this.MaxNumberField / 2) && (y <= this.MaxNumberField - 1) && (!this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     MoneyPool += this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str: string = "#Removebutton" + (i).toString();
                                     //Already handled in mortgage event, but need to set true for next for loop
@@ -479,7 +478,7 @@ export class main {
                         } else if (this.ReferencePlayer.botDifficulty == 1) {
                             //way to priorize bot to repay in a certain area
                             for (let y = 0; y < this.FieldArray.length; y++) {
-                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < globals.MaxNumberField / 2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
+                                if ((this.ReferencePlayer.fieldsOwned[i] == this.FieldArray[y]) && (y > 0) && (y < this.MaxNumberField / 2) && (this.ReferencePlayer.fieldsOwned[i].isMortgage)) {
                                     RefMoney -= this.ReferencePlayer.fieldsOwned[i].initialPrice;
                                     let str = "#paybuttonRepayMortgage" + i;
                                     $(str).click();
@@ -706,10 +705,6 @@ export class main {
         }
     }
 
-    InitializeGameLength(n: number): void {
-        this.WinCondition = (n == 1) ? 3000 : (n == 2) ? 4000 : 5000;
-    }
-
     async InitializePlayers() {
         let ps: PlayerSelection = new PlayerSelection(this.language);
         ps.event();
@@ -719,7 +714,7 @@ export class main {
                 setTimeout(r, 50);
             });
         }
-        ps.initializePlayers();
+        ps.initializePlayers(this.MaxNumberField, this.Erasmus);
         this.PlayerArray = ps.getPlayers();
         this.PlayerArray.forEach((player) => {
             player.setLanguage(this.language);
@@ -730,7 +725,7 @@ export class main {
 
     }
 
-    InitializeFieldArray(): void {
+    InitializeFieldArray_standart(): void {
         this.FieldArray = [];
         let a, b, c, d;
         a = b = c = 0;
@@ -746,12 +741,12 @@ export class main {
                 let gotoerasmus: GoToErasmus = new GoToErasmus();
                 this.FieldArray.push(gotoerasmus);
             } else if (i == 5 || i == 15 || i == 25 || i == 35) {
-                let station = propertiesFile.stations[a];
+                let station = propertiesFile.stations_standart[a];
                 let b: Bus = new Bus(station.name);
                 this.FieldArray.push(b);
                 a++;
             } else if (i == 12 || i == 28) {
-                let parking = propertiesFile.parkings[b];
+                let parking = propertiesFile.parkings_standart[b];
                 let pa: Parking = new Parking(parking.name);
                 this.FieldArray.push(pa);
                 b++;
@@ -767,13 +762,172 @@ export class main {
                         break;
                 }
             } else if (i == 2 || i == 17 || i == 33) {
-                let eventfield: EventField = new EventField();
+                let eventfield: EventField = new EventField(this.MaxNumberField, this.Erasmus);
                 this.FieldArray.push(eventfield);
             } else if (i == 7 || i == 22 || i == 36) {
                 let quizfield: QuizField = new QuizField();
                 this.FieldArray.push(quizfield);
             } else {
-                let prop = propertiesFile.properties[c];
+                let prop = propertiesFile.properties_standart[c];
+                let color: Colors
+                switch (prop.color) {
+                    case "Green":
+                        color = Colors.Green
+                        break;
+                    case "Yellow":
+                        color = Colors.Yellow
+                        break;
+                    case "Red":
+                        color = Colors.Red
+                        break;
+                    case "Brown":
+                        color = Colors.Brown
+                        break;
+                    case "Light_Blue":
+                        color = Colors.Light_Blue
+                        break;
+                    case "Purple":
+                        color = Colors.Purple
+                        break;
+                    case "Orange":
+                        color = Colors.Orange
+                        break;
+                    case "Blue":
+                        color = Colors.Blue
+                        break;
+                    default:
+                        color = Colors.default;
+                        break;
+
+                }
+                let p: Properties = new Properties(color, prop.pricetopay, prop.renovationscost, prop.name, prop.initialprice);
+                this.FieldArray.push(p);
+                c++;
+            }
+        }
+
+    }
+
+    InitializeFieldArray_medium(): void {
+        this.FieldArray = [];
+        let a, b, c, d;
+        a = b = c = 0;
+
+        for (let i = 0; i < 32; i++) {
+            if (i == 0 || i == 8) {
+                let idle: Idle = new Idle();
+                this.FieldArray.push(idle);
+            } else if (i == 16) {
+                let restplace: Restplace = new Restplace();
+                this.FieldArray.push(restplace);
+            } else if (i == 24) {
+                let gotoerasmus: GoToErasmus = new GoToErasmus();
+                this.FieldArray.push(gotoerasmus);
+            } else if (i == 4 || i == 12 || i == 20 || i == 28) {
+                let station = propertiesFile.stations_medium[a];
+                let b: Bus = new Bus(station.name);
+                this.FieldArray.push(b);
+                a++;
+            } else if (i == 10 || i == 22) {
+                let parking = propertiesFile.parkings_medium[b];
+                let pa: Parking = new Parking(parking.name);
+                this.FieldArray.push(pa);
+                b++;
+            } else if (i == 3 || i == 30) {
+                switch (i) {
+                    case 3:
+                        let luxtax: Tax = new Tax("Luxury Tax");
+                        this.FieldArray.push(luxtax);
+                        break;
+                    case 30:
+                        let inctax: Tax = new Tax("Income Tax");
+                        this.FieldArray.push(inctax);
+                        break;
+                }
+            } else if (i == 2 || i == 14 || i == 26) {
+                let eventfield: EventField = new EventField(this.MaxNumberField, this.Erasmus);
+                this.FieldArray.push(eventfield);
+            } else if (i == 6 || i == 18 || i == 29) {
+                let quizfield: QuizField = new QuizField();
+                this.FieldArray.push(quizfield);
+            } else {
+                let prop = propertiesFile.properties_medium[c];
+                let color: Colors
+                switch (prop.color) {
+                    case "Green":
+                        color = Colors.Green
+                        break;
+                    case "Yellow":
+                        color = Colors.Yellow
+                        break;
+                    case "Red":
+                        color = Colors.Red
+                        break;
+                    case "Brown":
+                        color = Colors.Brown
+                        break;
+                    case "Light_Blue":
+                        color = Colors.Light_Blue
+                        break;
+                    case "Purple":
+                        color = Colors.Purple
+                        break;
+                    case "Orange":
+                        color = Colors.Orange
+                        break;
+                    case "Blue":
+                        color = Colors.Blue
+                        break;
+                    default:
+                        color = Colors.default;
+                        break;
+
+                }
+                let p: Properties = new Properties(color, prop.pricetopay, prop.renovationscost, prop.name, prop.initialprice);
+                this.FieldArray.push(p);
+                c++;
+            }
+        }
+
+    }
+
+    InitializeFieldArray_small(): void {
+        this.FieldArray = [];
+        let a, b, c, d;
+        a = b = c = 0;
+
+        for (let i = 0; i < 20; i++) {
+            if (i == 0 || i == 5) {
+                let idle: Idle = new Idle();
+                this.FieldArray.push(idle);
+            } else if (i == 10) {
+                let restplace: Restplace = new Restplace();
+                this.FieldArray.push(restplace);
+            } else if (i == 15) {
+                let gotoerasmus: GoToErasmus = new GoToErasmus();
+                this.FieldArray.push(gotoerasmus);
+            } else if (i == 3 || i == 13 || i == 17) {
+                let station = propertiesFile.stations_small[a];
+                let b: Bus = new Bus(station.name);
+                this.FieldArray.push(b);
+                a++;
+            } else if (i == 6) {
+                let parking = propertiesFile.parkings_small[b];
+                let pa: Parking = new Parking(parking.name);
+                this.FieldArray.push(pa);
+                b++;
+            } else if (i == 18) {
+                let luxtax: Tax = new Tax("Luxury Tax");
+                this.FieldArray.push(luxtax);
+                break;
+            } else if (i == 2 || i == 8) {
+                let eventfield: EventField = new EventField(this.MaxNumberField, this.Erasmus);
+                this.FieldArray.push(eventfield);
+            } else if (i == 11) {
+                let quizfield: QuizField = new QuizField();
+                this.FieldArray.push(quizfield);
+            } else {
+                let prop = propertiesFile.properties_small[c];
                 let color: Colors
                 switch (prop.color) {
                     case "Green":
@@ -868,7 +1022,7 @@ SaveGameState(): void {
 }
 
     async MakePlayerTurn(): Promise<void> {
-        let erasmus = new Erasmus()
+        let erasmus = new Erasmus(this.Erasmus)
         let double = this.dice.isdouble();
 
         if (this.ReferencePlayer.TurnsInPrison > 0) {
@@ -935,7 +1089,7 @@ SaveGameState(): void {
     }
 
      async RepayMortgageTest() {
-        let p: Player = new Player(false, "f", 0, 0);
+        let p: Player = new Player(false, "f", 0, 0, this.MaxNumberField, this.Erasmus);
         this.playerInit(p);
         let repay = new RepayMortgage();
         await repay.event(p);
@@ -943,17 +1097,17 @@ SaveGameState(): void {
 
     AuctionTest() {
         let aution: Auction = new Auction();
-        let player1 = new Player(false, "YEEEEEEEEEEET", 0, 0);
-        let player2 = new Player(false, "Guillaume", 1, 0);
-        let player3 = new Player(false, "Tina", 2, 0);
-        let player4 = new Player(false, "Bob", 3, 0);
+        let player1 = new Player(false, "YEEEEEEEEEEET", 0, 0, this.MaxNumberField, this.Erasmus);
+        let player2 = new Player(false, "Guillaume", 1, 0, this.MaxNumberField, this.Erasmus);
+        let player3 = new Player(false, "Tina", 2, 0, this.MaxNumberField, this.Erasmus);
+        let player4 = new Player(false, "Bob", 3, 0, this.MaxNumberField, this.Erasmus);
         let playerlist: Player[];
         playerlist = [player1, player2, player3, player4];
         aution.AuctionEvent(player2, playerlist, new Restplace());
     }
 
     async MortageTest() {
-        let p: Player = new Player(false, "f", 0, 0);
+        let p: Player = new Player(false, "f", 0, 0, this.MaxNumberField, this.Erasmus);
         this.playerInit(p);
         for (let i = 0; i < 30; i++) {
             var rand = Math.floor(Math.random() * Object.keys(Colors).length);
@@ -973,8 +1127,8 @@ SaveGameState(): void {
     }
 
     async TradeTest() {
-        let p1: Player = new Player(false, "ad", 0, 0);
-        let p2: Player = new Player(false, "bc", 1, 0);
+        let p1: Player = new Player(false, "ad", 0, 0, this.MaxNumberField, this.Erasmus);
+        let p2: Player = new Player(false, "bc", 1, 0, this.MaxNumberField, this.Erasmus);
         this.playerInit(p1);
         this.playerInit(p2);
         p1.fieldsOwned[0].name = "aaaa";
@@ -990,8 +1144,8 @@ SaveGameState(): void {
     }
 
     async BuyTest() {
-        let p: Player = new Player(false, "f", 0, 0);
-        let p2: Player = new Player(false, "yieks", 1, 0)
+        let p: Player = new Player(false, "f", 0, 0, this.MaxNumberField, this.Erasmus);
+        let p2: Player = new Player(false, "yieks", 1, 0, this.MaxNumberField, this.Erasmus)
         p.Money = 1000;
         let prop: Properties = new Properties(Colors.Light_Blue, [1, 2, 3, 4], 10, "lel", 100);
         prop.renovatiosAmmount = 3;
@@ -1051,14 +1205,31 @@ SaveGameState(): void {
             if (this.id == "bigBoardButton") {
                 setBoardSize(0);
                 bigBoard(self.language);
+                self.WinCondition = 5000;
+                self.MaxNumberField = globals.MaxNumberField_standart;
+                self.Erasmus = globals.Erasmus_standart;
+                self.InitializeFieldArray_standart();
             } else if (this.id == "mediumBoardButton") {
                 setBoardSize(1);
                 mediumBoard(self.language);
+                self.WinCondition = 4000;
+                self.MaxNumberField = globals.MaxNumberField_medium;
+                self.Erasmus = globals.Erasmus_medium;
+                self.InitializeFieldArray_medium();
+                console.log(self.FieldArray);
             } else if (this.id == "smallBoardButton") {
                 setBoardSize(2);
                 smallBoard(self.language);
+                self.WinCondition = 3000;
+                self.MaxNumberField = globals.MaxNumberField_small;
+                self.Erasmus = globals.Erasmus_small;
+                self.InitializeFieldArray_small();
             } else {
                 bigBoard(self.language);
+                self.WinCondition = 5000;
+                self.MaxNumberField = globals.MaxNumberField_standart;
+                self.Erasmus = globals.Erasmus_standart;
+                self.InitializeFieldArray_standart();
             }
             $("#boardResizeModal").hide();
             $("#lobbyModal").show();
@@ -1326,7 +1497,7 @@ SaveGameState(): void {
     async RenovationTest(): Promise<void> {
 
         if (this.first) {
-            let p1: Player = new Player(false, "test1", 0, 0);
+            let p1: Player = new Player(false, "test1", 0, 0, this.MaxNumberField, this.Erasmus);
             this.playerInit(p1);
             this.ReferencePlayer = p1;
             p1.PlayerArray = [p1];

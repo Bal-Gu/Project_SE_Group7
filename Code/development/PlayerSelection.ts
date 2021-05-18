@@ -18,10 +18,10 @@ export class PlayerSelection {
         return this.PlayerArray;
     }
 
-    initializePlayers() {
+    initializePlayers(MaxNumberField: number, Erasmus: number) {
 
         for (let i = 0; i < this.PlayerIsBot.length; i++) {
-            let p: Player = new Player(this.PlayerIsBot[i], this.PlayerName[i], i, this.botDifficultyButton);
+            let p: Player = new Player(this.PlayerIsBot[i], this.PlayerName[i], i, this.botDifficultyButton, MaxNumberField, Erasmus);
             this.PlayerArray.push(p);
         }
         this.PlayerArray[0].Color = "orange";
