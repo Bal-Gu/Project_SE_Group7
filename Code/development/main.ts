@@ -188,7 +188,7 @@ export class main {
     async BotAction() {
         if (this.ReferencePlayer.isBot) {
             let self = this;
-            let erasmus = new Erasmus()
+            let erasmus = new Erasmus(this.Erasmus)
             if (this.ReferencePlayer.TurnsInPrison > 0) {
                 await new Promise(r => setTimeout(r, 1000));
                 await erasmus.Event(this.ReferencePlayer, this.StaticPlayerArray);
@@ -1101,12 +1101,12 @@ SaveGameState(): void {
             if (this.ConseqDoubles >= 2) {
                 $("#rollButton").hide();
                 this.ReferencePlayer.TurnsInPrison = 1;
-                if (this.ReferencePlayer.currentposition > globals.MaxNumberField/4) {
-                    this.ReferencePlayer.move(globals.MaxNumberField - this.ReferencePlayer.currentposition + (globals.MaxNumberField/4));
+                if (this.ReferencePlayer.currentposition > this.MaxNumberField/4) {
+                    this.ReferencePlayer.move(this.MaxNumberField - this.ReferencePlayer.currentposition + (this.MaxNumberField/4));
                 } else {
-                    this.ReferencePlayer.move((globals.MaxNumberField/4) - this.ReferencePlayer.currentposition);
+                    this.ReferencePlayer.move((this.MaxNumberField/4) - this.ReferencePlayer.currentposition);
                 }
-                this.ReferencePlayer.currentposition = globals.Erasmus;
+                this.ReferencePlayer.currentposition = this.Erasmus;
                 this.ConseqDoubles = 0;
             } else {
                 this.ConseqDoubles += 1;
