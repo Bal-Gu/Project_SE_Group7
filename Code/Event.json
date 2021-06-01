@@ -1,0 +1,66 @@
+{
+  "Events": [
+    {
+      "Title": "Paple visited the forge and blessed the site.<br> You receive a Erasmus dispense",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -1
+    },
+    {
+      "Title": "Uni.lu Welcome Day. <br> Knowledge  is money: Get 200 B-coins",
+      "Money": 200,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Blast Furnace Tour by Night <br> Go to start",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": 0
+    },{
+      "Title": "The Escher Kulturlaf happened<br> You broke your leg: Go to the next public transport and pay 50 B-coins for the hospital fees.",
+      "Money": -50,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -2
+    },{
+      "Title": "TEDx Conference happened.You meet Varan Pathmanathan creator of make!mpact<br> He likes your idea and invest 50 B-coins",
+      "Money": 50,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Grand Ducal Visit: He gives you his blessing<br> Next rent has not to be payed",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Rent Free",
+      "GoTo": -1
+    },{
+      "Title": "Nuit de la Culture happend.<br>The piano flew away with the hot air balloon.<br> You try to catch it back <br> Move 5 fields forwards",
+      "Money": 0,
+      "Move": 5,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Uni.lu Open Day at Belval.<br> Due to it's success you are forced to go to erasmus <br> Go to erasmus",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -3
+    },{
+      "Title": "Rockhal Music Event<br> Move to the Rockhal",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -4
+    },{
+      "Title": "You organise the Red Rock Challenge<br>You donate 150 B-coins to \"Fondatioun Kriibskrank kanner\"",
+      "Money": -150,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -1
+    }
+  ]
+}

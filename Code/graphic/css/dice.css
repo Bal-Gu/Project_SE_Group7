@@ -1,0 +1,253 @@
+#cube1 .front, #cube3 .front, #cube5 .front, #cube7 .front {
+  -webkit-transform: translateZ(25px);
+          transform: translateZ(25px);
+}
+
+#cube1 .back, #cube3 .back, #cube5 .back, #cube7 .back {
+  -webkit-transform: rotateX(-180deg) translateZ(25px);
+          transform: rotateX(-180deg) translateZ(25px);
+}
+
+#cube1 .right, #cube3 .right, #cube5 .right, #cube7 .right {
+  -webkit-transform: rotateY(90deg) translateZ(25px);
+          transform: rotateY(90deg) translateZ(25px);
+}
+
+#cube1 .left, #cube3 .left, #cube5 .left, #cube7 .left {
+  -webkit-transform: rotateY(-90deg) translateZ(25px);
+          transform: rotateY(-90deg) translateZ(25px);
+}
+
+#cube1 .top, #cube3 .top, #cube5 .top, #cube7 .top {
+  -webkit-transform: rotateX(90deg) translateZ(25px);
+          transform: rotateX(90deg) translateZ(25px);
+}
+
+#cube1 .bottom, #cube3 .bottom, #cube5 .bottom, #cube7 .bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(25px);
+          transform: rotateX(-90deg) translateZ(25px);
+}
+
+.container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: inline-block;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-perspective-origin: 50% 100%;
+          perspective-origin: 50% 100%;
+  margin: 10px;
+  padding: 50px;
+}
+
+#cube1, #cube3, #cube5, #cube7 {
+  width: 30%;
+  height: 30%;
+  top: 50px;
+  left: 15px;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
+}
+
+#cube1 div, #cube3 div, #cube5 div, #cube7 div {
+  background: white;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  border: 2px solid #969292;
+  border-radius: 3px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 125%;
+  text-align: center;
+  padding: 12.5px 0;
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+}
+
+.dot {
+  display: block;
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: black;
+  border-radius: 7px;
+}
+
+.front .dot1 {
+  top: 21px;
+  left: 21px;
+}
+
+.back .dot1 {
+  top: 5px;
+  left: 5px;
+}
+
+.back .dot2 {
+  top: 37px;
+  left: 37px;
+}
+
+.right .dot1 {
+  top: 21px;
+  left: 21px;
+}
+
+.right .dot2 {
+  top: 37px;
+  left: 37px;
+}
+
+.right .dot3 {
+  top: 5px;
+  left: 5px;
+}
+
+.left .dot1 {
+  top: 5px;
+  left: 5px;
+}
+
+.left .dot2 {
+  top: 37px;
+  left: 37px;
+}
+
+.left .dot3 {
+  top: 5px;
+  left: 37px;
+}
+
+.left .dot4 {
+  top: 37px;
+  left: 5px;
+}
+
+.top .dot1 {
+  top: 20px;
+  left: 20px;
+}
+
+.top .dot2 {
+  top: 5px;
+  left: 5px;
+}
+
+.top .dot3 {
+  top: 37px;
+  left: 37px;
+}
+
+.top .dot4 {
+  top: 5px;
+  left: 37px;
+}
+
+.top .dot5 {
+  top: 37px;
+  left: 5px;
+}
+
+.bottom .dot1 {
+  top: 5px;
+  left: 5px;
+}
+
+.bottom .dot2 {
+  top: 5px;
+  left: 21px;
+}
+
+.bottom .dot3 {
+  top: 5px;
+  left: 37px;
+}
+
+.bottom .dot4 {
+  top: 37px;
+  left: 5px;
+}
+
+.bottom .dot5 {
+  top: 37px;
+  left: 21px;
+}
+
+.bottom .dot6 {
+  top: 37px;
+  left: 37px;
+}
+
+#cube2 .front, #cube4 .front, #cube6 .front, #cube8 .front {
+  -webkit-transform: translateZ(25px);
+          transform: translateZ(25px);
+}
+
+#cube2 .back, #cube4 .back, #cube6 .back, #cube8 .back {
+  -webkit-transform: rotateX(-180deg) translateZ(25px);
+          transform: rotateX(-180deg) translateZ(25px);
+}
+
+#cube2 .right, #cube4 .right, #cube6 .right, #cube8 .right {
+  -webkit-transform: rotateY(90deg) translateZ(25px);
+          transform: rotateY(90deg) translateZ(25px);
+}
+
+#cube2 .left, #cube4 .left, #cube6 .left, #cube8 .left {
+  -webkit-transform: rotateY(-90deg) translateZ(25px);
+          transform: rotateY(-90deg) translateZ(25px);
+}
+
+#cube2 .top, #cube4 .top, #cube6 .top, #cube8 .top {
+  -webkit-transform: rotateX(90deg) translateZ(25px);
+          transform: rotateX(90deg) translateZ(25px);
+}
+
+#cube2 .bottom, #cube4 .bottom, #cube6 .bottom, #cube8 .bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(25px);
+          transform: rotateX(-90deg) translateZ(25px);
+}
+
+#cube2, #cube4, #cube6, #cube8 {
+  width: 30%;
+  height: 30%;
+  top: 50px;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
+}
+
+#cube2 div, #cube4 div, #cube6 div, #cube8 div {
+  background: white;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  border: 2px solid #969292;
+  border-radius: 3px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 125%;
+  text-align: center;
+  padding: 12.5px 0;
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+}
+
+#dices1, #dices2, #dices3, #dices4 {
+  height: 280px;
+  display: none;
+}
+/*# sourceMappingURL=dice.css.map */

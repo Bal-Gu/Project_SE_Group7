@@ -1,0 +1,145 @@
+//Monopoly game informations
+
+//Colors
+$lg-box:  rgb(106, 126, 94);
+$lightblue: lightblue;
+$pink: pink;
+$orange: orange;
+$red: red;
+$brown: brown;
+$yellow: #cfcf4e;
+$blue: blue;
+$green: green;
+$violet: violet;
+$black: rgb(22, 22, 22);
+
+
+//Font
+$game-info : Verdana, Geneva, Tahoma, sans-serif;
+
+.monopoly-info{
+    
+    width: 240px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-family: $game-info;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0px 0px 5px 5px whitesmoke;
+
+
+    .player{
+      display: table;
+      width: 200px;
+      height: 30px;
+      margin: 10px 0 10px 10px;
+      font-size: 18px;
+      line-height: 30px;
+      text-align: center;
+      color: white
+    }
+    
+    .player-coins{
+      width: 250px;
+      height: 20px;
+      margin: 10px 0 10px 10px;
+    }
+  
+    #player-1{
+      background-color: $orange;
+    }
+    
+    #player-2{
+      background-color: $black;
+    }
+    
+    #player-3{
+      background-color: $yellow;
+    }
+    
+    #player-4{
+      background-color: $red;
+    }
+  }
+
+#buttonList h2{
+  color: rgb(65, 65, 65);
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#buttonList{
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  box-shadow: 0px 0px 5px 5px whitesmoke;
+  align-items: center;
+  padding: 15px;
+}
+
+.buttonListDesign{
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 3px solid red;
+  color: rgb(66, 66, 66);
+  box-shadow: 2px 2px 5px grey;
+  padding: 5px;
+  margin: 5px;
+}
+
+.buttonListDesign:hover{
+    background-color: red;
+    color: white;
+    border-color: rgb(255, 55, 55);
+}
+
+.buttonListDesign:active{
+    background-color: rgb(207, 0, 0);
+    color: white;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px white;
+}
+
+.buttonListDesign:active:disabled {
+  background-color: rgb(65, 65, 65);
+  color: rgb(44, 44, 44);
+  border-color: #2e1515;
+}
+
+.buttonListDesign:disabled {
+  background-color: rgb(65, 65, 65);
+  color: rgb(92, 92, 92);
+  border-color: #362323;
+}
+
+.star-player1{
+  background-color: $orange;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $orange;
+}
+
+.star-player2{
+  background-color: $black;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $black;
+}
+
+.star-player3{
+  background-color: $yellow;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $yellow;
+}
+
+.star-player4{
+  background-color: $red;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px $red;
+}
+  

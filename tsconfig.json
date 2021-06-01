@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "moduleResolution": "Node"
+  },
+  "exclude": [
+    "node_modules",
+    "bower_components",
+    "dist"
+  ]
+}

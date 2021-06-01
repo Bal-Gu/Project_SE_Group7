@@ -1,0 +1,66 @@
+{
+  "Events": [
+    {
+      "Title": "Paple visitou a forja e abençoou o campus. <br> Você recebe uma dispensa Erasmus",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -1
+    },
+    {
+      "Title": "Dia de Boas-Vindas à Uni.lu. <br> Conhecimento é dinheiro: obtenha 200 moedas B-coins",
+      "Money": 200,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Excursão ao alto-forno à noite <br> Vá para o início",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": 0
+    },{
+      "Title": "O Escher Kulturlaf realizou-se <br> Tu partistes uma perna: Vai para o próximo transporte público e paga 50 moedas B-coins pelas taxas de hospital.",
+      "Money": -50,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -2
+    },{
+      "Title": "A conferência TEDx realizou-se.Tu conhecestes Varan Pathmanathan, criador do make!mpact <br> Ele gostou da sua ideia e investiu 50 moedas B-coins",
+      "Money": 50,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Visita do Grão-Ducal: Ele lhe dá sua bênção <br> O próximo aluguel não tens de pagar",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Rent Free",
+      "GoTo": -1
+    },{
+      "Title": "Nuit de la Culture aconteceu. <br> O piano voou com o balão de ar quente. <br> Você tenta pegá-lo de volta <br> Avança 5 campos",
+      "Money": 0,
+      "Move": 5,
+      "CardRecieved": "",
+      "GoTo": -1
+    },{
+      "Title": "Uni.lu Open Day em Belval. <br> Devido ao seu sucesso, você é forçado a ir para o Erasmo <br> Ir para o Erasmo",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "",
+      "GoTo": -3
+    },{
+      "Title": "Evento de música Rockhal <br> Vá para o Rockhal",
+      "Money": 0,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -4
+    },{
+      "Title": "Você organiza o Red Rock Challenge <br> Você doa 150 moedas B-coins para \"Fondatioun Kriibskrank kanner\"",
+      "Money": -150,
+      "Move": 0,
+      "CardRecieved": "Out of Erasmus",
+      "GoTo": -1
+    }
+  ]
+}

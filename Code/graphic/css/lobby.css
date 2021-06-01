@@ -1,0 +1,65 @@
+#lobbyMenuTable {
+  width: 100%;
+}
+
+.PlayerSelectionbutton {
+  width: 100%;
+  height: 45px;
+  font-size: 20px;
+  background: #ce3c3c;
+  cursor: pointer;
+  border: 2px solid grey;
+  color: #444444;
+}
+
+.inputLobby {
+  width: 100%;
+  height: 45px;
+  font-size: 20px;
+  background: wheat;
+  text-align: justify;
+  text-align-last: center;
+  border: 1px solid grey;
+}
+
+.inputLobby:enabled:focus {
+  outline: 1px solid #505050;
+}
+
+.ButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.StartBoxButton {
+  color: #333333;
+  margin-top: 10px;
+  font-size: 20px;
+  width: 15vw;
+  padding: 13px;
+  background: #a7a4a4;
+  border: 1px solid grey;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.StartBoxButton:active {
+  color: #fff8ec;
+  background: #646464;
+  -webkit-box-shadow: 0px 0px 15px gray;
+          box-shadow: 0px 0px 15px gray;
+}
+
+.StartBoxButton:hover {
+  background-color: #b1b1b1;
+  -webkit-box-shadow: 0px 0px 2px 2px #dddddd;
+          box-shadow: 0px 0px 2px 2px #dddddd;
+}
+/*# sourceMappingURL=lobby.css.map */
