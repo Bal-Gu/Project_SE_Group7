@@ -89,9 +89,11 @@ export class main {
     }
 
     ShowPlayerMoney() {
+        if(this.StaticPlayerArray.length == 0){
+            this.StaticPlayerArray = this.PlayerArray.slice();
+            this.PlayerArray.forEach(player => player.PlayerArray = this.StaticPlayerArray);
+        }
 
-        this.StaticPlayerArray = this.PlayerArray.slice();
-        this.PlayerArray.forEach(player => player.PlayerArray = this.StaticPlayerArray);
         $("#player-1").text(this.StaticPlayerArray[0].name);
         $("#b-coins-1").text(this.StaticPlayerArray[0].Money);
         $("#player-1").css("background-color", this.StaticPlayerArray[0].Color);
@@ -1338,6 +1340,10 @@ SaveGameState(): void {
         surrenderButton.click(function(){
             if(!self.ReferencePlayer.isBot){
                 self.ReferencePlayer.isBot = true;
+                let botname = "Bot Player " + (self.StaticPlayerArray.indexOf(self.ReferencePlayer) + 1);
+                self.ReferencePlayer.name = botname
+                $("#current-player").html(botname);
+                self.ShowPlayerMoney();
                 self.BotAction();
             }
         });
